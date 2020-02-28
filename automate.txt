@@ -1,0 +1,2 @@
+etat: "normal", "in", "out";
+pointeurs de sorties [];

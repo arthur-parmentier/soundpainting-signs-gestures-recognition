@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<OSCOutputGroup>
+  <oscMessage>/wek/outputs</oscMessage>
+  <hostName>localhost</hostName>
+  <outputPort>12000</outputPort>
+  <outputs class="linked-list">
+    <wekimini.osc.OSCDtwOutput>
+      <name>output</name>
+      <numGestures>8</numGestures>
+      <gestureNames>
+        <string>output_1</string>
+        <string>output_2</string>
+        <string>output_3</string>
+        <string>output_4</string>
+        <string>output_5</string>
+        <string>output_6</string>
+        <string>output_7</string>
+        <string>output_8</string>
+      </gestureNames>
+      <gestureOscMessages>
+        <string>/output_1</string>
+        <string>/output_2</string>
+        <string>/output_3</string>
+        <string>/output_4</string>
+        <string>/output_5</string>
+        <string>/output_6</string>
+        <string>/output_7</string>
+        <string>/output_8</string>
+      </gestureOscMessages>
+      <outputOscMessage>output</outputOscMessage>
+    </wekimini.osc.OSCDtwOutput>
+  </outputs>
+</OSCOutputGroup>

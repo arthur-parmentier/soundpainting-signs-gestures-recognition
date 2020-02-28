@@ -1,0 +1,1 @@
+# First field is # dimensions of each datapoint, 2nd is gesture class, Next fields are raw time series in order t_f1[0], t_f2[0], t_f3[0] etc. where f1, f2, etc are features and [0] is time
