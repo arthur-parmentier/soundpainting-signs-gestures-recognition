@@ -1,0 +1,6 @@
+*~
+*.pyc
+MANIFEST
+build
+dist
+libwapiti.egg-info
