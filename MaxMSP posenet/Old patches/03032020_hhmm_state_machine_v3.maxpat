@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 679.0, -1290.0, 2493.0, 1290.0 ],
+		"rect" : [ 1033.0, 85.0, 450.0, 953.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -102,7 +102,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -1881.0, -1363.0, 2493.0, 1290.0 ],
+						"rect" : [ -615.0, 85.0, 2493.0, 1290.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -149,7 +149,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 765.557285992607149, 452.607663214206696, 250.0, 24.0 ],
-									"presentation_linecount" : 2,
 									"text" : "Is triggered at the end of preparation time"
 								}
 
@@ -1329,7 +1328,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 20.402300475343708, 1873.476199567317963, 474.000006318092346, 22.0 ],
-					"text" : "\"prepare for sign 10 : when : slowly enter (-11)\""
+					"text" : "stop"
 				}
 
 			}
@@ -1341,7 +1340,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 122.679518727764133, 1614.904041767120361, 176.809524178504944, 24.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Index of the starting sign"
 				}
 
@@ -1354,7 +1352,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 122.679518727764133, 1708.710211753845215, 224.428572535514832, 24.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Set initial preparation time (s)"
 				}
 
@@ -1403,7 +1400,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 122.679518727764133, 1743.392932653427124, 272.047620892524719, 24.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Set the number of repetitions per sign (TODO)"
 				}
 
@@ -1454,7 +1450,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 122.679518727764133, 1677.583407819271088, 400.793654680252075, 24.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Set the time-gap between each training (s)"
 				}
 
@@ -1467,7 +1462,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 122.679518727764133, 1645.243724763393402, 258.793651580810547, 24.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Set the amount of time per sign (s)"
 				}
 
@@ -1633,7 +1627,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.000000519374822, 387.616783886978055, 103.0, 22.0 ],
-									"text" : "off"
+									"text" : "running"
 								}
 
 							}
@@ -1996,7 +1990,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1447.568780422210693, 995.857600938770247, 93.0, 34.0 ],
-					"presentation_linecount" : 2,
 					"text" : "normalized\nlikelihood"
 				}
 
@@ -2645,7 +2638,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 33.0, 329.408932697269393, 806.097579002380371, 22.0 ],
-									"text" : "addtrack posenet @maxsize 5s @matrixcols 5 @info gui \"interface multiwave, bounds -2. 2., shape envelope, colormode rainbow\""
+									"text" : "addtrack posenet @maxsize 5s @matrixcols 10 @info gui \"interface multiwave, bounds -2. 2., shape envelope, colormode rainbow\""
 								}
 
 							}
@@ -2657,7 +2650,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 55.462818682193756, 137.065346133205367, 105.5, 22.0 ],
-									"text" : "5"
+									"text" : "10"
 								}
 
 							}
@@ -3424,8 +3417,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -5119,7 +5110,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 357.010993242263794, 81.000001907348633, 273.0, 50.0 ],
-					"text" : "off"
+					"text" : "running"
 				}
 
 			}
@@ -10139,8 +10130,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -10313,8 +10302,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -12569,7 +12556,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-244", 0 ],
+					"destination" : [ "obj-244", 1 ],
 					"order" : 1,
 					"source" : [ "obj-215", 0 ]
 				}
