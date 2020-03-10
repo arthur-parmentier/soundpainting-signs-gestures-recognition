@@ -12,7 +12,7 @@ function dictionary()
 		
 		for (var j = 0; j < dict.get(keys[i]).length; j++) {
 			
-			post(typeof dict.get(keys[i])[j]);
+			// post(typeof dict.get(keys[i])[j]);
 			list.push(keys[i] + " : " + dict.get(keys[i])[j]);
 		}
 		
