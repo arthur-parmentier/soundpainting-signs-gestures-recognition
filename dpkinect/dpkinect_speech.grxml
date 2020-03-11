@@ -1,0 +1,64 @@
+﻿<grammar version="1.0" xml:lang="en-US" root="rootRule" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+	<rule id="rootRule">
+		<one-of>
+			<item>
+			<tag>kinect</tag>
+			<one-of>
+				<item>kinect</item>
+				<item>connect</item>
+				<item>sensor</item>
+			</one-of>
+			</item>
+			<item>
+				<tag>hello</tag>
+				<one-of>
+					<item>hello</item>
+					<item>hi</item>
+					<item>howdy</item>
+					<item>hey</item>
+					<item>good day</item>
+					<item>good morning</item>
+					<item>good evening</item>
+					<item>hi-ya</item>
+					<item>how are you</item>
+					<item>how goes it</item>
+					<item>what's up</item>
+					<item>what's happening</item>
+				</one-of>
+			  </item>
+			<item>
+				<tag>FORWARD</tag>
+				<one-of>
+					<item>forwards</item>
+					<item>forward</item>
+					<item>straight</item>
+				</one-of>
+			</item>
+			<item>
+				<tag>BACKWARD</tag>
+				<one-of>
+					<item>backward</item>
+					<item>backwards</item>
+					<item>go back</item>
+					<item>back</item>
+				</one-of>
+			</item>
+			<item>
+				<tag>LEFT</tag>
+				<one-of>
+					<item>turn left</item>
+					<item>go left</item>
+					<item>left</item>
+				</one-of>
+			</item>
+			<item>
+				<tag>RIGHT</tag>
+				<one-of>
+					<item>turn right</item>
+					<item>go right</item>
+					<item>right</item>
+				</one-of>
+			</item>
+		</one-of>
+	</rule>
+</grammar>
