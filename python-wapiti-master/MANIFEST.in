@@ -1,5 +1,0 @@
-include README.md
-include MANIFEST.in
-recursive-include data *
-recursive-include cwapiti *
-recursive-include libwapiti *

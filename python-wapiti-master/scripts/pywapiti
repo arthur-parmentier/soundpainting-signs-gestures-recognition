@@ -1,5 +1,0 @@
-#!/usr/bin/env python
-
-if __name__ == '__main__':
-    from wapiti.script import run_script
-    run_script()

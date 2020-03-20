@@ -14,7 +14,8 @@
     "crfsuite": "^1.0.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "stats.js": "^0.17.0"
+    "stats.js": "^0.17.0",
+    "viz.js": "^2.1.2"
   },
   "scripts": {
     "watch": "NODE_ENV=development parcel index.html --no-hmr --open ",
@@ -33,6 +34,7 @@
     "dat.gui": "^0.7.6",
     "electron": "^3.1.13",
     "eslint": "^4.19.1",
+    "javascript-state-machine": "^3.1.0",
     "parcel-bundler": "^1.12.4"
   },
   "eslintConfig": {
