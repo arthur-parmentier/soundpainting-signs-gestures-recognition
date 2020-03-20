@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 96.0, 77.0, 1308.0, 969.0 ],
+		"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,26 +39,13 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-97",
-					"linecount" : 9,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1943.100007295608521, 911.0, 274.0, 133.0 ],
-					"text" : "'digraph fsm { rankdir=LR;\r\nsolid;\r\nliquid;\r\ngas;\r\nsolid -> liquid [ \"label= melt \" ];\r\nliquid -> solid [ \"label= freeze \" ];\r\nliquid -> gas [ \"label= vaporize \" ];\r\ngas -> liquid [ \"label= condense \" ];\r\n}'"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-93",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1943.100007295608521, 875.0, 71.0, 22.0 ],
-					"text" : "fromsymbol"
+					"patching_rect" : [ 2254.100007295608521, 888.0, 82.0, 22.0 ],
+					"text" : "prepend draw"
 				}
 
 			}
@@ -70,8 +57,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1943.100007295608521, 803.0, 621.0, 36.0 ],
-					"text" : "\"'digraph \\\"fsm\\\" {  rankdir=LR;  \\\"solid\\\";  \\\"liquid\\\";  \\\"gas\\\";  \\\"solid\\\" -> \\\"liquid\\\" [ label=\\\" melt \\\" ];  \\\"liquid\\\" -> \\\"solid\\\" [ label=\\\" freeze \\\" ];  \\\"liquid\\\" -> \\\"gas\\\" [ label=\\\" vaporize \\\" ];  \\\"gas\\\" -> \\\"liquid\\\" [ label=\\\" condense \\\" ];}'\""
+					"patching_rect" : [ 2254.100007295608521, 843.0, 919.0, 36.0 ],
+					"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"solid\\\";  \\\"liquid\\\";  \\\"gas\\\";  \\\"solid\\\" -> \\\"liquid\\\" [ label=\\\" melt \\\" ];  \\\"liquid\\\" -> \\\"solid\\\" [ label=\\\" freeze \\\" ];  \\\"liquid\\\" -> \\\"gas\\\" [ label=\\\" vaporize \\\" ];  \\\"gas\\\" -> \\\"liquid\\\" [ label=\\\" condense \\\" ];}\""
 				}
 
 			}
@@ -82,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 865.0, 42.0, 22.0 ],
+					"patching_rect" : [ 2362.100007295608521, 888.0, 42.0, 22.0 ],
 					"text" : "reload"
 				}
 
@@ -105,7 +92,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2344.0, 884.0, 48.0, 22.0 ],
+					"patching_rect" : [ 2416.0, 888.0, 48.0, 22.0 ],
 					"text" : "readfile"
 				}
 
@@ -118,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 918.0, 310.0, 564.0 ],
+					"patching_rect" : [ 2254.100007295608521, 918.0, 924.0, 327.0 ],
 					"rendermode" : 1,
 					"url" : "file:///C:/Users/dell/Desktop/PDM/MaxMSP%20posenet/automata_graph.html"
 				}
@@ -131,7 +118,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2176.718652009963989, 671.668954879045486, 128.0, 22.0 ],
+					"patching_rect" : [ 2252.718652009963989, 737.668954879045486, 128.0, 22.0 ],
 					"text" : "script npm install viz.js"
 				}
 
@@ -143,7 +130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2431.100007295608521, 743.668954879045486, 117.0, 22.0 ],
+					"patching_rect" : [ 2323.600007295608521, 771.668954879045486, 117.0, 22.0 ],
 					"presentation_linecount" : 3,
 					"text" : "script processStatus"
 				}
@@ -156,7 +143,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2362.100007295608521, 743.668954879045486, 64.0, 22.0 ],
+					"patching_rect" : [ 2254.600007295608521, 771.668954879045486, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -168,7 +155,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2142.718652009963989, 637.668954879045486, 291.0, 22.0 ],
+					"patching_rect" : [ 2254.100007295608521, 705.668954879045486, 291.0, 22.0 ],
 					"presentation_linecount" : 3,
 					"text" : "script npm install --save-dev javascript-state-machine"
 				}
@@ -181,7 +168,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 2362.100007295608521, 794.668954879045486, 133.0, 22.0 ],
+					"patching_rect" : [ 2254.100007295608521, 805.668954879045486, 133.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -10521,7 +10508,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 2584.718652009963989, 695.668954879045486, 494.0, 716.0 ],
+					"patching_rect" : [ 2774.718652009963989, 316.668954879045486, 289.0, 262.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -16007,6 +15994,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-10",
@@ -21402,7 +21390,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-97", 1 ],
+					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-93", 0 ]
 				}
 
@@ -21411,13 +21399,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-119", 0 ],
 					"source" : [ "obj-95", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-70", 0 ],
-					"source" : [ "obj-97", 0 ]
 				}
 
 			}
