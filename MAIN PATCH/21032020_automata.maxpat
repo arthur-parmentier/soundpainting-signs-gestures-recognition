@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
+		"rect" : [ 96.0, 77.0, 1311.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -105,9 +105,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 918.0, 924.0, 327.0 ],
+					"patching_rect" : [ 2252.718652009963989, 939.0, 924.0, 327.0 ],
 					"rendermode" : 1,
-					"url" : "file:///C:/Users/dell/Desktop/PDM/MaxMSP%20posenet/automata_graph.html"
+					"url" : "file:./automata_graph.html"
 				}
 
 			}
@@ -131,7 +131,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2323.600007295608521, 771.668954879045486, 117.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"text" : "script processStatus"
 				}
 
@@ -156,7 +155,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2254.100007295608521, 705.668954879045486, 291.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"text" : "script npm install --save-dev javascript-state-machine"
 				}
 
@@ -172,8 +170,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -243,7 +239,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 88.0, 85.0, 1790.0, 969.0 ],
+						"rect" : [ -31958.0, -31915.0, 1790.0, 969.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6800,6 +6796,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -10508,7 +10506,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 2774.718652009963989, 316.668954879045486, 289.0, 262.0 ],
+					"patching_rect" : [ 2774.718652009963989, 316.668954879045486, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -10582,8 +10580,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -15967,7 +15963,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 104.0, 85.0, 973.0, 635.0 ],
+						"rect" : [ -31958.0, -31915.0, 828.0, 960.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -16002,7 +15998,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 591.0, 100.0, 195.0, 22.0 ],
+									"patching_rect" : [ 663.0, 100.0, 195.0, 22.0 ],
 									"text" : "script npm install -g max-js-bundler"
 								}
 
@@ -16014,7 +16010,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 490.0, 100.0, 91.0, 22.0 ],
+									"patching_rect" : [ 566.0, 100.0, 91.0, 22.0 ],
 									"text" : "script npm start"
 								}
 
@@ -16026,7 +16022,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 396.0, 100.0, 85.0, 22.0 ],
+									"patching_rect" : [ 471.0, 100.0, 85.0, 22.0 ],
 									"text" : "script npm run"
 								}
 
@@ -16051,8 +16047,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 283.0, 100.0, 104.0, 22.0 ],
-									"text" : "script npm update"
+									"patching_rect" : [ 281.0, 100.0, 175.0, 22.0 ],
+									"text" : "script npm --depth 9999 update"
 								}
 
 							}
@@ -16169,6 +16165,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -16341,6 +16339,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -21405,7 +21405,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "index.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -21430,35 +21430,35 @@
 			}
 , 			{
 				"name" : "dict_to_list.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "crf_train.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "crf_tag.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "copy_lace_list.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "automata.js",
-				"bootpath" : "~/Desktop/PDM/MaxMSP posenet",
+				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

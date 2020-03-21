@@ -1,0 +1,47 @@
+# Sign and gesture recognition tool for real-time musical performance and computer-assisted composition
+
+The goal of this project is to build a generic signs and gestures recognition and audio synthesis tool for use in music/art performances such as soundpainting performances.
+
+The project has started with the following references in mind :
+* MiMu Gloves https://mimugloves.com/ (extending music instruments with gestual controls)
+* GeKiPe http://philippespiesser.com/projet/gekipe-geste-kinect-percussion/ (creating/extending music instruments with mechanical, percussion-like movements)
+* Soundpainting as a standard, world-wide language for artistic performance, communication and composition http://www.soundpainting.com/
+
+Each of these is an example of the performativity and potential of gestures and signs for music creativity, composition and instrument expansion.
+
+## Demo and use cases
+
+### What can I do with this?
+
+Well, so far, not much. You can train your own signs and recognize them inside Max/MSP. Cool. But later, you will be able to:
+- implement your own regular language
+- make it play some sounds, videos.. whatever you can do with Max!
+- use it for soundpainting performances
+- augment your instrument...
+
+Check out a little preview from early March: https://www.youtube.com/watch?v=cFrR3W4-Tf4
+
+## Required and recommended hardware
+
+* Required: webcam OR low-latency external camera OR kinect input
+* Required: 64 bits computer (Tested on Windows 10)
+* Recommended with webcam input: Dedicated GPU (Tested on Nvidia 1060 GTX)
+* Recommended: 16+ Go RAM, i7 or i9 CPU (Tested on i7-8750H)
+
+## Run it using the standalone app
+
+_Standalone apps will be released near june/july. Before that, you need to check the install/modify procedure (very simple) in order to access the source patch and try it._
+
+## Load the source files, modify them, build your own standalone app
+
+_For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
+
+1. Install Max/MSP (lastest version) https://cycling74.com/
+2. _For use with kinect input_ Install Processing https://processing.org/
+3. Download/clone this repository
+4. Go to the "MAIN PATCH" folder and load the lastest version of the patch into Max/MSP (.maxpat)
+5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch
+6. Install the required Max/MSP packages: MuBu (and whatever Max/MSP is telling you that you are missing!)
+7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
+8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
+9. To build your own standalone, check out the procedure for Max/MSP and Processing.
