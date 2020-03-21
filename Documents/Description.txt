@@ -1,8 +1,0 @@
-Soundpainting language recognition
-
-Soundpainting is the universal multidisciplinary live composing sign language for musicians, actors, dancers, and visual Artists. 
-The language comprises more than 1500 gestures that are signed by the Soundpainter (composer) to indicate the type of material desired of the performers. 
-The creation of the composition is realized, by the Soundpainter, through the parameters of each set of signed gestures.
-
-The goal of this project is to build a performance and pedagogical tool based on the soundpainting language. Using a machine-learning algorithm, the software will be able to recognize soundpainting signs
-from motion-tracking equipment and let the user control it's virtual orchestra and discover the soundpainting language.
