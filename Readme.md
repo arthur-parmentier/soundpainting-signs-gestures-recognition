@@ -28,11 +28,11 @@ Check out a little preview from early March: https://www.youtube.com/watch?v=cFr
 * Recommended with webcam input: Dedicated GPU (Tested on Nvidia 1060 GTX)
 * Recommended: 16+ Go RAM, i7 or i9 CPU (Tested on i7-8750H)
 
-## Run it using the standalone app
+## Standalone app
 
-_Standalone apps will be released near june/july. Before that, you need to check the install/modify procedure (very simple) in order to access the source patch and try it._
+_Standalone apps will be released near june/july. Before that, you need to check the setup procedure (very simple) in order to access the source patch and try it._
 
-## Load the source files, modify them, build your own standalone app
+## Setup procedure
 
 _For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
@@ -40,8 +40,17 @@ _For now, this is the only valid procedure. It has some additional requirements,
 2. _For use with kinect input_ Install Processing https://processing.org/
 3. Download/clone this repository
 4. Go to the "MAIN PATCH" folder and load the lastest version of the patch into Max/MSP (.maxpat)
-5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch
+5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch. Then, make sure that the electron process runs on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings.
 6. Install the required Max/MSP packages: MuBu (and whatever Max/MSP is telling you that you are missing!)
 7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
 8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
 9. To build your own standalone, check out the procedure for Max/MSP and Processing.
+
+## Sources
+
+This project is based on the following tools:
+* Posenet for dummies https://github.com/billythemusical/n4m-posenet-for-dummies and original N4M posenet https://github.com/yuichkun/n4m-posenet
+* SimpleKinect https://github.com/jpbellona/simpleKinect
+* Wekinator http://www.wekinator.org/
+* Viz.js https://github.com/mdaines/viz.js
+* Javascript state machiine https://github.com/jakesgordon/javascript-state-machine
