@@ -42,16 +42,47 @@ var fsm = new StateMachine({
 		{ name: 'without', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'without' }
 		
     ],
+	methods: {
+		onInvalidTransition: function(transition, from, to) {
+			//throw new Exception("transition not allowed from that state");
+			maxApi.post("Transition " + transition + " from " + from + " to " + to + " not allowed in tha state.");
+		}
+	},	
 	plugins: [
       new StateMachineHistory()
-
-
     ]
-  });
+});
   
 maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
 	
 // TODO: add here the automata logic and mechanic
+
+// First let's add some message handlers
+
+const handlers = {
+	[maxApi.MESSAGE_TYPES.BANG]: () => {
+		console.log("got a bang");
+	},
+	[maxApi.MESSAGE_TYPES.NUMBER]: (num) => {
+	},
+	my_message: () => {
+		console.log("got my_message");
+	},
+	my_message_with_args: (arg1, arg2) => {
+		console.log("got my arged message: ${arg1}, ${arg2} ");
+	},
+	[maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => {
+		console.log("This will be called for ALL messages");
+		console.log(`The following inlet event was ${!handled ? "not " : "" }handled`);
+		console.log(args);
+	}
+};
+
+maxApi.addHandlers(handlers);
+
+// Data structure?
+
+// Dynamic here? 
 
 maxApi.post(fsm.history);
 fsm.who();
