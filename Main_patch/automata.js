@@ -44,10 +44,10 @@ var fsm = new StateMachine({
 		
     ],
 	plugins: [
-      new StateMachineHistory()     //  <-- plugin enabled here
+      new StateMachineHistory()
     ]
   });
   
-maxApi.outlet(visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,""));
+maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
 	
 // TODO: add here the automata logic and mechanic
