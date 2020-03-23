@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,92 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-88",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "int" ],
+					"patching_rect" : [ 1737.765955924987793, 1751.351234436035156, 29.5, 22.0 ],
+					"text" : "t b i"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 48.0,
+					"id" : "obj-75",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1668.656656742095947, 1891.044708490371704, 1160.0, 64.0 ],
+					"text" : "\"neutral : neutral\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-59",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1649.601779222488403, 1754.552176594734192, 79.0, 22.0 ],
+					"text" : "receive signs"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-63",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 1667.601779222488403, 1791.285312116146088, 29.5, 22.0 ],
+					"text" : "+ 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-64",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1649.601779222488403, 1829.285312116146088, 37.0, 22.0 ],
+					"text" : "zl nth"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-58",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1737.765955924987793, 1715.67158043384552, 50.0, 22.0 ],
+					"text" : "0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-53",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1649.765955924987793, 1715.67158043384552, 71.0, 22.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-48",
 					"maxclass" : "newobj",
@@ -175,7 +261,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 778.549524292349815, 233.287181988141356, 115.600000977516174, 21.0 ],
-									"text" : "6"
+									"text" : "7"
 								}
 
 							}
@@ -241,7 +327,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 617.0, 204.980068683624268, 146.0, 22.0 ],
-									"text" : "\"when : now\""
+									"text" : "\"when : slowly enter\""
 								}
 
 							}
@@ -290,7 +376,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 530.549524292349815, 204.980068683624268, 50.0, 22.0 ],
-									"text" : "3"
+									"text" : "4"
 								}
 
 							}
@@ -847,13 +933,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-355",
-									"linecount" : 3,
+									"linecount" : 4,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 379.333315849304199, 258.967859238386154, 53.0, 64.0 ],
-									"text" : "symbol \"when : now 3\""
+									"text" : "symbol \"when : slowly enter 4\""
 								}
 
 							}
@@ -2629,7 +2715,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 865.0, 819.0, 110.0 ],
+					"patching_rect" : [ 2254.100007295608521, 865.0, 821.0, 110.0 ],
 					"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"start: empty request\\\";  \\\"who1\\\";  \\\"what1\\\";  \\\"with1\\\";  \\\"execution: empty request\\\";  \\\"content parameters\\\";  \\\"who\\\";  \\\"what (ambiguous: group OR content)\\\";  \\\"content\\\";  \\\"with\\\";  \\\"without\\\";  \\\"add\\\";  \\\"start: empty request\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"who1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"what1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"what1\\\" -> \\\"with1\\\" [ label=\\\" with \\\" ];  \\\"what1\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"what1\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"content parameters\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"execution: empty request\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"content\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"who\\\" [ label=\\\" group \\\" ];  \\\"execution: empty request\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what \\\" ];  \\\"content parameters\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what (!very ambiguous!) \\\" ];  \\\"with\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"without\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"add\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"execution: empty request\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"content\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"content parameters\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"execution: empty request\\\" -> \\\"execution: empty request\\\" [ label=\\\" off \\\" ];  \\\"who\\\" -> \\\"execution: empty request\\\" [ label=\\\" off \\\" ];  \\\"content parameters\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"content\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"content parameters\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"content\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"content parameters\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"content\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];  \\\"content parameters\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];  \\\"content\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];}\""
 				}
 
@@ -2718,8 +2804,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -9308,6 +9392,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -12230,8 +12316,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -12823,7 +12907,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 94.0, 696.168954879045486, 273.0, 50.0 ],
-					"text" : "0"
+					"text" : "1"
 				}
 
 			}
@@ -12896,17 +12980,6 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1737.765955924987793, 1682.322550088167418, 69.0, 22.0 ],
 					"text" : "route string"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-59",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 1693.265955924987793, 1630.322550088167418, 32.0, 22.0 ],
-					"text" : "print"
 				}
 
 			}
@@ -13065,9 +13138,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 1649.765955924987793, 1682.322550088167418, 57.0, 22.0 ],
-					"text" : "minimum"
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 1649.765955924987793, 1682.322550088167418, 71.0, 22.0 ],
+					"text" : "minimum 0."
 				}
 
 			}
@@ -17733,6 +17806,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -17905,6 +17980,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -20714,6 +20791,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 0 ],
+					"order" : 1,
 					"source" : [ "obj-39", 0 ]
 				}
 
@@ -20722,6 +20800,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-60", 0 ],
 					"source" : [ "obj-39", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-82", 0 ],
+					"order" : 0,
+					"source" : [ "obj-39", 0 ]
 				}
 
 			}
@@ -22377,16 +22463,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-59", 0 ],
-					"order" : 0,
-					"source" : [ "obj-57", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"order" : 1,
 					"source" : [ "obj-57", 1 ]
 				}
 
@@ -22395,6 +22472,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"source" : [ "obj-57", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-88", 0 ],
+					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-59", 0 ]
 				}
 
 			}
@@ -22428,13 +22519,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-59", 0 ],
-					"source" : [ "obj-60", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-407", 0 ],
 					"source" : [ "obj-61", 0 ]
 				}
@@ -22444,6 +22528,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-56", 0 ],
 					"source" : [ "obj-62", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 1 ],
+					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-75", 1 ],
+					"source" : [ "obj-64", 0 ]
 				}
 
 			}
@@ -22562,8 +22660,45 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-63", 0 ],
+					"source" : [ "obj-88", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-88", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-89", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-53", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-58", 1 ],
+					"order" : 0,
+					"source" : [ "obj-9", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-58", 0 ],
+					"order" : 1,
+					"source" : [ "obj-9", 1 ]
 				}
 
 			}
@@ -22598,7 +22733,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "index.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -22623,35 +22758,35 @@
 			}
 , 			{
 				"name" : "dict_to_list.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "crf_train.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "crf_tag.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "copy_lace_list.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "automata.js",
-				"bootpath" : "~/Desktop/PDM/MAIN PATCH",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
