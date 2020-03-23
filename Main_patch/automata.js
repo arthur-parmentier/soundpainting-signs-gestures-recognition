@@ -1,7 +1,6 @@
 const maxApi = require("max-api");
 const StateMachine = require('javascript-state-machine');
 const visualize = require('javascript-state-machine/lib/visualize');
-
 var StateMachineHistory = require('javascript-state-machine/lib/history')
 
 var fsm = new StateMachine({
@@ -45,9 +44,24 @@ var fsm = new StateMachine({
     ],
 	plugins: [
       new StateMachineHistory()
+
+
     ]
   });
   
 maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
 	
 // TODO: add here the automata logic and mechanic
+
+maxApi.post(fsm.history);
+fsm.who();
+maxApi.post(fsm.history);
+fsm.when(); // BUG
+fsm.what();
+maxApi.post(fsm.history);
+fsm.who();
+maxApi.post(fsm.history);
+fsm.what();
+maxApi.post(fsm.history);
+fsm.how();
+maxApi.post(fsm.history);

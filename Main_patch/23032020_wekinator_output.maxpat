@@ -2769,17 +2769,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-82",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 1777.777957201004028, 1813.078925728797913, 32.0, 22.0 ],
-					"text" : "print"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-70",
 					"maxclass" : "jweb",
@@ -22586,13 +22575,6 @@
 					"destination" : [ "obj-274", 0 ],
 					"order" : 0,
 					"source" : [ "obj-69", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-82", 0 ],
-					"source" : [ "obj-70", 0 ]
 				}
 
 			}

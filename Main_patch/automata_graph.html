@@ -12,7 +12,7 @@
 		window.max.bindInlet("draw", function(dot) {
 			var viz = new Viz();
 			
-			window.max.outlet("Graph received: " + dot)
+			// window.max.outlet("Graph received: " + dot)
 			
 			viz.renderSVGElement(dot)
 			.then(function(element) {
@@ -23,13 +23,6 @@
 			window.max.outlet("Error : " + error);
 			});
 	})
-
-    <!-- var viz = new Viz(); -->
-
-    <!-- viz.renderSVGElement('digraph "fsm" {  rankdir=LR;  "solid";  "liquid";  "gas";  "solid" -> "liquid" [ label=" melt " ];  "liquid" -> "solid" [ label=" freeze " ];  "liquid" -> "gas" [ label=" vaporize " ];  "gas" -> "liquid" [ label=" condense " ];}') -->
-    <!-- .then(function(element) { -->
-      <!-- document.body.appendChild(element); -->
-    <!-- }); -->
 
   </script>
 
