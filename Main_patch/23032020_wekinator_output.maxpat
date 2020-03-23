@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,12 +39,37 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-95",
+					"maxclass" : "multislider",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1565.384522080421448, 2283.436063915491104, 173.846144676208496, 146.410256028175354 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 48.0,
+					"id" : "obj-92",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 808.191573858261108, 2501.17939680814743, 530.512858033180237, 64.0 ],
+					"text" : "\"what : minimalism\""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-88",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "int" ],
-					"patching_rect" : [ 1737.765955924987793, 1751.351234436035156, 29.5, 22.0 ],
+					"patching_rect" : [ 1473.499230861663818, 2389.286176979541779, 29.5, 22.0 ],
 					"text" : "t b i"
 				}
 
@@ -57,8 +82,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1668.656656742095947, 1891.044708490371704, 1160.0, 64.0 ],
-					"text" : "\"neutral : neutral\""
+					"patching_rect" : [ 1385.499230861663818, 2501.17939680814743, 525.384653210639954, 64.0 ],
+					"text" : "\"what : minimalism\""
 				}
 
 			}
@@ -69,7 +94,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1649.601779222488403, 1754.552176594734192, 79.0, 22.0 ],
+					"patching_rect" : [ 1385.335054159164429, 2389.286176979541779, 79.0, 22.0 ],
 					"text" : "receive signs"
 				}
 
@@ -81,7 +106,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 1667.601779222488403, 1791.285312116146088, 29.5, 22.0 ],
+					"patching_rect" : [ 1404.389931678771973, 2425.648826122283936, 29.5, 22.0 ],
 					"text" : "+ 1"
 				}
 
@@ -93,7 +118,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1649.601779222488403, 1829.285312116146088, 37.0, 22.0 ],
+					"patching_rect" : [ 1386.389931678771973, 2463.648826122283936, 37.0, 22.0 ],
 					"text" : "zl nth"
 				}
 
@@ -105,8 +130,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1737.765955924987793, 1715.67158043384552, 50.0, 22.0 ],
-					"text" : "0"
+					"patching_rect" : [ 1473.499230861663818, 2354.499380111694336, 50.0, 22.0 ],
+					"text" : "4"
 				}
 
 			}
@@ -119,7 +144,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1649.765955924987793, 1715.67158043384552, 71.0, 22.0 ]
+					"patching_rect" : [ 1385.499230861663818, 2354.499380111694336, 71.0, 22.0 ]
 				}
 
 			}
@@ -261,7 +286,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 778.549524292349815, 233.287181988141356, 115.600000977516174, 21.0 ],
-									"text" : "7"
+									"text" : "1"
 								}
 
 							}
@@ -327,7 +352,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 617.0, 204.980068683624268, 146.0, 22.0 ],
-									"text" : "\"when : slowly enter\""
+									"text" : "\"neutral : neutral\""
 								}
 
 							}
@@ -376,7 +401,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 530.549524292349815, 204.980068683624268, 50.0, 22.0 ],
-									"text" : "4"
+									"text" : "1"
 								}
 
 							}
@@ -939,7 +964,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 379.333315849304199, 258.967859238386154, 53.0, 64.0 ],
-									"text" : "symbol \"when : slowly enter 4\""
+									"text" : "symbol \"neutral : neutral 1\""
 								}
 
 							}
@@ -1911,20 +1936,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 3,
-					"fontsize" : 72.0,
-					"id" : "obj-112",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 228.802049085497856, 2351.036540925502777, 725.0, 91.0 ],
-					"text" : "who:wholegroup"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-103",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -2445,7 +2456,20 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 50.0, 63.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-87",
 									"maxclass" : "newobj",
@@ -2489,19 +2513,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 146.399992704391479, 277.0, 300.0, 22.0 ],
-									"text" : "C:/Users/dell/Desktop/PDM/MAIN%20PATCH/"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-103",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 5,
-									"outlettype" : [ "", "", "", "", "" ],
-									"patching_rect" : [ 140.5, 226.0, 165.0, 22.0 ],
-									"text" : "regexp \" \" @substitute %%20"
+									"text" : "C:/Users/dell/Desktop/PDM/Main_patch/"
 								}
 
 							}
@@ -2513,7 +2525,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 393.0, 549.0, 22.0 ],
-									"text" : "url file:///C:/Users/dell/Desktop/PDM/MAIN%20PATCH/automata_graph.html"
+									"text" : "url file:///C:/Users/dell/Desktop/PDM/Main_patch/automata_graph.html"
 								}
 
 							}
@@ -2588,13 +2600,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-111", 1 ],
-									"source" : [ "obj-103", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-89", 3 ],
 									"source" : [ "obj-111", 0 ]
 								}
@@ -2609,7 +2614,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-103", 0 ],
+									"destination" : [ "obj-87", 0 ],
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-111", 1 ],
 									"source" : [ "obj-63", 1 ]
 								}
 
@@ -2715,7 +2727,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 865.0, 821.0, 110.0 ],
+					"patching_rect" : [ 2254.100007295608521, 865.0, 822.0, 110.0 ],
 					"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"start: empty request\\\";  \\\"who1\\\";  \\\"what1\\\";  \\\"with1\\\";  \\\"execution: empty request\\\";  \\\"content parameters\\\";  \\\"who\\\";  \\\"what (ambiguous: group OR content)\\\";  \\\"content\\\";  \\\"with\\\";  \\\"without\\\";  \\\"add\\\";  \\\"start: empty request\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"who1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"what1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"what1\\\" -> \\\"with1\\\" [ label=\\\" with \\\" ];  \\\"what1\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"what1\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"content parameters\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"execution: empty request\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"content\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"who\\\" [ label=\\\" group \\\" ];  \\\"execution: empty request\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what \\\" ];  \\\"content parameters\\\" -> \\\"what (ambiguous: group OR content)\\\" [ label=\\\" what (!very ambiguous!) \\\" ];  \\\"with\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"without\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"add\\\" -> \\\"content\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"execution: empty request\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"content\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"content parameters\\\" -> \\\"content parameters\\\" [ label=\\\" how \\\" ];  \\\"execution: empty request\\\" -> \\\"execution: empty request\\\" [ label=\\\" off \\\" ];  \\\"who\\\" -> \\\"execution: empty request\\\" [ label=\\\" off \\\" ];  \\\"content parameters\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"content\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"execution: empty request\\\" [ label=\\\" when \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"content parameters\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"content\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"content parameters\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"content\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"what (ambiguous: group OR content)\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];  \\\"content parameters\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];  \\\"content\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];}\""
 				}
 
@@ -2738,7 +2750,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2254.100007295608521, 2020.0, 32.0, 22.0 ],
+					"patching_rect" : [ 2254.100007295608521, 1821.785718560218811, 32.0, 22.0 ],
 					"text" : "print"
 				}
 
@@ -2751,9 +2763,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2254.100007295608521, 1128.0, 294.0, 123.0 ],
+					"patching_rect" : [ 2254.100007295608521, 1128.0, 967.0, 544.0 ],
 					"rendermode" : 1,
-					"url" : "file:///C:/Users/dell/Desktop/PDM/MAIN%20PATCH/automata_graph.html"
+					"url" : "file:///C:/Users/dell/Desktop/PDM/Main_patch/automata_graph.html"
 				}
 
 			}
@@ -12973,18 +12985,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-60",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1737.765955924987793, 1682.322550088167418, 69.0, 22.0 ],
-					"text" : "route string"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-43",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -13009,36 +13009,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1908.956414699554443, 1589.180978983640898, 45.0, 22.0 ],
-					"text" : "1 0 2 5"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1851.265955924987793, 1589.180978983640898, 45.0, 22.0 ],
-					"text" : "0 1 2 3"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-57",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 1649.765955924987793, 1630.322550088167418, 29.5, 22.0 ],
+					"patching_rect" : [ 1385.499230861663818, 2283.436063915491104, 29.5, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -13122,24 +13098,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-16",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1769.349271714687347, 1589.180978983640898, 65.0, 22.0 ],
-					"text" : "12 25 1 30"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 1649.765955924987793, 1682.322550088167418, 71.0, 22.0 ],
+					"patching_rect" : [ 1385.499230861663818, 2320.257492631673813, 71.0, 22.0 ],
 					"text" : "minimum 0."
 				}
 
@@ -13151,7 +13115,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1649.765955924987793, 1589.180978983640898, 107.0, 22.0 ],
+					"patching_rect" : [ 1385.499230861663818, 2249.437349885702133, 107.0, 22.0 ],
 					"text" : "route /wek/outputs"
 				}
 
@@ -13163,7 +13127,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1649.765955924987793, 1542.982272893190611, 104.0, 22.0 ],
+					"patching_rect" : [ 1385.499230861663818, 2213.95292940735817, 104.0, 22.0 ],
 					"text" : "udpreceive 12000"
 				}
 
@@ -18650,13 +18614,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-57", 0 ],
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-103", 1 ],
 					"source" : [ "obj-111", 2 ]
 				}
@@ -19203,13 +19160,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-57", 0 ],
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-169", 1 ],
 					"order" : 1,
 					"source" : [ "obj-150", 0 ]
@@ -19272,13 +19222,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-191", 1 ],
 					"source" : [ "obj-159", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-57", 0 ],
-					"source" : [ "obj-16", 0 ]
 				}
 
 			}
@@ -20471,16 +20414,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-112", 1 ],
-					"order" : 0,
-					"source" : [ "obj-328", 3 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-299", 0 ],
-					"order" : 1,
 					"source" : [ "obj-328", 3 ]
 				}
 
@@ -20798,14 +20732,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-60", 0 ],
-					"source" : [ "obj-39", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-82", 0 ],
+					"destination" : [ "obj-95", 0 ],
 					"order" : 0,
 					"source" : [ "obj-39", 0 ]
 				}
@@ -22432,7 +22359,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-102", 0 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-56", 0 ]
 				}
 
@@ -22440,7 +22367,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-111", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-56", 0 ]
 				}
 
@@ -22448,7 +22375,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
-					"order" : 3,
+					"order" : 4,
+					"source" : [ "obj-56", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-92", 1 ],
+					"order" : 0,
 					"source" : [ "obj-56", 0 ]
 				}
 
@@ -22456,7 +22391,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-99", 0 ],
-					"order" : 2,
+					"order" : 3,
 					"source" : [ "obj-56", 0 ]
 				}
 
@@ -22540,7 +22475,40 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-102", 0 ],
+					"order" : 2,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-111", 0 ],
+					"order" : 1,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-43", 0 ],
+					"order" : 4,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-75", 1 ],
+					"order" : 0,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-99", 0 ],
+					"order" : 3,
 					"source" : [ "obj-64", 0 ]
 				}
 

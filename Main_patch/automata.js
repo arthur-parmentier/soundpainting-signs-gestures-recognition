@@ -40,19 +40,12 @@ var fsm = new StateMachine({
 		// To sign-specific states
 		{ name: 'add', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'add' },
 		{ name: 'with', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'with' },
-		{ name: 'without', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'without' },
+		{ name: 'without', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'without' }
 		
     ],
 	plugins: [
       new StateMachineHistory()     //  <-- plugin enabled here
-    ],
-	
-    methods: {
-      onWho:     function() { console.log('I melted')    },
-      onWhat:   function() { console.log('I froze')     },
-      onHow: function() { console.log('I vaporized') },
-      onWhen: function() { console.log('I condensed') }
-    }
+    ]
   });
   
 maxApi.outlet(visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,""));
