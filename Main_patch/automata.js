@@ -61,21 +61,24 @@ maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/
 
 const handlers = {
 	[maxApi.MESSAGE_TYPES.BANG]: () => {
-		console.log("got a bang");
+		maxApi.post("got a bang");
 	},
 	[maxApi.MESSAGE_TYPES.NUMBER]: (num) => {
 	},
-	my_message: () => {
-		console.log("got my_message");
+	[maxApi.MESSAGE_TYPES.list]: () => {
+		maxApi.post("got my_message");
 	},
-	my_message_with_args: (arg1, arg2) => {
-		console.log("got my arged message: ${arg1}, ${arg2} ");
+	sign: (arg1) => {
+		maxApi.post("Received " + arg1);
 	},
 	[maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => {
-		console.log("This will be called for ALL messages");
-		console.log(`The following inlet event was ${!handled ? "not " : "" }handled`);
-		console.log(args);
-	}
+		maxApi.post("This will be called for ALL messages");
+		maxApi.post(`The following inlet event was ${!handled ? "not " : "" }handled`);
+		maxApi.post(args);
+	},
+	"who:wholegroup": () => {
+		maxApi.post("WG");
+	},
 };
 
 maxApi.addHandlers(handlers);
