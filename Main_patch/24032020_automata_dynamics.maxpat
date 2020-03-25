@@ -39,6 +39,26 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-11",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "n4m.monitor.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 1782.132843539118767, 577.533002221238348, 400.0, 220.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-351",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -7449,7 +7469,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 433.957129508256912, 2359.343203783035278, 236.099486798048019, 19.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Test change and probability threshold"
 				}
 
@@ -8837,7 +8856,7 @@
 									"fontface" : 1,
 									"fontsize" : 12.0,
 									"id" : "obj-312",
-									"items" : [ "neutral : neutral 1", ",", "neutral : neutral 2", ",", "neutral : neutral 3", ",", "neutral : neutral 4", ",", "neutral : neutral 5", ",", "who : whole group 1", ",", "who : whole group 2", ",", "who : whole group 3", ",", "who : whole group 4", ",", "who : whole group 5", ",", "who : rest of the group 1", ",", "who : rest of the group 2", ",", "who : rest of the group 3", ",", "who : rest of the group 4", ",", "who : rest of the group 5", ",", "what : long tone 1", ",", "what : long tone 2", ",", "what : long tone 3", ",", "what : long tone 4", ",", "what : long tone 5", ",", "what : minimalism 1", ",", "what : minimalism 2", ",", "what : minimalism 3", ",", "what : minimalism 4", ",", "what : minimalism 5", ",", "when : now 1", ",", "when : now 2", ",", "when : now 3", ",", "when : now 4", ",", "when : now 5", ",", "when : slowly enter 1", ",", "when : slowly enter 2", ",", "when : slowly enter 3", ",", "when : slowly enter 4", ",", "when : slowly enter 5" ],
+									"items" : [ "neutral : neutral 1", ",", "neutral : neutral 2", ",", "neutral : neutral 3", ",", "neutral : neutral 4", ",", "who : whole group 1", ",", "who : whole group 2", ",", "who : whole group 3", ",", "who : whole group 4", ",", "who : rest of the group 1", ",", "who : rest of the group 2", ",", "who : rest of the group 3", ",", "who : rest of the group 4", ",", "what : long tone 1", ",", "what : long tone 2", ",", "what : long tone 3", ",", "what : long tone 4", ",", "what : minimalism 1", ",", "what : minimalism 2", ",", "what : minimalism 3", ",", "what : minimalism 4", ",", "when : now 1", ",", "when : now 2", ",", "when : now 3", ",", "when : now 4", ",", "when : slowly enter 1", ",", "when : slowly enter 2", ",", "when : slowly enter 3", ",", "when : slowly enter 4" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -20311,7 +20330,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 94.0, 547.668954879045486, 146.0, 22.0 ],
-					"text" : "started"
+					"text" : "completed"
 				}
 
 			}
@@ -21327,7 +21346,16 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"order" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-49", 0 ],
+					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 

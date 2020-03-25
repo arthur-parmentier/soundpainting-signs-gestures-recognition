@@ -3,6 +3,13 @@ const StateMachine = require('javascript-state-machine');
 const visualize = require('javascript-state-machine/lib/visualize');
 var StateMachineHistory = require('javascript-state-machine/lib/history')
 
+function sign_regexp(msg) {
+		
+	var separator = new RegExp(":"); 
+	return msg.split(separator);
+		
+}
+
 var fsm = new StateMachine({
     init: 'start: empty request',
     transitions: [
@@ -68,18 +75,25 @@ const handlers = {
 	[maxApi.MESSAGE_TYPES.list]: () => {
 		maxApi.post("got my_message");
 	},
-	sign: (arg1) => {
-		maxApi.post("Received " + arg1);
-	},
 	[maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => {
 		maxApi.post("This will be called for ALL messages");
 		maxApi.post(`The following inlet event was ${!handled ? "not " : "" }handled`);
 		maxApi.post(args);
 	},
-	"who:wholegroup": () => {
-		maxApi.post("WG");
+	"sign": (arg1) => {
+		maxApi.post("Sign " + arg1);
+		var [cat, sign] = sign_regexp(arg1);
+		maxApi.post("cat " + cat + " sign " + sign);
+		
 	},
+	/* "who:wholegroup": () => {
+		maxApi.post("Received sign " );
+		//cat, sign = sign_regexp(arg1);
+		maxApi.post("Received sign of cat : "+cat+" : "+sign);
+	}, */
 };
+
+
 
 maxApi.addHandlers(handlers);
 
@@ -87,7 +101,7 @@ maxApi.addHandlers(handlers);
 
 // Dynamic here? 
 
-maxApi.post(fsm.history);
+/* maxApi.post(fsm.history);
 fsm.who();
 maxApi.post(fsm.history);
 fsm.when(); // BUG
@@ -98,4 +112,4 @@ maxApi.post(fsm.history);
 fsm.what();
 maxApi.post(fsm.history);
 fsm.how();
-maxApi.post(fsm.history);
+maxApi.post(fsm.history); */
