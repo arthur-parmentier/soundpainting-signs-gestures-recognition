@@ -75,15 +75,16 @@ const handlers = {
 	[maxApi.MESSAGE_TYPES.list]: () => {
 		maxApi.post("got my_message");
 	},
-	[maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => {
+	/* [maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => {
 		maxApi.post("This will be called for ALL messages");
 		maxApi.post(`The following inlet event was ${!handled ? "not " : "" }handled`);
 		maxApi.post(args);
-	},
+	}, */
 	"sign": (arg1) => {
-		maxApi.post("Sign " + arg1);
+		// maxApi.post("Sign " + arg1);
 		var [cat, sign] = sign_regexp(arg1);
-		maxApi.post("cat " + cat + " sign " + sign);
+		maxApi.post("Cat : " + cat + " Sign : " + sign);
+		executeFunctionByName("fsm." + cat, window);
 		
 	},
 	/* "who:wholegroup": () => {
@@ -93,7 +94,15 @@ const handlers = {
 	}, */
 };
 
-
+function executeFunctionByName(functionName, context /*, args */) {
+	var args = Array.prototype.slice.call(arguments, 2);
+	var namespaces = functionName.split(".");
+	var func = namespaces.pop();
+	for(var i = 0; i < namespaces.length; i++) {
+		context = context[namespaces[i]];
+	}
+	return context[func].apply(context, args);
+}
 
 maxApi.addHandlers(handlers);
 
