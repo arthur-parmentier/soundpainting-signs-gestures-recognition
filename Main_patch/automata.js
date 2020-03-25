@@ -10,9 +10,22 @@ function sign_regexp(msg) {
 		
 }
 
+// function executeFunctionByName(functionName, context /*, args */) {
+	// var args = Array.prototype.slice.call(arguments, 2);
+	// var namespaces = functionName.split(".");
+	// var func = namespaces.pop();
+	// for(var i = 0; i < namespaces.length; i++) {
+		// context = context[namespaces[i]];
+	// }
+	// return context[func].apply(context, args);
+// }
+
 var fsm = new StateMachine({
     init: 'start: empty request',
     transitions: [
+	// neutral
+		{ name: 'neutral', from: '*', to: this.state },
+	
 	// First request
     	{ name: 'who', from: 'start: empty request', to: 'who1' },
     	{ name: 'what', from: 'who1', to: 'what1' },
@@ -84,7 +97,13 @@ const handlers = {
 		// maxApi.post("Sign " + arg1);
 		var [cat, sign] = sign_regexp(arg1);
 		maxApi.post("Cat : " + cat + " Sign : " + sign);
-		executeFunctionByName("fsm." + cat, window);
+		// jsthis.fsm.who();
+		// executeFunctionByName("fsm." + cat, "jsthis");
+		// jsthis[cat]();
+
+		fsm[cat](); // trigger the corresponding transition method
+		maxApi.post(fsm.history);
+		maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 		
 	},
 	/* "who:wholegroup": () => {
@@ -94,15 +113,7 @@ const handlers = {
 	}, */
 };
 
-function executeFunctionByName(functionName, context /*, args */) {
-	var args = Array.prototype.slice.call(arguments, 2);
-	var namespaces = functionName.split(".");
-	var func = namespaces.pop();
-	for(var i = 0; i < namespaces.length; i++) {
-		context = context[namespaces[i]];
-	}
-	return context[func].apply(context, args);
-}
+
 
 maxApi.addHandlers(handlers);
 
