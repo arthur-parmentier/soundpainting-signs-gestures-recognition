@@ -112,13 +112,13 @@ const guiState = {
 		videoDevices: []
 	},
 	input: {
-		mobileNetArchitecture: isMobile() ? "0.50" : "1.00",
-		outputStride: 16,
-		imageScaleFactor: 0.75
+		mobileNetArchitecture: isMobile() ? "0.50" : "1.01",
+		outputStride: 8,
+		imageScaleFactor: 0.80
 	},
 	singlePoseDetection: {
 		minPoseConfidence: 0.1,
-		minPartConfidence: 0.5
+		minPartConfidence: 0.1
 	},
 	multiPoseDetection: {
 		maxPoseDetections: 5,

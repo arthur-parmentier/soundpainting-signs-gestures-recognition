@@ -1,26 +1,26 @@
 const maxApi = require("max-api");
 const StateMachine = require('javascript-state-machine');
 const visualize = require('javascript-state-machine/lib/visualize');
-var StateMachineHistory = require('javascript-state-machine/lib/history')
+let StateMachineHistory = require('javascript-state-machine/lib/history');
 
 function sign_regexp(msg) {
 		
-	var separator = new RegExp(":"); 
+	let separator = new RegExp(":"); 
 	return msg.split(separator);
 		
 }
 
 // function executeFunctionByName(functionName, context /*, args */) {
-	// var args = Array.prototype.slice.call(arguments, 2);
-	// var namespaces = functionName.split(".");
-	// var func = namespaces.pop();
-	// for(var i = 0; i < namespaces.length; i++) {
+	// let args = Array.prototype.slice.call(arguments, 2);
+	// let namespaces = functionName.split(".");
+	// let func = namespaces.pop();
+	// for(let i = 0; i < namespaces.length; i++) {
 		// context = context[namespaces[i]];
 	// }
 	// return context[func].apply(context, args);
 // }
 
-var fsm = new StateMachine({
+let fsm = new StateMachine({
     init: 'start: empty request',
     transitions: [
 	// neutral
@@ -62,18 +62,44 @@ var fsm = new StateMachine({
 		{ name: 'without', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'without' }
 		
     ],
+	data: {
+		what_array: [],
+		who_array: [],
+		requests: {},
+	},
 	methods: {
 		onInvalidTransition: function(transition, from, to) {
 			//throw new Exception("transition not allowed from that state");
-			maxApi.post("Transition " + transition + " from " + from + " to " + to + " not allowed in tha state.");
+			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
+		},
+		onBeforeWhat: function(args, sign) {
+			// Store the sign to the stack
+			this.what_array.push(sign);
+			
+			maxApi.outlet(["/what", this.what_array]);
+			// maxApi.post(this.what_array.length);
+		},
+		onBeforeWho: function(args, sign) { // onWho gets fired twice for some reason, so let's use onBeforeWho instead...
+			maxApi.post("enter func");
+			// Store the sign to the stack
+			this.who_array.push(sign);
+			
+			maxApi.outlet(["/who", this.who_array]);
+			// maxApi.post(this.who_array.length);
+		},
+		onWho: function(args, sign) {
+			// This is fired twice... Why?
 		}
 	},	
 	plugins: [
       new StateMachineHistory()
     ]
 });
-  
+
+// Start
+
 maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
+maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 	
 // TODO: add here the automata logic and mechanic
 
@@ -95,14 +121,14 @@ const handlers = {
 	}, */
 	"sign": (arg1) => {
 		// maxApi.post("Sign " + arg1);
-		var [cat, sign] = sign_regexp(arg1);
-		maxApi.post("Cat : " + cat + " Sign : " + sign);
+		let [cat, sign] = sign_regexp(arg1);
+		// maxApi.post("Cat : " + cat + " Sign : " + sign);
 		// jsthis.fsm.who();
 		// executeFunctionByName("fsm." + cat, "jsthis");
 		// jsthis[cat]();
 
-		fsm[cat](); // trigger the corresponding transition method
-		maxApi.post(fsm.history);
+		fsm[cat](sign); // trigger the corresponding transition method
+		// maxApi.post(fsm.history);
 		maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 		
 	},
@@ -113,9 +139,30 @@ const handlers = {
 	}, */
 };
 
+function initialize()
+{
+	maxApi.addHandlers(handlers);
 
+	maxApi.outlet(["/who", fsm.who_array]);
+	maxApi.outlet(["/what", fsm.what_array]);
+	
+	fsm.request[0]=
+	{
+		"who": {
+			"WG"
+		},
+		"what": {
+			"LG" : {
+				"param": {
+					"volume": 20,
+					"tempo": 15
+				}
+			}
+		}	
+	};
+}
 
-maxApi.addHandlers(handlers);
+initialize();
 
 // Data structure?
 
