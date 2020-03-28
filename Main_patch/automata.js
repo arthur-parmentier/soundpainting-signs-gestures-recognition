@@ -19,34 +19,32 @@ let fsm = new StateMachine({
 	// Main loop. TODO: complete it
 	
 		// To "who" state
-		{ name: 'who', from: ['content parameters', 'execution', 'what (ambiguous: group OR content)', 'content', 'who'], to: 'who' },
-		{ name: 'group', from: 'what (ambiguous: group OR content)', to: 'who' },
+		{ name: 'who', from: ['what', 'execution', 'who'], to: 'who' },
+		{ name: 'group', from: 'what', to: 'who' }, // TODO: implement transition verification
 		
-		// To ambiguous "what" state
-		{ name: 'what', from: ['execution', 'who'], to: 'what (ambiguous: group OR content)' },
-		{ name: 'what (!very ambiguous!)', from:  'content parameters', to: 'what (ambiguous: group OR content)' }, // update this one with a "with group only" state
-		
-		// To unambiguous what state
-		{ name: 'what', from: ['with','without','add'], to:  'content' },
-		
-		// To "how" state
-		{ name: 'how', from: ['who', 'execution', 'what (ambiguous: group OR content)',  'content',  'content parameters'], to:  'content parameters' },
+		// To "what" state
+		{ name: 'what', from: ['execution', 'who'], to: 'what' },
+		{ name: 'what', from: ['with','without','add'], to:  'what' },
+		{ name: 'how', from: ['who', 'execution',  'what'], to:  'what' },
 		
 		// To empty request
 		{ name: 'off', from: ['execution','who'], to: 'execution' },
-		{ name: 'when', from: [ 'content parameters',  'content', 'what (ambiguous: group OR content)'], to: 'execution' },
+		{ name: 'when', from: 'what', to: 'execution' },
 		
 		// To sign-specific (logic etc) states
-		{ name: 'add', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'add' },
-		{ name: 'with', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'with' },
-		{ name: 'without', from: ['what (ambiguous: group OR content)',  'content parameters', 'content'], to: 'without' }
+		{ name: 'add', from: 'what', to: 'add' },
+		{ name: 'with', from: 'what', to: 'with' },
+		{ name: 'without', from: 'what', to: 'without' }
 		
     ],
 	data: {
 		// some utility arrays for the dynamic of the parsing, that are used as stacks
 		what_array: [],
 		who_array: [],
-		how_array: [],
+		how_array: [], // unused yet
+		
+		what_history: [],
+		who_history: [],
 		
 		content_distribution: {}, // array that stores how the different contents are distributed among the who identifiers
 		requests: {0: {}}, // array that stores the requests over time and structure them
@@ -57,7 +55,7 @@ let fsm = new StateMachine({
 			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
 		},
 		
-		onBeforeHow: function(args, sign) { // When we receive a HOW sign
+		onAfterHow: function(args, sign) { // When we receive a HOW sign
 			
 			// Store the sign to the stack
 			this.how_array.push(sign);
@@ -70,14 +68,18 @@ let fsm = new StateMachine({
 				this.requests[this.requests_counter][this.who_array[i]][last_what][sign] = parameter_values; // we create an entry for the parameter under the content entry or the request array
 				
 				// update the distribution array
+				if(this.content_distribution[last_what][this.who_array[i]] == null) {
+					this.content_distribution[last_what][this.who_array[i]] = {};
+				}
+				
 				this.content_distribution[last_what][this.who_array[i]][sign] = parameter_values;
 			}
 			
-			
+			update_outlet();
 			
 		},
 		
-		onBeforeWhat: function(args, sign) { // When we receive a WHAT sign
+		onAfterWhat: function(args, sign) { // When we receive a WHAT sign
 			
 			// Store the sign to the stack
 			this.what_array.push(sign);
@@ -93,13 +95,25 @@ let fsm = new StateMachine({
 				
 				// Update content distribution array
 				if(this.content_distribution[sign] == null) {
-					this.content_distribution[sign] = [];
+					this.content_distribution[sign] = {};
 				}
-				this.content_distribution[sign].push(this.who_array[i]);
+				this.content_distribution[sign][this.who_array[i]] = {};
 			}
+			
+			update_outlet();
 		},
 		
-		onBeforeWho: function(args, sign) { // onWho gets fired twice for some reason, so let's use onBeforeWho and onAfterWho instead...
+		onLeaveWhat1: function() { // Warning, this gets executed AFTER onBefore<nextsign> but BEFORE onAfter...
+			
+			this.who_array = [];
+		},
+		
+		onLeaveWhat: function() {
+			
+			this.who_array = [];
+		},
+		
+		onAfterWho: function(args, sign) {
 		
 			// Reset what array
 			this.what_array = [];
@@ -107,50 +121,48 @@ let fsm = new StateMachine({
 			// Store the sign to the stack
 			this.who_array.push(sign);
 			
-			// Store the sign into the request
-			// this.requests[this.requests_counter]["who"] = {};
-			
+			// Store the sign into the request	
 			if(this.requests[this.requests_counter][sign] == null) { // Here we check that the who identifier has not been already used in the request, which should be the normal case.
 				this.requests[this.requests_counter][sign] = {}; // We add a new entry for the who identifier
 			} else { // if already mentionned, something is weird.. maybe a soundpainting beginner? or in case forget about it did not erase things
 				maxApi.post(sign + " already requested to perform in the same sentence...");
 			}
 			
-			
+			update_outlet();
 		},
 		
-		onAfterTransition: function() {
-			
-			// update_outlets(); // Creating an external function triggers an error because fsm is not initialized so we leave it here...
-			maxApi.outlet(["/who", this.who_array]);
-			maxApi.outlet(["/what", this.what_array]);
-			maxApi.outlet(["/how", this.how_array]);
-			maxApi.outlet(["/requests", this.requests]);
-			maxApi.outlet(["/distrib", this.content_distribution]);
-			
-			
-		},
 		onLeaveStart: function() {
-			maxApi.post("leave start");
-			// this.requests[requests_counter] = {};
+			maxApi.post("Start");
 		},
-		onLeaveWho1: function() {
-			
-			maxApi.post("leave who1");
-		},
+		
 		onEnterExecution: function() {
-			// maxApi.post("inc");
+			
+			// we increase the #requests counter and add a new entry in the requests object
 			this.requests_counter++;
 			this.requests[this.requests_counter] = {};
 			
-			this.who_array = []; // reset who array
+			// we reset each request stack
+			this.who_array = [];
+			this.what_array = [];
+			this.how_array = [];
 			
+			update_outlet();
 		},
 	},	
 	plugins: [
       new StateMachineHistory()
     ]
 });
+
+function update_outlet() {
+	
+	maxApi.outlet(["/who", fsm.who_array]);
+	maxApi.outlet(["/what", fsm.what_array]);
+	maxApi.outlet(["/how", fsm.how_array]);
+	maxApi.outlet(["/requests", fsm.requests]);
+	maxApi.outlet(["/distrib", fsm.content_distribution]);
+	maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
+}
 
 function sign_regexp(msg) {
 		
@@ -209,11 +221,10 @@ function initialize()
 {
 	maxApi.addHandlers(handlers);
 
-	maxApi.outlet(["/who", fsm.who_array]);
-	maxApi.outlet(["/what", fsm.what_array]);
-	maxApi.outlet(["/requests", fsm.requests]);
+	update_outlet();
+	
+	// the graph is not handled by the update_outlet function
 	maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
-	maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 	
 	// This should be the requests object structure
 	/* fsm.requests[0] =

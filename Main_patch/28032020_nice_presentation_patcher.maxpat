@@ -39,6 +39,31 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-259",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1466.076298117637634, 2212.312032848596573, 126.0, 22.0 ],
+					"presentation_linecount" : 3,
+					"text" : "sign when:slowlyenter"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-255",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1352.076298117637634, 2212.312032848596573, 93.0, 22.0 ],
+					"text" : "sign how:tempo"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-253",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -206,7 +231,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 933.176305413246155, 2359.770737886428833, 203.139692425727844, 36.0 ],
-					"text" : "\"Transition when from state start not allowed.\""
+					"text" : "\"Transition when from state execution not allowed.\""
 				}
 
 			}
@@ -2266,7 +2291,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1548.700632803142071, 2180.312032848596573, 163.068780422210693, 24.0 ],
+					"patching_rect" : [ 1571.700632803142071, 2180.312032848596573, 163.068780422210693, 24.0 ],
 					"text" : "Some inputs for testing"
 				}
 
@@ -2282,7 +2307,7 @@
 					"patching_rect" : [ 1046.676305413246155, 2536.750222504138947, 1080.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 45.508268512785435, 2309.333296418190002, 970.00000262260437, 64.0 ],
-					"text" : "start"
+					"text" : "what1"
 				}
 
 			}
@@ -2305,7 +2330,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1443.076298117637634, 2180.312032848596573, 88.0, 22.0 ],
+					"patching_rect" : [ 1466.076298117637634, 2180.312032848596573, 88.0, 22.0 ],
 					"text" : "sign when:now"
 				}
 
@@ -2317,7 +2342,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1329.076298117637634, 2180.312032848596573, 98.0, 22.0 ],
+					"patching_rect" : [ 1352.076298117637634, 2180.312032848596573, 98.0, 22.0 ],
 					"text" : "sign how:volume"
 				}
 
@@ -24452,8 +24477,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-255", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-139", 1 ],
 					"source" : [ "obj-257", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-259", 0 ]
 				}
 
 			}
