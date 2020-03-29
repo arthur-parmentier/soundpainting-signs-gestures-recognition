@@ -3,6 +3,10 @@ const StateMachine = require('javascript-state-machine');
 const visualize = require('javascript-state-machine/lib/visualize');
 let StateMachineHistory = require('javascript-state-machine/lib/history');
 
+function p(msg) { // convenience function for debug
+	maxApi.post(msg);
+}
+
 let fsm = new StateMachine({
     init: 'start',
     transitions: [
@@ -69,7 +73,7 @@ let fsm = new StateMachine({
 				
 				// update the distribution array
 				if(this.content_distribution[last_what][this.who_array[i]] == null) {
-					this.content_distribution[last_what][this.who_array[i]] = {};
+					this.content_distribution[last_what][this.who_array[i]] = [];
 				}
 				
 				this.content_distribution[last_what][this.who_array[i]][sign] = parameter_values;
@@ -132,10 +136,12 @@ let fsm = new StateMachine({
 		},
 		
 		onLeaveStart: function() {
-			maxApi.post("Start");
+			// maxApi.post("Start");
 		},
 		
 		onEnterExecution: function() {
+			
+			execute_request(this.requests_counter);
 			
 			// we increase the #requests counter and add a new entry in the requests object
 			this.requests_counter++;
@@ -174,14 +180,10 @@ function sign_regexp(msg) {
 function capture_parameter(parameter) {
 	
 	// TODO: implement parameter capture
-	let values = {};
+	let values = {value: "(captured value)"};
 	
 	return values; 
 }
-	
-// TODO: add here the automata logic and mechanic
-
-// First let's add some message handlers
 
 const handlers = {
 	[maxApi.MESSAGE_TYPES.BANG]: () => {
@@ -226,22 +228,48 @@ function initialize()
 	// the graph is not handled by the update_outlet function
 	maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]);
 	
-	// This should be the requests object structure
-	/* fsm.requests[0] =
-	{
-		"who": {
-			"WG": {
-				"what": {
-					"LG" : {
-						"param": {
-							"volume": 20,
-							"tempo": 15
-						}
-					}
+	
+}
+
+function execute_request(index) {
+	
+	// maxApi.post("exe");
+	
+	request = fsm.requests[index];
+	// p(request["wholegroup"]);
+	// p(Object.keys(request).length);
+	
+	let command = [];
+	
+	for(var i = 0; i<Object.keys(request).length; i++) {
+		
+		let string = ["/"+Object.keys(request)[i]];
+		// p(string);
+		let who_obj = request[Object.keys(request)[i]];
+		
+		for(var j = 0; j<Object.keys(who_obj).length; j++) {
+			
+			string.push(Object.keys(who_obj)[j]);
+			let what_obj = who_obj[Object.keys(who_obj)[j]];
+			// let parameters = [];
+			
+			for(var k = 0; k<Object.keys(what_obj).length; k++) {
+				
+				let how_obj = what_obj[Object.keys(what_obj)[k]];
+				// parameters.push(what_obj[Object.keys(what_obj)[k]]);
+				string.push(Object.keys(what_obj)[k]);
+				
+				// the parameters themselves are objects
+				for(var l = 0; l<Object.keys(how_obj).length; l++) {
+					string.push(how_obj[Object.keys(how_obj)[l]]);
 				}
 			}
+			
 		}
-	}; */
+		maxApi.outlet(string);// p(string);
+		command[i] = string;
+	}
+	
 }
 
 initialize();
