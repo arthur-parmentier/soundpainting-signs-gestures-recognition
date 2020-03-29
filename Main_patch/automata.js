@@ -249,7 +249,7 @@ function execute_request(index) {
 		
 		for(var j = 0; j<Object.keys(who_obj).length; j++) {
 			
-			string.push(Object.keys(who_obj)[j]);
+			string.push("/"+Object.keys(who_obj)[j]);
 			let what_obj = who_obj[Object.keys(who_obj)[j]];
 			// let parameters = [];
 			
