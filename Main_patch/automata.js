@@ -63,6 +63,12 @@ let fsm = new StateMachine({
 			// wholegroup is added here after initialization 
 		},
 		
+		defaults: {
+			"start": 0.0,
+			"volume": 0.8,
+			
+		},
+		
 		what_history: [],
 		who_history: [],
 		
@@ -113,7 +119,7 @@ let fsm = new StateMachine({
 			
 				// Store the sign into the request
 				if(this.requests[this.requests_counter]["who"][this.who_array[i]][sign] == null) { // we make sure that the content was not already there in the request, which is the expected normal case
-					this.requests[this.requests_counter]["who"][this.who_array[i]][sign] = {}; // in this case, we create a new entry for the content (empty to store parameters if requested) in the request
+					this.requests[this.requests_counter]["who"][this.who_array[i]][sign] = {"start": this.defaults["start"]}; // in this case, we create a new entry for the content (empty to store parameters if requested) in the request
 				} else { // something is probably wrong, so we can send a warning in the console
 					maxApi.post(sign + " already requested to perform in the same sentence...");
 				}
@@ -166,6 +172,21 @@ let fsm = new StateMachine({
 			this.requests[this.requests_counter]["when"] = sign;
 			
 			update_outlet();
+		},
+		
+		onBeforeOff: function() {
+			
+			for(var i = 0; i<this.who_array.length; i++) {
+			
+				this.requests[this.requests_counter]["who"][this.who_array[i]] = {"off": {}}; // TODO: check whether off should be obj or other type
+			}
+			
+			// update distribution array
+			for(var i = 0; i<this.Object.keys(distribution).length; i++) {
+				
+				// let exists = Object.values(obj).includes("test1");
+			}
+			
 		},
 		
 		onEnterExecution: function() {
@@ -287,7 +308,7 @@ function execute_request(index) { // this function is triggered at each executio
 	
 	// output form: /<who> /<what> @start 0s @<param1> @<param2> ...
 	
-	request = fsm.requests[index];
+	/* request = fsm.requests[index];
 	
 	for(var i = 0; i<Object.keys(request["who"]).length; i++) {
 		
@@ -319,9 +340,38 @@ function execute_request(index) { // this function is triggered at each executio
 			// Implement later other execution scenarios
 		}
 			
-		maxApi.outlet(string);
+	}*/
+		
+	// output form: /<who> /<what>/start 0 /<what>/<param1> /<what>/<param2> ...
+	
+	request = fsm.requests[index];
+	
+	
+	
+	for(var i = 0; i<Object.keys(request["who"]).length; i++) {
+
+		const result = [...format(request["who"])];
+		maxApi.outlet(["/debug", result]);
+		// p(result);
+	
 	}
+	 
+	 // ---------------------------------
+		
+	// maxApi.outlet(string);
 }
+
+function* format(obj, previous = "") {
+       for(const [key, value] of Object.entries(obj)) {
+         if(typeof value !== "object" || Array.isArray(value)) {
+           yield { addr: previous + "/" + key, args: value };
+         } else {
+           yield* format(value, previous + "/" + key);
+        }
+      }
+    }
+
+
 
 // Code execution starts here
 
