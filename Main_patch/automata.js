@@ -88,8 +88,8 @@ let fsm = new StateMachine({
 			this.what_array = [];
 			
 			// Create the who entry in the request if neccessary
-			if(this.requests[this.requests_counter]["who"] == null) {
-				this.requests[this.requests_counter]["who"] = {}; // We add a new entry for the who identifier
+			if(this.requests[this.requests_counter] == null) {
+				this.requests[this.requests_counter] = {}; // We add a new entry for the who identifier
 			}
 		
 			// Store the corresponding who identifiers to the stack after parsing them
@@ -100,8 +100,8 @@ let fsm = new StateMachine({
 				fsm.who_array.push(whos[i]);
 				
 				// Store the who identifiers into the request	
-				if(this.requests[this.requests_counter]["who"][whos[i]] == null) { // Here we check that the who identifier has not been already used in the request, which should be the normal case.
-					this.requests[this.requests_counter]["who"][whos[i]] = {}; // We add a new entry for the who identifier
+				if(this.requests[this.requests_counter][whos[i]] == null) { // Here we check that the who identifier has not been already used in the request, which should be the normal case.
+					this.requests[this.requests_counter][whos[i]] = {}; // We add a new entry for the who identifier
 				} else { // if already mentionned, something is weird.. maybe a soundpainting beginner? or in case forget about it did not erase things
 					maxApi.post(whos[i] + " already requested to perform in the same sentence...");
 				}
@@ -118,8 +118,8 @@ let fsm = new StateMachine({
 			for (var i = 0; i<this.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the content is applied to all of them
 			
 				// Store the sign into the request
-				if(this.requests[this.requests_counter]["who"][this.who_array[i]][sign] == null) { // we make sure that the content was not already there in the request, which is the expected normal case
-					this.requests[this.requests_counter]["who"][this.who_array[i]][sign] = {"start": this.defaults["start"]}; // in this case, we create a new entry for the content (empty to store parameters if requested) in the request
+				if(this.requests[this.requests_counter][this.who_array[i]][sign] == null) { // we make sure that the content was not already there in the request, which is the expected normal case
+					this.requests[this.requests_counter][this.who_array[i]][sign] = {"start": this.defaults["start"]}; // in this case, we create a new entry for the content (empty to store parameters if requested) in the request
 				} else { // something is probably wrong, so we can send a warning in the console
 					maxApi.post(sign + " already requested to perform in the same sentence...");
 				}
@@ -154,7 +154,7 @@ let fsm = new StateMachine({
 			for (var i = 0; i<this.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the content parameters are applied to all of them
 				
 				last_what = this.what_array[this.what_array.length - 1]; // Assuming that the content parameter always applies to the last (and unique) content requested
-				this.requests[this.requests_counter]["who"][this.who_array[i]][last_what][sign] = parameter_values; // we create an entry for the parameter under the content entry or the request array
+				this.requests[this.requests_counter][this.who_array[i]][last_what][sign] = parameter_values; // we create an entry for the parameter under the content entry or the request array
 				
 				// update the distribution array
 				if(this.content_distribution[last_what][this.who_array[i]] == null) {
@@ -169,7 +169,7 @@ let fsm = new StateMachine({
 		
 		onBeforeWhen: function(args, sign) {
 		
-			this.requests[this.requests_counter]["when"] = sign;
+			// Update start values TODO
 			
 			update_outlet();
 		},
@@ -178,7 +178,7 @@ let fsm = new StateMachine({
 			
 			for(var i = 0; i<this.who_array.length; i++) {
 			
-				this.requests[this.requests_counter]["who"][this.who_array[i]] = {"off": {}}; // TODO: check whether off should be obj or other type
+				this.requests[this.requests_counter][this.who_array[i]] = {"off": {}}; // TODO: check whether off should be obj or other type
 			}
 			
 			// update distribution array
@@ -301,6 +301,7 @@ function initialize() { // this function is triggered only once at script startu
 	}
 	
 	maxApi.outlet(["/groups", fsm.groups]);
+	maxApi.outlet(["/error", ""]);
 	
 }
 
@@ -309,30 +310,21 @@ function execute_request(index) { // this function is triggered at each executio
 	// output form: /<who> /<what> @start 0s @<param1> @<param2> ...
 	
 	/* request = fsm.requests[index];
-	
-	for(var i = 0; i<Object.keys(request["who"]).length; i++) {
-		
-		let string = ["/"+Object.keys(request["who"])[i]];
-		let who_obj = request["who"][Object.keys(request["who"])[i]];
-		
+	for(var i = 0; i<Object.keys(request).length; i++) {
+		let string = ["/"+Object.keys(request)[i]];
+		let who_obj = request[Object.keys(request)[i]];
 		for(var j = 0; j<Object.keys(who_obj).length; j++) {
-		
 			string.push("/"+Object.keys(who_obj)[j]);
 			let what_obj = who_obj[Object.keys(who_obj)[j]];
-			
 			for(var k = 0; k<Object.keys(what_obj).length; k++) {
-				
 				let how_obj = what_obj[Object.keys(what_obj)[k]];
 				string.push("@" + Object.keys(what_obj)[k]);
-				
 				// the parameters themselves are objects
 				for(var l = 0; l<Object.keys(how_obj).length; l++) {
 					string.push(how_obj[Object.keys(how_obj)[l]]);
 				}
 			}
-			
 		}
-		
 		if(request["when"] == "now") {
 			string.push("@start");
 			string.push("0s"); 
@@ -346,32 +338,32 @@ function execute_request(index) { // this function is triggered at each executio
 	
 	request = fsm.requests[index];
 	
-	
-	
-	for(var i = 0; i<Object.keys(request["who"]).length; i++) {
+	for(var i = 0; i<Object.keys(request).length; i++) {
 
-		const result = [...format(request["who"])];
-		maxApi.outlet(["/debug", result]);
-		// p(result);
-	
-	}
-	 
-	 // ---------------------------------
+		const OSC_structure = [...format(request[Object.keys(request)[i]])]; // Weird call, see related generator "format" below
+		let string = ["/commands", "/"+Object.keys(request)[i]];
 		
-	// maxApi.outlet(string);
+		for(var j = 0; j<Object.keys(OSC_structure).length; j++) {
+			
+			string.push(OSC_structure[Object.keys(OSC_structure)[j]]["addr"]);
+			string.push(OSC_structure[Object.keys(OSC_structure)[j]]["args"]);
+		}
+		
+		// Output the message
+		maxApi.outlet(string);
+	}
 }
 
+// This weird generator function (from the web) allows us to parse the request object and create the OSC message from it (almost directly)
 function* format(obj, previous = "") {
-       for(const [key, value] of Object.entries(obj)) {
-         if(typeof value !== "object" || Array.isArray(value)) {
-           yield { addr: previous + "/" + key, args: value };
-         } else {
-           yield* format(value, previous + "/" + key);
-        }
-      }
-    }
-
-
+	for(const [key, value] of Object.entries(obj)) {
+		if(typeof value !== "object" || Array.isArray(value)) {
+			yield { addr: previous + "/" + key, args: value };
+		} else {
+			yield* format(value, previous + "/" + key);
+		}
+	}
+}
 
 // Code execution starts here
 
