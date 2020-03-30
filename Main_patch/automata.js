@@ -64,8 +64,9 @@ let fsm = new StateMachine({
 		},
 		
 		defaults: {
-			"start": 0.0,
+			"start": 1,
 			"volume": 0.8,
+			"tempo": 120,
 			
 		},
 		
@@ -254,10 +255,10 @@ function sign_regexp(msg) {
 		
 }
 
-function capture_parameter(parameter) {
+function capture_parameter(param_name) {
 	
-	// TODO: implement parameter capture
-	let values = {value: "(captured value)"};
+	// TODO: implement parameter capture. For now, let's use defaults
+	let values = {value: fsm.defaults[param_name]};
 	
 	return values; 
 }
@@ -341,16 +342,23 @@ function execute_request(index) { // this function is triggered at each executio
 	for(var i = 0; i<Object.keys(request).length; i++) {
 
 		const OSC_structure = [...format(request[Object.keys(request)[i]])]; // Weird call, see related generator "format" below
-		let string = ["/commands", "/"+Object.keys(request)[i]];
+		let flat_command = ["/commands_flat", "/"+Object.keys(request)[i]];
 		
 		for(var j = 0; j<Object.keys(OSC_structure).length; j++) {
 			
-			string.push(OSC_structure[Object.keys(OSC_structure)[j]]["addr"]);
-			string.push(OSC_structure[Object.keys(OSC_structure)[j]]["args"]);
+			flat_command.push(OSC_structure[Object.keys(OSC_structure)[j]]["addr"]);
+			flat_command.push(OSC_structure[Object.keys(OSC_structure)[j]]["args"]);
+			
+			let commands = ["/commands", "/"+Object.keys(request)[i]];
+			commands.push(OSC_structure[Object.keys(OSC_structure)[j]]["addr"]);
+			commands.push(OSC_structure[Object.keys(OSC_structure)[j]]["args"]);
+			
+			// Output commands one after another
+			maxApi.outlet(commands);
 		}
 		
-		// Output the message
-		maxApi.outlet(string);
+		// Output one flat command, the combination of all commands for one request
+		maxApi.outlet(flat_command);
 	}
 }
 
