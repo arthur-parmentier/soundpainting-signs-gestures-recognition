@@ -64,7 +64,7 @@ let fsm = new StateMachine({
 		},
 		
 		defaults: {
-			"start": 1,
+			"start": "",
 			"volume": 0.8,
 			"tempo": 120,
 			
