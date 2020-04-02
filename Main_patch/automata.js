@@ -65,6 +65,7 @@ let fsm = new StateMachine({
 		
 		defaults: {
 			"start": "",
+			"off": "",
 			"volume": 0.8,
 			"tempo": 120,
 			
@@ -179,15 +180,21 @@ let fsm = new StateMachine({
 			
 			for(var i = 0; i<this.who_array.length; i++) {
 			
-				this.requests[this.requests_counter][this.who_array[i]] = {"off": {}}; // TODO: check whether off should be obj or other type
-			}
+				this.requests[this.requests_counter][this.who_array[i]] = {"off": this.defaults["off"]}; // TODO: check whether off should be obj or other type
 			
-			// update distribution array
-			for(var i = 0; i<this.Object.keys(distribution).length; i++) {
-				
-				// let exists = Object.values(obj).includes("test1");
+				// update distribution array
+				for(var j = 0; j<Object.keys(this.content_distribution).length; j++) {
+					
+					delete this.content_distribution[Object.keys(this.content_distribution)[j]][this.who_array[i]];
+					
+					// if the content has no more instruments playing it, delete the content entry
+					if(Object.keys(this.content_distribution[Object.keys(this.content_distribution)[j]]).length == 0) {
+						
+						delete this.content_distribution[Object.keys(this.content_distribution)[j]];
+					}
+				}
 			}
-			
+			update_outlet();
 		},
 		
 		onEnterExecution: function() {
@@ -341,7 +348,7 @@ function execute_request(index) { // this function is triggered at each executio
 	
 	for(var i = 0; i<Object.keys(request).length; i++) {
 
-		const OSC_structure = [...format(request[Object.keys(request)[i]])]; // Weird call, see related generator "format" below
+		const OSC_structure = [...format(request[Object.keys(request)[i]])]; // Weird call, see related generator "format" below. It does all the job of parsing the nested structure of the request object.
 		let flat_command = ["/commands_flat", "/"+Object.keys(request)[i]];
 		
 		for(var j = 0; j<Object.keys(OSC_structure).length; j++) {
