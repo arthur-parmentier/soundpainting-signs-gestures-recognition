@@ -40,7 +40,8 @@ app.get("/", function (req, res) {
 
 app.get("/posenetdata", function(req,res){
   var data = JSON.parse(req.query.data);
-  anypost(data);
+  Max.outlet(data);
+  
   res.end("1");
 });
 

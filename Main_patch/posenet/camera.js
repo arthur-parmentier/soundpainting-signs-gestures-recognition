@@ -40934,15 +40934,15 @@ async function loadVideo() {
   return video;
 }
 
-const defaultQuantBytes = 2;
+const defaultQuantBytes = 4;
 const defaultMobileNetMultiplier = (0, _demo_util.isMobile)() ? 0.50 : 0.75;
 const defaultMobileNetStride = 16;
 const defaultMobileNetInputResolution = 500;
 const defaultResNetMultiplier = 1.0;
 const defaultResNetStride = 32;
-const defaultResNetInputResolution = 250;
+const defaultResNetInputResolution = 300;
 const guiState = {
-  algorithm: 'multi-pose',
+  algorithm: 'single-pose',
   input: {
     architecture: 'MobileNetV1',
     outputStride: defaultMobileNetStride,
