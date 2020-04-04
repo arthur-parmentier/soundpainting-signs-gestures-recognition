@@ -14,7 +14,7 @@ function o(msg) {
 
 
 const handlers = {
-  [maxApi.MESSAGE_TYPES.ALL]: (handled, file_path) => {
+  "append": (file_path) => {
     
 	recover_labels(file_path)
 	
