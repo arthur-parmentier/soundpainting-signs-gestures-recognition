@@ -14,7 +14,7 @@ function o(msg) {
 
 
 const handlers = {
-  "append": (file_path) => {
+  "path": (file_path) => {
     
 	recover_labels(file_path)
 	
