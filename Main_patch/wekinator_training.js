@@ -1,7 +1,10 @@
 const maxApi = require("max-api");
 
-var buffers = [];
+var numbuffers = 0;
 var tracks = [];
+var playing = false;
+var labels = [];
+var labels_set = [];
 
 function p(msg) {
 	
@@ -15,15 +18,22 @@ function o(msg) {
 }
 
 const handlers = {
-	"buffers": (...b_list) => {
-    
-		buffers = b_list;
-		//o(buffers);
+	"buffers": (...arg_list) => { // this handle is triggered when after we use getLabels()
+		
+		labels.push(arg_list[3]);
+		labels_set = Array.from(new Set(labels)).sort();
+	},
+	
+	"numbuffers": (num) => {
+		
+		numbuffers = num;
+		getLabels();
 	},
 	
 	"tracks": (...t_list) => {
 		
 		tracks = t_list;
+		o(["to_mubu_play", "trackid", ...tracks]);
 		//o(tracks);
 	},
 	
@@ -31,41 +41,83 @@ const handlers = {
 		
 		train();
 	},
+	
+	"end": () => {
+		
+		playing = false;
+		// p("r end");
+	},
+	
+	"start": () => {
+		
+		playing = true;
+		// p("r start");
+	},
   
   "clearall": () => {
 	  
-  }
+	 numbuffers = 0;
+	 tracks = [];
+	 playing = false;
+	 labels = [];
+	 labels_set = [];
+  },
 };
 
 maxApi.addHandlers(handlers);
 
-async function train() {
+setup();
+
+function getLabels() {
 	
-	let track_ids = tracks;
-	let speed = 0.05;
-	
-	for(var i = 0; i<buffers.length; i++) {
+	for(var i = 0; i<numbuffers; i++) {
 		
-		// First the settings commands to the mubu.play object
-		o(["to_mubu_play" , "speed", speed]);
-		o(["to_mubu_play" , "trackid", ...track_ids]);
-		o(["to_mubu_play" , "bufferindex", buffers[i]]);
-		
-		// Then the OSC commands to wekinator
-		o(["to_mubu_play" , "play", 1]);
-		
-		await end_of_play();
-		
-		
-		
+		o(["to_imubu", "buffer", i+1, "getinfo", "label"])
 	}
+}
+
+function setup() {
+	
+	let speed = 1;
+	
+	o(["to_mubu_play" , "speed", speed]);
 	
 }
 
-function end_of_play() {
+async function train() {
 	
+	o(["wekinator_training_state", 1]);
 	
+	for(var i = 0; i<numbuffers; i++) {
+		
+		// Set the right buffer index
+		o(["to_mubu_play", "bufferindex", i+1]);
+		
+		// Then the OSC commands to wekinator
+		o(["to_wekinator", "/wekinator/control/startDtwRecording", labels_set.indexOf(labels[i])]);
+		
+		// play
+		o(["to_mubu_play", "play", 1]);
+		
+		playing = true;
+		
+		await waitforplaytostop(); // we wait for the "end" message to arrive with async code
+		
+		// stop wekinator recording
+		o(["to_wekinator", "/wekinator/control/stopDtwRecording"]);
+	}
 	
+	o(["wekinator_training_state", 0]);
+}
+
+function waitforplaytostop() {
+		
+	return new Promise(function (resolve, reject) {
+		(function check_playing(){
+			if (playing == false) return resolve();
+			setTimeout(check_playing, 10);
+		})();
+	});
 }
 
 function sleep(ms) {
