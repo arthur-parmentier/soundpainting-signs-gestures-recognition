@@ -66,7 +66,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 121.0, 107.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -93,19 +93,38 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-1",
+									"lockeddragscroll" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "n4m.monitor.maxpat",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 240.0, 111.0, 400.0, 220.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-384",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 227.0, 100.0, 115.0, 22.0 ],
+									"patching_rect" : [ 50.0, 98.0, 115.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -163,26 +182,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-6",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 100.0, 143.0, 22.0 ],
-									"saved_object_attributes" : 									{
-										"autostart" : 0,
-										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
-										"watch" : 0
-									}
-,
-									"text" : "node.script express-node"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"comment" : "",
 									"id" : "obj-8",
 									"index" : 1,
@@ -223,7 +222,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"order" : 1,
+									"source" : [ "obj-384", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-81", 0 ],
+									"order" : 0,
 									"source" : [ "obj-384", 1 ]
 								}
 
@@ -244,24 +252,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-81", 0 ],
-									"midpoints" : [ 183.5, 116.507463886741675, 59.5, 116.507463886741675 ],
-									"source" : [ "obj-6", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-384", 0 ],
-									"order" : 0,
-									"source" : [ "obj-8", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 1,
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1218,7 +1209,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 620.809524178504944, 1215.0, 591.0, 440.0 ],
+					"patching_rect" : [ 620.809524178504944, 1215.0, 594.0, 440.0 ],
 					"text" : "Once you have specified the signs that you want to train, you can launch the training process.\n\nThis tool makes the training process easier by recording the performance of each sign as many times a you want it to be trained and automatically iterating through the list of signs to train.\n\nBe careful that the signs are trained from your initial position at the start of each training step; it is therefore very recommanded to start performing each sign from a neutral position.\n\nYou can change the defaults settings of the tool:\n\n- Index of the starting sign (in most cases, should be left to 1)\n- Amount of time dedicated for training each sign. The lower it is, the faster you must perform the sign during the training process.\n- Time-gap between two trainings. Increase that number to give you more time to relax between each sign.\n- The initial preparation time, from the moment you start the training process. Make sure it gives you enough time to go from the computer to the place you will perform at.\n- The number of repetitions of each sign. The bigger this number is, the more accurate the sign recognition will be. Avoid training new signs only once, especially once the number of signs you want to use is large (>10). You can typically train each signs 3-4 times if you're in a hurry, 10-15 times if you need better performances.\n\nWatch out the training state and try not to miss a training. If you are unsure about the quallity of your training, you can always try again the training session or add more training examples.\n\nWhen your training process is done, save the corresponding .mubu file by pushing the \"save\" button in the box 2.4. New data files are saved by default to the \"data\" folder. Do not load additional data before you save the newly recorded signs, in order not to load the same training examples twice in the database, which would bias the training example set."
 				}
 
@@ -1278,11 +1269,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-178",
-					"linecount" : 41,
+					"linecount" : 39,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 623.809524178504944, 135.0, 226.0, 619.0 ],
+					"patching_rect" : [ 623.809524178504944, 135.0, 230.0, 590.0 ],
 					"text" : "The first implemented input is Posenet; which loads your first video device of your OS (usually your webcam) and outputs the skeleton tracking of your body, with the coordinates of each body parts.\n\n1) If you need to, start by installing the node packages that are required to run the node script and server. You will only need to do it once, but it can take some time.\n\n2) Start Posenet by clicking on the toggle button.\n\n2.1) Once the Posnet window appears, change the settings according to your GPU performances. Make sure that the joints that interest you are well recognized, given that the system should work fine with FPS>10.\n\n-Try to always use the ResNet50 model which performs much better than its little brother MobileNet.\n- Always use the biggest model with quantbytes = 4.\n- Change the OutputStride and Input resolution according to your computer performances\n\n3) You can monitor the performance of the model by taking a look at the FPS of posenet.\n\n4) On the right panel, choose the joints that are used as features. I suggest to only use elbows and wrists."
 				}
 
@@ -2312,8 +2303,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -3788,8 +3777,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -4092,8 +4079,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -12474,7 +12459,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -12791,8 +12775,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -13546,8 +13528,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -13626,8 +13606,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -17250,8 +17228,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -17371,8 +17347,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -25316,8 +25290,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -31357,13 +31329,6 @@
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "express-node",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "fold",
 				"implicit" : 1
 			}
 , 			{
