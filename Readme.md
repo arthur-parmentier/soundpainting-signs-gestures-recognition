@@ -46,9 +46,10 @@ _For now, this is the only valid procedure. It has some additional requirements,
 8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
 9. To build your own standalone, check out the procedure for Max/MSP and Processing.
 
-## Sources
+## References
 
 This project is based on the following tools:
+* Posenet Node For Max: https://github.com/tejaswigowda/posenet-node-max
 * Posenet for dummies https://github.com/billythemusical/n4m-posenet-for-dummies and original N4M posenet https://github.com/yuichkun/n4m-posenet
 * SimpleKinect https://github.com/jpbellona/simpleKinect
 * Wekinator http://www.wekinator.org/
