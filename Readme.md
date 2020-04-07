@@ -37,10 +37,10 @@ _Standalone apps will be released near june/july. Before that, you need to check
 _For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
 1. Install Max/MSP (lastest version) https://cycling74.com/
-2. _For use with kinect input_ Install Processing https://processing.org/
+2. _For use with ki (nect input_ Install Processing https://processing.org/
 3. Download/clone this repository
 4. Go to the "MAIN PATCH" folder and load the lastest version of the patch into Max/MSP (.maxpat)
-5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch. Then, make sure that the electron process runs on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings.
+5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch. Then, make sure that the Maxhelper process (Max Helper.exe on windows) runs on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings.
 6. Install the required Max/MSP packages: MuBu (and whatever Max/MSP is telling you that you are missing!)
 7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
 8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
