@@ -46,6 +46,16 @@ _For now, this is the only valid procedure. It has some additional requirements,
 8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
 9. To build your own standalone, check out the procedure for Max/MSP and Processing.
 
+## Communication with Ableton Live
+
+You can now use the tool to communicate with Ableton Live.
+
+1. Install Ableton Live 10 (it may be compatible with Ableton live 9), for instance the free trial version.
+2. Install a compatible version of LiveOSC. It is recommended to use the following: https://github.com/ideoforms/LiveOSC. The LiveOSC folder must be copied to the "MIDI Remote Scripts" folder of Ableton. On windows: "\ProgramData\Ableton\Live 10 Trial\Resources\MIDI Remote Scripts", on Mac it should appear under: "/Applications/Ableton*.app/Contents/App-Resources/" (unverified).
+Then in Ableton Live:
+* open File>Preferences
+* under Link/MIDI, set Control Surface 1 to "LiveOSC"
+
 ## References
 
 This project is based on the following tools:
