@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1467.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,257 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1025.0, 242.567468000000019, 119.0, 22.0 ],
+					"text" : "print npm @popup 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-384",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 227.0, 100.0, 115.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"autostart" : 0,
+										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
+										"watch" : 0
+									}
+,
+									"text" : "node.script server.js"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-37",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
+									"patching_rect" : [ 50.0, 157.178414619315049, 113.0, 22.0 ],
+									"text" : "route success error"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-51",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 181.178414619315049, 110.0, 22.0 ],
+									"text" : "dict.unpack status:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-54",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 159.0, 170.178414619315049, 127.0, 22.0 ],
+									"text" : "dict.unpack message:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-81",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 50.0, 133.178414619315049, 65.0, 22.0 ],
+									"text" : "route npm"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 50.0, 100.0, 143.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"autostart" : 0,
+										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
+										"watch" : 0
+									}
+,
+									"text" : "node.script express-node"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-8",
+									"index" : 1,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 132.5, 40.000006001045278, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-9",
+									"index" : 1,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 98.5, 263.178412001045274, 30.0, 30.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-51", 0 ],
+									"source" : [ "obj-37", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-54", 0 ],
+									"source" : [ "obj-37", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-81", 0 ],
+									"source" : [ "obj-384", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-51", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-54", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-81", 0 ],
+									"midpoints" : [ 183.5, 116.507463886741675, 59.5, 116.507463886741675 ],
+									"source" : [ "obj-6", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-384", 0 ],
+									"order" : 0,
+									"source" : [ "obj-8", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"order" : 1,
+									"source" : [ "obj-8", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-37", 0 ],
+									"source" : [ "obj-81", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 870.0, 242.567468000000019, 141.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p node_install_packages"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-245",
 					"maxclass" : "newobj",
@@ -130,7 +381,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.696886449031808, 3435.0, 593.303113550968192, 51.0 ],
+					"patching_rect" : [ 21.696886449031808, 3435.0, 594.0, 51.0 ],
 					"text" : "These dictionaries/stacks are used internally by the automata to construct the requests. You can observe how they change according to your inputs and have a glimpse into the internal data structure of the automata, that follows extactly the same structures as these objects."
 				}
 
@@ -172,7 +423,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 582.678785294294357, 2913.74255463403415, 223.0, 365.0 ],
+					"patching_rect" : [ 582.678785294294357, 2913.74255463403415, 228.0, 365.0 ],
 					"text" : "The sounpainting automata allows to construct sentences (requests) from the time serie of signs.\nUnder the assumption that soundpainting is a formal language, we can describe its grammar rules with a finite state machine, ie. an automata.\n\nHere is an example of what a simple automata can look like for soundpainting, already implementing basic grammar rules.\n\nEach ellipse represents a state and each arrow a transition between states, with the names of the different sign categories that can trigger this transition.\n\nOnce the state is on \"execution\", a serie of commands is sent by the automata to any program that communicates with it."
 				}
 
@@ -886,11 +1137,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-187",
-					"linecount" : 23,
+					"linecount" : 22,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1294.180011445834907, 2303.0, 220.0, 350.0 ],
+					"patching_rect" : [ 1294.180011445834907, 2303.0, 225.0, 335.0 ],
 					"text" : "The HHMM is built-in with the mubu librairy and is design a be a gesture follower.\nIn general, is is less efficient than DTW but has some additionnal features that you could optionnally use for other purposes than classification.\n\n1) Train the HHMM.\n2) Toggle the \"classify\" button to run the classification.\n3) As for the Wekinator DTW classifier, you can change the sensibility of the classifier by adjusting the confidence threshold in loglikelihood distance. Bring it closer to 0 to decrease sensitivity and lower the amount of false positives. Lower the value to get more sensitivity, at the expense of accuracy. Typical values lies between -4 and -15."
 				}
 
@@ -937,7 +1188,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 681.368258506059874, 1710.0, 217.0, 111.0 ],
+					"patching_rect" : [ 681.368258506059874, 1710.0, 220.0, 111.0 ],
 					"text" : "Your data should appear in these buffers once the signs are trained or data is loaded.\n\nClick the save button in order to save the buffers to a file, in order to load the data in the future."
 				}
 
@@ -948,11 +1199,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-183",
-					"linecount" : 19,
+					"linecount" : 18,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 1710.0, 215.0, 291.0 ],
+					"patching_rect" : [ 15.0, 1710.0, 222.0, 276.0 ],
 					"text" : "To load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification.\n\nPro tip: you can bulk drag and drop several files in the drop zone"
 				}
 
@@ -967,7 +1218,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 620.809524178504944, 1215.0, 579.190475821495056, 440.0 ],
+					"patching_rect" : [ 620.809524178504944, 1215.0, 591.0, 440.0 ],
 					"text" : "Once you have specified the signs that you want to train, you can launch the training process.\n\nThis tool makes the training process easier by recording the performance of each sign as many times a you want it to be trained and automatically iterating through the list of signs to train.\n\nBe careful that the signs are trained from your initial position at the start of each training step; it is therefore very recommanded to start performing each sign from a neutral position.\n\nYou can change the defaults settings of the tool:\n\n- Index of the starting sign (in most cases, should be left to 1)\n- Amount of time dedicated for training each sign. The lower it is, the faster you must perform the sign during the training process.\n- Time-gap between two trainings. Increase that number to give you more time to relax between each sign.\n- The initial preparation time, from the moment you start the training process. Make sure it gives you enough time to go from the computer to the place you will perform at.\n- The number of repetitions of each sign. The bigger this number is, the more accurate the sign recognition will be. Avoid training new signs only once, especially once the number of signs you want to use is large (>10). You can typically train each signs 3-4 times if you're in a hurry, 10-15 times if you need better performances.\n\nWatch out the training state and try not to miss a training. If you are unsure about the quallity of your training, you can always try again the training session or add more training examples.\n\nWhen your training process is done, save the corresponding .mubu file by pushing the \"save\" button in the box 2.4. New data files are saved by default to the \"data\" folder. Do not load additional data before you save the newly recorded signs, in order not to load the same training examples twice in the database, which would bias the training example set."
 				}
 
@@ -978,11 +1229,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-181",
-					"linecount" : 19,
+					"linecount" : 18,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 1215.0, 212.0, 291.0 ],
+					"patching_rect" : [ 15.0, 1215.0, 224.0, 276.0 ],
 					"text" : "Now that you have your input running, you must be able to define the signs you would like to recognize.\nIf you already have trained the signs that you would like to use earlier, saved the resulting buffer into a .mubu file and you do not want to train your system more, you can skip that part.\n\nUse the input box to write down the signs you want to train in the following format:\n\ncategory:sign_name\n\nPlease avoid spaces or special characters."
 				}
 
@@ -1017,8 +1268,7 @@
 					"patching_rect" : [ 15.0, 15.0, 2026.0, 93.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 15.0, 2026.0, 93.0 ],
-					"text" : "1. Input layer",
-					"textjustification" : 0
+					"text" : "1. Input layer"
 				}
 
 			}
@@ -1032,7 +1282,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 623.809524178504944, 135.0, 212.0, 619.0 ],
+					"patching_rect" : [ 623.809524178504944, 135.0, 226.0, 619.0 ],
 					"text" : "The first implemented input is Posenet; which loads your first video device of your OS (usually your webcam) and outputs the skeleton tracking of your body, with the coordinates of each body parts.\n\n1) If you need to, start by installing the node packages that are required to run the node script and server. You will only need to do it once, but it can take some time.\n\n2) Start Posenet by clicking on the toggle button.\n\n2.1) Once the Posnet window appears, change the settings according to your GPU performances. Make sure that the joints that interest you are well recognized, given that the system should work fine with FPS>10.\n\n-Try to always use the ResNet50 model which performs much better than its little brother MobileNet.\n- Always use the biggest model with quantbytes = 4.\n- Change the OutputStride and Input resolution according to your computer performances\n\n3) You can monitor the performance of the model by taking a look at the FPS of posenet.\n\n4) On the right panel, choose the joints that are used as features. I suggest to only use elbows and wrists."
 				}
 
@@ -1047,7 +1297,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 135.0, 210.0, 246.0 ],
+					"patching_rect" : [ 15.0, 135.0, 212.0, 246.0 ],
 					"text" : "First, you must choose between your motion tracking inputs which one is the active one. In the future, there may be several active inputs at the same time but for now we'll start with one.\n\n1) Add your input in the message box if it is not already inside.\n\n2) Select the input you want to use with the menu.\n\nEach input should be send in the form of an array of size N at each time step."
 				}
 
@@ -11857,208 +12107,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-544",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 3,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 121.0, 107.0, 640.0, 480.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"boxes" : [ 							{
-								"box" : 								{
-									"id" : "obj-37",
-									"maxclass" : "newobj",
-									"numinlets" : 3,
-									"numoutlets" : 3,
-									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 50.0, 142.178414619314992, 113.0, 22.0 ],
-									"text" : "route success error"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-47",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 189.507463886741618, 119.0, 22.0 ],
-									"text" : "print npm @popup 1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-51",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 166.178414619314992, 110.0, 22.0 ],
-									"text" : "dict.unpack status:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-54",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 159.0, 166.178414619314992, 127.0, 22.0 ],
-									"text" : "dict.unpack message:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-81",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 118.178414619314992, 65.0, 22.0 ],
-									"text" : "route npm"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-87",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 100.0, 143.0, 22.0 ],
-									"saved_object_attributes" : 									{
-										"autostart" : 0,
-										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
-										"watch" : 0
-									}
-,
-									"text" : "node.script express-node"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"comment" : "",
-									"id" : "obj-543",
-									"index" : 1,
-									"maxclass" : "inlet",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 39.999999619314991, 30.0, 30.0 ]
-								}
-
-							}
- ],
-						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-51", 0 ],
-									"source" : [ "obj-37", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 0 ],
-									"source" : [ "obj-37", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-47", 0 ],
-									"source" : [ "obj-51", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-47", 0 ],
-									"source" : [ "obj-54", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-87", 0 ],
-									"source" : [ "obj-543", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-37", 0 ],
-									"source" : [ "obj-81", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-81", 0 ],
-									"midpoints" : [ 183.5, 116.507463886741618, 59.5, 116.507463886741618 ],
-									"source" : [ "obj-87", 1 ]
-								}
-
-							}
- ]
-					}
-,
-					"patching_rect" : [ 870.0, 245.567467618269745, 165.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p npm_installation_if_needed"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-542",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -12122,7 +12170,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 281.024556098356925, 136.823156273711049, 74.786325037479401, 22.0 ],
-									"text" : "17.285009"
+									"text" : "34.847212"
 								}
 
 							}
@@ -12158,19 +12206,20 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 99.000000000000227, 136.823156273711049, 78.0, 22.0 ],
-									"text" : "57.8536"
+									"text" : "28.6967"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"id" : "obj-527",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 99.000000000000227, 167.989834273711097, 78.0, 22.0 ],
-									"text" : "84.941358"
+									"text" : "1651.816375"
 								}
 
 							}
@@ -12376,7 +12425,7 @@
 					"patching_rect" : [ 1458.642179699436156, 252.567467618269745, 74.786325037479401, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 963.642179699436156, 252.567467618269745, 74.786325037479401, 22.0 ],
-					"text" : "11.772828"
+					"text" : "0.605394"
 				}
 
 			}
@@ -12398,7 +12447,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 121.0, 107.0, 640.0, 480.0 ],
+						"rect" : [ 824.0, 432.0, 639.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -12425,6 +12474,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -13189,7 +13239,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 975.0, 219.567467998954726, 210.142857074737549, 24.0 ],
+					"patching_rect" : [ 974.0, 214.49999961931502, 210.142857074737549, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 480.0, 219.567467998954726, 210.142857074737549, 24.0 ],
 					"text" : "1) Install the node package (once)"
@@ -13203,9 +13253,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 870.0, 221.567467998954726, 100.0, 22.0 ],
+					"patching_rect" : [ 870.0, 214.49999961931502, 98.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 375.0, 221.567467998954726, 100.0, 22.0 ],
+					"presentation_rect" : [ 375.0, 221.567467998954726, 101.0, 22.0 ],
 					"text" : "script npm install"
 				}
 
@@ -13373,7 +13423,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -1646.0, -986.0, 1612.0, 899.0 ],
+						"rect" : [ -200.0, 287.0, 1612.0, 899.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -16637,8 +16687,7 @@
 					"patching_rect" : [ 840.0, 2924.756404191255569, 529.034322533756495, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 600.0, 2610.0, 529.034322533756495, 64.0 ],
-					"text" : "4.2. Soundpainting automata",
-					"textjustification" : 0
+					"text" : "4.2. Soundpainting automata"
 				}
 
 			}
@@ -23464,10 +23513,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1538.368258506059874, 1713.067821189761162, 183.964907859848608, 52.0 ],
+					"patching_rect" : [ 1538.368258506059874, 1713.067821189761162, 184.0, 52.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 1082.009643040925312, 1605.067821189761162, 183.964907859848608, 52.0 ],
+					"presentation_rect" : [ 1082.009643040925312, 1605.067821189761162, 184.0, 52.0 ],
 					"text" : "Save recorded training session to .mubu file in /data/ folder"
 				}
 
@@ -25237,7 +25286,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1380.885002046823729, 2924.756404191255569, 98.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1140.885002046823729, 2610.0, 98.0, 22.0 ],
+					"presentation_rect" : [ 1140.885002046823729, 2610.0, 101.0, 22.0 ],
 					"text" : "script npm install"
 				}
 
@@ -25263,17 +25312,16 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1082.321214705705643, 2999.0, 236.0, 22.0 ],
+					"patching_rect" : [ 1082.321214705705643, 2999.0, 133.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
 						"node_bin_path" : "",
 						"npm_bin_path" : "",
-						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
 ,
-					"text" : "node.script automata.js @options --inspect"
+					"text" : "node.script automata.js"
 				}
 
 			}
@@ -25398,7 +25446,7 @@
 					"patching_rect" : [ 27.573784343898296, 1110.0, 1997.426215656101704, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 27.573784343898296, 1110.0, 1997.426215656101704, 64.0 ],
-					"text" : "stop"
+					"text" : "no sign has been defined"
 				}
 
 			}
@@ -25597,6 +25645,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-24",
+									"int" : 1,
 									"maxclass" : "gswitch",
 									"numinlets" : 3,
 									"numoutlets" : 1,
@@ -27034,7 +27083,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1233.401948913931847, 1584.720855448519615, 196.862923085689545, 22.0 ],
-					"text" : "stop"
+					"text" : "no sign has been defined"
 				}
 
 			}
@@ -28194,6 +28243,18 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1652.0, -482.432532001045274, 143.0, 22.0 ],
+					"text" : "script npm install express"
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -28216,6 +28277,13 @@
 					"destination" : [ "obj-63", 0 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-10", 0 ]
 				}
 
 			}
@@ -31132,7 +31200,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-544", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-85", 0 ]
 				}
 
@@ -31278,13 +31346,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "express-node",
-				"bootpath" : "~/Desktop/PDM/Main_patch/express",
-				"patcherrelativepath" : "./express",
-				"type" : "fold",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "find_number_files.js",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
@@ -31296,6 +31357,13 @@
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "express-node",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
+				"patcherrelativepath" : ".",
+				"type" : "fold",
 				"implicit" : 1
 			}
 , 			{
