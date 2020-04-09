@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 </head>
-<body style="background-color: #FFFFFF;">
+<body style="background-color: #FFFFFF; overflow: hidden";>
 	<script src="node_modules/viz.js/viz.js"></script>
 	<script src="node_modules/viz.js/full.render.js"></script>
 	<script>
@@ -18,19 +18,9 @@
 				element.setAttribute("id", "graph");
 				document.body.appendChild(element);
 				var e = document.getElementById("graph");
-				// window.max.outlet("window width : " + window.innerWidth);
-				// window.max.outlet("window h : " + window.innerHeight);
-				// window.max.outlet("e width : " + e.offsetWidth);
-				// window.parent.document.body.style.zoom = window.innerWidth/window.parent.document.getElementById('graph').offsetWidth;
-				// window.max.outlet(window.resizeTo(500, 500));
+				
 				e.style.width = (window.innerWidth-15) + "px";
 				e.style.height = (window.innerHeight-15) + "px";
-				// e.style.position = "absolute";
-				// e.style.top = -0 +"px";
-				// e.style.padding = 0 + "px";
-				// e.style.margin = 0 + "px";
-				
-				// window.max.outlet(e.style.width);
 			})
 			.catch(error => {
 				// Possibly display the error

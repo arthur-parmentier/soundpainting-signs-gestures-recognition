@@ -28,7 +28,7 @@ let fsm = new StateMachine({
 		
 		// To "Contents_Modifiers" state
 		{ name: 'what', from: ['Execution', 'Identifiers'], to: 'Contents_Modifiers' },
-		{ name: 'what', from: ['with','without','add'], to:  'Contents_Modifiers' },
+		{ name: 'what', from: ['Logic'], to:  'Contents_Modifiers' },
 		{ name: 'how', from: ['Identifiers', 'Execution',  'Contents_Modifiers'], to:  'Contents_Modifiers' },
 		
 		// To empty request
@@ -36,9 +36,9 @@ let fsm = new StateMachine({
 		{ name: 'when', from: 'Contents_Modifiers', to: 'Execution' },
 		
 		// To sign-specific (logic etc) states
-		{ name: 'add', from: 'Contents_Modifiers', to: 'add' },
-		{ name: 'with', from: 'Contents_Modifiers', to: 'with' },
-		{ name: 'without', from: 'Contents_Modifiers', to: 'without' }
+		{ name: 'add', from: 'Contents_Modifiers', to: 'Logic' },
+		{ name: 'with', from: 'Contents_Modifiers', to: 'Logic' },
+		{ name: 'without', from: 'Contents_Modifiers', to: 'Logic' }
 		
     ],
 	data: {
@@ -75,7 +75,9 @@ let fsm = new StateMachine({
 		what_history: [],
 		who_history: [],
 		
-		contents_distribution: {}, // array that stores how the different Contentss are distributed among the who identifiers
+		content_distribution: {}, // array that stores the content that is played by each identifier
+		reverse_content_distribution: {}, // array that stores who is playing each content type
+		
 		requests: {0: {}}, // array that stores the requests over time and structure them
 		requests_counter: 0, // integer that corresponds to the index of the actual request (increased everytime the request is executed)
 	},
@@ -120,7 +122,7 @@ let fsm = new StateMachine({
 				fill_request_who();
 			}
 			
-			fill_request_what(sign); // fill the request object with the what sign
+			fill_request_what(); // fill the request object with the what sign
 			
 			update_outlet();
 		},
@@ -167,8 +169,6 @@ let fsm = new StateMachine({
 				}
 			}
 			
-			
-			
 			// Store the sign to the stack
 			this.how_array.push(sign);
 			
@@ -180,46 +180,60 @@ let fsm = new StateMachine({
 				this.requests[this.requests_counter][this.who_array[i]][last_what][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
 				
 				// update the distribution array
-				if(this.contents_distribution[last_what][this.who_array[i]] == null) {
-					this.contents_distribution[last_what][this.who_array[i]] = [];
+				if(this.reverse_content_distribution[last_what][this.who_array[i]] == null) {
+					this.reverse_content_distribution[last_what][this.who_array[i]] = [];
 				}
 				
-				this.contents_distribution[last_what][this.who_array[i]][sign] = parameter_values;
+				this.reverse_content_distribution[last_what][this.who_array[i]][sign] = parameter_values;
 			}
 			
 			update_outlet();
 		},
 		
-		onBeforeWhen: function(args, sign) {
+		onBeforeWhen: function(args, sign) { // in order to execute this prior to onEnterExecution
 		
 			// Update Start values TODO
 			
 			update_outlet();
 		},
 		
-		onBeforeOff: function() {
+		onBeforeOff: function() { // we need a before here as for when, in order to execute this prior to onEnterExecution
+			
+			// if who_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
+			if(this.who_array.length == 0) {
+				
+				this.who_array = this.previous_who_array;
+				fill_request_who();
+			}
 			
 			for(var i = 0; i<this.who_array.length; i++) {
 			
 				this.requests[this.requests_counter][this.who_array[i]] = {"off": this.defaults["off"]}; // TODO: check whether off should be obj or other type
 			
-				// update distribution array
-				for(var j = 0; j<Object.keys(this.contents_distribution).length; j++) {
+				// delete corresponding entries in the reverse distribution array
+				for(var j = 0; j<Object.keys(this.reverse_content_distribution).length; j++) {
 					
-					if(this.contents_distribution[Object.keys(this.contents_distribution)[j]][this.who_array[i]] != null) {
+					if(this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]][this.who_array[i]] != null) {
 						
-						delete this.contents_distribution[Object.keys(this.contents_distribution)[j]][this.who_array[i]];
+						delete this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]][this.who_array[i]];
 						
 						// if the Contents has no more instruments playing it, delete the Contents entry
-						if(Object.keys(this.contents_distribution[Object.keys(this.contents_distribution)[j]]).length == 0) {
+						if(Object.keys(this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]]).length == 0) {
 						
-							delete this.contents_distribution[Object.keys(this.contents_distribution)[j]];
+							delete this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]];
 						}
 						j--; // we need to update j again because we deleted one item to object keys index must decrease by one
 					}
 				}
+				
+				// delete corresponding entries in the distribution array
+				delete this.content_distribution[this.who_array[i]];
 			}
-			update_outlet();
+			
+			if(this.state == "Execution") {
+				
+				this.onEnterExecution(); // even if we do not enter again the execution state we need to execute the request as if we do
+			}
 		},
 		
 		onEnterExecution: function() {
@@ -260,23 +274,35 @@ function fill_request_who() {
 	}
 }
 
-function fill_request_what(sign) {
+function fill_request_what() {
 	
-	for (var i = 0; i<fsm.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents is applied to all of them
-			
-		// Store the sign into the request
-		if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] == null) { // we make sure that the Contents was not already there in the request, which is the expected normal case
-			fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {"Start": fsm.defaults["Start"]}; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
-		} else { // something is probably wrong, so we can send a warning in the console
-			maxApi.post(sign + " already requested to perform in the same sentence...");
-		}
+	for(var j = 0; j<fsm.what_array.length; j++) {
 		
-		// Update Contents distribution array
-		if(fsm.contents_distribution[sign] == null) {
-			fsm.contents_distribution[sign] = {};
+		let sign = fsm.what_array[j];
+	
+		for (var i = 0; i<fsm.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents is applied to all of them
+				
+			// Store the sign into the request
+			if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] == null) { // we make sure that the Contents was not already there in the request, which is the expected normal case
+				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {"Start": fsm.defaults["Start"]}; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+			} else { // something is probably wrong, so we can send a warning in the console
+				maxApi.post(sign + " already requested to perform in the same sentence...");
+			}
+			
+			// Update reverse content distribution array
+			if(fsm.reverse_content_distribution[sign] == null) {
+				fsm.reverse_content_distribution[sign] = {};
+			}
+			fsm.reverse_content_distribution[sign][fsm.who_array[i]] = {};
+			
+			// Update content distribution array
+			if(fsm.content_distribution[fsm.who_array[i]] == null) {
+				fsm.content_distribution[fsm.who_array[i]] = {};
+			}
+			fsm.content_distribution[fsm.who_array[i]][sign] = {};
 		}
-		fsm.contents_distribution[sign][fsm.who_array[i]] = {};
 	}
+	
 }
 
 function parse_who(sign) {
@@ -318,7 +344,8 @@ function update_outlet() { // this function is used every time we want to see th
 	maxApi.outlet(["/what", fsm.what_array]);
 	maxApi.outlet(["/how", fsm.how_array]);
 	maxApi.outlet(["/requests", fsm.requests]);
-	maxApi.outlet(["/distrib", fsm.contents_distribution]);
+	maxApi.outlet(["/distrib", fsm.content_distribution]);
+	maxApi.outlet(["/reverse_distrib", fsm.reverse_content_distribution]);
 	maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 	maxApi.outlet(["/groups", fsm.groups]);
 }

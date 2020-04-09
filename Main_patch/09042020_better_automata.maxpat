@@ -39,6 +39,28 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 450.0, 3525.0, 75.0, 22.0 ],
+					"text" : "route /distrib"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "dict.view",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 450.0, 3555.0, 165.0, 315.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1245,13 +1267,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-241",
-					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 4065.0, 97.872340083122253, 50.0 ],
-					"text" : "/percussions3 /pointilism/tempo/value 120"
+					"patching_rect" : [ 840.0, 4065.0, 97.872340083122253, 22.0 ],
+					"text" : "/ableton /off "
 				}
 
 			}
@@ -2248,7 +2269,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 121.0, 107.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -15970,7 +15991,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 225.490234375, 220.592168942093849, 22.0 ],
-									"text" : "track2 Start"
+									"text" : "off"
 								}
 
 							}
@@ -16367,7 +16388,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 285.490234375, 68.0, 22.0 ],
-									"text" : "track2"
+									"text" : "off"
 								}
 
 							}
@@ -16767,26 +16788,24 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
-					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 975.0, 3987.610832118871258, 135.0, 50.0 ],
-					"text" : "/pointilism/Start  /pointilism/tempo/value 120"
+					"patching_rect" : [ 975.0, 3987.610832118871258, 135.0, 22.0 ],
+					"text" : "/off "
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-271",
-					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 3987.610832118871258, 124.0, 50.0 ],
-					"text" : "/longtone/Start  /longtone/tempo/value 120"
+					"patching_rect" : [ 840.0, 3987.610832118871258, 124.0, 22.0 ],
+					"text" : "/off "
 				}
 
 			}
@@ -16832,7 +16851,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 621.696886449031808, 3901.17006812082127, 165.0, 280.608267641436669 ]
+					"patching_rect" : [ 630.0, 3915.0, 165.0, 270.0 ]
 				}
 
 			}
@@ -16843,7 +16862,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 621.696886449031808, 3874.391732358563786, 76.0, 22.0 ],
+					"patching_rect" : [ 630.0, 3885.0, 76.0, 22.0 ],
 					"text" : "route /debug"
 				}
 
@@ -16854,7 +16873,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 441.696886449031808, 3901.17006812082127, 165.0, 280.608267641436214 ]
+					"patching_rect" : [ 450.0, 3915.0, 165.0, 270.0 ]
 				}
 
 			}
@@ -16865,7 +16884,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 441.696886449031808, 3874.391732358563786, 79.0, 22.0 ],
+					"patching_rect" : [ 450.0, 3885.0, 79.0, 22.0 ],
 					"text" : "route /groups"
 				}
 
@@ -17002,7 +17021,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 259.377289663490046, 3553.580137562985328, 167.319596785541762, 313.198198199272156 ]
+					"patching_rect" : [ 270.0, 3555.0, 165.0, 315.0 ]
 				}
 
 			}
@@ -17013,8 +17032,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 259.377289663490046, 3525.0, 75.0, 22.0 ],
-					"text" : "route /distrib"
+					"patching_rect" : [ 270.0, 3525.0, 121.0, 22.0 ],
+					"text" : "route /reverse_distrib"
 				}
 
 			}
@@ -17024,7 +17043,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.696886449031808, 3901.17006812082127, 165.0, 280.608267641436214 ]
+					"patching_rect" : [ 270.0, 3915.0, 165.0, 270.0 ]
 				}
 
 			}
@@ -17035,7 +17054,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 261.696886449031808, 3874.391732358563786, 65.0, 22.0 ],
+					"patching_rect" : [ 270.0, 3885.0, 65.0, 22.0 ],
 					"text" : "route /how"
 				}
 
@@ -17074,7 +17093,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.696886449031808, 3553.580137562985328, 225.0, 628.198198199272156 ]
+					"patching_rect" : [ 30.0, 3555.0, 225.0, 315.0 ]
 				}
 
 			}
@@ -17085,7 +17104,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 21.696886449031808, 3525.0, 89.0, 22.0 ],
+					"patching_rect" : [ 30.0, 3525.0, 89.0, 22.0 ],
 					"text" : "route /requests"
 				}
 
@@ -17096,7 +17115,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 621.696886449031808, 3551.778335762257484, 165.0, 315.450450450182871 ]
+					"patching_rect" : [ 30.0, 3915.0, 165.0, 270.0 ]
 				}
 
 			}
@@ -17106,7 +17125,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 441.696886449031808, 3551.778335762257484, 165.0, 315.0 ]
+					"patching_rect" : [ 630.0, 3555.0, 165.0, 315.0 ]
 				}
 
 			}
@@ -17117,7 +17136,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 441.696886449031808, 3525.0, 83.528010621666908, 22.0 ],
+					"patching_rect" : [ 630.0, 3525.0, 83.528010621666908, 22.0 ],
 					"text" : "route /who"
 				}
 
@@ -17129,7 +17148,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 621.696886449031808, 3527.778335762257029, 68.0, 22.0 ],
+					"patching_rect" : [ 30.0, 3885.0, 68.0, 22.0 ],
 					"text" : "route /what"
 				}
 
@@ -17808,13 +17827,13 @@
 								"box" : 								{
 									"fontsize" : 8.0,
 									"id" : "obj-91",
-									"linecount" : 10,
+									"linecount" : 9,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 822.0, 82.0 ],
-									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"with\\\";  \\\"without\\\";  \\\"add\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"with\\\" -> \\\"with\\\" [ label=\\\" neutral \\\" ];  \\\"without\\\" -> \\\"without\\\" [ label=\\\" neutral \\\" ];  \\\"add\\\" -> \\\"add\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"with\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"without\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"add\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];}\""
+									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"Logic\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Logic\\\" -> \\\"Logic\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Logic\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" without \\\" ];}\""
 								}
 
 							}
@@ -17935,7 +17954,7 @@
 					"patching_rect" : [ 844.013597214772744, 3615.0, 1080.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 604.013597214772744, 3300.243595808744431, 1080.0, 64.0 ],
-					"text" : "Execution"
+					"text" : "Start"
 				}
 
 			}
@@ -25310,7 +25329,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 3030.0, 1184.975257873535156, 566.271681040525436 ],
+					"patching_rect" : [ 840.0, 3030.0, 1184.975257873535156, 403.271681040525436 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 600.0, 2715.243595808744431, 1184.975257873535156, 566.271681040525436 ],
 					"rendermode" : 0,
@@ -28338,7 +28357,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 3345.0, 790.678785294294357, 855.0 ],
+					"patching_rect" : [ 15.0, 3345.0, 794.678785294294357, 855.0 ],
 					"proportion" : 0.5
 				}
 
@@ -28809,7 +28828,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
-					"order" : 1,
+					"order" : 6,
 					"source" : [ "obj-222", 0 ]
 				}
 
@@ -28849,7 +28868,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-44", 0 ],
-					"order" : 3,
+					"order" : 1,
 					"source" : [ "obj-222", 0 ]
 				}
 
@@ -28857,7 +28876,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-45", 0 ],
-					"order" : 6,
+					"order" : 7,
+					"source" : [ "obj-222", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"order" : 3,
 					"source" : [ "obj-222", 0 ]
 				}
 
@@ -31413,6 +31440,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-89", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
