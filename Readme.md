@@ -44,7 +44,7 @@ _For now, this is the only valid procedure. It has some additional requirements,
 6. Install the required Max/MSP packages: MuBu (and whatever Max/MSP is telling you that you are missing!)
 7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
 8. You can now use the patch! For instance, try to launch the PoseNet model and train your first signs!
-9. To build your own standalone, check out the procedure for Max/MSP and Processing.
+9. To build your own standalone, check out the procedure for Max/MSP (and Processing if you use the kinect scripts).
 
 ## Communication with Ableton Live
 
