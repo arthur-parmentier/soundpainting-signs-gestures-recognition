@@ -66,6 +66,7 @@ let fsm = new StateMachine({
 		
 		defaults: {
 			"Start": "",
+			"Stop": "",
 			"off": "",
 			"volume": 0.8,
 			"tempo": 120,
@@ -81,6 +82,7 @@ let fsm = new StateMachine({
 		requests: {0: {}}, // array that stores the requests over time and structure them
 		requests_counter: 0, // integer that corresponds to the index of the actual request (increased everytime the request is executed)
 	},
+	
 	methods: {
 		onInvalidTransition: function(transition, from, to) {
 			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
@@ -110,7 +112,7 @@ let fsm = new StateMachine({
 			update_outlet();
 		},
 		
-		onAfterWhat: function(args, sign) { // When we receive a WHAT sign
+		onAfterWhat: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
 			
 			// Store the sign to the stack
 			this.what_array.push(sign);
@@ -122,7 +124,32 @@ let fsm = new StateMachine({
 				fill_request_who();
 			}
 			
-			fill_request_what(); // fill the request object with the what sign
+			// Send stop commands for content that was being played before WARNING: checkout later for use with add, layers...
+			for(var i = 0; i<this.who_array.length;i++) {
+				
+				if(this.content_distribution[this.who_array[i]] != null) {
+					
+					for(var j = 0; j<Object.keys(this.content_distribution[this.who_array[i]]).length; j++) {
+						
+						let content = Object.keys(this.content_distribution[this.who_array[i]])[j];
+						
+						// let's add the stop command to the request
+						this.requests[this.requests_counter][this.who_array[i]][content] = {"Stop": this.defaults["Stop"]};
+						
+						// let's remove the content from the reverse content distribution
+						delete this.reverse_content_distribution[content][this.who_array[i]];
+						if(Object.keys(this.reverse_content_distribution[content]).length == 0) {
+						
+							delete this.reverse_content_distribution[content];
+						}
+					}
+				}
+				delete this.content_distribution[this.who_array[i]]; // we delete the entry in the content distribution, it's going to get updated during the fill_request_what again with new content
+				
+				
+			}
+			
+			fill_request_what(); // fill the request object with the what signs from what_array
 			
 			update_outlet();
 		},
