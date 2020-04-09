@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1467.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,26 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-7",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "n4m.monitor.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 1640.0, 3750.0, 400.0, 220.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-64",
 					"maxclass" : "newobj",
@@ -1225,11 +1245,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-241",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 4065.0, 97.872340083122253, 22.0 ]
+					"patching_rect" : [ 840.0, 4065.0, 97.872340083122253, 50.0 ],
+					"text" : "/percussions3 /pointilism/tempo/value 120"
 				}
 
 			}
@@ -1373,8 +1395,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1337.321214705705643, 3000.0, 119.0, 22.0 ],
-					"text" : "send from_automata"
+					"patching_rect" : [ 1337.321214705705643, 3000.0, 128.0, 22.0 ],
+					"text" : "send automata_output"
 				}
 
 			}
@@ -2189,7 +2211,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 600.0, 135.0, 237.0, 649.0 ],
+					"patching_rect" : [ 600.0, 135.0, 243.0, 649.0 ],
 					"text" : "The first implemented input is Posenet; which loads your first video device of your OS (usually your webcam) and outputs the skeleton tracking of your body, with the coordinates of each body parts.\n\n1) If you need to, start by installing the node packages that are required to run the node script and server. You will only need to do it once, but it can take some time.\n\n2) Start Posenet by clicking on the toggle button.\n\n2.1) Once the Posnet window appears, change the settings (controls) according to your GPU performances. Make sure that the joints that interest you are well recognized, given that the system should work fine with FPS>10.\n\n-Try to always use the ResNet50 model which performs much better than its little brother MobileNet.\n- Always use the biggest model with quantbytes = 4.\n- Change the OutputStride and Input resolution according to your computer performances\n\nTip: if you do not see the control panel appearing, try zooming in and reload posenet.\n\n3) You can monitor the performance of the model by taking a look at the FPS of posenet.\n\n4) On the right red panel, choose the joints that are used as features. I suggest to only use elbows and wrists."
 				}
 
@@ -15948,7 +15970,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 225.490234375, 220.592168942093849, 22.0 ],
-									"text" : "off"
+									"text" : "track2 Start"
 								}
 
 							}
@@ -16345,7 +16367,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 285.490234375, 68.0, 22.0 ],
-									"text" : "off"
+									"text" : "track2"
 								}
 
 							}
@@ -16745,24 +16767,26 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 975.0, 3987.610832118871258, 135.0, 22.0 ],
-					"text" : "/trackC/start"
+					"patching_rect" : [ 975.0, 3987.610832118871258, 135.0, 50.0 ],
+					"text" : "/pointilism/Start  /pointilism/tempo/value 120"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-271",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 3987.610832118871258, 124.0, 22.0 ],
-					"text" : "/trackC/start"
+					"patching_rect" : [ 840.0, 3987.610832118871258, 124.0, 50.0 ],
+					"text" : "/longtone/Start  /longtone/tempo/value 120"
 				}
 
 			}
@@ -17784,13 +17808,13 @@
 								"box" : 								{
 									"fontsize" : 8.0,
 									"id" : "obj-91",
-									"linecount" : 8,
+									"linecount" : 10,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 822.0, 82.0 ],
-									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"start\\\";  \\\"who1\\\";  \\\"what1\\\";  \\\"with1\\\";  \\\"execution\\\";  \\\"what\\\";  \\\"who\\\";  \\\"with\\\";  \\\"without\\\";  \\\"add\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"start\\\" -> \\\"start\\\" [ label=\\\" neutral \\\" ];  \\\"who1\\\" -> \\\"who1\\\" [ label=\\\" neutral \\\" ];  \\\"what1\\\" -> \\\"what1\\\" [ label=\\\" neutral \\\" ];  \\\"with1\\\" -> \\\"with1\\\" [ label=\\\" neutral \\\" ];  \\\"execution\\\" -> \\\"execution\\\" [ label=\\\" neutral \\\" ];  \\\"what\\\" -> \\\"what\\\" [ label=\\\" neutral \\\" ];  \\\"who\\\" -> \\\"who\\\" [ label=\\\" neutral \\\" ];  \\\"with\\\" -> \\\"with\\\" [ label=\\\" neutral \\\" ];  \\\"without\\\" -> \\\"without\\\" [ label=\\\" neutral \\\" ];  \\\"add\\\" -> \\\"add\\\" [ label=\\\" neutral \\\" ];  \\\"start\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"who1\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"what1\\\" -> \\\"who1\\\" [ label=\\\" who \\\" ];  \\\"who1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" what \\\" ];  \\\"what1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"with1\\\" -> \\\"what1\\\" [ label=\\\" how \\\" ];  \\\"what1\\\" -> \\\"with1\\\" [ label=\\\" with \\\" ];  \\\"what1\\\" -> \\\"execution\\\" [ label=\\\" when \\\" ];  \\\"what\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"execution\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"who\\\" -> \\\"who\\\" [ label=\\\" who \\\" ];  \\\"what\\\" -> \\\"who\\\" [ label=\\\" group \\\" ];  \\\"execution\\\" -> \\\"what\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"what\\\" [ label=\\\" what \\\" ];  \\\"with\\\" -> \\\"what\\\" [ label=\\\" what \\\" ];  \\\"without\\\" -> \\\"what\\\" [ label=\\\" what \\\" ];  \\\"add\\\" -> \\\"what\\\" [ label=\\\" what \\\" ];  \\\"who\\\" -> \\\"what\\\" [ label=\\\" how \\\" ];  \\\"execution\\\" -> \\\"what\\\" [ label=\\\" how \\\" ];  \\\"what\\\" -> \\\"what\\\" [ label=\\\" how \\\" ];  \\\"execution\\\" -> \\\"execution\\\" [ label=\\\" off \\\" ];  \\\"who\\\" -> \\\"execution\\\" [ label=\\\" off \\\" ];  \\\"what\\\" -> \\\"execution\\\" [ label=\\\" when \\\" ];  \\\"what\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"what\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"what\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];}\""
+									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"with\\\";  \\\"without\\\";  \\\"add\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"with\\\" -> \\\"with\\\" [ label=\\\" neutral \\\" ];  \\\"without\\\" -> \\\"without\\\" [ label=\\\" neutral \\\" ];  \\\"add\\\" -> \\\"add\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"with\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"without\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"add\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"add\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"with\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"without\\\" [ label=\\\" without \\\" ];}\""
 								}
 
 							}
@@ -17911,7 +17935,7 @@
 					"patching_rect" : [ 844.013597214772744, 3615.0, 1080.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 604.013597214772744, 3300.243595808744431, 1080.0, 64.0 ],
-					"text" : "start"
+					"text" : "Execution"
 				}
 
 			}
@@ -25329,14 +25353,15 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1082.321214705705643, 2999.0, 133.0, 22.0 ],
+					"patching_rect" : [ 1082.321214705705643, 2999.0, 236.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
 ,
-					"text" : "node.script automata.js"
+					"text" : "node.script automata.js @options --inspect"
 				}
 
 			}
@@ -25446,7 +25471,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.573784343898296, 1101.0, 2604.0, 82.0 ],
+					"patching_rect" : [ 27.573784343898296, 1101.0, 2002.426215656101704, 82.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 27.573784343898296, 1101.0, 2605.0, 82.0 ],
 					"text" : "stop"
@@ -25520,7 +25545,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -31958.0, -31915.0, 1790.0, 969.0 ],
+						"rect" : [ -2044.0, -881.0, 1790.0, 969.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -25547,7 +25572,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bubble" : 1,
@@ -28369,6 +28393,13 @@
 					"destination" : [ "obj-63", 0 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-1", 1 ]
 				}
 
 			}
