@@ -37,7 +37,7 @@ _Standalone apps will be released near june/july. Before that, you need to check
 _For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
 1. Install Max/MSP (lastest version) https://cycling74.com/
-2. _For use with Kinect input_ Install Processing https://processing.org/
+2. _For use with Kinect input_ Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder.
 3. Download/clone this repository
 4. Go to the "Main_patch" folder and load the lastest version of the patch into Max/MSP (.maxpat)
 5. _For use with PoseNet - webcam - input (recommended)_ Install the dependencies by clicking on the dedicated button in the patch. Then, make sure that the Maxhelper process (Max Helper.exe on windows) runs on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings.
