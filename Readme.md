@@ -19,7 +19,7 @@ Well, so far, not much. You can train your own signs and recognize them inside M
 - use it for soundpainting performances
 - augment your instrument...
 
-Check out a little preview of the patch: https://www.youtube.com/watch?v=jW6bo6XkhFo
+Check out a little preview of the patch: https://www.youtube.com/watch?v=OmPFMT9mgOs
 
 ## Required and recommended hardware
 
