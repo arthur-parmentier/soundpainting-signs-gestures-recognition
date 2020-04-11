@@ -13,11 +13,14 @@ Each of these is an example of the performativity and potential of gestures and 
 
 ### What can I do with this?
 
-Well, so far, not much. You can train your own signs and recognize them inside Max/MSP. Cool. But later, you will be able to:
-- implement your own regular language
-- make it play some sounds, videos.. whatever you can do with Max!
-- use it for soundpainting performances
-- augment your instrument...
+- Train your own signs and gestures (full body only so far, fingers will come later) and recognize them inside Max/MSP.
+- implement your own regular language (a simple version of the soundpainting grammar is built-in, and you can change it to have your own language instead).
+- Make it play some sounds, videos.. using your favorite OSC-compatible external software.
+
+Later, you will be able to:
+- control your own virtual soundpainting orchestra
+- add new features to your performances by augmenting your digital instrument with new controls trough gestures
+- ...
 
 Check out a little preview of the patch: https://www.youtube.com/watch?v=OmPFMT9mgOs
 
