@@ -67,4 +67,4 @@ This project is based on the following tools:
 * SimpleKinect https://github.com/jpbellona/simpleKinect
 * Wekinator http://www.wekinator.org/
 * Viz.js https://github.com/mdaines/viz.js
-* Javascript state machiine https://github.com/jakesgordon/javascript-state-machine
+* Javascript state machine https://github.com/jakesgordon/javascript-state-machine
