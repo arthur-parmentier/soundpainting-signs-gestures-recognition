@@ -20,17 +20,17 @@ function o(msg) {
 const handlers = {
 	"buffers": (...arg_list) => { // this handle is triggered when after we use getLabels()
 		
-		labels.push(arg_list[3]);
+		labels.push(arg_list[3]); // the label is the fourth element of the return mg from the mubu
 		labels_set = Array.from(new Set(labels)).sort();
 	},
 	
-	"numbuffers": (num) => {
+	"numbuffers": (num) => { // the getnumbuffers command is sent externally when the buffer is changed
 		
 		numbuffers = num;
 		getLabels();
 	},
 	
-	"tracks": (...t_list) => {
+	"tracks": (...t_list) => { // the names of tracks is given externally from the list of active tracks.
 		
 		tracks = t_list;
 		o(["to_mubu_play", "trackid", ...tracks]);
@@ -42,13 +42,13 @@ const handlers = {
 		train();
 	},
 	
-	"end": () => {
+	"end": () => { // the end msg is triggered by mubu.play when it has finished playing, so that we now we can continue the training with the next buffer
 		
 		playing = false;
 		// p("r end");
 	},
 	
-	"start": () => {
+	"start": () => { // the start command indicates that the mubu.play is active, so we have to wait for it to send "end"
 		
 		playing = true;
 		// p("r start");
@@ -74,17 +74,22 @@ function getLabels() {
 		
 		o(["to_imubu", "buffer", i+1, "getinfo", "label"])
 	}
+	
+	// once we know we have all labels, why not output them to somewhere is it useful?
+	
+	o(["labels", labels_set]);
 }
 
-function setup() {
+function setup() { // first function that is triggered at loading time
 	
-	let speed = 1;
+	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
+					// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
 	o(["to_mubu_play" , "speed", speed]);
 	
 }
 
-async function train() {
+async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
 	
 	o(["wekinator_training_state", 1]);
 	
@@ -118,17 +123,4 @@ function waitforplaytostop() {
 			setTimeout(check_playing, 10);
 		})();
 	});
-}
-
-function sleep(ms) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, ms);
-	});
-}   
-
-function sign_regexp(msg) {
-		
-	let separator = new RegExp(":"); 
-	return msg.split(separator);
-		
 }
