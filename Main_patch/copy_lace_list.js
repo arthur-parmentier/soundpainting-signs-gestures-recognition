@@ -1,6 +1,7 @@
-$autowatch = 1;
+autowatch = 1;
 outlets = 2;
 inlets = 2;
+
 var copies = 1;
 var return_list = [];
 var return_list_no_int = [];
@@ -36,7 +37,7 @@ function anything()
 			var num = 0;
 			for (j=0; j < copies; j++)
 			{
-				post("enter");
+				// post("enter");
 				num = j+1;
 				return_list.push(actual_list[i] + " " + num);
 				return_list_no_int.push(actual_list[i]);

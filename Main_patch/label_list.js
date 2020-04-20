@@ -16,27 +16,50 @@ function o(msg) {
 const handlers = {
   "label": (label) => {
     
-	labels.push(label);
-	labels = Array.from(new Set(labels));
-	o(["/list", ...labels]);
+	let [cat, sign] = sign_regexp(label);
 	
-	dict = {};
-	for(var i = 0; i<labels.length; i++) {
-		
-		let [cat, sign] = sign_regexp(labels[i]);
-		if(dict[cat] == null) {
-			dict[cat] = [];
+	if(cat == null || sign == null)
+		{
+			p("Error in sign input. Please follow the format <category>:<sign_name>");
+			
+		} else {
+			
+			labels.push(label);
+			labels = Array.from(new Set(labels));
+			o(["/list", ...labels]);
+			
+			dict = {};
+			for(var i = 0; i<labels.length; i++) {
+				
+				let [cat, sign] = sign_regexp(labels[i]);
+
+				if(cat == null || sign == null)
+				{
+					p("Error in sign input. Please follow the format <category>:<sign_name>");
+					
+				} else {
+					
+					if(dict[cat] == null) {
+						dict[cat] = [];
+					}
+					dict[cat].push(sign);
+				}
+				
+				o(["/dict", dict]);
+			}
 		}
-		dict[cat].push(sign);
-	}
 	
-	o(["/dict", dict]);
+	
+	
+	
 	
   },
   
   "clearall": () => {
+	  
 	  labels = [];
 	  dict = {};
+	  
 	  o(["/list", ""]);
 	  o(["/dict", dict]);
   }

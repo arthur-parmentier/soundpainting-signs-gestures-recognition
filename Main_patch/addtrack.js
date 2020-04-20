@@ -8,14 +8,16 @@ var input_sizes = [];
 
 function inputs()
 {
-	
 	var list = arrayfromargs(arguments);
 	
-	post(list);
-	
-	if (inlet==0)
+	if (inlet==1)
 	{		
-		input_names = list;
+		input_sizes = list;
+	}
+	
+	if (inlet==0) 
+	{
+		input_names = list;	
 		
 		if(input_names.length == input_sizes.length) {
 			
@@ -25,10 +27,5 @@ function inputs()
 				outlet(0, input_names[i]);
 			}
 		}
-	}
-	
-	if (inlet==1) 
-	{
-		input_sizes = list;	
 	}
 }

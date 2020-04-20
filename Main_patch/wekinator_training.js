@@ -5,6 +5,7 @@ var tracks = [];
 var playing = false;
 var labels = [];
 var labels_set = [];
+var buffers = [];
 
 function p(msg) {
 	
@@ -20,6 +21,7 @@ function o(msg) {
 const handlers = {
 	"buffers": (...arg_list) => { // this handle is triggered when after we use getLabels()
 		
+		buffers.push(arg_list[1]);
 		labels.push(arg_list[3]); // the label is the fourth element of the return mg from the mubu
 		labels_set = Array.from(new Set(labels)).sort();
 	},
@@ -61,6 +63,7 @@ const handlers = {
 	 playing = false;
 	 labels = [];
 	 labels_set = [];
+	 buffers = [];
   },
 };
 
@@ -75,9 +78,11 @@ function getLabels() {
 		o(["to_imubu", "buffer", i+1, "getinfo", "label"])
 	}
 	
-	// once we know we have all labels, why not output them to somewhere is it useful?
+	// once we know we have all labels and buffers, why not output them to somewhere is it useful?
 	
 	o(["labels", labels_set]);
+	o(["buffer_names", labels]);
+	
 }
 
 function setup() { // first function that is triggered at loading time

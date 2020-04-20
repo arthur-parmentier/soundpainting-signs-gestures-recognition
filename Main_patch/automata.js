@@ -1,3 +1,21 @@
+/*
+Author: Arthur Parmentier (2020)
+
+Soundpainting automata
+
+This code implements a finite state machine that represents the soundpainting regular language
+
+It receives signs from messages in the following form:
+
+"sign <category>:<sign_name>"
+
+and outputs
+
+- the current state
+- the request to each instrument/who identifier
+
+*/
+
 const maxApi = require("max-api");
 const StateMachine = require('javascript-state-machine');
 const visualize = require('javascript-state-machine/lib/visualize');
