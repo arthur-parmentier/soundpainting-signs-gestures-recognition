@@ -1,4 +1,5 @@
 const maxApi = require("max-api");
+var fs = require('fs');
 
 var numbuffers = 0;
 var tracks = [];
@@ -6,6 +7,10 @@ var playing = false;
 var labels = [];
 var labels_set = [];
 var buffers = [];
+
+var data_folder = "./data/";
+
+const { v1: uuidv1 } = require('uuid');
 
 function p(msg) {
 	
@@ -33,6 +38,7 @@ const handlers = {
 	},
 	
 	"tracks": (...t_list) => { // the names of tracks is given externally from the list of active tracks.
+	// The tracks are NOT extracted from the buffer itself.
 		
 		tracks = t_list;
 		o(["to_mubu_play", "trackid", ...tracks]);
@@ -58,6 +64,7 @@ const handlers = {
   
   "clearall": () => {
 	  
+	 p("weki auto trainer clear");
 	 numbuffers = 0;
 	 tracks = [];
 	 playing = false;
@@ -65,6 +72,28 @@ const handlers = {
 	 labels_set = [];
 	 buffers = [];
   },
+  
+  "save": () => {
+	  
+	  p("attempt save");
+	  for(var i = 0; i<tracks.length; i++) {
+		
+		// create folder if does not exists
+		let dir = data_folder + tracks[i] + "/";
+		
+		if (!fs.existsSync(dir)){
+			fs.mkdirSync(dir);
+		}
+		  
+		  for(var j = 0; j<buffers.length; j++) {
+			  
+			  p("saving buffer " + j + " track " + i);
+			  o(["to_imubu", "bufferindex", j+1]); // We must change buffer first
+			  o(["to_imubu", "writetrack", i+1, data_folder + tracks[i] + "/" + labels[j].replace(":","-") + "_" + uuidv1() + ".mubu"]); // Then write the buffer to corresponding location
+		  }
+	  }
+	  
+  }
 };
 
 maxApi.addHandlers(handlers);
@@ -81,7 +110,7 @@ function getLabels() {
 	// once we know we have all labels and buffers, why not output them to somewhere is it useful?
 	
 	o(["labels", labels_set]);
-	o(["buffer_names", labels]);
+	o(["buffers_names", buffers]);
 	
 }
 
