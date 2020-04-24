@@ -34,6 +34,7 @@ let fsm = new StateMachine({
 	// First request. TODO: complete it
     	{ name: 'who', from: ['Start', 'Identifiers1', 'Contents_Modifiers1'], to: 'Identifiers1' },
     	{ name: 'what', from: ['Identifiers1', 'Logic1'], to: 'Contents_Modifiers1' },
+		{ name: 'continue', from: 'Identifiers1', to: 'Logic1' },
     	{ name: 'how', from: ['Contents_Modifiers1','Logic1'], to: 'Contents_Modifiers1' },
 		{ name: 'with', from: 'Contents_Modifiers1', to: 'Logic1' },
     	{ name: 'when', from: 'Contents_Modifiers1', to: 'Execution' },
@@ -45,9 +46,9 @@ let fsm = new StateMachine({
 		{ name: 'group', from: 'Contents_Modifiers', to: 'Identifiers' }, // TODO: implement transition verification
 		
 		// To "Contents_Modifiers" state
-		{ name: 'what', from: ['Execution', 'Identifiers'], to: 'Contents_Modifiers' },
-		{ name: 'what', from: ['Logic'], to:  'Contents_Modifiers' },
+		{ name: 'what', from: ['Execution', 'Identifiers', 'Logic'], to: 'Contents_Modifiers' },
 		{ name: 'how', from: ['Identifiers', 'Execution',  'Contents_Modifiers'], to:  'Contents_Modifiers' },
+		{ name: 'continue', from: 'Identifiers', to: 'Logic' },
 		
 		// To empty request
 		{ name: 'off', from: ['Execution','Identifiers'], to: 'Execution' },
@@ -106,6 +107,31 @@ let fsm = new StateMachine({
 			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
 		},
 		
+		onBeforeWho: function(args, sign) {
+			
+			// p("before");
+			
+			// Store the corresponding who identifiers to the stack after parsing them
+			let whos = parse_who(sign);
+			
+			if(whos.includes(null)) {
+
+				// null indicates that we probably have some error with a meaningless "rest of the group". In that case, we want to throw dome error and not enter the identifier state.
+				
+				maxApi.outlet(["/error", whos[1]]); // the second part should be the error description
+				p(["/error", whos[1]]);
+				
+				return false; // we cancel the transition and stay at the actual state
+			} else {
+				
+				// we update the who array
+				for(var i = 0; i<whos.length; i++) {
+					
+					this.who_array.push(whos[i]);
+				}
+				
+			}
+		},
 		
 		onAfterWho: function(args, sign) {
 		
@@ -116,14 +142,6 @@ let fsm = new StateMachine({
 			if(this.requests[this.requests_counter] == null) {
 				this.requests[this.requests_counter] = {}; // We add a new entry for the who identifier
 			}
-		
-			// Store the corresponding who identifiers to the stack after parsing them
-			let whos = parse_who(sign);
-			
-			for(var i = 0; i<whos.length; i++) {
-				
-				fsm.who_array.push(whos[i]);
-			}
 			
 			fill_request_who(); // fills the request array with the who array
 			
@@ -131,6 +149,7 @@ let fsm = new StateMachine({
 		},
 		
 		onAfterWhat: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
+			
 			
 			// Store the sign to the stack
 			this.what_array.push(sign);
@@ -197,10 +216,7 @@ let fsm = new StateMachine({
 					
 					// if not, then the modifier only relates to last requested contents
 					this.what_array = this.previous_what_array;
-					for(var i = 0; i<this.what_array.length; i++) { // what_array can be more than one element usign "add" or equivalent
-						
-						fill_request_what(this.what_array[i]);
-					}
+					fill_request_what();
 				}
 				
 			} else { // we know an identifier was used but not if a content was specified
@@ -208,9 +224,19 @@ let fsm = new StateMachine({
 				// then we check if a content has been specified yet
 				if(this.what_array.length == 0) {
 					
-					// if not, then the modifier relates to everything that the performer is doing
+					// if not, then the modifier relates to everything that the designated performers are doing
 					
-					// TODO: find everything that a performer is doing and add it to what_array
+					// Find everything that the designated performers are doing and add it to what_array
+					for(var i = 0; i<this.who_array.length; i++)
+					{
+						
+						// we push to the what_array everything that is played by all the designated performers.
+						if(Object.keys(this.content_distribution[this.who_array[i]]) != null) {
+							
+							this.what_array.push(Object.keys(this.content_distribution[this.who_array[i]]));
+						}
+					}
+					fill_request_what();
 				}
 			}
 			
@@ -219,17 +245,21 @@ let fsm = new StateMachine({
 			
 			let parameter_values = capture_parameter(sign); // We leave this for the future, when we will want to capture parameters such as volume or tempo values with space mappings
 			
+			// this is what would be the fill_request_how() function, except it has no use elsewhere (yet).
 			for (var i = 0; i<this.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents parameters are applied to all of them
 				
-				last_what = this.what_array[this.what_array.length - 1]; // Assuming that the Contents parameter always applies to the last (and unique) content requested
-				this.requests[this.requests_counter][this.who_array[i]][last_what][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
+				for(var j = 0; j<this.what_array.length; j++) {
 				
-				// update the distribution array
-				if(this.reverse_content_distribution[last_what][this.who_array[i]] == null) {
-					this.reverse_content_distribution[last_what][this.who_array[i]] = [];
+					let content = this.what_array[j];
+					this.requests[this.requests_counter][this.who_array[i]][content][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
+					
+					// update the distribution array
+					if(this.reverse_content_distribution[content][this.who_array[i]] == null) {
+						this.reverse_content_distribution[content][this.who_array[i]] = [];
+					}
+					
+					this.reverse_content_distribution[content][this.who_array[i]][sign] = parameter_values;
 				}
-				
-				this.reverse_content_distribution[last_what][this.who_array[i]][sign] = parameter_values;
 			}
 			
 			update_outlet();
@@ -353,7 +383,16 @@ function fill_request_what() {
 function parse_who(sign) {
 	
 	let who_list = [];
+	
+	// let's first catch the "rest of the group" special case ---------------------------------------------------------
+	if(sign == "restofthegroup") {
 		
+		who_list = parse_restofthegroup();
+		return Array.from(new Set(who_list));
+	}
+	
+	// ---------------------------------------------------------------------------------------------------------------------------
+	
 	// we first look into the groups if that name exists
 	if(Object.keys(fsm.groups).includes(sign)) {
 		
@@ -381,6 +420,65 @@ function parse_who(sign) {
 	}
 
 	return Array.from(new Set(who_list)); // we only keep unique identifiers (in case some where shared among two or more groups)
+}
+
+function parse_restofthegroup() {
+	
+	let who_list = [];
+	let rest = [];
+	/*
+	In general, "rest of the group" is ambiguous, because it is not always obvious who is part of the rest.
+	
+	For intance:
+	
+	Trumpet 1 longtone play
+	Trumpet 2 minimalism play
+	Rest of the group pointillism play
+	
+	Should Trumpet 1 also play the pointillism?
+	
+	One way of disambiguation is to say "trumpet 1 2 continue rest of the group pointillism play".
+	By default, we will assume that the soundpainter uses continue, otherwise the rest of the group is "whole group except those who were identified during the actual request OR those mentionned during the previous request if the actual one is empty".
+	
+	*/
+	
+	// if who array is not empty, it's a problem
+	if(fsm.who_array.length != 0) {
+		
+		return [null, "Rest of the group can not be used with other identifiers"];
+	}
+	
+	// check IF anyone was identified in the actual request
+	if(Object.keys(fsm.requests[fsm.requests_counter]).length == 0) { // we must take the identifiers of the previous request
+		
+		// check if there is a previous request...
+		if(fsm.requests_counter<1) {
+			
+			// throw some error here...
+			return [null, "Rest of the group cannot be used without first identifying performers"];
+			//return [];
+		} else { // it's ok, there is a previous request
+			
+			who_list = Object.keys(fsm.requests[fsm.requests_counter-1]);
+		}
+		
+	} else { // we must update the who_array with everyone that was mentionned at some point during the actual request
+		
+		who_list = Object.keys(fsm.requests[fsm.requests_counter]);
+	}
+	
+	// at this point, the who_array is set
+	
+	for(var i = 0; i<fsm.groups["wholegroup"].length; i++) {
+		
+		if(!who_list.includes(fsm.groups["wholegroup"][i]))
+		{
+		
+			rest.push(fsm.groups["wholegroup"][i]);
+		}
+	}
+	
+	return rest;
 }
 
 function update_outlet() { // this function is used every time we want to see the updates of the arrays/objects in max patch, for instance to debug
