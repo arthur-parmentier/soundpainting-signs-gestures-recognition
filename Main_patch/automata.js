@@ -13,6 +13,7 @@ and outputs
 
 - the current state
 - the request to each instrument/who identifier
+- several "helper/debug" arrays
 
 */
 
@@ -25,6 +26,11 @@ function p(msg) { // convenience function for debug
 	maxApi.post(msg);
 }
 
+function o(msg) { // convenience function for outlet
+	maxApi.outlet(msg);
+}
+
+
 let fsm = new StateMachine({
     init: 'Start',
     transitions: [
@@ -34,7 +40,7 @@ let fsm = new StateMachine({
 	// First request. TODO: complete it
     	{ name: 'who', from: ['Start', 'Identifiers1', 'Contents_Modifiers1'], to: 'Identifiers1' },
     	{ name: 'what', from: ['Identifiers1', 'Logic1'], to: 'Contents_Modifiers1' },
-		{ name: 'continue', from: 'Identifiers1', to: 'Logic1' },
+		// { name: 'continue', from: 'Identifiers1', to: 'Contents_Modifiers1' },
     	{ name: 'how', from: ['Contents_Modifiers1','Logic1'], to: 'Contents_Modifiers1' },
 		{ name: 'with', from: 'Contents_Modifiers1', to: 'Logic1' },
     	{ name: 'when', from: 'Contents_Modifiers1', to: 'Execution' },
@@ -48,7 +54,7 @@ let fsm = new StateMachine({
 		// To "Contents_Modifiers" state
 		{ name: 'what', from: ['Execution', 'Identifiers', 'Logic'], to: 'Contents_Modifiers' },
 		{ name: 'how', from: ['Identifiers', 'Execution',  'Contents_Modifiers'], to:  'Contents_Modifiers' },
-		{ name: 'continue', from: 'Identifiers', to: 'Logic' },
+		// { name: 'continue', from: 'Identifiers', to: 'Contents_Modifiers' },
 		
 		// To empty request
 		{ name: 'off', from: ['Execution','Identifiers'], to: 'Execution' },
@@ -84,9 +90,12 @@ let fsm = new StateMachine({
 		},
 		
 		defaults: {
-			"Start": "",
-			"Stop": "",
-			"off": "",
+			// flags have default values and start with uppercases. They are used to define the "type" of request and ultimately, what keywaord will be sent to the outside world: start a sound, stop a sound or continue...
+			"Start": 0,
+			"Stop": 0,
+			"Continue": 0, // the zero here is probably meaningless
+			
+			// we have other defaults that are not "flags": they don't 
 			"volume": 0.8,
 			"tempo": 120,
 			
@@ -107,34 +116,23 @@ let fsm = new StateMachine({
 			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
 		},
 		
-		onBeforeWho: function(args, sign) {
+		onAfterWho: function(args, sign) { // Warning: do not use onBeforeWho to because some actions are taking place when leaving the contentmodifier states
+		
+			let identifiers = parse_who(sign);
 			
-			// p("before");
-			
-			// Store the corresponding who identifiers to the stack after parsing them
-			let whos = parse_who(sign);
-			
-			if(whos.includes(null)) {
+			if(identifiers.includes(null)) {
 
 				// null indicates that we probably have some error with a meaningless "rest of the group". In that case, we want to throw dome error and not enter the identifier state.
 				
-				maxApi.outlet(["/error", whos[1]]); // the second part should be the error description
-				p(["/error", whos[1]]);
+				maxApi.outlet(["/error", identifiers[1]]); // the second part should be the error description
+				p(["/error", identifiers[1]]);
 				
 				return false; // we cancel the transition and stay at the actual state
 			} else {
 				
-				// we update the who array
-				for(var i = 0; i<whos.length; i++) {
-					
-					this.who_array.push(whos[i]);
-				}
-				
+				this.who_array.push(...identifiers);
 			}
-		},
-		
-		onAfterWho: function(args, sign) {
-		
+			
 			// Reset what array
 			this.what_array = [];
 			
@@ -150,9 +148,10 @@ let fsm = new StateMachine({
 		
 		onAfterWhat: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
 			
+			let [contents, flag] = parse_what(sign); // we also use a parsing here to handle specific cases like "continue", "this"...
 			
-			// Store the sign to the stack
-			this.what_array.push(sign);
+			// Store the sign(s) to the stack
+			for(var i = 0; i<contents.length; i++) { this.what_array.push(contents[i]); }
 			
 			// if who_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
 			if(this.who_array.length == 0) {
@@ -161,32 +160,13 @@ let fsm = new StateMachine({
 				fill_request_who();
 			}
 			
-			// Send stop commands for content that was being played before WARNING: checkout later for use with add, layers...
-			for(var i = 0; i<this.who_array.length;i++) {
+			// now we want to have a different behiavior depending on the flag (continue, start...). 
+			if(flag != "Continue") {
 				
-				if(this.content_distribution[this.who_array[i]] != null) {
-					
-					for(var j = 0; j<Object.keys(this.content_distribution[this.who_array[i]]).length; j++) {
-						
-						let content = Object.keys(this.content_distribution[this.who_array[i]])[j];
-						
-						// let's add the stop command to the request
-						this.requests[this.requests_counter][this.who_array[i]][content] = {"Stop": this.defaults["Stop"]};
-						
-						// let's remove the content from the reverse content distribution
-						delete this.reverse_content_distribution[content][this.who_array[i]];
-						if(Object.keys(this.reverse_content_distribution[content]).length == 0) {
-						
-							delete this.reverse_content_distribution[content];
-						}
-					}
-				}
-				delete this.content_distribution[this.who_array[i]]; // we delete the entry in the content distribution, it's going to get updated during the fill_request_what again with new content
-				
-				
+				stop_old_content();
 			}
 			
-			fill_request_what(); // fill the request object with the what signs from what_array
+			fill_request_what(flag); // fill the request object with the what signs from what_array
 			
 			update_outlet();
 		},
@@ -216,7 +196,7 @@ let fsm = new StateMachine({
 					
 					// if not, then the modifier only relates to last requested contents
 					this.what_array = this.previous_what_array;
-					fill_request_what();
+					fill_request_what("Continue"); // is there any case where the "Continue" flag is not the right one?
 				}
 				
 			} else { // we know an identifier was used but not if a content was specified
@@ -227,8 +207,7 @@ let fsm = new StateMachine({
 					// if not, then the modifier relates to everything that the designated performers are doing
 					
 					// Find everything that the designated performers are doing and add it to what_array
-					for(var i = 0; i<this.who_array.length; i++)
-					{
+					for(var i = 0; i<this.who_array.length; i++) {
 						
 						// we push to the what_array everything that is played by all the designated performers.
 						if(Object.keys(this.content_distribution[this.who_array[i]]) != null) {
@@ -236,7 +215,8 @@ let fsm = new StateMachine({
 							this.what_array.push(Object.keys(this.content_distribution[this.who_array[i]]));
 						}
 					}
-					fill_request_what();
+					
+					fill_request_what("Continue"); // is there any case where the "Continue" flag is not the right one?
 				}
 			}
 			
@@ -349,7 +329,7 @@ function fill_request_who() {
 	}
 }
 
-function fill_request_what() {
+function fill_request_what(flag) {
 	
 	for(var j = 0; j<fsm.what_array.length; j++) {
 		
@@ -359,25 +339,68 @@ function fill_request_what() {
 				
 			// Store the sign into the request
 			if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] == null) { // we make sure that the Contents was not already there in the request, which is the expected normal case
-				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {"Start": fsm.defaults["Start"]}; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+			
+				if(fsm.defaults[flag] == null) {
+					maxApi.post("warning: unknown flag; defaults value to 0");
+					fsm.defaults[flag] = 0; // we create the flag with 0 as default value
+				}
+				
+				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {};
+				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+				
 			} else { // something is probably wrong, so we can send a warning in the console
+			
 				maxApi.post(sign + " already requested to perform in the same sentence...");
 			}
 			
-			// Update reverse content distribution array
-			if(fsm.reverse_content_distribution[sign] == null) {
-				fsm.reverse_content_distribution[sign] = {};
+			if(flag != "continue") { // in the case of "continue" the content arrays do not change
+				
+				// Update reverse content distribution array
+				if(fsm.reverse_content_distribution[sign] == null) {
+					fsm.reverse_content_distribution[sign] = {};
+				}
+				fsm.reverse_content_distribution[sign][fsm.who_array[i]] = {};
+				
+				// Update content distribution array
+				if(fsm.content_distribution[fsm.who_array[i]] == null) {
+					fsm.content_distribution[fsm.who_array[i]] = {};
+				}
+				fsm.content_distribution[fsm.who_array[i]][sign] = {};
 			}
-			fsm.reverse_content_distribution[sign][fsm.who_array[i]] = {};
-			
-			// Update content distribution array
-			if(fsm.content_distribution[fsm.who_array[i]] == null) {
-				fsm.content_distribution[fsm.who_array[i]] = {};
-			}
-			fsm.content_distribution[fsm.who_array[i]][sign] = {};
 		}
 	}
 	
+}
+
+
+function parse_what(sign) {
+	
+	let output = [];
+	
+	if(sign == "continue") { // with continue, we want to make a request with the same content that designated performers were playing, but without start and stop, but that allows anyay for parameters to be changed, such as volume... Or we could also output "continue" as a command? not sure it's relevant.
+		
+		let contents = [];
+		
+		// we get the contents from the content distribution array for each identified performer
+		for(var i = 0; i<fsm.who_array.length; i++) {
+			
+			// we must first check that the performer was indeed doing something...
+			if(fsm.content_distribution[fsm.who_array[i]] != null) {
+			
+				for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.who_array[i]]).length; j++) {
+					
+					contents.push(Object.keys(fsm.content_distribution[fsm.who_array[i]])[j]);
+					
+					//fsm.what_array.push(content);
+				}
+			} else { o(["/error","Warning: continue requested while performer " + fsm.who_array[i] + " is not playing anything."]); }
+		}
+			
+		output = [contents, "Continue"];
+			
+	} else { output = [[sign], "Start"];}
+	
+	return output;
 }
 
 function parse_who(sign) {
@@ -481,6 +504,33 @@ function parse_restofthegroup() {
 	return rest;
 }
 
+function stop_old_content() {
+	
+	// Send stop commands for content that was being played before
+	for(var i = 0; i<fsm.who_array.length;i++) {
+		
+		if(fsm.content_distribution[fsm.who_array[i]] != null) {
+			
+			for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.who_array[i]]).length; j++) {
+				
+				let content = Object.keys(fsm.content_distribution[fsm.who_array[i]])[j];
+				
+				// let's add the stop command to the request
+				fsm.requests[fsm.requests_counter][fsm.who_array[i]][content] = {"Stop": fsm.defaults["Stop"]};
+				
+				// let's remove the content from the reverse content distribution
+				delete fsm.reverse_content_distribution[content][fsm.who_array[i]];
+				if(Object.keys(fsm.reverse_content_distribution[content]).length == 0) {
+				
+					delete fsm.reverse_content_distribution[content];
+				}
+			}
+		}
+		
+		delete fsm.content_distribution[fsm.who_array[i]]; // we delete the entry in the content distribution, it's going to get updated during the fill_request_what again with new content
+	}
+}
+
 function update_outlet() { // this function is used every time we want to see the updates of the arrays/objects in max patch, for instance to debug
 	
 	maxApi.outlet(["/who", fsm.who_array]);
@@ -553,36 +603,16 @@ function initialize() { // this function is triggered only once at script Startu
 
 function execute_request(index) { // this function is triggered at each Execution. It parses the request and ouputs in the outlet all the commands for each instrument
 	
-	// ------------------------ output form: /<who> /<what> @Start 0s @<param1> @<param2> ...
+	/* output form: 
 	
-	/* request = fsm.requests[index];
-	for(var i = 0; i<Object.keys(request).length; i++) {
-		let string = ["/"+Object.keys(request)[i]];
-		let who_obj = request[Object.keys(request)[i]];
-		for(var j = 0; j<Object.keys(who_obj).length; j++) {
-			string.push("/"+Object.keys(who_obj)[j]);
-			let what_obj = who_obj[Object.keys(who_obj)[j]];
-			for(var k = 0; k<Object.keys(what_obj).length; k++) {
-				let how_obj = what_obj[Object.keys(what_obj)[k]];
-				string.push("@" + Object.keys(what_obj)[k]);
-				// the parameters themselves are objects
-				for(var l = 0; l<Object.keys(how_obj).length; l++) {
-					string.push(how_obj[Object.keys(how_obj)[l]]);
-				}
-			}
-		}
-		if(request["when"] == "now") {
-			string.push("@Start");
-			string.push("0s"); 
-		} else {
-			// Implement later other Execution scenarios
-		}
-			
-	}*/
-		
-	// ---------------------- output form: /<who> /<what>/Start 0 /<what>/<param1> /<what>/<param2> ...
+	/<who> /<what>/Start <float>
+	/<who> /<what>/<param>
+	/<who> /<what>/Stop <float>
+	...
 	
-	request = fsm.requests[index];
+	*/
+	
+	let request = fsm.requests[index];
 	
 	for(var i = 0; i<Object.keys(request).length; i++) {
 

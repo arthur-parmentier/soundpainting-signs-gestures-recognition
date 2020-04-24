@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,18 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-94",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 1920.0, 3000.0, 88.0, 22.0 ],
+					"text" : "loadpercent 50"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-96",
 					"maxclass" : "message",
@@ -608,18 +620,6 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1845.0, 780.0, 68.0, 22.0 ],
 					"text" : "zl.group 34"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-108",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 1830.0, 3000.045045018196106, 32.0, 22.0 ],
-					"text" : "t b b"
 				}
 
 			}
@@ -1330,8 +1330,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -5177,7 +5175,7 @@
 					}
 ,
 					"text" : "pattr @bindto input_selection::patching_rect",
-					"varname" : "u585001411"
+					"varname" : "u051002368"
 				}
 
 			}
@@ -9409,6 +9407,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -9593,13 +9593,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-241",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 4376.0, 97.872340083122253, 36.0 ],
-					"text" : "/percussions3 /track2/Stop"
+					"patching_rect" : [ 840.0, 4376.0, 97.872340083122253, 50.0 ],
+					"text" : "/numerics2 /track1/tempo/value 120"
 				}
 
 			}
@@ -12101,6 +12101,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -12463,6 +12465,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -19946,6 +19950,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -20574,24 +20580,26 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1095.0, 3915.0, 135.0, 22.0 ],
-					"text" : "/track2/Stop"
+					"patching_rect" : [ 1095.0, 3915.0, 135.0, 50.0 ],
+					"text" : "/track2/Continue 0 /track2/tempo/value 120"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-271",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 4298.610832118871258, 210.0, 22.0 ],
-					"text" : "/track2/Start"
+					"patching_rect" : [ 840.0, 4298.610832118871258, 210.0, 36.0 ],
+					"text" : "/track1/Continue 0 /track1/tempo/value 120"
 				}
 
 			}
@@ -20738,10 +20746,11 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 195.0, 3030.0, 99.0, 22.0 ],
+					"patching_rect" : [ 195.0, 3030.0, 108.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 196.713107828050852, 2720.545057743012421, 99.0, 22.0 ],
-					"text" : "sign what:palette"
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 196.713107828050852, 2720.545057743012421, 99.0, 36.0 ],
+					"text" : "sign what:continue"
 				}
 
 			}
@@ -20942,11 +20951,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 630.0, 3465.0, 159.196886449031808, 22.0 ]
+					"patching_rect" : [ 630.0, 3465.0, 159.196886449031808, 36.0 ],
+					"text" : "\"Transition what from state Start not allowed.\""
 				}
 
 			}
@@ -21392,13 +21403,13 @@
 								"box" : 								{
 									"fontsize" : 8.0,
 									"id" : "obj-91",
-									"linecount" : 10,
+									"linecount" : 9,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 827.0, 91.0 ],
-									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"Logic\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Logic\\\" -> \\\"Logic\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Identifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" continue \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Logic\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Identifiers\\\" -> \\\"Logic\\\" [ label=\\\" continue \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" without \\\" ];}\""
+									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"Logic\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Logic\\\" -> \\\"Logic\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Logic\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" without \\\" ];}\""
 								}
 
 							}
@@ -21638,8 +21649,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1830.0, 2966.756404191255569, 81.0, 22.0 ],
-					"text" : "loadpercent 1"
+					"patching_rect" : [ 1815.0, 3000.0, 88.0, 22.0 ],
+					"text" : "loadpercent 10"
 				}
 
 			}
@@ -21698,6 +21709,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -21817,6 +21830,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -28896,6 +28911,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
@@ -32065,20 +32082,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
-					"source" : [ "obj-108", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-86", 0 ],
-					"source" : [ "obj-108", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-75", 1 ],
 					"source" : [ "obj-109", 2 ]
 				}
@@ -33197,7 +33200,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-108", 0 ],
+					"destination" : [ "obj-40", 0 ],
 					"source" : [ "obj-334", 0 ]
 				}
 
@@ -35701,6 +35704,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-317", 1 ],
 					"source" : [ "obj-93", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-86", 0 ],
+					"source" : [ "obj-94", 0 ]
 				}
 
 			}
