@@ -3,6 +3,7 @@ var fs = require('fs');
 
 var numbuffers = 0;
 var tracks = [];
+var track_sizes = [];
 var playing = false;
 var labels = [];
 var labels_set = [];
@@ -37,12 +38,22 @@ const handlers = {
 		getLabels();
 	},
 	
-	"tracks": (...t_list) => { // the names of tracks is given externally from the list of active tracks.
+	"track_names": (...names) => { // the names of tracks is given externally from the list of active tracks.
 	// The tracks are NOT extracted from the buffer itself.
 		
-		tracks = t_list;
-		o(["to_mubu_play", "trackid", ...tracks]);
-		//o(tracks);
+		
+		if(names != "" && names != []) {
+			tracks = names;
+			o(["to_mubu_play", "trackid", ...tracks]);
+		}
+	},
+	
+	"track_sizes": (...sizes) => {
+		
+		if(sizes != "" && sizes != []) {
+			track_sizes = sizes;
+			//o(["to_mubu_play", "trackid", ...tracks]);
+		}
 	},
 	
 	"train": () => {
@@ -67,33 +78,69 @@ const handlers = {
 	 p("weki auto trainer clear");
 	 numbuffers = 0;
 	 tracks = [];
+	 track_sizes = [];
 	 playing = false;
 	 labels = [];
 	 labels_set = [];
 	 buffers = [];
   },
   
-  "save": () => {
-	  
-	  p("attempt save");
-	  for(var i = 0; i<tracks.length; i++) {
+	"save": () => {
 		
-		// create folder if does not exists
-		let dir = data_folder + tracks[i] + "/";
+		/* First saving method. 
+		+ Save each buffer for each track in a separate file
+		- When loading in the mubu object, do not recover labels, names... automatically :(
+		*/
 		
-		if (!fs.existsSync(dir)){
-			fs.mkdirSync(dir);
-		}
-		  
-		  for(var j = 0; j<buffers.length; j++) {
+		p("Attempt save (one file per buffer per track)");
+		for(var i = 0; i<tracks.length; i++) {
+			
+			// create folder if does not exists
+			let dir = data_folder + tracks[i] + "/";
+			
+			if (!fs.existsSync(dir)){
+				fs.mkdirSync(dir);
+			}
 			  
-			  p("saving buffer " + j + " track " + i);
-			  o(["to_imubu", "bufferindex", j+1]); // We must change buffer first
-			  o(["to_imubu", "writetrack", i+1, data_folder + tracks[i] + "/" + labels[j].replace(":","-") + "_" + uuidv1() + ".mubu"]); // Then write the buffer to corresponding location
-		  }
-	  }
-	  
-  }
+			for(var j = 0; j<buffers.length; j++) {
+				  
+				p("Saving buffer " + j + " track " + i);
+				o(["to_imubu", "bufferindex", j+1]); // We must change buffer first
+				o(["to_imubu", "writetrack", i+1, data_folder + tracks[i] + "/" + labels[j].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu"]); // Then write the buffer to corresponding location
+			}
+		}	
+		
+		/* Second saving method. 
+		+ Labels and names are recovered on loading
+		- Tracks are saved in the same file so it is not garantueed that the data is homogeneous (one buffer in the dataset can have empty data for one active track if not reloaded properly.
+		*/
+		
+		let tracks_string = "configuration";
+				
+		for(var i = 0; i<tracks.length; i++) {
+
+			tracks_string = tracks_string + "_#" + tracks[i];
+		}
+		
+		let dir2 = data_folder + tracks_string + "/";
+			
+			if (!fs.existsSync(dir2)){
+				fs.mkdirSync(dir2);
+			}
+		
+		for(var j = 0; j<buffers.length; j++) {
+				  
+				p("Saving buffer " + j + " for all tracks ");
+								
+				o(["to_imubu", "writeall", data_folder + tracks_string + "/" + labels[j].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu", "@buffer", j+1]); // Then write the buffer to corresponding location
+			}
+	},
+	
+	[maxApi.MESSAGE_TYPES.ALL]: () => {
+		
+		// anything that was not handled comes here
+		
+	}
 };
 
 maxApi.addHandlers(handlers);

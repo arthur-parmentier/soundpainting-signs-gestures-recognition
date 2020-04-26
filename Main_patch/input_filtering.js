@@ -31,6 +31,12 @@ function inputs()
 			}
 		}
 		
+		if(return_list.length == 0) { 
+		
+			return_list = [""]; 
+		}
+		
 		outlet(0,return_list);
+
 	}
 }
