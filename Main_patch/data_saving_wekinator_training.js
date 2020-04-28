@@ -30,29 +30,78 @@ const handlers = {
 		buffers.push(arg_list[1]);
 		labels.push(arg_list[3]); // the label is the fourth element of the return mg from the mubu
 		labels_set = Array.from(new Set(labels)).sort();
+		
+		// Why not output them to somewhere is it useful?
+	
+		o(["labels", ...labels_set]);
+		p(labels_set);
+		o(["buffers_names", ...buffers]);
+		
 	},
 	
 	"numbuffers": (num) => { // the getnumbuffers command is sent externally when the buffer is changed
 		
+		p("Loading buffers");
 		numbuffers = num;
 		getLabels();
 	},
 	
-	"track_names": (...names) => { // the names of tracks is given externally from the list of active tracks.
-	// The tracks are NOT extracted from the buffer itself.
-		
+	"track_names": (...names) => { // the names of active tracks (rom user input, not gathered from the buffer directly)
 		
 		if(names != "" && names != []) {
+			
+			p("Received tracks");
 			tracks = names;
 			o(["to_mubu_play", "trackid", ...tracks]);
+			
+			if(tracks.length == track_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+				
+				for(var i = 0; i<tracks.length; i++) {
+						o(["to_imubu", "hastrack", tracks[i]]);
+				}
+				
+			// o(["to_imubu", "gettracks"]);
+			}
+			else {
+				
+				p("Error: track names length and track sizes length are not equal...");
+			}
 		}
+	},
+	
+	"tracks": (...track_list) => { // this is the response from imubu that tells us what tracks there are already inside mubu
+	
+		// for(var i = 0; i<tracks.length; i++) {
+			
+			// if(!track_list.includes(tracks[i])) { // if the track is not in the buffer, we add it
+				
+				// o(["to_imubu", "addtrack", tracks[i], "@maxsize", "5s", "@matrixcols", track_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, interface multiwave, shape points, opacity 1, colormode rainbow, autoupdate 30"]);
+			// }
+		// }
+	
+	},
+	
+	"hastrack": (bool, name) => {
+		
+		let size = track_sizes[tracks.indexOf(name)];
+		
+		let funct = "modifytrack";
+		
+		// p(size);
+		
+		if(bool == 0) {
+
+			funct = "addtrack";
+		}
+		
+		o(["to_imubu", funct, name, "@maxsize", "5s", "@matrixcols", size, "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
+		
 	},
 	
 	"track_sizes": (...sizes) => {
 		
 		if(sizes != "" && sizes != []) {
 			track_sizes = sizes;
-			//o(["to_mubu_play", "trackid", ...tracks]);
 		}
 	},
 	
@@ -73,12 +122,10 @@ const handlers = {
 		// p("r start");
 	},
   
-  "clearall": () => {
+  "clearbuffers": () => {
 	  
-	 p("weki auto trainer clear");
+	 p("Clearing buffers");
 	 numbuffers = 0;
-	 tracks = [];
-	 track_sizes = [];
 	 playing = false;
 	 labels = [];
 	 labels_set = [];
@@ -153,11 +200,6 @@ function getLabels() {
 		
 		o(["to_imubu", "buffer", i+1, "getinfo", "label"])
 	}
-	
-	// once we know we have all labels and buffers, why not output them to somewhere is it useful?
-	
-	o(["labels", labels_set]);
-	o(["buffers_names", buffers]);
 	
 }
 

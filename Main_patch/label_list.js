@@ -1,6 +1,6 @@
 const maxApi = require("max-api");
 
-var labels = [];
+var label_list = [];
 var dict = {};
 
 function p(msg) {
@@ -14,45 +14,34 @@ function o(msg) {
 }
 
 const handlers = {
-  "label": (label) => {
+  "label": (...labels) => {
+	  
+	  label_list = [];
+	  dict = {};
     
-	let [cat, sign] = sign_regexp(label);
-	
-	if(cat == null || sign == null)
+	for(var i = 0; i<labels.length; i++) {
+		
+		let [cat, sign] = sign_regexp(labels[i]);
+
+		if(cat == null || sign == null)
 		{
-			p("Error in sign input. Please follow the format <category>:<sign_name>");
+			p("Error in sign input " + labels[i] + ". Please follow the format <category>:<sign_name>");
 			
 		} else {
 			
-			labels.push(label);
-			labels = Array.from(new Set(labels));
-			o(["/list", ...labels]);
-			
-			dict = {};
-			for(var i = 0; i<labels.length; i++) {
-				
-				let [cat, sign] = sign_regexp(labels[i]);
+			label_list.push(labels[i]);
 
-				if(cat == null || sign == null)
-				{
-					p("Error in sign input. Please follow the format <category>:<sign_name>");
-					
-				} else {
-					
-					if(dict[cat] == null) {
-						dict[cat] = [];
-					}
-					dict[cat].push(sign);
-				}
-				
-				o(["/dict", dict]);
+			if(dict[cat] == null) {
+				dict[cat] = [];
 			}
+			dict[cat].push(sign);
 		}
+	}
 	
+	label_list = Array.from(new Set(label_list)); // we do not allow for repetitions at this stage...
 	
-	
-	
-	
+	o(["/list", ...label_list]);
+	o(["/dict", dict]);
   },
   
   "clearall": () => {
