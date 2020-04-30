@@ -40895,6 +40895,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  * limitations under the License.
  * =============================================================================
  */
+ 
+ 
+const SocketIOClient = require("socket.io-client");
+const io = new SocketIOClient("http://localhost:3000");
+const socket = io.connect();
+socket.on("connect", () => {
+	console.log("Connected to Max 8");
+});
+ 
 var videoWidth = window.innerWidth;
 var videoHeight = window.innerHeight;
 const stats = new _stats.default();
@@ -41303,9 +41312,12 @@ function detectPoseInRealTime(video, net) {
         }
       }
     }); // End monitoring code for frames per second
-
-
 	
+	function sendToMaxPatch(poses) {
+	socket.emit("dispatch", poses);
+}
+
+	sendToMaxPatch(poses); // -------------------------
 
 
     stats.end();

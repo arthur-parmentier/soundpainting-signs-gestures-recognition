@@ -46,8 +46,8 @@ app.get("/posenetdata", function(req,res){
 });
 
 app.listen(3000, function () {
-	anypost("Example app listening on port 3000!");
-	if (Max) Max.outlet("ready");
+	// anypost("Example app listening on port 3000!");
+	// if (Max) Max.outlet("ready");
 });
 
 app.use(express.static(__dirname + "/posenet"));
