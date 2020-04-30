@@ -27,14 +27,14 @@ function o(msg) {
 const handlers = {
 	"buffers": (...arg_list) => { // this handle is triggered when after we use getLabels()
 		
-		buffers.push(arg_list[1]);
+		buffers.push(arg_list[0]);
 		labels.push(arg_list[3]); // the label is the fourth element of the return mg from the mubu
 		labels_set = Array.from(new Set(labels)).sort();
 		
 		// Why not output them to somewhere is it useful?
 	
 		o(["labels", ...labels_set]);
-		p(labels_set);
+		// p(labels_set);
 		o(["buffers_names", ...buffers]);
 		
 	},
@@ -71,13 +71,7 @@ const handlers = {
 	
 	"tracks": (...track_list) => { // this is the response from imubu that tells us what tracks there are already inside mubu
 	
-		// for(var i = 0; i<tracks.length; i++) {
-			
-			// if(!track_list.includes(tracks[i])) { // if the track is not in the buffer, we add it
-				
-				// o(["to_imubu", "addtrack", tracks[i], "@maxsize", "5s", "@matrixcols", track_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, interface multiwave, shape points, opacity 1, colormode rainbow, autoupdate 30"]);
-			// }
-		// }
+		// 
 	
 	},
 	
@@ -140,20 +134,21 @@ const handlers = {
 		*/
 		
 		p("Attempt save (one file per buffer per track)");
-		for(var i = 0; i<tracks.length; i++) {
+		for(var i = 1; i<tracks.length+1; i++) {
 			
 			// create folder if does not exists
-			let dir = data_folder + tracks[i] + "/";
+			let dir = data_folder + tracks[i-1] + "/";
 			
 			if (!fs.existsSync(dir)){
 				fs.mkdirSync(dir);
 			}
 			  
-			for(var j = 0; j<buffers.length; j++) {
+			for(var j = 1; j<buffers.length+1; j++) {
 				  
 				p("Saving buffer " + j + " track " + i);
-				o(["to_imubu", "bufferindex", j+1]); // We must change buffer first
-				o(["to_imubu", "writetrack", i+1, data_folder + tracks[i] + "/" + labels[j].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu"]); // Then write the buffer to corresponding location
+				o(["to_imubu", "bufferindex", j]); // We must change buffer first
+				
+				o(["to_imubu", "writetrack", i, data_folder + tracks[i-1] + "/" + labels[j-1].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu"]); // Then write the buffer to corresponding location
 			}
 		}	
 		
@@ -161,6 +156,8 @@ const handlers = {
 		+ Labels and names are recovered on loading
 		- Tracks are saved in the same file so it is not garantueed that the data is homogeneous (one buffer in the dataset can have empty data for one active track if not reloaded properly.
 		*/
+		
+		// TODO: first we want to check that we are saving the right track configuration. Maybe someone has loaded files externally, updating the tracks in mubu, so the configuratino text may not be right
 		
 		let tracks_string = "configuration";
 				
@@ -175,11 +172,11 @@ const handlers = {
 				fs.mkdirSync(dir2);
 			}
 		
-		for(var j = 0; j<buffers.length; j++) {
+		for(var j = 1; j<buffers.length+1; j++) {
 				  
 				p("Saving buffer " + j + " for all tracks ");
 								
-				o(["to_imubu", "writeall", data_folder + tracks_string + "/" + labels[j].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu", "@buffer", j+1]); // Then write the buffer to corresponding location
+				o(["to_imubu", "writeall", data_folder + tracks_string + "/" + labels[j-1].replace(":","-") + "-" + j + "_" + uuidv1() + ".mubu", "@buffer", j]); // Then write the buffer to corresponding location
 			}
 	},
 	
@@ -196,9 +193,9 @@ setup();
 
 function getLabels() {
 	
-	for(var i = 0; i<numbuffers; i++) {
+	for(var i = 1; i<numbuffers+1; i++) {
 		
-		o(["to_imubu", "buffer", i+1, "getinfo", "label"])
+		o(["to_imubu", "buffer", i, "getinfo", "label"])
 	}
 	
 }
@@ -216,13 +213,13 @@ async function train() { // this is the async function that triggers the mubu.pl
 	
 	o(["wekinator_training_state", 1]);
 	
-	for(var i = 0; i<numbuffers; i++) {
+	for(var i = 1; i<numbuffers+1; i++) {
 		
 		// Set the right buffer index
-		o(["to_mubu_play", "bufferindex", i+1]);
+		o(["to_mubu_play", "bufferindex", i]);
 		
 		// Then the OSC commands to wekinator
-		o(["to_wekinator", "/wekinator/control/startDtwRecording", labels_set.indexOf(labels[i])]);
+		o(["to_wekinator", "/wekinator/control/startDtwRecording", labels_set.indexOf(labels[i-1])]);
 		
 		// play
 		o(["to_mubu_play", "play", 1]);
