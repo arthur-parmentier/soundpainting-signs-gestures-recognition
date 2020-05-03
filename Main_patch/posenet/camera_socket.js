@@ -40898,7 +40898,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  
  
 const SocketIOClient = require("socket.io-client");
-const io = new SocketIOClient("http://localhost:3000");
+const io = new SocketIOClient("http://localhost:3001");
 const socket = io.connect();
 socket.on("connect", () => {
 	console.log("Connected to Max 8");
@@ -41293,7 +41293,7 @@ function detectPoseInRealTime(video, net) {
     // scores
 
 
-    loadFile("http://localhost:3000/posenetdata?data=" + encodeURIComponent(JSON.stringify(poses)),function(d){});
+    // loadFile("http://localhost:3000/posenetdata?data=" + encodeURIComponent(JSON.stringify(poses)),function(d){});
     poses.forEach(({
       score,
       keypoints

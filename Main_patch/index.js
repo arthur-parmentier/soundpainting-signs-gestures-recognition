@@ -20,7 +20,7 @@ io.on("connection", (socket) => {
 
 });
 
-io.listen(3000);
+io.listen(3001);
 
 // This will ensure that when this parent process is killed in maxpat (either by `node.script stop` or Max is shutdown for some reason),
 // it will terminate the child process, the Electron app.
