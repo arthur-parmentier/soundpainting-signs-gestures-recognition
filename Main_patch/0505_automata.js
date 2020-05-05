@@ -261,7 +261,31 @@ let fsm = new StateMachine({
 				fill_request_who();
 			}
 			
-			stop_old_content(); // it's enough to stop everything
+			stop_old_content();
+			
+			for(var i = 0; i<this.who_array.length; i++) {
+			
+				this.requests[this.requests_counter][this.who_array[i]] = {"Off": this.defaults["Off"]}; // TODO: check whether off should be obj or other type
+			
+				// delete corresponding entries in the reverse distribution array
+				for(var j = 0; j<Object.keys(this.reverse_content_distribution).length; j++) {
+					
+					if(this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]][this.who_array[i]] != null) {
+						
+						delete this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]][this.who_array[i]];
+						
+						// if the Contents has no more instruments playing it, delete the Contents entry
+						if(Object.keys(this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]]).length == 0) {
+						
+							delete this.reverse_content_distribution[Object.keys(this.reverse_content_distribution)[j]];
+						}
+						j--; // we need to update j again because we deleted one item to object keys index must decrease by one
+					}
+				}
+				
+				// delete corresponding entries in the distribution array
+				delete this.content_distribution[this.who_array[i]];
+			}
 			
 			if(this.state == "Execution") {
 				
@@ -316,21 +340,20 @@ function fill_request_what(flag) {
 		for (var i = 0; i<fsm.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents is applied to all of them
 				
 			// Store the sign into the request
-			if(fsm.defaults[flag] == null) {
-				maxApi.post("warning: unknown flag; defaults value to 0");
-				fsm.defaults[flag] = 0; // we create the flag with 0 as default value
-			}
+			if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] == null) { // we make sure that the Contents was not already there in the request, which is the expected normal case
 			
-			if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] != null) { // we check if the content was already in the request // something is probably wrong, so we can send a warning in the console
-			
-				maxApi.post(sign + " already included in the request for the same performer.");
-			} else {
+				if(fsm.defaults[flag] == null) {
+					maxApi.post("warning: unknown flag; defaults value to 0");
+					fsm.defaults[flag] = 0; // we create the flag with 0 as default value
+				}
 				
 				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {};
-			}
-			fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
 				
+			} else { // something is probably wrong, so we can send a warning in the console
 			
+				maxApi.post(sign + " already requested to perform in the same sentence...");
+			}
 			
 			if(flag != "continue") { // in the case of "continue" the content arrays do not change
 				
