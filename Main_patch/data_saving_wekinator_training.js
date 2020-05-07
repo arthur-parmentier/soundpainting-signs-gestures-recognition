@@ -91,11 +91,12 @@ const handlers = {
 			
 			if(tracks.length == track_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
 				
+				state = "creating_tracks";
+				
 				for(var i = 0; i<tracks.length; i++) {
 						o(["to_imubu", "hastrack", tracks[i]]);
 				}
 				
-			// o(["to_imubu", "gettracks"]);
 			}
 			else {
 				
@@ -137,7 +138,7 @@ const handlers = {
 	
 	"hastrack": (bool, name) => {
 		
-		if(tracks.includes(name)) {
+		if(tracks.includes(name) && state == "creating_tracks") {
 		
 			let size = track_sizes[tracks.indexOf(name)];
 		
