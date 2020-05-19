@@ -41337,6 +41337,9 @@ async function bindPage() {
 
   try {
     video = await loadVideo();
+	var x = output.captureStream();
+	targetV.srcObject = x;
+	targetV.play();
   } catch (e) {
     let info = document.getElementById('info');
     info.textContent = 'this browser does not support video capture,' + 'or this device does not have a camera';
