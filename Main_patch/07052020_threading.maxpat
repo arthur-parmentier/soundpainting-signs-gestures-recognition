@@ -44,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1935.0, 255.0, 58.0, 22.0 ],
+					"patching_rect" : [ 1930.0, 180.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -55,7 +55,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1987.0, 210.0, 315.0, 20.0 ],
+					"patching_rect" : [ 1637.5, 734.0, 315.0, 20.0 ],
 					"text" : "Number box update speed limit (for performance issues)"
 				}
 
@@ -67,7 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1935.0, 180.0, 87.0, 22.0 ],
+					"patching_rect" : [ 1890.0, 690.0, 87.0, 22.0 ],
 					"text" : "loadmess 250."
 				}
 
@@ -532,7 +532,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1935.0, 212.105508034911054, 50.0, 22.0 ]
+					"patching_rect" : [ 1585.5, 736.105508034911054, 50.0, 22.0 ]
 				}
 
 			}
@@ -4034,7 +4034,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 88.0, 77.0, 1824.0, 969.0 ],
+						"rect" : [ -31958.0, -31915.0, 1824.0, 969.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
