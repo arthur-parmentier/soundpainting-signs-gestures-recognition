@@ -10921,7 +10921,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 614.999999284744263, 135.0, 258.0, 619.0 ],
-					"text" : "The first implemented input is Posenet; which loads your first video device of your OS (usually your webcam) and outputs the skeleton tracking of your body, with the coordinates of each body parts.\n\n1) If you need to, start by installing the node packages that are required to run the node script and server. You will only need to do it once, but it can take some time.\n\n2) Start Posenet by clicking on the toggle button.\n\n2.1) Once the Posnet window appears, change the settings (controls) according to your GPU performances. Make sure that the joints that interest you are well recognized, given that the system should work fine with FPS>10.\n\n-Try to always use the ResNet50 model which performs much better than its little brother MobileNet.\n- Always use the biggest model with quantbytes = 4.\n- Change the OutputStride and Input resolution according to your computer performances\n\nTip: if you do not see the control panel appearing, try zooming in and reload posenet.\n\n3) You can monitor the performance of the model by taking a look at the FPS of posenet.\n\n4) On the right red panel, choose the joints that are used as features. I suggest to only use elbows and wrists."
+					"text" : "The first implemented input is Posenet; which loads your first video device of your OS (usually your webcam) and outputs the skeleton tracking of your body, with the coordinates of each body parts.\n\n1) If you need to, start by installing the node packages that are required to run the node script and server. You will only need to do it once, but it can take some time.\n\n2) Start Posenet by clicking on the toggle button.\n\n2.1) Once the Posnet window appears, change the settings (controls) according to your GPU performances. Make sure that the joints that interest you are well recognized, given that the system should work fine with FPS~10.\n\n-Try to always use the ResNet50 model which performs much better than its little brother MobileNet.\n- Always use the biggest model with quantbytes = 4.\n- Change the OutputStride and Input resolution according to your computer performances\n\nTip: if you do not see the control panel appearing, try zooming in and reload posenet.\n\n3) You can monitor the performance of the model by taking a look at the FPS of posenet.\n\n4) On the right red panel, choose the joints that are used as features. I suggest to only use elbows and wrists."
 				}
 
 			}
@@ -17393,7 +17393,7 @@
 					"patching_rect" : [ 1060.0, 840.0, 74.786325037479401, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 963.642179699436156, 252.567467618269745, 74.786325037479401, 22.0 ],
-					"text" : "15.205911"
+					"text" : "16."
 				}
 
 			}
