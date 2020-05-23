@@ -6,7 +6,7 @@ function createWindow() {
 	const win = new BrowserWindow({ width: 800, height: 600 });
 
 	// and load the html of the app.
-	win.loadFile("./posenet/index_socket.html");
+	win.loadFile("./posenet_electron.html");
 	
 	// duplicate did not work
 	/* console.log("Creating video window");

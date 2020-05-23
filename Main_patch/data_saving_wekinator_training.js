@@ -82,6 +82,8 @@ const handlers = {
 	},
 	
 	"track_names": (...names) => { // the names of active tracks (from user input, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
+	
+	// Todo: update for different models
 		
 		if(names != "" && names != []) {
 			
