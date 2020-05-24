@@ -93,20 +93,20 @@ const handlers = {
 		}
 	},
 	
-	"tracks_sizes": (...sizes) => { // from input manager
+	"active_tracks_sizes": (...sizes) => { // from input manager
 		
 		if(sizes != "" && sizes != []) {
 			active_tracks_sizes = sizes;
 		}
 	},
 	
-	"track_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
+	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
 		
 		p("Received tracks");
 		active_tracks = names.filter(not_empty);
 		o(["to_mubu_play", "trackid", ...active_tracks]);
 		
-		if(active_tracks.length == active_track_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+		if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
 			
 			state = "creating_tracks";
 			
@@ -117,7 +117,7 @@ const handlers = {
 		}
 		else {
 			
-			p("Error: track names length and track sizes length are not equal...");
+			p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
 		}
 		
 	},
@@ -209,7 +209,7 @@ async function save() {
 	await update_buffers_and_tracks();
 		
 	p("Saving buffers : " + buffers);
-	p("Saving tracks : " + tracks);
+	p("Saving tracks : " + mubu_tracks);
 	p("Saving labels : " + labels);
 	
 	/* First saving method. 
