@@ -33,7 +33,7 @@ function inputs()
 		
 		if(return_list.length == 0) { 
 		
-			return_list = [""]; 
+			return_list = ["empty"]; 
 		}
 		
 		outlet(0,return_list);

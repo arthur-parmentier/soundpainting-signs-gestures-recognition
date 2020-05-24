@@ -1,18 +1,25 @@
 const maxApi = require("max-api");
 var fs = require('fs');
 var path = require("path");
+const { v1: uuidv1 } = require('uuid');
 
-var tracks = [];
-var track_sizes = [];
-var playing = false;
+// data from the input manager
+var active_tracks = [];
+var active_tracks_sizes = [];
+
+// data from the mubu object itself
+var mubu_tracks = [];
+var mubu_tracks_sizes = [];
 var labels = [];
 var labels_set = [];
 var buffers = [];
+
+// helpers
+var playing = false;
 var state = "";
 
+// data folder location
 var data_folder = "./data/";
-
-const { v1: uuidv1 } = require('uuid');
 
 function p(msg) {
 	
@@ -23,6 +30,11 @@ function o(msg) {
 	
 	maxApi.outlet(msg);
 	//maxApi.post(msg);
+}
+
+function not_empty(e) {
+	
+	return e!="empty";
 }
 
 const handlers = {
@@ -81,41 +93,44 @@ const handlers = {
 		}
 	},
 	
-	"track_names": (...names) => { // the names of active tracks (from user input, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
-	
-	// Todo: update for different models
+	"tracks_sizes": (...sizes) => { // from input manager
 		
-		if(names != "" && names != []) {
-			
-			p("Received tracks");
-			tracks = names;
-			o(["to_mubu_play", "trackid", ...tracks]);
-			
-			if(tracks.length == track_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
-				
-				state = "creating_tracks";
-				
-				for(var i = 0; i<tracks.length; i++) {
-						o(["to_imubu", "hastrack", tracks[i]]);
-				}
-				
-			}
-			else {
-				
-				p("Error: track names length and track sizes length are not equal...");
-			}
+		if(sizes != "" && sizes != []) {
+			active_tracks_sizes = sizes;
 		}
+	},
+	
+	"track_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
+		
+		p("Received tracks");
+		active_tracks = names.filter(not_empty);
+		o(["to_mubu_play", "trackid", ...active_tracks]);
+		
+		if(active_tracks.length == active_track_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+			
+			state = "creating_tracks";
+			
+			for(var i = 0; i<active_tracks.length; i++) {
+					o(["to_imubu", "hastrack", active_tracks[i]]);
+			}
+			
+		}
+		else {
+			
+			p("Error: track names length and track sizes length are not equal...");
+		}
+		
 	},
 	
 	"tracks": (...track_list) => { // this is the response from imubu that tells us what tracks there are already inside mubu
 		
 		state = "updating_tracks";
-		tracks = [];
-		track_sizes = [];
+		mubu_tracks = [];
+		mubu_tracks_sizes = [];
 		
 		for(var i = 0; i<track_list.length; i++) {
 			
-			tracks.push(track_list[i]);
+			mubu_tracks.push(track_list[i]);
 			o(["to_imubu", "track", track_list[i], "getmatrixcols"]); // here we want to also update the tracks sizes
 		}
 	
@@ -126,23 +141,23 @@ const handlers = {
 		if(arg_list.includes("matrixcols")) { // it is an answer to the track XX getmatrixcols
 			
 			let id = arg_list.indexOf("matrixcols");
-			track_sizes[arg_list[0]-1] = arg_list[id+1];
+			mubu_tracks_sizes[arg_list[0]-1] = arg_list[id+1];
 			
-			if(state == "updating_tracks" && arg_list[0] == tracks.length) { // we know that it is the last track size we are updating
+			if(state == "updating_tracks" && arg_list[0] == mubu_tracks.length) { // we know that it is the last track size we are updating
 				
 				state = "finished"; 
 				p("Buffer and track update finished");
 				p(buffers.length + " buffers");
-				p(tracks.length + " tracks");
+				p(mubu_tracks.length + " tracks");
 			}
 		}
 	},
 	
 	"hastrack": (bool, name) => {
 		
-		if(tracks.includes(name) && state == "creating_tracks") {
+		if(active_tracks.includes(name) && state == "creating_tracks") { // when calling for track creation from input manager
 		
-			let size = track_sizes[tracks.indexOf(name)];
+			let size = active_tracks_sizes[active_tracks.indexOf(name)];
 		
 			let funct = "modifytrack";
 			
@@ -155,13 +170,7 @@ const handlers = {
 		}
 	},
 	
-	"track_sizes": (...sizes) => {
-		
-		if(sizes != "" && sizes != []) {
-			track_sizes = sizes;
-		}
-	},
-	
+
 	"train": () => {
 		
 		train();
@@ -209,10 +218,10 @@ async function save() {
 	*/
 	
 	p("Attempt save (one file per buffer per track)");
-	for(var i = 1; i<tracks.length+1; i++) {
+	for(var i = 1; i<mubu_tracks.length+1; i++) {
 		
 		// create folder if does not exists
-		let dir = data_folder + tracks[i-1] + "/";
+		let dir = data_folder + mubu_tracks[i-1] + "/";
 		
 		if (!fs.existsSync(dir)){
 			fs.mkdirSync(dir);
@@ -223,7 +232,7 @@ async function save() {
 			p("Saving buffer " + j + " track " + i);
 			o(["to_imubu", "bufferindex", j]); // We must change buffer first
 			
-			let filename = data_folder + tracks[i-1] + "/" + labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
+			let filename = data_folder + mubu_tracks[i-1] + "/" + labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
 			
 			o(["to_imubu", "writetrack", i, filename + ".mubu"]); // Then write the buffer to corresponding location
 			o(["to_imubu", "writetrack", i, filename + ".txt"]); // we save the .txt file for conveniency
@@ -232,16 +241,16 @@ async function save() {
 	
 	/* Second saving method. 
 	+ Labels and names are recovered on loading
-	- Tracks are saved in the same file so it is not garantueed that the data is homogeneous (one buffer in the dataset can have empty data for one active track if not reloaded properly.
+	- tracks are saved in the same file so it is not garantueed that the data is homogeneous (one buffer in the dataset can have empty data for one active track if not reloaded properly.
 	*/
 	
 	// TODO: first we want to check that we are saving the right track configuration. Maybe someone has loaded files externally, updating the tracks in mubu, so the configuratino text may not be right
 	
 	let tracks_string = "configuration";
 			
-	for(var i = 0; i<tracks.length; i++) {
+	for(var i = 0; i<mubu_tracks.length; i++) {
 
-		tracks_string = tracks_string + "_#" + tracks[i];
+		tracks_string = tracks_string + "_#" + mubu_tracks[i];
 	}
 	
 	let dir2 = data_folder + tracks_string + "/";
@@ -312,10 +321,9 @@ function setup() { // first function that is triggered at loading time
 
 async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
 
-	update_buffers_and_tracks();
-	
 	p("Start wekinator training");
-	
+	update_buffers_and_tracks();
+	o(["to_mubu_play", "trackid", ...active_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
 	o(["wekinator_training_state", 1]);
 	
 	for(var i = 1; i<buffers.length+1; i++) {
