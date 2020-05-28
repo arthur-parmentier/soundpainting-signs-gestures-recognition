@@ -113,7 +113,7 @@
 					"patching_rect" : [ 225.0, 360.0, 50.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 225.0, 360.0, 50.0, 22.0 ],
-					"text" : "1 1 1"
+					"text" : "1 0 1"
 				}
 
 			}
@@ -167,7 +167,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 645.0, 540.0, 165.0, 195.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 645.0, 540.0, 165.0, 195.0 ]
+					"presentation_rect" : [ 0.0, 300.0, 150.0, 240.0 ]
 				}
 
 			}
@@ -247,8 +247,8 @@
 					"id" : "obj-18",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 525.0, 378.0, 91.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 525.0, 378.0, 91.0, 22.0 ],
@@ -3559,7 +3559,7 @@
 					"outlettype" : [ "list", "", "", "" ],
 					"patching_rect" : [ 34.0, 107.0, 250.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 34.0, 107.0, 250.0, 37.0 ],
+					"presentation_rect" : [ 34.0, 107.0, 250.0, 20.0 ],
 					"rowheight" : 16,
 					"rows" : 2,
 					"vscroll" : 0
@@ -3615,7 +3615,7 @@
 					}
 ,
 					"text" : "pattr @bindto model_input_routing::presentation_rect",
-					"varname" : "u310005450"
+					"varname" : "u155001487"
 				}
 
 			}
@@ -3623,7 +3623,7 @@
 				"box" : 				{
 					"border" : 0,
 					"filename" : "side_text.js",
-					"id" : "obj-393",
+					"id" : "obj-577",
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -3639,7 +3639,7 @@
 				"box" : 				{
 					"border" : 0,
 					"filename" : "side_text.js",
-					"id" : "obj-395",
+					"id" : "obj-579",
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -3653,20 +3653,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-408",
-					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 0.0, 407.0, 100.0, 22.0 ],
-					"text" : "router 2 2",
-					"varname" : "router"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-409",
+					"id" : "obj-585",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -3678,7 +3665,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-410",
+					"id" : "obj-586",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -3690,7 +3677,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-411",
+					"id" : "obj-587",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -3703,7 +3690,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-412",
+					"id" : "obj-588",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -3711,6 +3698,18 @@
 					"patching_rect" : [ 0.0, 307.0, 100.0, 22.0 ],
 					"text" : "receive erggr",
 					"varname" : "r_erggr"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patching_rect" : [ 0.0, 407.0, 100.0, 22.0 ],
+					"text" : "texxxt",
+					"varname" : "router"
 				}
 
 			}
@@ -3726,14 +3725,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"order" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-408", 0 ],
-					"order" : 2,
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -3948,34 +3939,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-409", 0 ],
-					"source" : [ "obj-408", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-410", 0 ],
-					"source" : [ "obj-408", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-408", 1 ],
-					"source" : [ "obj-411", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-408", 2 ],
-					"source" : [ "obj-412", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-414", 0 ]
 				}
@@ -4059,6 +4022,8 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -4070,9 +4035,7 @@
 					}
 ,
 					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
 				}
 ,

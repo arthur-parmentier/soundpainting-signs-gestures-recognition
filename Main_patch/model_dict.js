@@ -1,6 +1,6 @@
 autowatch = 1;
 
-outlets = 2;
+outlets = 1;
 inlets = 1;
 
 var debug = 1;
@@ -37,14 +37,13 @@ function list(x, y, state) {
 		dict.replace(models_list[x] + "::input_size", ""); // dict[models_list[x]]["input_size"] = input_sizes[y];
 	}
 	
-	//p(dict);
-	o(1, "bang");
-	
 }
 
-function models(list) {
+function models() {
 	
-	models_list = list;
+	dict.clear();
+	
+	models_list = arguments;
 	
 	for(var i = 0; i<models_list.length; i++) {
 		
@@ -55,9 +54,9 @@ function models(list) {
 	
 }
 
-function inputs(list) {
+function inputs() {
 	
-	input_list = list;
+	input_list = arguments;
 	
 	p(input_list)
 	
@@ -65,9 +64,9 @@ function inputs(list) {
 	
 }
 
-function input_sizes(list) {
+function input_sizes() {
 	
-	input_sizes_ = list;
+	input_sizes_ = arguments;
 	
 	o(0, "clear");
 	

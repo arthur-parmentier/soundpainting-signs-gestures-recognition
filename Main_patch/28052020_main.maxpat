@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -125,7 +125,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1575.0, 1785.0, 64.0, 22.0 ],
+					"patching_rect" : [ 1071.833333333333258, 1785.0, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -193,7 +193,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1198.000000000000227, 1770.0, 179.0, 22.0 ],
+					"patching_rect" : [ 1452.333333333333258, 1815.0, 179.0, 22.0 ],
 					"text" : "r #0indexed_sign_list_to_record"
 				}
 
@@ -205,8 +205,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1404.000000000000227, 1740.0, 152.0, 22.0 ],
-					"text" : "r #0input_selection_names"
+					"patching_rect" : [ 1755.0, 1845.0, 144.0, 22.0 ],
+					"text" : "r #0full_body_DTW_input"
 				}
 
 			}
@@ -217,7 +217,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1288.0, 1809.0, 154.0, 22.0 ],
+					"patching_rect" : [ 1579.166666666666515, 1785.0, 154.0, 22.0 ],
 					"text" : "r #0recorded_sign_indexed"
 				}
 
@@ -229,7 +229,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1053.000000000000227, 1785.0, 112.0, 22.0 ],
+					"patching_rect" : [ 1325.5, 1785.0, 112.0, 22.0 ],
 					"text" : "r #0recording_state"
 				}
 
@@ -241,7 +241,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1053.000000000000227, 1755.0, 143.0, 22.0 ],
+					"patching_rect" : [ 1200.0, 1815.0, 143.0, 22.0 ],
 					"text" : "r #0input_selection_sizes"
 				}
 
@@ -253,7 +253,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 916.0, 1755.0, 112.0, 22.0 ],
+					"patching_rect" : [ 1071.833333333333258, 1815.0, 112.0, 22.0 ],
 					"text" : "r #0to_buffer_script"
 				}
 
@@ -5796,6 +5796,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-13", 2 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-101", 0 ]
 				}
@@ -5835,6 +5842,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-95", 0 ],
 					"source" : [ "obj-109", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 1 ],
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}
@@ -6568,6 +6582,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-13", 4 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-315", 0 ]
 				}
@@ -6763,6 +6784,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-13", 1 ],
+					"source" : [ "obj-412", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-100", 0 ],
 					"source" : [ "obj-44", 0 ]
 				}
@@ -6784,6 +6812,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-13", 5 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-202", 0 ],
 					"source" : [ "obj-56", 0 ]
 				}
@@ -6793,6 +6828,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-109", 2 ],
 					"source" : [ "obj-59", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 3 ],
+					"source" : [ "obj-6", 0 ]
 				}
 
 			}
@@ -6946,13 +6988,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "input_filtering.js",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "27052020_routing_matrix.maxpat",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
@@ -6961,6 +6996,13 @@
 			}
 , 			{
 				"name" : "side_text.js",
+				"bootpath" : "~/Desktop/PDM/Main_patch",
+				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "model_dict.js",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
