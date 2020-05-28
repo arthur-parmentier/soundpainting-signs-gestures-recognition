@@ -58,8 +58,6 @@ function inputs() {
 	
 	input_list = arguments;
 	
-	p(input_list)
-	
 	o(0, "clear");
 	
 }
