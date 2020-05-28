@@ -44,7 +44,7 @@ const handlers = {
 	o(["/dict", dict]);
   },
   
-  "clearall": () => {
+  "clear": () => {
 	  
 	  labels = [];
 	  dict = {};

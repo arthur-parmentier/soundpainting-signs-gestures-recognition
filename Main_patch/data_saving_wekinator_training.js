@@ -10,9 +10,10 @@ var active_tracks_sizes = [];
 // data from the mubu object itself
 var mubu_tracks = [];
 var mubu_tracks_sizes = [];
-var labels = [];
-var labels_set = [];
-var buffers = [];
+var mubu_labels = [];
+var mubu_labels_set = [];
+var mubu_buffers = [];
+var mubu_numtracks = 0;
 
 // helpers
 var playing = false;
@@ -21,9 +22,13 @@ var state = "";
 // data folder location
 var data_folder = "./data/";
 
+var debug = 1;
+
 function p(msg) {
 	
-	maxApi.post(msg);
+	if(debug) {
+		maxApi.post(msg);
+	}
 }
 
 function o(msg) {
@@ -74,19 +79,20 @@ const handlers = {
 		
 		if(state == "updating_buffers") { // update_buffers_and_tracks function with getbuffers
 			
-			buffers = [];
-			labels = [];
+			mubu_buffers = [];
+			mubu_labels = [];
 			
 			for(var i = 0; i<arg_list.length; i++) {
 				
-				buffers.push(arg_list[i]);
-				labels.push(arg_list[i].split(" ")[0]);
-				// p("label : " + arg_list[i].split(" ")[0]);
+				mubu_buffers.push(arg_list[i]);
+				if(arg_list[i].length>1) {
+					mubu_labels.push(arg_list[i].split(" ")[0]);
+				}
 			}
 			
-			o(["buffers_names", ...buffers]);
+			o(["buffers_names", ...mubu_buffers]);
 			update_labels_set();
-			o(["labels_set", ...labels_set]);
+			o(["labels_set", ...mubu_labels_set]);
 			
 			state = "buffers_updated";
 			
@@ -94,46 +100,57 @@ const handlers = {
 	},
 	
 	"active_tracks_sizes": (...sizes) => { // from input manager
-		
-		if(sizes != "" && sizes != []) {
-			active_tracks_sizes = sizes;
-		}
+
+		p("Received tracks sizes ", ...sizes);
+		active_tracks_sizes = sizes.filter(not_empty);
 	},
 	
 	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
 		
-		p("Received tracks");
+		p("Received tracks ", ...names);
 		active_tracks = names.filter(not_empty);
-		o(["to_mubu_play", "trackid", ...active_tracks]);
 		
-		if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+		if(active_tracks.length > 0) {
+			o(["to_mubu_play", "trackid", ...active_tracks]);
 			
-			state = "creating_tracks";
-			
-			for(var i = 0; i<active_tracks.length; i++) {
-					o(["to_imubu", "hastrack", active_tracks[i]]);
+			if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+				
+				state = "creating_tracks";
+				
+				for(var i = 0; i<active_tracks.length; i++) {
+						o(["to_imubu", "hastrack", active_tracks[i]]);
+				}
+				
 			}
-			
+			else {
+				
+				p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
+			}
 		}
-		else {
-			
-			p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
-		}
+	},
+	
+	"numtracks": (num) => { // this is the answer from "getnumtracks" during update of buffers & tracks
 		
+		mubu_numtracks = num;
+		
+		if(state == "updating_numtracks") {
+			state = "numtracks_updated";
+		}
 	},
 	
 	"tracks": (...track_list) => { // this is the response from imubu that tells us what tracks there are already inside mubu
 		
-		state = "updating_tracks";
-		mubu_tracks = [];
-		mubu_tracks_sizes = [];
-		
-		for(var i = 0; i<track_list.length; i++) {
+		if(state == "updating_tracks") {
 			
-			mubu_tracks.push(track_list[i]);
-			o(["to_imubu", "track", track_list[i], "getmatrixcols"]); // here we want to also update the tracks sizes
+			mubu_tracks = [];
+			mubu_tracks_sizes = [];
+			
+			for(var i = 0; i<track_list.length; i++) {
+				
+				mubu_tracks.push(track_list[i]);
+				o(["to_imubu", "track", track_list[i], "getmatrixcols"]); // here we want to also update the tracks sizes
+			}
 		}
-	
 	},
 	
 	"track": (...arg_list) => {
@@ -145,9 +162,9 @@ const handlers = {
 			
 			if(state == "updating_tracks" && arg_list[0] == mubu_tracks.length) { // we know that it is the last track size we are updating
 				
-				state = "finished"; 
+				state = "tracks_updated"; 
 				p("Buffer and track update finished");
-				p(buffers.length + " buffers");
+				p(mubu_buffers.length + " buffers");
 				p(mubu_tracks.length + " tracks");
 			}
 		}
@@ -171,26 +188,36 @@ const handlers = {
 	},
 	
 
-	"train": () => {
+	"train": (model) => {
 		
-		train();
+		train(model);
 	},
 	
 	"end": () => { // the end msg is triggered by mubu.play when it has finished playing, so that we now we can continue the training with the next buffer
 		
 		playing = false;
-		// p("r end");
+		p("Buffer playback end");
 	},
 	
 	"start": () => { // the start command indicates that the mubu.play is active, so we have to wait for it to send "end"
 		
 		playing = true;
-		// p("r start");
+		p("Buffer playback start");
 	},
   
 	"save": () => {
 		
 		save();
+	},
+	
+	"clearbuffers": () => {
+		
+		clearbuffers();
+	},
+	
+	"clear_add_buffers": (...buffers) => {
+		
+		add_clear_buffers(buffers);
 	},
 	
 	[maxApi.MESSAGE_TYPES.ALL]: () => {
@@ -204,13 +231,47 @@ maxApi.addHandlers(handlers);
 
 setup();
 
+async function add_clear_buffers(buffers) { // it is async because we need to wait for the "clear" part before we can add the buffers
+	
+	await clearbuffers();
+	
+	for(var i = 0; i<buffers.length; i++) {
+			
+			let label = "";
+			if(buffers[i].length>1) {
+				if(buffers[i].split(" ").length == 2) {
+					label = buffers[i].split(" ")[0];
+					o(["to_imubu", "addbuffer", buffers[i]]);
+				o(["to_imubu", "buffer", buffers[i], "info", "label", label]);
+				} else { p("Wrong buffer name format: " + buffers[i]); }
+			} else { p("Wrong buffer name format: " + buffers[i]); }
+		}
+		o(["to_imubu", "removebuffer", "1"]);
+		
+}
+
+async function clearbuffers() {
+	
+	await update_buffers_and_tracks();
+	
+	p("Clearing buffers");
+	
+	for(var i = mubu_buffers.length; i>0; i--) { // here we decrease
+		
+		p("Removing buffer " + i);
+		o(["to_imubu", "removebuffer", i]);
+	}
+	
+	// WARNING: a buffer "1" is automatically created by mubu
+}
+
 async function save() {
 	
 	await update_buffers_and_tracks();
 		
-	p("Saving buffers : " + buffers);
+	p("Saving buffers : " + mubu_buffers);
 	p("Saving tracks : " + mubu_tracks);
-	p("Saving labels : " + labels);
+	p("Saving labels : " + mubu_labels);
 	
 	/* First saving method. 
 	+ Save each buffer for each track in a separate file
@@ -227,12 +288,12 @@ async function save() {
 			fs.mkdirSync(dir);
 		}
 		  
-		for(var j = 1; j<buffers.length+1; j++) {
+		for(var j = 1; j<mubu_buffers.length+1; j++) {
 			  
 			p("Saving buffer " + j + " track " + i);
 			o(["to_imubu", "bufferindex", j]); // We must change buffer first
 			
-			let filename = data_folder + mubu_tracks[i-1] + "/" + labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
+			let filename = data_folder + mubu_tracks[i-1] + "/" + mubu_labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
 			
 			o(["to_imubu", "writetrack", i, filename + ".mubu"]); // Then write the buffer to corresponding location
 			o(["to_imubu", "writetrack", i, filename + ".txt"]); // we save the .txt file for conveniency
@@ -259,11 +320,11 @@ async function save() {
 			fs.mkdirSync(dir2);
 		}
 	
-	for(var j = 1; j<buffers.length+1; j++) {
+	for(var j = 1; j<mubu_buffers.length+1; j++) {
 			  
 		p("Saving buffer " + j + " for all tracks ");
 		
-		let filename = data_folder + tracks_string + "/" + labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
+		let filename = data_folder + tracks_string + "/" + mubu_labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
 						
 		o(["to_imubu", "writeall", filename + ".mubu", "@buffer", j]); // Then write the buffer to corresponding location
 		// o(["to_imubu", "writeall", filename + ".txt", "@buffer", j]); // not working
@@ -298,16 +359,27 @@ async function update_buffers_and_tracks() {
 	
 	p("Updating buffers and tracks");
 	state = "updating_buffers";
-	
 	o(["to_imubu", "getbuffers"]);
-	o(["to_imubu", "gettracks"]);
+	await buffers_updated();
+	state = "updating_numtracks";
+	o(["to_imubu", "getnumtracks"]);
+	await numtracks_updated();
 	
-	await waitforupdate();
+	if(mubu_numtracks>0) {
+		state = "updating_tracks";
+		o(["to_imubu", "gettracks"]);
+	} else {
+		mubu_tracks = [];
+		mubu_tracks_sizes = [];
+		state = "tracks_updated";
+	}
+	await tracks_updated();
+	p("Update completed");
 }
 
 function update_labels_set() {
 	
-	labels_set = Array.from(new Set(labels)).sort();
+	mubu_labels_set = Array.from(new Set(mubu_labels)).sort();
 }
 
 function setup() { // first function that is triggered at loading time
@@ -319,20 +391,34 @@ function setup() { // first function that is triggered at loading time
 	
 }
 
-async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
+async function train(model) { // this is the async function that triggers the mubu.play object by iterating other each buffer
 
-	p("Start wekinator training");
-	update_buffers_and_tracks();
-	o(["to_mubu_play", "trackid", ...active_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
-	o(["wekinator_training_state", 1]);
+	p("Start training " + model);
+	await update_buffers_and_tracks();
 	
-	for(var i = 1; i<buffers.length+1; i++) {
+	p("Training " + active_tracks.length + " tracks : ", ...active_tracks);
+	
+	o(["to_mubu_play", "trackid", ...active_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
+	
+	o([model + "_training_state", 1]);
+	
+	for(var i = 1; i<mubu_buffers.length+1; i++) {
+		
+		p("Training buffer " + i);
 		
 		// Set the right buffer index
 		o(["to_mubu_play", "bufferindex", i]);
 		
-		// Then the OSC commands to wekinator
-		o(["to_wekinator", "/wekinator/control/startDtwRecording", labels_set.indexOf(labels[i-1])]);
+		let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
+		
+		if(model == "full_body_DTW") {
+			// Then the OSC commands to wekinator
+			o(["to_" + model, "/wekinator/control/startDtwRecording", index]);
+		} else {
+			
+			o(["to_" + model, "/wekinator/control/outputs", index]);
+			o(["to_" + model, "/wekinator/control/startRecording"]);
+		}
 		
 		// play
 		o(["to_mubu_play", "play", 1]);
@@ -341,11 +427,15 @@ async function train() { // this is the async function that triggers the mubu.pl
 		
 		await waitforplaytostop(); // we wait for the "end" message to arrive with async code
 		
-		// stop wekinator recording
-		o(["to_wekinator", "/wekinator/control/stopDtwRecording"]);
-	}
+		if(model == "full_body_DTW") {
+			// stop wekinator recording
+			o(["to_" + model, "/wekinator/control/stopDtwRecording"]);
+		} else {
+			o(["to_" + model, "/wekinator/control/stopRecording"]);
+		}
 	
-	o(["wekinator_training_state", 0]);
+		o([model + "_training_state", 0]);
+	}
 }
 
 function waitforplaytostop() {
@@ -358,13 +448,35 @@ function waitforplaytostop() {
 	});
 }
 
-function waitforupdate() {
+function tracks_updated() {
 		
 	return new Promise(function (resolve, reject) {
 		(function check_update(){
-			if (state == "finished") return resolve();
+			if (state == "tracks_updated") return resolve();
 			setTimeout(check_update, 10);
-			p("Waiting for buffer or track update");
+			p("Waiting for track update");
+		})();
+	});
+}
+
+function buffers_updated() {
+		
+	return new Promise(function (resolve, reject) {
+		(function check_update(){
+			if (state == "buffers_updated") return resolve();
+			setTimeout(check_update, 10);
+			p("Waiting for buffer update");
+		})();
+	});
+}
+
+function numtracks_updated() {
+		
+	return new Promise(function (resolve, reject) {
+		(function check_update(){
+			if (state == "numtracks_updated") return resolve();
+			setTimeout(check_update, 10);
+			p("Waiting for numtracks update");
 		})();
 	});
 }
