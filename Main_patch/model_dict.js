@@ -1,6 +1,6 @@
 autowatch = 1;
 
-outlets = 1;
+outlets = 2;
 inlets = 1;
 
 var debug = 1;
@@ -28,16 +28,27 @@ function list(x, y, state) {
 	
 	if(state == 1) {
 		
-		dict.replace(models_list[x] + "::input_name", input_list[y]); // [models_list[x]]["input_name"] = input_list[y];
-		dict.replace(models_list[x] + "::input_size", input_sizes_[y]); // dict[models_list[x]]["input_size"] = input_sizes[y];
+		// name
+		dict.replace(models_list[x] + "::input_name", input_list[y]); // Placing value in routing dict
+		o(1,["send", models_list[x]+"_input_name"]); // setting the forward obj
+		o(1, input_list[y]);
+		
+		// size
+		dict.replace(models_list[x] + "::input_size", input_sizes_[y]); 
 		models_corresponding_input_index[x] = y;
+		o(1,["send", models_list[x]+"_input_size"]); // setting the forward obj
+		o(1, input_sizes_[y]);
 	}
 	
 	if(state == 0) {
 		
-		dict.replace(models_list[x] + "::input_name", ""); // [models_list[x]]["input_name"] = input_list[y];
-		dict.replace(models_list[x] + "::input_size", 0); // dict[models_list[x]]["input_size"] = input_sizes[y];
+		dict.replace(models_list[x] + "::input_name", "");
+		o(1,["send", models_list[x]+"_input_name"]); // setting the forward obj
+		o(1, "");
+		dict.replace(models_list[x] + "::input_size", 0); 
 		models_corresponding_input_index[x] = -1;
+		o(1,["send", models_list[x]+"_input_size"]); // setting the forward obj
+		o(1, 0);
 	}
 	
 }
@@ -76,7 +87,10 @@ function input_sizes() {
 			
 			size = input_sizes_[models_corresponding_input_index[i]];
 		}
-		dict.replace(models_list[i] + "::input_size", size);
+		
+		dict.replace(models_list[i] + "::input_size", size); // dict update
+		o(1,["send", models_list[i]+"_input_size"]); // setting the forward obj
+		o(1, size);
 	}
 	// o(0, "clear");
 	

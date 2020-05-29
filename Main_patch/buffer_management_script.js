@@ -39,7 +39,7 @@ function o(msg) {
 
 function not_empty(e) {
 	
-	return e!="empty";
+	return e!="";
 }
 
 const handlers = {
@@ -103,12 +103,6 @@ const handlers = {
 
 		p("Received tracks sizes ", ...sizes);
 		active_tracks_sizes = sizes.filter(not_empty);
-	},
-	
-	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
-		
-		p("Received tracks ", ...names);
-		active_tracks = names.filter(not_empty);
 		
 		if(active_tracks.length > 0) {
 			o(["to_mubu_play", "trackid", ...active_tracks]);
@@ -127,6 +121,19 @@ const handlers = {
 				p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
 			}
 		}
+	},
+	
+	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
+		
+		p("Received tracks ", ...names);
+		
+		if(!not_empty(names)) {
+			
+			cleartracks();
+		}
+		
+		active_tracks = names.filter(not_empty);
+		
 	},
 	
 	"numtracks": (num) => { // this is the answer from "getnumtracks" during update of buffers & tracks
@@ -220,6 +227,11 @@ const handlers = {
 		add_clear_buffers(buffers);
 	},
 	
+	"cleartracks": () => {
+		
+		cleartracks();
+	},
+	
 	[maxApi.MESSAGE_TYPES.ALL]: () => {
 		
 		// anything that was not handled comes here
@@ -246,7 +258,7 @@ async function add_clear_buffers(buffers) { // it is async because we need to wa
 				} else { p("Wrong buffer name format: " + buffers[i]); }
 			} else { p("Wrong buffer name format: " + buffers[i]); }
 		}
-		o(["to_imubu", "removebuffer", "1"]);
+		o(["to_imubu", "removebuffer", 1]);
 		
 }
 
@@ -263,6 +275,11 @@ async function clearbuffers() {
 	}
 	
 	// WARNING: a buffer "1" is automatically created by mubu
+}
+
+function cleartracks() {
+	
+	o(["to_imubu", "clear"]);
 }
 
 async function save() {
