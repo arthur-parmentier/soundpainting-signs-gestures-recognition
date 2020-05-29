@@ -44,7 +44,7 @@ function list(x, y, state) {
 		
 		dict.replace(models_list[x] + "::input_name", "");
 		o(1,["send", models_list[x]+"_input_name"]); // setting the forward obj
-		o(1, "");
+		o(1, "empty");
 		dict.replace(models_list[x] + "::input_size", 0); 
 		models_corresponding_input_index[x] = -1;
 		o(1,["send", models_list[x]+"_input_size"]); // setting the forward obj

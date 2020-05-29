@@ -39,7 +39,7 @@ function o(msg) {
 
 function not_empty(e) {
 	
-	return e!="";
+	return e!="empty";
 }
 
 const handlers = {
