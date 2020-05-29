@@ -29,25 +29,25 @@ function list(x, y, state) {
 	if(state == 1) {
 		
 		// name
-		dict.replace(models_list[x] + "::input_name", input_list[y]); // Placing value in routing dict
-		o(1,["send", models_list[x]+"_input_name"]); // setting the forward obj
-		o(1, input_list[y]);
+		dict.replace(models_list[y] + "::input_name", input_list[x]); // Placing value in routing dict
+		o(1,["send", models_list[y]+"_input_name"]); // setting the forward obj
+		o(1, input_list[x]);
 		
 		// size
-		dict.replace(models_list[x] + "::input_size", input_sizes_[y]); 
-		models_corresponding_input_index[x] = y;
-		o(1,["send", models_list[x]+"_input_size"]); // setting the forward obj
+		dict.replace(models_list[y] + "::input_size", input_sizes_[x]); 
+		models_corresponding_input_index[y] = x;
+		o(1,["send", models_list[y]+"_input_size"]); // setting the forward obj
 		o(1, input_sizes_[y]);
 	}
 	
 	if(state == 0) {
 		
-		dict.replace(models_list[x] + "::input_name", "");
-		o(1,["send", models_list[x]+"_input_name"]); // setting the forward obj
+		dict.replace(models_list[y] + "::input_name", "");
+		o(1,["send", models_list[y]+"_input_name"]); // setting the forward obj
 		o(1, "empty");
-		dict.replace(models_list[x] + "::input_size", 0); 
-		models_corresponding_input_index[x] = -1;
-		o(1,["send", models_list[x]+"_input_size"]); // setting the forward obj
+		dict.replace(models_list[y] + "::input_size", 0); 
+		models_corresponding_input_index[y] = -1;
+		o(1,["send", models_list[y]+"_input_size"]); // setting the forward obj
 		o(1, 0);
 	}
 	
