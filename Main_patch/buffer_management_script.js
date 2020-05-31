@@ -4,8 +4,9 @@ var path = require("path");
 const { v1: uuidv1 } = require('uuid');
 
 // data from the input manager
-var active_tracks = [];
+var active_tracks = []; // note: this script was originally designed to handle multiple tracks in the mubu obj. Because of later design changes, it only has one track in practice, but i kept the multi track design for genericity and possible future improvements
 var active_tracks_sizes = [];
+var model = "";
 
 // data from the mubu object itself
 var mubu_tracks = [];
@@ -24,6 +25,8 @@ var data_folder = "./data/";
 
 var debug = 1;
 
+
+// handy functions
 function p(msg) {
 	
 	if(debug) {
@@ -42,7 +45,14 @@ function not_empty(e) {
 	return e!="empty";
 }
 
+// main part of the code starts here
 const handlers = {
+	
+	"model": (name) => {
+		
+		model = name;
+		o(["to_mubu_play", "mubuname", model]);
+	},
 	
 	"read_append": (abs_path) => {
 		
@@ -247,19 +257,25 @@ async function add_clear_buffers(buffers) { // it is async because we need to wa
 	
 	await clearbuffers();
 	
-	for(var i = 0; i<buffers.length; i++) {
-			
-			let label = "";
-			if(buffers[i].length>1) {
-				if(buffers[i].split(" ").length == 2) {
-					label = buffers[i].split(" ")[0];
-					o(["to_imubu", "addbuffer", buffers[i]]);
-				o(["to_imubu", "buffer", buffers[i], "info", "label", label]);
-				} else { p("Wrong buffer name format: " + buffers[i]); }
-			} else { p("Wrong buffer name format: " + buffers[i]); }
-		}
-		o(["to_imubu", "removebuffer", 1]);
+	addbuffers(buffers);
 		
+}
+
+function addbuffers(buffers) {
+	
+	for(var i = 0; i<buffers.length; i++) {
+		
+		let label = "";
+		if(buffers[i].length>1) {
+			if(buffers[i].split(" ").length == 2) {
+				label = buffers[i].split(" ")[0];
+				o(["to_imubu", "addbuffer", buffers[i]]);
+			o(["to_imubu", "buffer", buffers[i], "info", "label", label]);
+			} else { p("Wrong buffer name format: " + buffers[i]); }
+		} else { p("Wrong buffer name format: " + buffers[i]); }
+	}
+	o(["to_imubu", "removebuffer", 1]);
+	
 }
 
 async function clearbuffers() {
@@ -268,13 +284,15 @@ async function clearbuffers() {
 	
 	p("Clearing buffers");
 	
-	for(var i = mubu_buffers.length; i>0; i--) { // here we decrease
+	for(var i = mubu_buffers.length; i>1; i--) { // here we decrease
 		
 		p("Removing buffer " + i);
 		o(["to_imubu", "removebuffer", i]);
 	}
 	
-	// WARNING: a buffer "1" is automatically created by mubu
+	// BUG HERE we can't remove first buffer, otherwise it mess up with the tracks, but we can make this workaround so that the names are not duplicates (which again mess up with loading files...)
+	o(["to_imubu", "addbuffer", "1"]);
+	o(["to_imubu", "removebuffer", 1]);
 }
 
 function cleartracks() {
@@ -408,7 +426,7 @@ function setup() { // first function that is triggered at loading time
 	
 }
 
-async function train(model) { // this is the async function that triggers the mubu.play object by iterating other each buffer
+async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
 
 	p("Start training " + model);
 	await update_buffers_and_tracks();
@@ -417,7 +435,7 @@ async function train(model) { // this is the async function that triggers the mu
 	
 	o(["to_mubu_play", "trackid", ...active_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
 	
-	o([model + "_training_state", 1]);
+	o(["training_state", 1]);
 	
 	for(var i = 1; i<mubu_buffers.length+1; i++) {
 		
@@ -428,13 +446,13 @@ async function train(model) { // this is the async function that triggers the mu
 		
 		let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
 		
-		if(model == "full_body_DTW") {
+		if(model.includes("DTW")) { // TODO: handle this in a better way
 			// Then the OSC commands to wekinator
-			o(["to_" + model, "/wekinator/control/startDtwRecording", index]);
+			o(["model_commands", "/wekinator/control/startDtwRecording", index]);
 		} else {
 			
-			o(["to_" + model, "/wekinator/control/outputs", index]);
-			o(["to_" + model, "/wekinator/control/startRecording"]);
+			o(["model_commands", "/wekinator/control/outputs", index]);
+			o(["model_commands", "/wekinator/control/startRecording"]);
 		}
 		
 		// play
@@ -444,14 +462,14 @@ async function train(model) { // this is the async function that triggers the mu
 		
 		await waitforplaytostop(); // we wait for the "end" message to arrive with async code
 		
-		if(model == "full_body_DTW") {
+		if(model.includes("DTW")) {
 			// stop wekinator recording
-			o(["to_" + model, "/wekinator/control/stopDtwRecording"]);
+			o(["model_commands", "/wekinator/control/stopDtwRecording"]);
 		} else {
-			o(["to_" + model, "/wekinator/control/stopRecording"]);
+			o(["model_commands", "/wekinator/control/stopRecording"]);
 		}
 	
-		o([model + "_training_state", 0]);
+		o(["training_state", 0]);
 	}
 }
 

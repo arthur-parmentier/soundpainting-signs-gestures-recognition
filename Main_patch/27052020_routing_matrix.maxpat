@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 827.0, 561.0, 225.0, 62.0 ],
+					"text" : "This little js scripts builds the \"routing\" dict (unused) and sends the different commands to the receive objects of each model with the foward object"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "matrixctrl object left output",
 					"id" : "obj-6",
 					"index" : 0,
@@ -54,27 +66,11 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-8",
-					"linecount" : 2,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 846.0, 603.0, 238.0, 36.0 ],
-					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 846.0, 603.0, 238.0, 36.0 ],
-					"text" : "send posenet_translated_selection_input_size"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 758.0, 603.0, 49.0, 22.0 ],
+					"patching_rect" : [ 722.0, 600.0, 49.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 758.0, 603.0, 49.0, 22.0 ],
 					"text" : "forward"
@@ -1454,7 +1450,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 453.0, 327.0, 281.0, 22.0 ],
+					"patching_rect" : [ 683.0, 330.0, 281.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 945.0, 257.0, 281.0, 22.0 ],
 					"saved_object_attributes" : 					{
@@ -1489,7 +1485,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 453.0, 372.0, 67.0, 22.0 ],
+					"patching_rect" : [ 683.0, 375.0, 67.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 945.0, 302.0, 67.0, 22.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
@@ -3554,7 +3550,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 584.0, 184.0, 221.0, 22.0 ],
+					"patching_rect" : [ 600.5, 30.0, 221.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 580.0, 90.0, 221.0, 22.0 ],
 					"text" : "0. 165. 50. 32."
@@ -3570,7 +3566,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 584.0, 154.0, 292.0, 22.0 ],
+					"patching_rect" : [ 600.5, 0.0, 292.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 580.0, 60.0, 292.0, 22.0 ],
 					"restore" : [ 0.0, 165.0, 50.0, 32.0 ],
@@ -3580,7 +3576,7 @@
 					}
 ,
 					"text" : "pattr @bindto model_input_routing::presentation_rect",
-					"varname" : "u053011505"
+					"varname" : "u614002388"
 				}
 
 			}
@@ -3722,15 +3718,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
-					"order" : 1,
-					"source" : [ "obj-18", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
-					"order" : 0,
 					"source" : [ "obj-18", 1 ]
 				}
 
@@ -3789,7 +3776,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-23", 0 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-29", 0 ]
 				}
 
@@ -3797,7 +3784,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-266", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-29", 0 ]
 				}
 
@@ -3805,7 +3792,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-750", 2 ],
-					"order" : 2,
+					"order" : 0,
 					"source" : [ "obj-29", 0 ]
 				}
 
@@ -3956,11 +3943,9 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -3970,7 +3955,9 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
