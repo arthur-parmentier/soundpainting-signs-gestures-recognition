@@ -30,7 +30,6 @@ function o(msg) { // convenience function for outlet
 	maxApi.outlet(msg);
 }
 
-
 let fsm = new StateMachine({
     init: 'Start',
     transitions: [
