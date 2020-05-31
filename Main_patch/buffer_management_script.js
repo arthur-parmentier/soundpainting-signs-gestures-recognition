@@ -142,7 +142,7 @@ const handlers = {
 			cleartracks();
 		}
 		
-		//active_tracks = names.filter(not_empty);
+		active_tracks = names.filter(not_empty);
 		
 	},
 	

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,7 +47,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2325.0, 945.0, 50.0, 22.0 ]
+					"patching_rect" : [ 2325.0, 945.0, 50.0, 22.0 ],
+					"text" : "8"
 				}
 
 			}
@@ -844,7 +845,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 176.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "0"
+									"text" : "21"
 								}
 
 							}
@@ -869,7 +870,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 431.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "\"erg:tyth 1\" \"erg:tyth 2\""
+									"text" : "\"hands:on 1\" \"hands:on 2\""
 								}
 
 							}
@@ -881,7 +882,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 551.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "\"erg:tyth 1\""
+									"text" : "\"hands:on 2\""
 								}
 
 							}
@@ -893,7 +894,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 682.833292666666694, 305.0, 267.0, 22.0 ],
-									"text" : "empty"
+									"text" : "handpose_normalized"
 								}
 
 							}
@@ -1936,13 +1937,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 16,
+					"linecount" : 41,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 938.0, 332.0, 53.0, 229.0 ],
-					"text" : "-0.568493 1.519762 -0.71941 0.759737 -0.743357 0.784611 0.318355 0.729365"
+					"patching_rect" : [ 938.0, 332.0, 53.0, 574.0 ],
+					"text" : "0.372606 -0.313608 -1.500704 0.346185 -0.580735 -1.682919 0.341835 -0.564068 -1.677791 0.244197 -0.674279 -1.781803 0.264806 -0.618204 -1.834224 0.16123 -0.667473 -1.76132 0.006045 -0.684904 -1.685509"
 				}
 
 			}
@@ -1967,7 +1968,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 860.0, 255.0, 50.0, 229.0 ],
-					"text" : "-0.568493 1.519762 -0.71941 0.759737 -0.743357 0.784611 0.318355 0.729365"
+					"text" : "-0.704452 1.792062 0.732129 1.603059 -0.674918 2.182767 0.811506 2.38926"
 				}
 
 			}
@@ -2557,7 +2558,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 176.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "0"
+									"text" : "8"
 								}
 
 							}
@@ -2581,7 +2582,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 431.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "\"erg:ty 1\" \"erg:ty 2\""
+									"text" : "\"test:t 1\" \"test:t 2\""
 								}
 
 							}
@@ -2593,7 +2594,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 551.833292666666694, 305.0, 111.0, 22.0 ],
-									"text" : "\"erg:ty 1\""
+									"text" : "\"test:t 2\""
 								}
 
 							}
@@ -3216,13 +3217,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-12",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 240.0, 180.0, 313.0, 36.0 ],
-					"text" : "set posenet_normalized_selection posenet_translated_selection posenet_raw_selection"
+					"patching_rect" : [ 240.0, 180.0, 311.0, 22.0 ],
+					"text" : "set posenet_normalized_selection handpose_normalized"
 				}
 
 			}
@@ -3253,8 +3253,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 255.0, 1320.0, 86.0, 22.0 ],
-					"text" : "r #0new_signs"
+					"patching_rect" : [ 255.0, 1320.0, 68.0, 22.0 ],
+					"text" : "r #0models"
 				}
 
 			}
@@ -9164,13 +9164,6 @@
 			}
 , 			{
 				"name" : "posenet_input.maxpat",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "gate_number - posenet.maxpat",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
