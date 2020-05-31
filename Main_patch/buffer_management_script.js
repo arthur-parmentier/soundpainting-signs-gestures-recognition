@@ -291,7 +291,7 @@ async function clearbuffers() {
 	}
 	
 	// BUG HERE we can't remove first buffer, otherwise it mess up with the tracks, but we can make this workaround so that the names are not duplicates (which again mess up with loading files...)
-	o(["to_imubu", "addbuffer", "1"]);
+	o(["to_imubu", "addbuffer", 1]);
 	o(["to_imubu", "removebuffer", 1]);
 }
 
@@ -468,9 +468,8 @@ async function train() { // this is the async function that triggers the mubu.pl
 		} else {
 			o(["model_commands", "/wekinator/control/stopRecording"]);
 		}
-	
-		o(["training_state", 0]);
 	}
+	o(["training_state", 0]);
 }
 
 function waitforplaytostop() {
