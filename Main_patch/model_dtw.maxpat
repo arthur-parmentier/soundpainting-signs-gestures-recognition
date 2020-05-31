@@ -967,7 +967,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 9.055605055586057, 495.0, 78.0, 22.0 ],
+					"patching_rect" : [ 9.055605055586057, 435.0, 78.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.055605055586057, 495.0, 78.0, 22.0 ],
 					"text" : "prepend sign"
@@ -980,7 +980,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 9.055605055586057, 525.0, 121.0, 22.0 ],
+					"patching_rect" : [ 9.055605055586057, 465.0, 121.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.055605055586057, 525.0, 121.0, 22.0 ],
 					"text" : "s automata_input"

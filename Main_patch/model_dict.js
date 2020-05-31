@@ -33,11 +33,20 @@ function list(x, y, state) {
 		o(1,["send", models_list[y]+"_input_name"]); // setting the forward obj
 		o(1, input_list[x]);
 		
+		if(input_sizes_[x] != null) {
+			
+			size = input_sizes_[x];
+		} else { 
+		
+			p("No input size for model " + models_list[y]); 
+			size = 0;
+		}
+		
 		// size
-		dict.replace(models_list[y] + "::input_size", input_sizes_[x]); 
+		dict.replace(models_list[y] + "::input_size", size); 
 		models_corresponding_input_index[y] = x;
 		o(1,["send", models_list[y]+"_input_size"]); // setting the forward obj
-		o(1, input_sizes_[y]);
+		o(1, size);
 	}
 	
 	if(state == 0) {
@@ -92,7 +101,4 @@ function input_sizes() {
 		o(1,["send", models_list[i]+"_input_size"]); // setting the forward obj
 		o(1, size);
 	}
-	// o(0, "clear");
-	
-	
 }
