@@ -101,9 +101,23 @@ const handlers = {
 			
 			for(var i = 0; i<arg_list.length; i++) {
 				
-				mubu_buffers.push(arg_list[i]);
 				if(arg_list[i].length>1) {
-					mubu_labels.push(arg_list[i].split(" ")[0]);
+					if(arg_list[i].split(" ").length>1) {
+						mubu_labels.push(arg_list[i].split(" ")[0]);
+						mubu_buffers.push(arg_list[i]);
+					}
+					else {
+						
+						p("Removing buffer : " + arg_list[i] + " with unrecognized label (no space in name)");
+						let num = i+1;
+						o(["to_imubu", "removebuffer", num]);
+					}
+				}
+				else {
+					
+					p("Removing buffer : " + arg_list[i] + " (bad naming, length should be more than 1 with at least a space in the name)");
+					let num = i+1;
+					o(["to_imubu", "removebuffer", num]);
 				}
 			}
 			
@@ -446,7 +460,10 @@ async function train() { // this is the async function that triggers the mubu.pl
 	p("Start training " + model);
 	await update_buffers_and_tracks();
 	
-	p("Training " + mubu_tracks.length + " tracks : ", ...mubu_tracks); // TODO: check that mubu tracks are indeed the ones we want to train... there can be residues?
+	// Warning (todo): check if buffer 1 is here and remove it
+	p(["Labels set : ", ...mubu_labels_set]);
+	
+	p(["Training " + mubu_tracks.length + " tracks : ", ...mubu_tracks]); // TODO: check that mubu tracks are indeed the ones we want to train... there can be residues?
 	
 	o(["to_mubu_play", "trackid", ...mubu_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
 	
@@ -454,12 +471,17 @@ async function train() { // this is the async function that triggers the mubu.pl
 	
 	for(var i = 1; i<mubu_buffers.length+1; i++) {
 		
-		p("Training buffer " + i);
+		let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
+		
+		if(index == 0) {
+			
+			p("Error with index for buffer " + mubu_buffers[i-1] + " with label " + mubu_labels[i-1] + " (label not found in label set?)");
+		}
+		
+		p("Training buffer " + i + " label set index : " + index);
 		
 		// Set the right buffer index
 		o(["to_mubu_play", "bufferindex", i]);
-		
-		let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
 		
 		if(model.includes("DTW")) { // TODO: handle this in a better way
 			// Then the OSC commands to wekinator
