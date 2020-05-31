@@ -374,7 +374,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 855.0, 197.0, 223.0, 22.0 ]
+									"patching_rect" : [ 855.0, 197.0, 223.0, 22.0 ],
+									"text" : "hands_adaboost_labels"
 								}
 
 							}
@@ -1545,11 +1546,13 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
+									"linecount" : 9,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 881.0, 286.0, 50.0, 22.0 ]
+									"patching_rect" : [ 881.0, 286.0, 50.0, 133.0 ],
+									"text" : "neutral:neutral what:longtone when:now who:wholegroup"
 								}
 
 							}
@@ -2010,7 +2013,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 860.0, 255.0, 50.0, 229.0 ],
-					"text" : "-0.645284 1.771185 0.909001 1.490409 1.048531 1.814777 1.013859 1.782522"
+					"text" : "-0.312464 1.733452 1.021506 1.339961 -0.048075 0.688153 1.061749 1.043691"
 				}
 
 			}
@@ -6122,7 +6125,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 840.0, 4200.0, 155.0, 36.0 ],
-					"text" : "/unknown/minimalism/Start 0"
+					"text" : "/percussions3/longtone/Start 0"
 				}
 
 			}
@@ -6566,24 +6569,26 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 4095.0, 135.0, 22.0 ],
-					"text" : "/track3/Start 0"
+					"patching_rect" : [ 990.0, 4095.0, 135.0, 36.0 ],
+					"text" : "/longtone/Off 0 /longtone/Start 0"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-271",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 855.0, 4095.0, 124.0, 22.0 ],
-					"text" : "/track1/Continue 0"
+					"patching_rect" : [ 855.0, 4095.0, 124.0, 36.0 ],
+					"text" : "/longtone/Off 0 /longtone/Start 0"
 				}
 
 			}
@@ -6935,11 +6940,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 630.0, 3585.0, 159.196886449031808, 22.0 ]
+					"patching_rect" : [ 630.0, 3585.0, 159.196886449031808, 50.0 ],
+					"text" : "\"Transition what from state Contents_Modifiers not allowed.\""
 				}
 
 			}
@@ -7178,7 +7185,7 @@
 					"patching_rect" : [ 844.013597214772744, 3735.0, 1080.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 604.013597214772744, 3300.243595808744431, 1080.0, 64.0 ],
-					"text" : "Start"
+					"text" : "Contents_Modifiers"
 				}
 
 			}
@@ -9268,6 +9275,10 @@
 			}
 , 			{
 				"name" : "strtok.mxe64",
+				"type" : "mx64"
+			}
+, 			{
+				"name" : "mubu.mxe64",
 				"type" : "mx64"
 			}
 , 			{
