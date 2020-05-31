@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 96.0, 85.0, 1423.0, 953.0 ],
+		"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -2353,6 +2353,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
@@ -2361,7 +2362,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 314.0, 431.0, 44.0, 50.0 ],
+									"patching_rect" : [ 314.0, 431.0, 45.0, 36.0 ],
 									"text" : "speed 50"
 								}
 
@@ -2373,7 +2374,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 705.0, 270.0, 36.0, 22.0 ],
+									"patching_rect" : [ 719.0, 270.0, 36.0, 22.0 ],
 									"text" : "defer"
 								}
 
@@ -2442,7 +2443,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 705.0, 306.5, 30.0, 30.0 ]
+									"patching_rect" : [ 719.0, 306.5, 30.0, 30.0 ]
 								}
 
 							}
@@ -2453,7 +2454,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 705.0, 225.0, 118.0, 22.0 ],
+									"patching_rect" : [ 719.0, 225.0, 118.0, 22.0 ],
 									"text" : "route buffers_names"
 								}
 
@@ -2477,8 +2478,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 615.0, 225.0, 71.0, 22.0 ],
-									"text" : "route labels"
+									"patching_rect" : [ 615.0, 225.0, 93.0, 22.0 ],
+									"text" : "route labels_set"
 								}
 
 							}
@@ -2613,6 +2614,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -2893,9 +2896,10 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -2906,8 +2910,7 @@
 										"autogradient" : 0
 									}
 ,
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3405,9 +3408,10 @@
 , 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -3418,8 +3422,7 @@
 						"autogradient" : 0
 					}
 ,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

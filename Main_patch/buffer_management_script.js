@@ -47,6 +47,13 @@ function not_empty(e) {
 
 // main part of the code starts here
 const handlers = {
+	"name": (name) => { // answer from mubu getname during setup
+		
+		if(name != "" || name != null) {
+			model = name;
+		}
+		else { p("Unknown name of Imubu"); }
+	},
 	
 	"model": (name) => {
 		
@@ -422,18 +429,26 @@ function setup() { // first function that is triggered at loading time
 	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
+	o(["to_imubu" , "getname"]); // we will update the model name here in case it is not setup correctly
+	
 	o(["to_mubu_play" , "speed", speed]);
 	
 }
 
 async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
 
+	if(model == "" || model == null) { // here we are checking that we did say which model we are using, so we can send the right commands
+		
+		p("Model not defined, cannot train");
+		return -1;
+	}
+
 	p("Start training " + model);
 	await update_buffers_and_tracks();
 	
-	p("Training " + active_tracks.length + " tracks : ", ...active_tracks);
+	p("Training " + mubu_tracks.length + " tracks : ", ...mubu_tracks); // TODO: check that mubu tracks are indeed the ones we want to train... there can be residues?
 	
-	o(["to_mubu_play", "trackid", ...active_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
+	o(["to_mubu_play", "trackid", ...mubu_tracks]); // we are playing only active tracks. But what if they are not in the mubu obj?
 	
 	o(["training_state", 1]);
 	
