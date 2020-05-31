@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,9 +37,10 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "activate",
 					"id" : "obj-5",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -75,7 +76,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "name",
 					"id" : "obj-1",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -88,7 +89,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "speedlim",
 					"id" : "obj-10",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -137,7 +138,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "y",
 					"id" : "obj-3",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -150,7 +151,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "x",
 					"id" : "obj-2",
 					"index" : 0,
 					"maxclass" : "inlet",
@@ -388,6 +389,7 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
@@ -400,9 +402,8 @@
 						"autogradient" : 0
 					}
 ,
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ]
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

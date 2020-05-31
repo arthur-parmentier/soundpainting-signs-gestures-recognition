@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,17 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2325.0, 945.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-74",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -61,7 +72,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 972.0, 1935.0, 88.0, 36.0 ],
-					"presentation_linecount" : 2,
 					"text" : "hands_adaboost"
 				}
 
@@ -123,7 +133,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 975.0, 1440.0, 88.0, 36.0 ],
-					"presentation_linecount" : 2,
 					"text" : "full_body_DTW"
 				}
 
@@ -184,7 +193,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1361.0, 2460.0, 42.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "12000"
 				}
 
@@ -885,7 +893,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 682.833292666666694, 305.0, 267.0, 22.0 ],
-									"text" : "posenet_normalized_selection"
+									"text" : "empty"
 								}
 
 							}
@@ -2501,7 +2509,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -1646.0, -986.0, 1612.0, 899.0 ],
+						"rect" : [ -31958.0, -31915.0, 1612.0, 899.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6070,7 +6078,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 840.0, 4200.0, 152.0, 36.0 ],
+					"patching_rect" : [ 840.0, 4200.0, 155.0, 36.0 ],
 					"text" : "/unknown/minimalism/Start 0"
 				}
 
@@ -7618,6 +7626,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
@@ -7832,6 +7842,14 @@
 					"destination" : [ "obj-225", 0 ],
 					"order" : 0,
 					"source" : [ "obj-102", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 1 ],
+					"order" : 3,
+					"source" : [ "obj-111", 3 ]
 				}
 
 			}
@@ -9202,13 +9220,6 @@
 			}
 , 			{
 				"name" : "handpose_input.maxpat",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "gate_number - handpose.maxpat",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
