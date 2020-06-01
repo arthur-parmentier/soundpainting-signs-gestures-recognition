@@ -23,7 +23,7 @@ var state = "";
 // data folder location
 var data_folder = "./data/";
 
-var debug = 1;
+var debug = 0;
 
 
 // handy functions

@@ -41,16 +41,27 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-20",
-					"linecount" : 2,
+					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 8.0, 863.658649430865808, 58.0, 36.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 863.658649430865808, 88.0, 22.0 ],
+					"patching_rect" : [ 8.0, 840.0, 88.0, 22.0 ],
 					"text" : "loadpercent 10"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 8.0, 863.658649430865808, 29.5, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 8.0, 863.658649430865808, 29.5, 22.0 ],
+					"text" : "1"
 				}
 
 			}
@@ -2352,10 +2363,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -2366,7 +2375,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2597,7 +2608,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -2975,10 +2986,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -2989,7 +2998,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3598,10 +3609,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -3612,7 +3621,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4221,10 +4232,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -4235,7 +4244,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4844,10 +4855,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -4858,7 +4867,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5089,7 +5100,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -5467,10 +5478,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -5481,7 +5490,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -6090,10 +6101,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -6104,7 +6113,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -6713,10 +6724,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -6727,7 +6736,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -7336,10 +7347,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -7350,7 +7359,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -7581,7 +7592,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -7959,10 +7970,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -7973,7 +7982,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -8204,7 +8215,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -8582,10 +8593,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -8596,7 +8605,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -9205,10 +9216,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -9219,7 +9228,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -9828,10 +9839,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -9842,7 +9851,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -10073,7 +10084,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -10451,10 +10462,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -10465,7 +10474,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -10696,7 +10707,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -11074,10 +11085,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -11088,7 +11097,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -11697,10 +11708,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -11711,7 +11720,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12320,10 +12331,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -12334,7 +12343,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12565,7 +12576,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 330.0, -75.0, 30.0, 30.0 ]
 								}
 
@@ -12943,10 +12954,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -12957,7 +12966,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -13566,10 +13577,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -13580,7 +13589,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -14189,10 +14200,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -14203,7 +14212,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -14882,10 +14893,8 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -14896,7 +14905,9 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -15016,6 +15027,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -15421,6 +15434,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -17696,6 +17711,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-446", 2 ],
 					"source" : [ "obj-434", 2 ]
 				}
@@ -18544,10 +18566,8 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -18558,7 +18578,9 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

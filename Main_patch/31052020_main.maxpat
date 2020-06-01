@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1482.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -163,7 +163,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 1545.0, 2490.0, 660.0, 389.859618638788561 ],
+					"patching_rect" : [ 1545.0, 2490.0, 664.0, 165.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1619,7 +1619,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 925.5, 1320.0, 155.0, 186.0 ],
+					"patching_rect" : [ 925.5, 1320.0, 157.0, 186.0 ],
 					"text" : "TODO in the future: generate the bpatchers for each model at initialization. As of now, I can't get the input manager to work with loadpercent i>0, so I had to bang automatically here in order to properly load the model name at loading time, otherwise the loadmess 1 gets outputted after the models have been received..."
 				}
 
@@ -2108,13 +2108,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 10,
+					"linecount" : 38,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 938.0, 332.0, 55.0, 146.0 ],
-					"text" : "0.53852 -0.963908 -0.061501 0.498754 -1.03427 -0.11423"
+					"patching_rect" : [ 938.0, 332.0, 58.0, 533.0 ],
+					"text" : "0.222067 -0.198594 0.364698 0.249983 -0.204697 0.366396 0.234192 -0.176956 0.345175 0.211903 -0.22405 0.370393 0.203448 -0.190286 0.362832 0.157476 -0.187181 0.311446 0.105227 -0.193599 0.31035"
 				}
 
 			}
@@ -2139,7 +2139,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 860.0, 255.0, 50.0, 229.0 ],
-					"text" : "-0.778994 1.884912 0.92935 1.923399 -0.828771 2.437031 1.118428 2.28466"
+					"text" : "-0.687391 10.830243 0.603957 11.526078 -0.035877 4.13437 0.008989 3.939178"
 				}
 
 			}
@@ -2765,7 +2765,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 551.833292666666694, 305.0, 101.0, 36.0 ],
-									"text" : "\"how:tempo 3\""
+									"text" : "\"how:tempo 1\""
 								}
 
 							}
@@ -9204,7 +9204,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 0,
+					"source" : [ "obj-74", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-61", 0 ],
+					"order" : 2,
+					"source" : [ "obj-74", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
+					"order" : 1,
 					"source" : [ "obj-74", 0 ]
 				}
 
