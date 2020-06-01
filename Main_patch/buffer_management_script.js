@@ -55,6 +55,11 @@ const handlers = {
 		else { p("Unknown name of Imubu"); }
 	},
 	
+	"debug": (bool) => {
+		
+		debug = bool;
+	},
+	
 	"model": (name) => {
 		
 		model = name;
@@ -101,23 +106,20 @@ const handlers = {
 			
 			for(var i = 0; i<arg_list.length; i++) {
 				
-				if(arg_list[i].length>1) {
-					if(arg_list[i].split(" ").length>1) {
-						mubu_labels.push(arg_list[i].split(" ")[0]);
-						mubu_buffers.push(arg_list[i]);
-					}
-					else {
-						
-						p("Removing buffer : " + arg_list[i] + " with unrecognized label (no space in name)");
-						let num = i+1;
-						o(["to_imubu", "removebuffer", num]);
-					}
+				if(arg_list[i].toString().split(" ").length>1) {
+					mubu_labels.push(arg_list[i].toString().split(" ")[0]);
+					mubu_buffers.push(arg_list[i].toString());
 				}
 				else {
 					
-					p("Removing buffer : " + arg_list[i] + " (bad naming, length should be more than 1 with at least a space in the name)");
-					let num = i+1;
-					o(["to_imubu", "removebuffer", num]);
+					if(arg_list.length>1) {
+						p("Removing buffer : " + arg_list[i] + " with unrecognized label (no space in name)");
+						let num = i+1;
+						o(["to_imubu", "removebuffer", num]);
+					} else {
+						
+						p("Mubu has only one invalid buffer " + arg_list[i] + " left in place (buffer 1 bug when removing)");
+					}
 				}
 			}
 			
@@ -145,7 +147,6 @@ const handlers = {
 				for(var i = 0; i<active_tracks.length; i++) {
 						o(["to_imubu", "hastrack", active_tracks[i]]);
 				}
-				
 			}
 			else {
 				
@@ -279,6 +280,8 @@ async function add_clear_buffers(buffers) { // it is async because we need to wa
 	await clearbuffers();
 	
 	addbuffers(buffers);
+	
+	o(["to_imubu", "removebuffer", 1]); // Because the buffer 1 could not be removed when clearing the buffers, we do it here
 		
 }
 
@@ -295,8 +298,6 @@ function addbuffers(buffers) {
 			} else { p("Wrong buffer name format: " + buffers[i]); }
 		} else { p("Wrong buffer name format: " + buffers[i]); }
 	}
-	o(["to_imubu", "removebuffer", 1]);
-	
 }
 
 async function clearbuffers() {
@@ -311,9 +312,15 @@ async function clearbuffers() {
 		o(["to_imubu", "removebuffer", i]);
 	}
 	
-	// BUG HERE we can't remove first buffer, otherwise it mess up with the tracks, but we can make this workaround so that the names are not duplicates (which again mess up with loading files...)
-	o(["to_imubu", "addbuffer", 1]);
-	o(["to_imubu", "removebuffer", 1]);
+	// handling buffer 1...
+	if(mubu_buffers[0]==1 || mubu_buffers[0]=="1" || mubu_buffers[0]==null) {
+		
+		p("Leaving buffer 1 " + mubu_buffers[0] + " in place as hotfix for Mubu bug");
+	} else {
+		// That 1 buffer is really a pain. In order to delete the first buffer without messing up with the tracks, I have this workaround:
+		o(["to_imubu", "addbuffer", 1]);
+		o(["to_imubu", "removebuffer", 1]);
+	}
 }
 
 function cleartracks() {
@@ -488,7 +495,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 			o(["model_commands", "/wekinator/control/startDtwRecording", index]);
 		} else {
 			
-			o(["model_commands", "/wekinator/control/outputs", index]);
+			o(["model_commands", "/wekinator/control/outputs", index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
 			o(["model_commands", "/wekinator/control/startRecording"]);
 		}
 		

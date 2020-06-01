@@ -924,7 +924,7 @@
 					"patching_rect" : [ 90.0, 88.5, 200.256981730461121, 25.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 90.0, 88.5, 200.256981730461121, 25.0 ],
-					"text" : "Threshlod for in dtw distance"
+					"text" : "Confidence threshold"
 				}
 
 			}
