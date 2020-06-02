@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1482.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,6 +41,28 @@
 		"workspacedisabled" : 1,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-58",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 720.0, 2886.0, 101.0, 22.0 ],
+					"text" : "s automata_input"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-55",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1545.0, 2670.0, 101.0, 22.0 ],
+					"text" : "s automata_input"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "button",
@@ -161,8 +183,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "model_adaboost.maxpat",
 					"numinlets" : 3,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 1545.0, 2490.0, 664.0, 165.0 ],
 					"viewvisibility" : 1
 				}
@@ -423,8 +446,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "model_dtw.maxpat",
 					"numinlets" : 3,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 720.0, 2490.0, 660.0, 389.859618638788561 ],
 					"viewvisibility" : 1
 				}
@@ -2108,12 +2132,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 38,
+					"linecount" : 27,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 938.0, 332.0, 58.0, 533.0 ],
+					"patching_rect" : [ 938.0, 332.0, 61.0, 381.0 ],
 					"text" : "0.222067 -0.198594 0.364698 0.249983 -0.204697 0.366396 0.234192 -0.176956 0.345175 0.211903 -0.22405 0.370393 0.203448 -0.190286 0.362832 0.157476 -0.187181 0.311446 0.105227 -0.193599 0.31035"
 				}
 
@@ -7065,13 +7089,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 630.0, 3585.0, 159.196886449031808, 36.0 ],
-					"text" : "\"Transition how from state Start not allowed.\""
+					"patching_rect" : [ 630.0, 3585.0, 159.196886449031808, 22.0 ]
 				}
 
 			}
@@ -7801,6 +7823,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
@@ -9058,6 +9082,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-55", 0 ],
+					"source" : [ "obj-47", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-53", 2 ],
 					"source" : [ "obj-48", 0 ]
 				}
@@ -9081,6 +9112,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-53", 1 ],
 					"source" : [ "obj-50", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-58", 0 ],
+					"source" : [ "obj-53", 0 ]
 				}
 
 			}
@@ -9516,10 +9554,6 @@
 				"type" : "mx64"
 			}
 , 			{
-				"name" : "mubu.mxe64",
-				"type" : "mx64"
-			}
-, 			{
 				"name" : "mxj.mxe64",
 				"type" : "mx64"
 			}
@@ -9532,7 +9566,10 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -9543,10 +9580,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",

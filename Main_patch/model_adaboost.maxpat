@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 88.0, 77.0, 1420.0, 969.0 ],
+		"rect" : [ 96.0, 77.0, 1427.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,18 @@
 		"showontab" : 1,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"comment" : "classified sign name",
+					"id" : "obj-1",
+					"index" : 0,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 9.055605055586057, 375.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-16",
 					"maxclass" : "message",
@@ -786,23 +798,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 9.055605055586057, 435.0, 78.0, 22.0 ],
+					"patching_rect" : [ 9.055605055586057, 345.0, 78.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.055605055586057, 435.0, 78.0, 22.0 ],
 					"text" : "prepend sign"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-352",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 9.055605055586057, 465.0, 121.0, 22.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 9.055605055586057, 465.0, 121.0, 22.0 ],
-					"text" : "s automata_input"
 				}
 
 			}
@@ -1049,7 +1048,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-352", 0 ],
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-351", 0 ]
 				}
 
@@ -1191,7 +1190,10 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -1202,10 +1204,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",
