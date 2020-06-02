@@ -1,12 +1,17 @@
 # Soundpainting recognition tool
 
-Are you a soundpainter?
-Or do you want to control your live artistic digital setup with your own signs and gestures?
+* Are you a soundpainter?
+* Or do you want to control your live artistic digital setup with your own signs and gestures?
+
 This tool is made for you!
 
 As part of my master thesis at EPFL (Switzerland) at the EM+ lab, I am building an app with Max/MSP that allows the user to control a virtual orchestra with soundpainting or user-created signs.
 
-## I don't know Soundpainting, so what can I do with this?
+## [Features] I don't know Soundpainting, so what can I do with this?
+
+Check out a little preview of the patcher : https://www.youtube.com/watch?v=OmPFMT9mgOs
+
+[![Watch the video](./Images/YT_demo.png)](https://www.youtube.com/watch?v=OmPFMT9mgOs&list=PLqINK1QtSzoG-oqaT623-OB2Z7BTE3Z93&index=5)
 
 Soundpainting is a sign language designed and used by composers to compose in real-time with multi-disciplinary performers (musicians, actors, visual artists, dancers...). Although it was first used and created by Walter Thompson, many other soundpainters have created their own signs for specific performances, just like you can do with this tool! Here is actually the list of features of my tool:
 
@@ -23,8 +28,6 @@ The project has started with the following references in mind :
 * Soundpainting as a standard, world-wide language for artistic performance, communication and composition http://www.soundpainting.com/
 
 Each of these is an example of the performativity and potential of gestures and signs for music creativity, composition and instrument expansion.
-
-Check out a little preview of the patcher: https://www.youtube.com/watch?v=OmPFMT9mgOs
 
 ## I don't get it, what is the link between Soundpainting and this Max patcher?
 
@@ -64,7 +67,7 @@ _For now, this is the only valid procedure. It has some additional requirements,
 9. You can now use the tool! For instance, try to launch the PoseNet model with the Wekinator DTW model and train your first signs!
 10. To build your own standalone, check out the procedure for Max/MSP (and Processing if you use the kinect scripts).
 
-## Communication with Ableton Live
+### Communication with Ableton Live
 
 You can now use the tool to communicate with Ableton Live.
 
