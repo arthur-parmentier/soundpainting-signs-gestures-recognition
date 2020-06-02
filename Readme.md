@@ -34,6 +34,10 @@ Now we all know how cool can computer-assisted music or tools can be and the pot
 
 As for now, only basic parts of the Soundpainting grammar are implemented in this tool. There are plenty of modes in Soundpainting that could be added later in the future, that will allow to create different request structures. But if you are a beginner in Soundpainting and want to explore what you can so with some basic signs and your own sounds, this is the right tool for you. Then if you want to code your own regular language and get deeper in the interfacing possibilities, that's also the right place to start.
 
+## General project structure
+
+![Algorithm schema](./Images/bigpicture.png)
+
 ## Required and recommended hardware
 
 * Required: webcam OR low-latency external camera OR kinect input
