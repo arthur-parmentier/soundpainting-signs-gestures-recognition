@@ -15,12 +15,13 @@ Check out a little preview of the patcher : https://www.youtube.com/watch?v=OmPF
 
 Soundpainting is a sign language designed and used by composers to compose in real-time with multi-disciplinary performers (musicians, actors, visual artists, dancers...). Although it was first used and created by Walter Thompson, many other soundpainters have created their own signs for specific performances, just like you can do with this tool! Here is actually the list of features of my tool:
 
-- Create and train your own signs. For instance, you could create a sign for "launch my program.exe". The program has been built to recognize common Soundpainting signs but you can just build the ones you need!
-- Record your signs, save them to files and build your own dictionary of signs.
-- Use the hardware you need: you can use the built-in motion capture models (PoseNet, HandPose, Hi5, Kinect...) but also connect your own with Max in little time. Once you have defined the number of features of your input, its name and connected the data pipeline to Max (for instance with OSC), you don't need anymore routing or spaguetthi patching! You can start building signs from very simple inputs, such as mouse, keyboards or your favorite midi controller if you want!
-- Connect with as many Wekinator or Mubu machine learning models as you need for recognizing different types of signs: poses, movements, position in space...
-- Create complex requests with the grammar of Soundpainting, which is optimized for real-time performance; but also creating your own regular grammar: your own sign language.
-- Play with the built-in virtual orchestra or Ableton OSC controller and create your own set of sounds, triggers. With signs and gestures, you don't have to use hardware anymore to control you favorite DAW or software: your body can communicate with them.
+- **Create and train your own signs.**
+For instance, you could create a sign for "launch my program.exe". The program has been built to recognize common Soundpainting signs but you can just build the ones you need!
+- **Record your signs, save them to files and build your own dictionary of signs.**
+- Recognize signs using **your own hardware**: you can use the built-in motion capture models (PoseNet, HandPose, Hi5, Kinect...) but also connect your own with Max in little time. Once you have defined the number of features of your input, its name and connected the data pipeline to Max (for instance with OSC), you don't need anymore routing or spaguetthi patching! You can start building signs from very simple inputs, such as mouse, keyboards or your favorite midi controller if you want!
+- Connect with as many **Wekinator or Mubu machine learning models** as you need for recognizing different types of signs: poses, movements, position in space...
+- Create **complex requests with the grammar of Soundpainting**, which is optimized for real-time performance; but also creating your own regular grammar: **your own sign language**.
+- Play with the **built-in virtual orchestra or Ableton OSC controller** and create your own set of sounds, triggers. With signs and gestures, you don't have to use hardware anymore to control you favorite DAW or software: your body can communicate with them.
 
 The project has started with the following references in mind :
 * MiMu Gloves https://mimugloves.com/ (extending music instruments with gestual controls)
@@ -29,7 +30,7 @@ The project has started with the following references in mind :
 
 Each of these is an example of the performativity and potential of gestures and signs for music creativity, composition and instrument expansion.
 
-## I don't get it, what is the link between Soundpainting and this Max patcher?
+### What is the link with Soundpainting?
 
 Soundpainting is a sign language that is used commonly between human perfomers, to communicate between each other or with a composer during the performance. For instance, using Soundpainting, you can form a request such as: "Guitar 1, improvise, with, jazz, feel, slowly enter" or "Dancer 2, make a loop, in relation with, guitar 1, now".
 
@@ -40,6 +41,8 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 ## General project structure
 
 ![Algorithm schema](./Images/bigpicture.png)
+
+# Setup
 
 ## Required and recommended hardware
 
@@ -52,7 +55,7 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 _Standalone apps will be released near june/july. Before that, you need to check the setup procedure (very simple) in order to access the source patcher and try it._
 
-## Setup procedure
+## Using the project in Max/MSP
 
 _For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
@@ -67,7 +70,7 @@ _For now, this is the only valid procedure. It has some additional requirements,
 9. You can now use the tool! For instance, try to launch the PoseNet model with the Wekinator DTW model and train your first signs!
 10. To build your own standalone, check out the procedure for Max/MSP (and Processing if you use the kinect scripts).
 
-### Communication with Ableton Live
+## Communication with Ableton Live
 
 You can now use the tool to communicate with Ableton Live.
 
@@ -77,7 +80,7 @@ Then in Ableton Live:
 * open File>Preferences
 * under Link/MIDI, set Control Surface 1 to "LiveOSC"
 
-## References
+# References
 
 This project is based on the following tools:
 * Posenet Node For Max: https://github.com/tejaswigowda/posenet-node-max
