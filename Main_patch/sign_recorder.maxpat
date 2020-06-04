@@ -46,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 506.25, 585.0, 150.0, 158.0 ],
+					"patching_rect" : [ 506.25, 585.0, 153.0, 158.0 ],
 					"text" : "Here, I placed them on the cold inlets because otherwise when changing the number of repetitions, the buffer managing script would keep in a loop for updating buffers. So this is a ok workaround, but we loose the visual feedback of adding the signs into the buffers"
 				}
 
@@ -397,8 +397,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -940,7 +938,7 @@
 					"patching_rect" : [ 15.0, 12.0, 637.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 12.0, 637.0, 64.0 ],
-					"text" : "2.2. Add and Record signs to a model"
+					"text" : "2.1. Add and Record signs to a model"
 				}
 
 			}
@@ -3367,7 +3365,6 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
@@ -3381,7 +3378,8 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

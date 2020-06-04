@@ -938,7 +938,7 @@
 					"patching_rect" : [ 90.0, 88.5, 200.256981730461121, 25.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 90.0, 88.5, 200.256981730461121, 25.0 ],
-					"text" : "Threshlod for in dtw distance"
+					"text" : "Threshold for in dtw distance"
 				}
 
 			}
@@ -970,7 +970,7 @@
 					"patching_rect" : [ 9.055605055586057, 9.64323103427887, 635.944394944413943, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 9.055605055586057, 9.64323103427887, 635.944394944413943, 64.0 ],
-					"text" : "3.1. tes classifier"
+					"text" : "3.1. DTW classifier"
 				}
 
 			}
@@ -1420,11 +1420,8 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1434,7 +1431,10 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
