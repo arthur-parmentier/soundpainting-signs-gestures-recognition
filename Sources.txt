@@ -1,0 +1,31 @@
+Nadine Couture, Sébastien Bottecchia, Serge Chaumette, Mateo Cecconello, Josu Rekalde, et al.. Using the Soundpainting Language to Fly a Swarm of Drones. Chen J. Advances in Intelligent Systems and Computing, 595, Springer, Cham, pp.39-51, 2017, AHFE 2017: Advances in Human Factors in Robots and Unmanned Systems, 978-3-319-60383-4. 
+
+ https://www.youtube.com/watch?v=h2PDhtqDgKg
+ 
+ https://www.decodedscience.org/ferdinand-de-saussure-the-linguistic-unit-sign-signified-and-signifier-explained/
+ 
+ Shannon (1948): A Mathematical Theory of Communication 
+ 
+ (Hopcroft, Ullman, 1979); Theorem 9.5, 9.6, p. 225–226
+ 
+ Miscellanea musicologica : III. Observation sur les survivances de la chironomie dgyptienne dans le chant liturgique copte (Extraits des Annales du Service des Antiquitds de l'Egypte, t. XLIX, 1949), p.
+ 
+ Michel Huglo, « La chironomie médiévale », Revue de musicologie, vol. 49, no 127,‎ 1963, p. 155-171
+ 
+ Alain Pâris, « Direction d'orchestre » https://www.universalis.fr/encyclopedie/direction-d-orchestre/
+ 
+ Children Creating Core Properties of Language: Evidence from an Emerging Sign Language in Nicaragua By Ann Senghas, Sotaro Kita, Asli Özyürek, Science (2004)
+ 
+ Soundpainting as a system for the collaborative creation of music in performance, Marc Duby (2006)
+ 
+ Eleanor H. Rosch. Natural Categories. Cognitive Psychology 4, 328-350 (1973), introducing the “prototype theory”
+ 
+ Revlin, Russell. Cognition: Theory and Practice.
+ 
+ Liddell, Henry G., and Robert Scott. 1940. "γιγνώσκω." A Greek-English Lexicon, revised by H. S. Jones with R. McKenzie. Oxford: Clarendon Press, and Stefano, Franchi, and Francesco Bianchini. 2011. "On The Historical Dynamics Of Cognitive Science: A View From The Periphery." In The Search for a Theory of Cognition: Early Mechanisms and New Ideas. Amsterdam: Rodopi. p. XIV.
+ 
+ Raheja, Jagdish & Minhas, M. & Prashanth, D. & Shah, Tarang & Chaudhary, Ankit. (2015). Robust gesture recognition using Kinect: A comparison between DTW and HMM. Optik - International Journal for Light and Electron Optics.
+ Carmona J.M., Climent J. (2012) A Performance Evaluation of HMM and DTW for Gesture Recognition. In: Alvarez L., Mejail M., Gomez L., Jacobo J. (eds) Progress in Pattern Recognition, Image Analysis, Computer Vision, and Applications. CIARP 2012. Lecture Notes in Computer Science, vol 7441. Springer, Berlin, Heidelberg
+ 
+ Hiyadi, Hajar & Ababsa, Fakhreddine & Montagne, Christophe & Bouyakhf, El Houssine & Regragui, Fakhita. (2016). Combination of HMM and DTW for 3D Dynamic Gesture Recognition Using Depth Only.
+Choi, Hyo-rim & Kim, Tae-Yong. (2017). Directional Dynamic Time Warping for Gesture Recognition. 22-25. 10.1145/3145511.3145526.
