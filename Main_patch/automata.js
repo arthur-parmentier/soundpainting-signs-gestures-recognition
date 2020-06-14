@@ -12,7 +12,7 @@ It receives signs from messages in the following form:
 and outputs
 
 - the current state
-- the request to each instrument/who identifier
+- the request to each instrument/identifier identifier
 - several "helper/debug" arrays
 
 */
@@ -37,46 +37,46 @@ let fsm = new StateMachine({
 		{ name: 'neutral', from: '*', to: this.state },
 	
 	// First request. TODO: complete it
-    	{ name: 'who', from: ['Start', 'Identifiers1', 'Contents_Modifiers1'], to: 'Identifiers1' },
-    	{ name: 'what', from: ['Identifiers1', 'Logic1'], to: 'Contents_Modifiers1' },
-		// { name: 'continue', from: 'Identifiers1', to: 'Contents_Modifiers1' },
-    	{ name: 'how', from: ['Contents_Modifiers1','Logic1'], to: 'Contents_Modifiers1' },
-		{ name: 'with', from: 'Contents_Modifiers1', to: 'Logic1' },
-    	{ name: 'when', from: 'Contents_Modifiers1', to: 'Execution' },
+    	{ name: 'identifier', from: ['Start', 'Who1', 'What_How1'], to: 'Who1' },
+    	{ name: 'content', from: ['Who1', 'Logic1'], to: 'What_How1' },
+		// { name: 'continue', from: 'Who1', to: 'What_How1' },
+    	{ name: 'modifier', from: ['What_How1','Logic1'], to: 'What_How1' },
+		//{ name: 'with', from: 'What_How1', to: 'Logic1' },
+    	{ name: 'timing', from: 'What_How1', to: 'Execution' },
 		
 	// Main loop. TODO: complete it
 	
-		// To "who" state
-		{ name: 'who', from: ['Contents_Modifiers', 'Execution', 'Identifiers'], to: 'Identifiers' },
-		{ name: 'group', from: 'Contents_Modifiers', to: 'Identifiers' }, // TODO: implement transition verification
+		// To "identifier" state
+		{ name: 'identifier', from: ['What_How', 'Execution', 'Who'], to: 'Who' },
+		{ name: 'group', from: 'What_How', to: 'Who' }, // TODO: implement transition verification
 		
-		// To "Contents_Modifiers" state
-		{ name: 'what', from: ['Execution', 'Identifiers', 'Logic'], to: 'Contents_Modifiers' },
-		{ name: 'how', from: ['Identifiers', 'Execution',  'Contents_Modifiers'], to:  'Contents_Modifiers' },
-		// { name: 'continue', from: 'Identifiers', to: 'Contents_Modifiers' },
+		// To "What_How" state
+		{ name: 'content', from: ['Execution', 'Who', 'Logic'], to: 'What_How' },
+		{ name: 'modifier', from: ['Who', 'Execution',  'What_How'], to:  'What_How' },
+		// { name: 'continue', from: 'Who', to: 'What_How' },
 		
 		// To empty request
-		{ name: 'off', from: ['Execution','Identifiers'], to: 'Execution' },
-		{ name: 'when', from: 'Contents_Modifiers', to: 'Execution' },
+		{ name: 'off', from: ['Execution','Who'], to: 'Execution' },
+		{ name: 'timing', from: 'What_How', to: 'Execution' },
 		
 		// To sign-specific (logic etc) states
-		{ name: 'add', from: 'Contents_Modifiers', to: 'Logic' },
-		{ name: 'with', from: 'Contents_Modifiers', to: 'Logic' },
-		{ name: 'without', from: 'Contents_Modifiers', to: 'Logic' }
+		// name: 'add', from: 'What_How', to: 'Logic' },
+		// { name: 'with', from: 'What_How', to: 'Logic' },
+		// { name: 'without', from: 'What_How', to: 'Logic' }
 		
     ],
 	data: {
 		// some utility arrays for the dynamic of the parsing, that are used as stacks
-		what_array: [],
-		who_array: [],
-		how_array: [], // unused
-		previous_who_array: [],
+		content_array: [],
+		identifier_array: [],
+		// modifiers_array: [], // unused
+		previous_identifier_array: [],
 		
-		// this group object should store the predefined grouping of the orchestra. The "whole group" can be computed from this list later.
-		// the wholegroup sign uses this object to create the list of all instruments BUT signs of the WHO cat that are part of the groups object will still be added as individual elements to the who_array... whether this is intended or not.
+		// this group object should store the predefined grouping of the orchestra. The "identifierle group" can be computed from this list later.
+		// the identifierlegroup sign uses this object to create the list of all instruments BUT signs of the WHO cat that are part of the groups object will still be added as individual elements to the identifier_array... whether this is intended or not.
 		// the best naming for the group elements is <groupname> + <number>
 		
-		// WARNING: NEVER use circular-groups like group1: group2, group2: group1 or group1: group1 ... This would result in an infinite loop.. and I don't know what would happen; it would probably crash or stop the Execution
+		// WARNING: NEVER use circular-groups like group1: group2, group2: group1 or group1: group1 ... This would result in an infinite loop.. and I don't know content would happen; it would probably crash or stop the Execution
 		
 		// TODO: generate the object from external dict
 		groups: { 
@@ -85,11 +85,11 @@ let fsm = new StateMachine({
 			"dancers": [],
 			"percussions": ["percussions1", "percussions2", "percussions3"], // of course we could also name one "drums" but then we loose the identification with group+number
 			"group1": ["percussions", "numerics1"], // SP allows for custom groups, that are usually defined at performance time. warning: this will be difficult to parse, so we need some kind of recursivity to parse this.
-			// wholegroup is added here after initialization 
+			// identifierlegroup is added here after initialization 
 		},
 		
 		defaults: {
-			// flags have default values and start with uppercases. They are used to define the "type" of request and ultimately, what keywaord will be sent to the outside world: start a sound, stop a sound or continue...
+			// flags have default values and start with uppercases. They are used to define the "type" of request and ultimately, content keywaord will be sent to the outside world: start a sound, stop a sound or continue...
 			"Start": 0,
 			"Off": 0,
 			"Continue": 0, // the zero here is probably meaningless
@@ -100,11 +100,11 @@ let fsm = new StateMachine({
 			
 		},
 		
-		what_history: [],
-		who_history: [],
+		content_history: [],
+		identifier_history: [],
 		
 		content_distribution: {}, // array that stores the content that is played by each identifier
-		reverse_content_distribution: {}, // array that stores who is playing each content type
+		reverse_content_distribution: {}, // array that stores identifier is playing each content type
 		
 		requests: {0: {}}, // array that stores the requests over time and structure them
 		requests_counter: 0, // integer that corresponds to the index of the actual request (increased everytime the request is executed)
@@ -115,9 +115,9 @@ let fsm = new StateMachine({
 			maxApi.outlet(["/error", "Transition " + transition + " from state " + from + " not allowed."]);
 		},
 		
-		onAfterWho: function(args, sign) { // Warning: do not use onBeforeWho to because some actions are taking place when leaving the contentmodifier states
+		onAfterIdentifier: function(args, sign) { // Warning: do not use onBeforeWho to because some actions are taking place when leaving the contentmodifier states
 		
-			let identifiers = parse_who(sign);
+			let identifiers = parse_identifier(sign);
 			
 			if(identifiers.includes(null)) {
 
@@ -129,34 +129,34 @@ let fsm = new StateMachine({
 				return false; // we cancel the transition and stay at the actual state
 			} else {
 				
-				this.who_array.push(...identifiers);
+				this.identifier_array.push(...identifiers);
 			}
 			
-			// Reset what array
-			this.what_array = [];
+			// Reset content array
+			this.content_array = [];
 			
-			// Create the who entry in the request if neccessary
+			// Create the identifier entry in the request if neccessary
 			if(this.requests[this.requests_counter] == null) {
-				this.requests[this.requests_counter] = {}; // We add a new entry for the who identifier
+				this.requests[this.requests_counter] = {}; // We add a new entry for the identifier identifier
 			}
 			
-			fill_request_who(); // fills the request array with the who array
+			fill_request_identifier(); // fills the request array with the identifier array
 			
 			update_outlet();
 		},
 		
-		onAfterWhat: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
+		onAfterContent: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
 			
-			let [contents, flag] = parse_what(sign); // we also use a parsing here to handle specific cases like "continue", "this"...
+			let [contents, flag] = parse_content(sign); // we also use a parsing here to handle specific cases like "continue", "this"...
 			
 			// Store the sign(s) to the stack
-			for(var i = 0; i<contents.length; i++) { this.what_array.push(contents[i]); }
+			for(var i = 0; i<contents.length; i++) { this.content_array.push(contents[i]); }
 			
-			// if who_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
-			if(this.who_array.length == 0) {
+			// if identifier_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
+			if(this.identifier_array.length == 0) {
 				
-				this.who_array = this.previous_who_array;
-				fill_request_who();
+				this.identifier_array = this.previous_identifier_array;
+				fill_request_identifier();
 			}
 			
 			// now we want to have a different behiavior depending on the flag (continue, start...). 
@@ -165,57 +165,57 @@ let fsm = new StateMachine({
 				stop_old_content();
 			}
 			
-			fill_request_what(flag); // fill the request object with the what signs from what_array
+			fill_request_content(flag); // fill the request object with the content signs from content_array
 			
 			update_outlet();
 		},
 			
-		onLeaveContentsModifiers1: function() {
+		onLeaveWhatHow1: function() {
 			
-			this.onLeaveContentsModifiers();
+			this.onLeaveWhatHow();
 		},
 		
-		onLeaveContentsModifiers: function() { // Warning, this gets executed AFTER onBefore<nextsign> but BEFORE onAfter...
+		onLeaveWhatHow: function() { // Warning, this gets executed AFTER onBefore<nextsign> but BEFORE onAfter...
 			
-			// we fill the previous_who_array
-			this.previous_who_array = this.who_array;
-			this.who_array = [];
+			// we fill the previous_identifier_array
+			this.previous_identifier_array = this.identifier_array;
+			this.identifier_array = [];
 		},
 		
-		onAfterHow: function(args, sign) { // When we receive a HOW sign
+		onAfterModifier: function(args, sign) { // When we receive a HOW sign
 			
-			// if who_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
-			if(this.who_array.length == 0) {
+			// if identifier_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
+			if(this.identifier_array.length == 0) {
 				
-				this.who_array = this.previous_who_array;
-				fill_request_who();
+				this.identifier_array = this.previous_identifier_array;
+				fill_request_identifier();
 				
 				// then we check if a content has been specified yet
-				if(this.what_array.length == 0) {
+				if(this.content_array.length == 0) {
 					
 					// if not, then the modifier only relates to last requested contents
-					this.what_array = this.previous_what_array;
-					fill_request_what("Continue"); // is there any case where the "Continue" flag is not the right one?
+					this.content_array = this.previous_content_array;
+					fill_request_content("Continue"); // is there any case where the "Continue" flag is not the right one?
 				}
 				
 			} else { // we know an identifier was used but not if a content was specified
 				
 				// then we check if a content has been specified yet
-				if(this.what_array.length == 0) {
+				if(this.content_array.length == 0) {
 					
 					// if not, then the modifier relates to everything that the designated performers are doing
 					
-					// Find everything that the designated performers are doing and add it to what_array
-					for(var i = 0; i<this.who_array.length; i++) {
+					// Find everything that the designated performers are doing and add it to content_array
+					for(var i = 0; i<this.identifier_array.length; i++) {
 						
-						// we push to the what_array everything that is played by all the designated performers.
-						if(Object.keys(this.content_distribution[this.who_array[i]]) != null) {
+						// we push to the content_array everything that is played by all the designated performers.
+						if(Object.keys(this.content_distribution[this.identifier_array[i]]) != null) {
 							
-							this.what_array.push(Object.keys(this.content_distribution[this.who_array[i]]));
+							this.content_array.push(Object.keys(this.content_distribution[this.identifier_array[i]]));
 						}
 					}
 					
-					fill_request_what("Continue"); // is there any case where the "Continue" flag is not the right one?
+					fill_request_content("Continue"); // is there any case where the "Continue" flag is not the right one?
 				}
 			}
 			
@@ -224,27 +224,27 @@ let fsm = new StateMachine({
 			
 			let parameter_values = capture_parameter(sign); // We leave this for the future, when we will want to capture parameters such as volume or tempo values with space mappings
 			
-			// this is what would be the fill_request_how() function, except it has no use elsewhere (yet).
-			for (var i = 0; i<this.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents parameters are applied to all of them
+			// this is content would be the fill_request_how() function, except it has no use elsewhere (yet).
+			for (var i = 0; i<this.identifier_array.length; i++) { // in case multiple identifier identifiers were use, we want to make sure that the Contents parameters are applied to all of them
 				
-				for(var j = 0; j<this.what_array.length; j++) {
+				for(var j = 0; j<this.content_array.length; j++) {
 				
-					let content = this.what_array[j];
-					this.requests[this.requests_counter][this.who_array[i]][content][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
+					let content = this.content_array[j];
+					this.requests[this.requests_counter][this.identifier_array[i]][content][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
 					
 					// update the distribution array
-					if(this.reverse_content_distribution[content][this.who_array[i]] == null) {
-						this.reverse_content_distribution[content][this.who_array[i]] = [];
+					if(this.reverse_content_distribution[content][this.identifier_array[i]] == null) {
+						this.reverse_content_distribution[content][this.identifier_array[i]] = [];
 					}
 					
-					this.reverse_content_distribution[content][this.who_array[i]][sign] = parameter_values;
+					this.reverse_content_distribution[content][this.identifier_array[i]][sign] = parameter_values;
 				}
 			}
 			
 			update_outlet();
 		},
 		
-		onBeforeWhen: function(args, sign) { // in order to execute this prior to onEnterExecution
+		onBeforeTiming: function(args, sign) { // in order to execute this prior to onEnterExecution
 		
 			// Update Start values TODO
 			
@@ -253,11 +253,11 @@ let fsm = new StateMachine({
 		
 		onBeforeOff: function() { // we need a before here as for when, in order to execute this prior to onEnterExecution
 			
-			// if who_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
-			if(this.who_array.length == 0) {
+			// if identifier_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
+			if(this.identifier_array.length == 0) {
 				
-				this.who_array = this.previous_who_array;
-				fill_request_who();
+				this.identifier_array = this.previous_identifier_array;
+				fill_request_identifier();
 			}
 			
 			stop_old_content(); // it's enough to stop everything
@@ -277,11 +277,11 @@ let fsm = new StateMachine({
 			this.requests[this.requests_counter] = {};
 			
 			// we store the last requested content
-			this.previous_what_array = this.what_array;
+			this.previous_content_array = this.content_array;
 			
 			// we reset each request stack
-			this.who_array = [];
-			this.what_array = [];
+			this.identifier_array = [];
+			this.content_array = [];
 			this.how_array = [];
 			
 			update_outlet();
@@ -293,26 +293,26 @@ let fsm = new StateMachine({
     ]
 });
 
-function fill_request_who() {
+function fill_request_identifier() {
 	
-	for(var i= 0; i<fsm.who_array.length; i++) {
+	for(var i= 0; i<fsm.identifier_array.length; i++) {
 					
-		// Store the who identifiers into the request	
-		if(fsm.requests[fsm.requests_counter][fsm.who_array[i]] == null) { // Here we check that the who identifier has not been already used in the request, which should be the normal case.
-			fsm.requests[fsm.requests_counter][fsm.who_array[i]] = {}; // We add a new entry for the who identifier
+		// Store the identifier identifiers into the request	
+		if(fsm.requests[fsm.requests_counter][fsm.identifier_array[i]] == null) { // Here we check that the identifier identifier has not been already used in the request, which should be the normal case.
+			fsm.requests[fsm.requests_counter][fsm.identifier_array[i]] = {}; // We add a new entry for the identifier identifier
 		} else { // if already mentionned, something is weird.. maybe a soundpainting beginner? or in case forget about it did not erase things
-			maxApi.post(fsm.who_array[i] + " already requested to perform in the same sentence...");
+			maxApi.post(fsm.identifier_array[i] + " already requested to perform in the same sentence...");
 		}
 	}
 }
 
-function fill_request_what(flag) {
+function fill_request_content(flag) {
 	
-	for(var j = 0; j<fsm.what_array.length; j++) {
+	for(var j = 0; j<fsm.content_array.length; j++) {
 		
-		let sign = fsm.what_array[j];
+		let sign = fsm.content_array[j];
 	
-		for (var i = 0; i<fsm.who_array.length; i++) { // in case multiple who identifiers were use, we want to make sure that the Contents is applied to all of them
+		for (var i = 0; i<fsm.identifier_array.length; i++) { // in case multiple identifier identifiers were use, we want to make sure that the Contents is applied to all of them
 				
 			// Store the sign into the request
 			if(fsm.defaults[flag] == null) {
@@ -320,14 +320,14 @@ function fill_request_what(flag) {
 				fsm.defaults[flag] = 0; // we create the flag with 0 as default value
 			}
 			
-			if(fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] != null) { // we check if the content was already in the request // something is probably wrong, so we can send a warning in the console
+			if(fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign] != null) { // we check if the content was already in the request // something is probably wrong, so we can send a warning in the console
 			
 				maxApi.post(sign + " already included in the request for the same performer.");
 			} else {
 				
-				fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign] = {};
+				fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign] = {};
 			}
-			fsm.requests[fsm.requests_counter][fsm.who_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+			fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
 				
 			
 			
@@ -337,13 +337,13 @@ function fill_request_what(flag) {
 				if(fsm.reverse_content_distribution[sign] == null) {
 					fsm.reverse_content_distribution[sign] = {};
 				}
-				fsm.reverse_content_distribution[sign][fsm.who_array[i]] = {};
+				fsm.reverse_content_distribution[sign][fsm.identifier_array[i]] = {};
 				
 				// Update content distribution array
-				if(fsm.content_distribution[fsm.who_array[i]] == null) {
-					fsm.content_distribution[fsm.who_array[i]] = {};
+				if(fsm.content_distribution[fsm.identifier_array[i]] == null) {
+					fsm.content_distribution[fsm.identifier_array[i]] = {};
 				}
-				fsm.content_distribution[fsm.who_array[i]][sign] = {};
+				fsm.content_distribution[fsm.identifier_array[i]][sign] = {};
 			}
 		}
 	}
@@ -351,7 +351,7 @@ function fill_request_what(flag) {
 }
 
 
-function parse_what(sign) {
+function parse_content(sign) {
 	
 	let output = [];
 	
@@ -360,18 +360,18 @@ function parse_what(sign) {
 		let contents = [];
 		
 		// we get the contents from the content distribution array for each identified performer
-		for(var i = 0; i<fsm.who_array.length; i++) {
+		for(var i = 0; i<fsm.identifier_array.length; i++) {
 			
 			// we must first check that the performer was indeed doing something...
-			if(fsm.content_distribution[fsm.who_array[i]] != null) {
+			if(fsm.content_distribution[fsm.identifier_array[i]] != null) {
 			
-				for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.who_array[i]]).length; j++) {
+				for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.identifier_array[i]]).length; j++) {
 					
-					contents.push(Object.keys(fsm.content_distribution[fsm.who_array[i]])[j]);
+					contents.push(Object.keys(fsm.content_distribution[fsm.identifier_array[i]])[j]);
 					
-					//fsm.what_array.push(content);
+					//fsm.content_array.push(content);
 				}
-			} else { o(["/error","Warning: continue requested while performer " + fsm.who_array[i] + " is not playing anything."]); }
+			} else { o(["/error","Warning: continue requested while performer " + fsm.identifier_array[i] + " is not playing anything."]); }
 		}
 			
 		output = [contents, "Continue"];
@@ -381,15 +381,15 @@ function parse_what(sign) {
 	return output;
 }
 
-function parse_who(sign) {
+function parse_identifier(sign) {
 	
-	let who_list = [];
+	let identifier_list = [];
 	
 	// let's first catch the "rest of the group" special case ---------------------------------------------------------
 	if(sign == "restofthegroup") {
 		
-		who_list = parse_restofthegroup();
-		return Array.from(new Set(who_list));
+		identifier_list = parse_restofthegroup();
+		return Array.from(new Set(identifier_list));
 	}
 	
 	// ---------------------------------------------------------------------------------------------------------------------------
@@ -400,35 +400,35 @@ function parse_who(sign) {
 		// we parse again each entry of the group
 		for(var i = 0; i<fsm.groups[sign].length; i++) {
 			
-			let parsed = parse_who(fsm.groups[sign][i]);
+			let parsed = parse_identifier(fsm.groups[sign][i]);
 			
 			for(var j = 0; j<parsed.length; j++) {
 				
-				who_list.push(parsed[j]);
+				identifier_list.push(parsed[j]);
 			}
 		}
 	} else {
 		
-		// we add it to the who array
-		who_list.push(sign);
+		// we add it to the identifier array
+		identifier_list.push(sign);
 		
-		// if we used a sign that is not part of any group, we need to add it to the "wholegroup" array if not already there
-		if(fsm.groups["wholegroup"] != null && !fsm.groups["wholegroup"].includes(sign)) {
+		// if we used a sign that is not part of any group, we need to add it to the "identifierlegroup" array if not already there
+		if(fsm.groups["identifierlegroup"] != null && !fsm.groups["identifierlegroup"].includes(sign)) {
 			
-			fsm.groups["wholegroup"].push(sign);
+			fsm.groups["identifierlegroup"].push(sign);
 			// p(sign);
 		}
 	}
 
-	return Array.from(new Set(who_list)); // we only keep unique identifiers (in case some where shared among two or more groups)
+	return Array.from(new Set(identifier_list)); // we only keep unique identifiers (in case some where shared among two or more groups)
 }
 
 function parse_restofthegroup() {
 	
-	let who_list = [];
+	let identifier_list = [];
 	let rest = [];
 	/*
-	In general, "rest of the group" is ambiguous, because it is not always obvious who is part of the rest.
+	In general, "rest of the group" is ambiguous, because it is not always obvious identifier is part of the rest.
 	
 	For intance:
 	
@@ -439,12 +439,12 @@ function parse_restofthegroup() {
 	Should Trumpet 1 also play the pointillism?
 	
 	One way of disambiguation is to say "trumpet 1 2 continue rest of the group pointillism play".
-	By default, we will assume that the soundpainter uses continue, otherwise the rest of the group is "whole group except those who were identified during the actual request OR those mentionned during the previous request if the actual one is empty".
+	By default, we will assume that the soundpainter uses continue, otherwise the rest of the group is "identifierle group except those identifier were identified during the actual request OR those mentionned during the previous request if the actual one is empty".
 	
 	*/
 	
-	// if who array is not empty, it's a problem
-	if(fsm.who_array.length != 0) {
+	// if identifier array is not empty, it's a problem
+	if(fsm.identifier_array.length != 0) {
 		
 		return [null, "Rest of the group can not be used with other identifiers"];
 	}
@@ -460,22 +460,22 @@ function parse_restofthegroup() {
 			//return [];
 		} else { // it's ok, there is a previous request
 			
-			who_list = Object.keys(fsm.requests[fsm.requests_counter-1]);
+			identifier_list = Object.keys(fsm.requests[fsm.requests_counter-1]);
 		}
 		
-	} else { // we must update the who_array with everyone that was mentionned at some point during the actual request
+	} else { // we must update the identifier_array with everyone that was mentionned at some point during the actual request
 		
-		who_list = Object.keys(fsm.requests[fsm.requests_counter]);
+		identifier_list = Object.keys(fsm.requests[fsm.requests_counter]);
 	}
 	
-	// at this point, the who_array is set
+	// at this point, the identifier_array is set
 	
-	for(var i = 0; i<fsm.groups["wholegroup"].length; i++) {
+	for(var i = 0; i<fsm.groups["identifierlegroup"].length; i++) {
 		
-		if(!who_list.includes(fsm.groups["wholegroup"][i]))
+		if(!identifier_list.includes(fsm.groups["identifierlegroup"][i]))
 		{
 		
-			rest.push(fsm.groups["wholegroup"][i]);
+			rest.push(fsm.groups["identifierlegroup"][i]);
 		}
 	}
 	
@@ -485,19 +485,19 @@ function parse_restofthegroup() {
 function stop_old_content() {
 	
 	// Send stop commands for content that was being played before
-	for(var i = 0; i<fsm.who_array.length;i++) {
+	for(var i = 0; i<fsm.identifier_array.length;i++) {
 		
-		if(fsm.content_distribution[fsm.who_array[i]] != null) {
+		if(fsm.content_distribution[fsm.identifier_array[i]] != null) {
 			
-			for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.who_array[i]]).length; j++) {
+			for(var j = 0; j<Object.keys(fsm.content_distribution[fsm.identifier_array[i]]).length; j++) {
 				
-				let content = Object.keys(fsm.content_distribution[fsm.who_array[i]])[j];
+				let content = Object.keys(fsm.content_distribution[fsm.identifier_array[i]])[j];
 				
 				// let's add the stop command to the request
-				fsm.requests[fsm.requests_counter][fsm.who_array[i]][content] = {"Off": fsm.defaults["Off"]};
+				fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][content] = {"Off": fsm.defaults["Off"]};
 				
 				// let's remove the content from the reverse content distribution
-				delete fsm.reverse_content_distribution[content][fsm.who_array[i]];
+				delete fsm.reverse_content_distribution[content][fsm.identifier_array[i]];
 				if(Object.keys(fsm.reverse_content_distribution[content]).length == 0) {
 				
 					delete fsm.reverse_content_distribution[content];
@@ -505,14 +505,14 @@ function stop_old_content() {
 			}
 		}
 		
-		delete fsm.content_distribution[fsm.who_array[i]]; // we delete the entry in the content distribution, it's going to get updated during the fill_request_what again with new content
+		delete fsm.content_distribution[fsm.identifier_array[i]]; // we delete the entry in the content distribution, it's going to get updated during the fill_request_content again with new content
 	}
 }
 
 function update_outlet() { // this function is used every time we want to see the updates of the arrays/objects in max patch, for instance to debug
 	
-	maxApi.outlet(["/who", fsm.who_array]);
-	maxApi.outlet(["/what", fsm.what_array]);
+	maxApi.outlet(["/identifier", fsm.identifier_array]);
+	maxApi.outlet(["/content", fsm.content_array]);
 	maxApi.outlet(["/how", fsm.how_array]);
 	maxApi.outlet(["/requests", fsm.requests]);
 	maxApi.outlet(["/distrib", fsm.content_distribution]);
@@ -536,7 +536,7 @@ function capture_parameter(param_name) {
 	return values; 
 }
 
-const handlers = { // this is where we define what input messages we can catch, and what it does
+const handlers = { // this is where we define content input messages we can catch, and content it does
 	
 	"sign": (arg1) => {
 
@@ -556,14 +556,14 @@ function initialize() { // this function is triggered only once at script Startu
 	
 	maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]); // the graph is not handled by the update_outlet function
 	
-	// add the wholegroup entry in the list of group if it doesnt exist already (we can overide this by creating a custom one manually)
-	if(!Object.keys(fsm.groups).includes("wholegroup")) {
+	// add the identifierlegroup entry in the list of group if it doesnt exist already (we can overide this by creating a custom one manually)
+	if(!Object.keys(fsm.groups).includes("identifierlegroup")) {
 		
 		let arr = [];
 		
 		for(var i = 0; i<Object.keys(fsm.groups).length; i++) {
 			
-			let parsed = parse_who(Object.keys(fsm.groups)[i]);
+			let parsed = parse_identifier(Object.keys(fsm.groups)[i]);
 			
 			for(var j = 0; j<parsed.length; j++) {
 				
@@ -571,7 +571,7 @@ function initialize() { // this function is triggered only once at script Startu
 			}
 		}
 		
-		fsm.groups["wholegroup"] = Array.from(new Set(arr));
+		fsm.groups["identifierlegroup"] = Array.from(new Set(arr));
 	}
 	
 	maxApi.outlet(["/groups", fsm.groups]);
@@ -583,9 +583,9 @@ function execute_request(index) { // this function is triggered at each Executio
 	
 	/* output form: 
 	
-	/<who> /<what>/Start <float>
-	/<who> /<what>/<param>
-	/<who> /<what>/Stop <float>
+	/<identifier> /<content>/Start <float>
+	/<identifier> /<content>/<param>
+	/<identifier> /<content>/Stop <float>
 	...
 	
 	*/
