@@ -9,9 +9,7 @@ As part of my master thesis at EPFL (Switzerland) at the EM+ lab, I am building 
 
 ## [Features] I don't know Soundpainting, so what can I do with this?
 
-Check out a little preview of the patcher : https://www.youtube.com/watch?v=OmPFMT9mgOs
-
-[![Watch the video](./Images/YT_demo.png)](https://www.youtube.com/watch?v=OmPFMT9mgOs&list=PLqINK1QtSzoG-oqaT623-OB2Z7BTE3Z93&index=5)
+[![Check the videos on my youtube channel](./Images/YT_demo.png)](https://www.youtube.com/playlist?list=PLqINK1QtSzoG-oqaT623-OB2Z7BTE3Z93)
 
 Soundpainting is a sign language designed and used by composers to compose in real-time with multi-disciplinary performers (musicians, actors, visual artists, dancers...). Although it was first used and created by Walter Thompson, many other soundpainters have created their own signs for specific performances, just like you can do with this tool! Here is actually the list of features of my tool:
 
@@ -53,7 +51,7 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 ## Standalone app
 
-_Standalone apps will be released near june/july. Before that, you need to check the setup procedure (very simple) in order to access the source patcher and try it._
+_Standalone apps will be released during the summer. Before that, you need to check the setup procedure (very simple) in order to access the source patcher and try it._
 
 ## Using the project in Max/MSP
 
@@ -72,7 +70,7 @@ _For now, this is the only valid procedure. It has some additional requirements,
 
 ## Communication with Ableton Live
 
-You can now use the tool to communicate with Ableton Live.
+You can use the tool to communicate with Ableton Live.
 
 1. Install Ableton Live 10 (it may be compatible with Ableton live 9), for instance the free trial version.
 2. Install a compatible version of LiveOSC. It is recommended to use the following: https://github.com/ideoforms/LiveOSC. The LiveOSC folder must be copied to the "MIDI Remote Scripts" folder of Ableton. On windows: "\ProgramData\Ableton\Live 10 Trial\Resources\MIDI Remote Scripts", on Mac it should appear under: "/Applications/Ableton*.app/Contents/App-Resources/" (unverified).
