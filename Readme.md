@@ -32,7 +32,7 @@ Each of these is an example of the performativity and potential of gestures and 
 
 Soundpainting is a sign language that is used commonly between human perfomers, to communicate between each other or with a composer during the performance. For instance, using Soundpainting, you can form a request such as: "Guitar 1, improvise, with, jazz, feel, slowly enter" or "Dancer 2, make a loop, in relation with, guitar 1, now".
 
-Now we all know how cool can computer-assisted music or tools can be and the potential they offer. My experience with Soundpainting is that synthetizers, mixing devices, effects... can be painful to manipulate in real-time performance. With this tool, you can manipulate them directly from Soundpainting signs (or your own!): you can program them to respond to commands that you will be able to send with your body... and this recognition tool.
+Now we all know how cool can computer-assisted music or tools can be and the potential they offer. My experience with Soundpainting is that synthesizers, mixing devices, effects... can be painful to manipulate in real-time performance. With this tool, you can manipulate them directly from Soundpainting signs (or your own!): you can program them to respond to commands that you will be able to send with your body... and this recognition tool.
 
 As for now, only basic parts of the Soundpainting grammar are implemented in this tool. There are plenty of modes in Soundpainting that could be added later in the future, that will allow to create different request structures. But if you are a beginner in Soundpainting and want to explore what you can so with some basic signs and your own sounds, this is the right tool for you. Then if you want to code your own regular language and get deeper in the interfacing possibilities, that's also the right place to start.
 
@@ -57,7 +57,7 @@ _Standalone apps will be released during the summer. Before that, you need to ch
 
 _For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
-1. Install Max/MSP (lastest version) https://cycling74.com/
+1. Install Max/MSP (latest version) https://cycling74.com/
 2. _For use with Kinect input_ Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder.
 3. Download/clone this repository
 4. Go to the "Main_patch" folder and load the lastest version of the patcher into Max/MSP (.maxpat)
@@ -90,3 +90,5 @@ This project is based on the following tools:
 * Javascript state machine https://github.com/jakesgordon/javascript-state-machine
 * The bach project (bachproject.net)
 * and many Max/MSP packages...
+
+The project is licensed under GPLv3, as required by the Bach Project.
