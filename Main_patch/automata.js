@@ -614,7 +614,7 @@ function execute_request(index) { // this function is triggered at each Executio
 	}
 }
 
-// This weird generator function (from the web) allows us to parse the request object and create the OSC message from it (almost directly)
+// This weird generator function allows us to parse the request object and create the OSC message from it (almost directly)
 function* format(obj, previous = "") {
 	for(const [key, value] of Object.entries(obj)) {
 		if(typeof value !== "object" || Array.isArray(value)) {
