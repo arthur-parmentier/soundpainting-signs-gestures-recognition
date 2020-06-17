@@ -38,7 +38,7 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 ## General project structure
 
-![Algorithm schema](./Images/bigpicture.png)
+![Big picture](./Images/bigpicture.png)
 
 # Setup
 
