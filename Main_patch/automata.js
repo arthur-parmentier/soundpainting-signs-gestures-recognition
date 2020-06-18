@@ -38,9 +38,9 @@ let fsm = new StateMachine({
 	
 	// First request. TODO: complete it
     	{ name: 'identifier', from: ['Start', 'Who1', 'What_How1'], to: 'Who1' },
-    	{ name: 'content', from: ['Who1', 'Logic1'], to: 'What_How1' },
+    	{ name: 'content', from: ['Who1'], to: 'What_How1' },
 		// { name: 'continue', from: 'Who1', to: 'What_How1' },
-    	{ name: 'modifier', from: ['What_How1','Logic1'], to: 'What_How1' },
+    	{ name: 'modifier', from: ['What_How1'], to: 'What_How1' },
 		//{ name: 'with', from: 'What_How1', to: 'Logic1' },
     	{ name: 'timing', from: 'What_How1', to: 'Execution' },
 		
@@ -51,7 +51,7 @@ let fsm = new StateMachine({
 		{ name: 'group', from: 'What_How', to: 'Who' }, // TODO: implement transition verification
 		
 		// To "What_How" state
-		{ name: 'content', from: ['Execution', 'Who', 'Logic'], to: 'What_How' },
+		{ name: 'content', from: ['Execution', 'Who'], to: 'What_How' },
 		{ name: 'modifier', from: ['Who', 'Execution',  'What_How'], to:  'What_How' },
 		// { name: 'continue', from: 'Who', to: 'What_How' },
 		
@@ -412,10 +412,10 @@ function parse_identifier(sign) {
 		// we add it to the identifier array
 		identifier_list.push(sign);
 		
-		// if we used a sign that is not part of any group, we need to add it to the "identifierlegroup" array if not already there
-		if(fsm.groups["identifierlegroup"] != null && !fsm.groups["identifierlegroup"].includes(sign)) {
+		// if we used a sign that is not part of any group, we need to add it to the "wholegroup" array if not already there
+		if(fsm.groups["wholegroup"] != null && !fsm.groups["wholegroup"].includes(sign)) {
 			
-			fsm.groups["identifierlegroup"].push(sign);
+			fsm.groups["wholegroup"].push(sign);
 			// p(sign);
 		}
 	}
@@ -470,12 +470,12 @@ function parse_restofthegroup() {
 	
 	// at this point, the identifier_array is set
 	
-	for(var i = 0; i<fsm.groups["identifierlegroup"].length; i++) {
+	for(var i = 0; i<fsm.groups["wholegroup"].length; i++) {
 		
-		if(!identifier_list.includes(fsm.groups["identifierlegroup"][i]))
+		if(!identifier_list.includes(fsm.groups["wholegroup"][i]))
 		{
 		
-			rest.push(fsm.groups["identifierlegroup"][i]);
+			rest.push(fsm.groups["wholegroup"][i]);
 		}
 	}
 	
@@ -557,7 +557,7 @@ function initialize() { // this function is triggered only once at script Startu
 	maxApi.outlet(["/graph", visualize(fsm, { orientation: 'horizontal' }).replace(/\n/g,"")]); // the graph is not handled by the update_outlet function
 	
 	// add the identifierlegroup entry in the list of group if it doesnt exist already (we can overide this by creating a custom one manually)
-	if(!Object.keys(fsm.groups).includes("identifierlegroup")) {
+	if(!Object.keys(fsm.groups).includes("wholegroup")) {
 		
 		let arr = [];
 		
@@ -571,7 +571,7 @@ function initialize() { // this function is triggered only once at script Startu
 			}
 		}
 		
-		fsm.groups["identifierlegroup"] = Array.from(new Set(arr));
+		fsm.groups["wholegroup"] = Array.from(new Set(arr));
 	}
 	
 	maxApi.outlet(["/groups", fsm.groups]);

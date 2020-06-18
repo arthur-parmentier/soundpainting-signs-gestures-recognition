@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1482.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -115,7 +115,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1290.0, 120.0, 405.0, 480.0 ],
+					"patching_rect" : [ 1290.0, 120.0, 400.0, 220.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1290.0, 120.0, 405.0, 480.0 ],
 					"viewvisibility" : 1
@@ -134,7 +134,7 @@
 					"patching_rect" : [ 90.0, 120.0, 180.0, 25.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 90.0, 120.0, 180.0, 25.0 ],
-					"text" : "Restart the automata"
+					"text" : "Restart the automaton"
 				}
 
 			}
@@ -180,7 +180,7 @@
 					"patching_rect" : [ 15.0, 15.0, 1185.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 15.0, 1185.0, 64.0 ],
-					"text" : "4.2. Soundpainting automata"
+					"text" : "4.2. Soundpainting automaton"
 				}
 
 			}
@@ -759,7 +759,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 15.0, 180.0, 1184.975257873535156, 403.271681040525436 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 180.0, 1184.975257873535156, 403.271681040525436 ],
+					"presentation_rect" : [ 15.0, 180.0, 1184.975257873535156, 282.271681040525436 ],
 					"rendermode" : 0,
 					"url" : "file://automata_graph.html"
 				}
@@ -806,8 +806,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
@@ -827,7 +825,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 0.0, 0.0, 1215.0, 600.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 0.0, 1215.0, 600.0 ],
+					"presentation_rect" : [ 0.0, 0.0, 1215.0, 465.0 ],
 					"proportion" : 0.5
 				}
 
@@ -980,8 +978,9 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -992,9 +991,8 @@
 						"autogradient" : 0
 					}
 ,
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ]
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
