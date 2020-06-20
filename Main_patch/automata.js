@@ -541,9 +541,17 @@ const handlers = { // this is where we define content input messages we can catc
 	"sign": (arg1) => {
 
 		let [cat, sign] = sign_regexp(arg1);
-		fsm[cat](sign); // trigger the corresponding transition method
+		if (typeof fsm[cat] == "function") {
+			
+			fsm[cat](sign); // trigger the corresponding transition method
 		
-		maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]); // we output the current state after the transition method has been handled, in cas it has changed
+			maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]); // we output the current state after the transition method has been handled, in cas it has changed
+		}
+		else {
+			
+			o(["/error", "Transition " + cat + " does not exist"]);
+		}
+		
 		
 	},
 };
