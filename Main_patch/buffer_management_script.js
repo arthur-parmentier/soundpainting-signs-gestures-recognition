@@ -23,7 +23,7 @@ var state = "";
 // data folder location
 var data_folder = "./data/";
 
-var debug = 0;
+var debug = 1;
 
 
 // handy functions
@@ -64,7 +64,7 @@ const handlers = {
 		
 		p("Model changed to: " + name);
 		model = name;
-		o(["to_mubu_play", "mubuname", model]);
+		// o(["to_mubu_play", "mubuname", model]); // Mubu has bug and needs to get the name to the mubu.play before the imubu. As a workaround, it is not the nodejs script that manage the names changes, but directly max so that we can know the order precisely
 	},
 	
 	"read_append": (abs_path) => {
@@ -135,7 +135,7 @@ const handlers = {
 	
 	"active_tracks_sizes": (...sizes) => { // from input manager
 
-		p("Received tracks sizes ", ...sizes);
+		p("Received tracks sizes ", sizes);
 		active_tracks_sizes = sizes.filter(not_empty);
 		
 		if(active_tracks.length > 0) {
@@ -158,7 +158,7 @@ const handlers = {
 	
 	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
 		
-		p("Received tracks ", ...names);
+		p("Received tracks ", names);
 		
 		if(!not_empty(names)) {
 			
