@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 285.0, -1003.0, 1482.0, 929.0 ],
+		"rect" : [ 285.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,17 +41,6 @@
 		"workspacedisabled" : 1,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-14",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 2055.0, 1755.0, 38.0, 22.0 ],
-					"text" : "poly~"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"bgmode" : 0,
 					"border" : 0,
@@ -5396,6 +5385,10 @@
 				"name" : "mubu.mxe64",
 				"type" : "mx64"
 			}
+, 			{
+				"name" : "mubu.mxe64",
+				"type" : "mx64"
+			}
  ],
 		"autosave" : 0,
 		"boxgroups" : [ 			{
@@ -5405,7 +5398,7 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -5417,9 +5410,9 @@
 						"autogradient" : 0
 					}
 ,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

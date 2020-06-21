@@ -24,6 +24,7 @@ var state = "";
 var data_folder = "./data/";
 
 var debug = 1;
+const routing_dict = "routing";
 
 
 // handy functions
@@ -42,7 +43,7 @@ function o(msg) {
 
 function not_empty(e) {
 	
-	return e!="empty";
+	return (e!="empty"||e!=[]||e!="");
 }
 
 // main part of the code starts here
@@ -62,9 +63,7 @@ const handlers = {
 	
 	"model": (name) => {
 		
-		p("Model changed to: " + name);
-		model = name;
-		// o(["to_mubu_play", "mubuname", model]); // Mubu has bug and needs to get the name to the mubu.play before the imubu. As a workaround, it is not the nodejs script that manage the names changes, but directly max so that we can know the order precisely
+		change_model(name);
 	},
 	
 	"read_append": (abs_path) => {
@@ -134,38 +133,14 @@ const handlers = {
 	},
 	
 	"active_tracks_sizes": (...sizes) => { // from input manager
+	
+		set_active_track_sizes(sizes);
 
-		p("Received tracks sizes ", sizes);
-		active_tracks_sizes = sizes.filter(not_empty);
-		
-		if(active_tracks.length > 0) {
-			o(["to_mubu_play", "trackid", ...active_tracks]);
-			
-			if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
-				
-				state = "creating_tracks";
-				
-				for(var i = 0; i<active_tracks.length; i++) {
-						o(["to_imubu", "hastrack", active_tracks[i]]);
-				}
-			}
-			else {
-				
-				p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
-			}
-		}
 	},
 	
-	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) tht we use when we want to create buffers to train examples
+	"active_tracks_names": (...names) => { // the names of active tracks (from the input manager, not gathered from the buffer directly) that we use when we want to create buffers to train examples
 		
-		p("Received tracks ", names);
-		
-		if(!not_empty(names)) {
-			
-			cleartracks();
-		}
-		
-		active_tracks = names.filter(not_empty);
+		set_active_track_names(names);
 		
 	},
 	
@@ -276,6 +251,68 @@ maxApi.addHandlers(handlers);
 
 setup();
 
+async function change_model(name) {
+	
+	p("Model changed to: " + name);
+	model = name;
+	
+	// o(["to_mubu_play", "mubuname", model]); // Mubu has bug and needs to get the name to the mubu.play before the imubu. As a workaround, it is not the nodejs script that manage the names changes, but directly max so that we can know the order precisely
+	
+	// get model infos from routing dict
+	
+	const dict = await maxApi.getDict(routing_dict);
+	// dict contains the dict's contents
+	  
+	try {
+		let track_name = dict[name]["input_name"];
+		let track_size = dict[name]["input_size"];
+		p("Model " + model + " with tracks " + track_name + " of size " + track_size); 
+		set_active_track_names([track_name]);
+		set_active_track_sizes([track_size]);
+	} catch (err) {
+		
+		p("Error in routing dict : " + err);
+		
+	}
+
+	
+}
+
+function set_active_track_names(...names) { // this should get called before track sizes
+	
+	if(not_empty(names)) {
+		p("New track names " + names);
+		cleartracks(); // here we assume that track names are received prior to track sizes. TODO: improve this
+		active_tracks = names.filter(not_empty);
+	} else { p("Received empty track names list"); }
+}
+
+function set_active_track_sizes(...sizes) {// this should get called after track names
+	
+	if(not_empty(sizes)) {
+		p("New track sizes " + sizes);
+		active_tracks_sizes = sizes.filter(not_empty);
+	
+		if(active_tracks.length > 0) {
+			o(["to_mubu_play", "trackid", ...active_tracks]);
+			
+			if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
+				
+				state = "creating_tracks";
+				
+				for(var i = 0; i<active_tracks.length; i++) {
+					p("Creating track " + active_tracks[i]);
+					o(["to_imubu", "hastrack", active_tracks[i]]); // this will check whether the tracks are already inside Imubu and if not, create them. Otherwise, it will only try to modify them to the right size
+				}
+			}
+			else {
+				
+				p("Error: track names length and track sizes length are not equal: " + active_tracks.length+ " vs " + active_tracks_sizes.length);
+			}
+		}
+	} else { p("Received empty track sizes list"); }
+}
+
 async function add_clear_buffers(buffers) { // it is async because we need to wait for the "clear" part before we can add the buffers
 	
 	await clearbuffers();
@@ -316,7 +353,7 @@ async function clearbuffers() {
 	// handling buffer 1...
 	if(mubu_buffers[0]==1 || mubu_buffers[0]=="1" || mubu_buffers[0]==null) {
 		
-		p("Leaving buffer 1 " + mubu_buffers[0] + " in place as hotfix for Mubu bug");
+		p("Handling buffer 1 case");
 	} else {
 		// That 1 buffer is really a pain. In order to delete the first buffer without messing up with the tracks, I have this workaround:
 		o(["to_imubu", "addbuffer", 1]);
@@ -326,6 +363,7 @@ async function clearbuffers() {
 
 function cleartracks() {
 	
+	p("Clearing tracks");
 	o(["to_imubu", "clear"]);
 }
 
