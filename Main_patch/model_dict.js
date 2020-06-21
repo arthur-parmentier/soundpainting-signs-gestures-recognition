@@ -64,8 +64,8 @@ function list(x, y, state) {
 
 function models() {
 	
+	p('Input routing: received models');
 	dict.clear();
-	
 	models_list = arguments;
 	
 	for(var i = 0; i<models_list.length; i++) {
@@ -79,6 +79,7 @@ function models() {
 
 function inputs() {
 	
+	p('Input routing: received inputs');
 	input_list = arguments;
 	
 	o(0, "clear");

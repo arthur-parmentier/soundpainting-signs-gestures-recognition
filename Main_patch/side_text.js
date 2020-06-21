@@ -1,4 +1,5 @@
 mgraphics.init();
+p("Vertical text init");
 mgraphics.relative_coords = 1;
 mgraphics.autofill = 0;
 
@@ -6,12 +7,26 @@ inlets = 1;
 
 var fontSize = 12;
 var fontName = "Arial";
-var text = "";
+var text = "test";
 
 var red = 0;
 var green = 0;
 var blue = 0;
 var alpha = 1;
+
+var debug = 1;
+
+function p(msg) {
+	
+	if(debug) {
+		post(msg);
+	}
+}	
+
+function o(n ,msg) {
+	
+	outlet(n, msg);
+}
 
 function bang()
 {
@@ -44,6 +59,7 @@ function setSize(s)
 }
 function set(t)
 {
+	p("Setting vertical text " + t);
 	text = t;
 	mgraphics.redraw();
 }
