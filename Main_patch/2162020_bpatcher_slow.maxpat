@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 285.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 285.0, -1003.0, 1482.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,17 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 2055.0, 1755.0, 38.0, 22.0 ],
+					"text" : "poly~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -70,10 +81,11 @@
 					"id" : "obj-81",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "models_tabs_buffers.maxpat",
+					"name" : "buffer_management.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 6,
 					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "", "", "", "", "", "" ],
 					"patching_rect" : [ 1140.0, 1395.0, 855.0, 450.0 ],
 					"viewvisibility" : 1
 				}
@@ -412,12 +424,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 26,
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 938.0, 332.0, 62.0, 367.0 ],
+					"patching_rect" : [ 15.0, 795.0, 501.0, 50.0 ],
 					"text" : "0.222067 -0.198594 0.364698 0.249983 -0.204697 0.366396 0.234192 -0.176956 0.345175 0.211903 -0.22405 0.370393 0.203448 -0.190286 0.362832 0.157476 -0.187181 0.311446 0.105227 -0.193599 0.31035"
 				}
 
@@ -429,7 +441,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 938.0, 302.0, 105.0, 22.0 ],
+					"patching_rect" : [ 15.0, 765.0, 105.0, 22.0 ],
 					"text" : "r hands_adaboost"
 				}
 
@@ -437,12 +449,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-27",
-					"linecount" : 16,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 860.0, 255.0, 50.0, 229.0 ],
+					"patching_rect" : [ 15.0, 735.0, 510.0, 22.0 ],
 					"text" : "-0.687391 10.830243 0.603957 11.526078 -0.035877 4.13437 0.008989 3.939178"
 				}
 
@@ -454,7 +465,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 860.0, 225.0, 98.0, 22.0 ],
+					"patching_rect" : [ 15.0, 705.0, 98.0, 22.0 ],
 					"text" : "r full_body_DTW"
 				}
 
@@ -465,7 +476,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.5, 705.0, 57.0, 22.0 ],
+					"patching_rect" : [ 500.5, 645.0, 57.0, 22.0 ],
 					"text" : "s models"
 				}
 
@@ -4303,12 +4314,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-176",
-					"linecount" : 28,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 120.0, 212.0, 425.0 ],
-					"text" : "First, you must choose between your motion tracking inputs which one is the active one. In the future, there may be several active inputs at the same time but for now we'll start with one.\n\n1) Add your input in the message box if it is not already inside and click on it to update the input list.\n\n2) Select the inputs you want to use with the menu.\n\nEach input should be s in the form of an array of size N at each time step.\n\nTo be correctly recognized, the values from your input must be sent with the object\n\ns <yourinputname>\n\nand the size of the input must be sent with\n\nsend<yourinputname>_size"
+					"patching_rect" : [ 15.0, 120.0, 212.0, 66.0 ],
+					"text" : "1.1. Input Routing:\n\n1)\n"
 				}
 
 			}
@@ -4316,6 +4327,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-139", 0 ],
+					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -4323,7 +4335,8 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-81", 0 ],
-					"source" : [ "obj-1", 1 ]
+					"order" : 0,
+					"source" : [ "obj-1", 0 ]
 				}
 
 			}
@@ -4672,6 +4685,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-210", 0 ],
 					"source" : [ "obj-239", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"source" : [ "obj-24", 1 ]
 				}
 
 			}
@@ -5333,13 +5353,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "models_tabs_buffers.maxpat",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "buffer_management.maxpat",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
@@ -5355,13 +5368,6 @@
 			}
 , 			{
 				"name" : "filter_empty_string.js",
-				"bootpath" : "~/Desktop/PDM/Main_patch",
-				"patcherrelativepath" : ".",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "tab_bpatcher_manager.js",
 				"bootpath" : "~/Desktop/PDM/Main_patch",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",

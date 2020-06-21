@@ -7,14 +7,14 @@ inlets = 1;
 
 var fontSize = 12;
 var fontName = "Arial";
-var text = "test";
+var text = "";
 
 var red = 0;
 var green = 0;
 var blue = 0;
 var alpha = 1;
 
-var debug = 1;
+var debug = 0;
 
 function p(msg) {
 	

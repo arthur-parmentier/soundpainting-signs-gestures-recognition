@@ -62,6 +62,7 @@ const handlers = {
 	
 	"model": (name) => {
 		
+		p("Model changed to: " + name);
 		model = name;
 		o(["to_mubu_play", "mubuname", model]);
 	},
@@ -461,7 +462,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 	if(model == "" || model == null) { // here we are checking that we did say which model we are using, so we can send the right commands
 		
 		p("Model not defined, cannot train");
-		return -1;
+		return 0;
 	}
 
 	p("Start training " + model);

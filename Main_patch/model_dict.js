@@ -3,7 +3,7 @@ autowatch = 1;
 outlets = 2;
 inlets = 1;
 
-var debug = 1;
+var debug = 0;
 
 var models_list = [];
 var models_corresponding_input_index = [];
