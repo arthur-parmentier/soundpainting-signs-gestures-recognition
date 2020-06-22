@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
+		"rect" : [ 34.0, -1003.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,29 +47,34 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 660.0, 50.0, 22.0 ]
+					"patching_rect" : [ 900.0, 660.0, 50.0, 22.0 ],
+					"text" : "21 8"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-49",
+					"linecount" : 8,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 315.0, 660.0, 50.0, 22.0 ]
+					"patching_rect" : [ 315.0, 660.0, 50.0, 119.0 ],
+					"text" : "handpose_normalized posenet_normalized_selection"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-43",
+					"linecount" : 6,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 600.0, 675.0, 50.0, 22.0 ]
+					"patching_rect" : [ 600.0, 675.0, 50.0, 91.0 ],
+					"text" : "full_body_DTW hands_adaboost"
 				}
 
 			}
@@ -837,6 +842,50 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"id" : "obj-31",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body_DTW"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-32",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands_adaboost"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -908,7 +957,7 @@
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "", "int" ],
-					"patching_rect" : [ 256.0, 1383.0, 1305.0, 58.0 ],
+					"patching_rect" : [ 255.0, 1365.0, 1305.0, 58.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1272,7 +1321,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 15.0, 795.0, 501.0, 50.0 ],
-					"text" : "0.222067 -0.198594 0.364698 0.249983 -0.204697 0.366396 0.234192 -0.176956 0.345175 0.211903 -0.22405 0.370393 0.203448 -0.190286 0.362832 0.157476 -0.187181 0.311446 0.105227 -0.193599 0.31035"
+					"text" : "1.813406 -2.682926 0.733185 1.995262 -2.709627 0.543422 1.961342 -2.69264 0.583431 2.187696 -2.672175 0.579314 2.142446 -2.610656 0.623711 2.369164 -2.640903 0.415745 2.796256 -3.006468 0.188978"
 				}
 
 			}
@@ -1296,7 +1345,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 15.0, 735.0, 510.0, 22.0 ],
-					"text" : "-0.472636 30.798071 0.795476 21.683806 -0.27955 21.7528 0.170692 0.209625"
+					"text" : "1.4927 0.358678 0.685909 0.645739 1.150811 0.262157 1.489055 0.322014"
 				}
 
 			}
@@ -4335,7 +4384,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 1830.0, 222.0, 276.0 ],
+					"patching_rect" : [ 15.0, 1845.0, 222.0, 276.0 ],
 					"text" : "To load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification.\n\nPro tip: you can bulk drag and drop several files in the drop zone"
 				}
 
@@ -5145,7 +5194,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 300.0, 1830.0, 234.0, 440.0 ],
+					"patching_rect" : [ 300.0, 1845.0, 234.0, 440.0 ],
 					"text" : "Your data should appear in these buffers once the signs are trained or data is loaded.\n\nData management instructions:\n\n1) Without loading any data in the buffer, train the signs you would like to train using 2.1. and 2.2.\n\n2) Once you are done training, save the buffer into a new .mubu file\n\n3) Load the previously trained data files\n\n4) You can now run train the classifier and run the classification\n\nClick the save button in order to save the buffers to a file, in order to load the data in the future.\n\nEach buffer corresponds to a different sign and each track (tab) to a different input. Both buffers and tracks are automatically generated for convenience from the list of signs and inputs."
 				}
 
@@ -6335,10 +6384,8 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -6349,7 +6396,9 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
