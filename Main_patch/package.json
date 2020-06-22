@@ -1,0 +1,19 @@
+{
+  "name": "Main_patch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buffer_management_script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "javascript-state-machine": "^3.1.0",
+    "path": "^0.12.7",
+    "uuid": "^8.1.0",
+    "viz.js": "^2.1.2"
+  }
+}

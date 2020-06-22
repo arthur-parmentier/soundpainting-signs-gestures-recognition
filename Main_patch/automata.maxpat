@@ -41,6 +41,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 750.0, -60.0, 98.0, 22.0 ],
+					"text" : "script npm install"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bubble" : 1,
 					"bubbleside" : 2,
 					"fontname" : "Arial",
@@ -281,13 +293,13 @@
 								"box" : 								{
 									"fontsize" : 8.0,
 									"id" : "obj-91",
-									"linecount" : 9,
+									"linecount" : 6,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 827.0, 91.0 ],
-									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Identifiers1\\\";  \\\"Contents_Modifiers1\\\";  \\\"Logic1\\\";  \\\"Execution\\\";  \\\"Contents_Modifiers\\\";  \\\"Identifiers\\\";  \\\"Logic\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" neutral \\\" ];  \\\"Logic1\\\" -> \\\"Logic1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" neutral \\\" ];  \\\"Logic\\\" -> \\\"Logic\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Identifiers1\\\" [ label=\\\" who \\\" ];  \\\"Identifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" what \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Logic1\\\" -> \\\"Contents_Modifiers1\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Logic1\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers1\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Execution\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Identifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" who \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Identifiers\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Logic\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" what \\\" ];  \\\"Identifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Contents_Modifiers\\\" [ label=\\\" how \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Identifiers\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Execution\\\" [ label=\\\" when \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" add \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" with \\\" ];  \\\"Contents_Modifiers\\\" -> \\\"Logic\\\" [ label=\\\" without \\\" ];}\""
+									"text" : "\"digraph \\\"fsm\\\" {  rankdir=LR;  \\\"Start\\\";  \\\"Who1\\\";  \\\"What_How1\\\";  \\\"Execution\\\";  \\\"What_How\\\";  \\\"Who\\\";  \\\"none\\\" -> \\\"none\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Start\\\" [ label=\\\" neutral \\\" ];  \\\"Who1\\\" -> \\\"Who1\\\" [ label=\\\" neutral \\\" ];  \\\"What_How1\\\" -> \\\"What_How1\\\" [ label=\\\" neutral \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" neutral \\\" ];  \\\"What_How\\\" -> \\\"What_How\\\" [ label=\\\" neutral \\\" ];  \\\"Who\\\" -> \\\"Who\\\" [ label=\\\" neutral \\\" ];  \\\"Start\\\" -> \\\"Who1\\\" [ label=\\\" identifier \\\" ];  \\\"Who1\\\" -> \\\"Who1\\\" [ label=\\\" identifier \\\" ];  \\\"What_How1\\\" -> \\\"Who1\\\" [ label=\\\" identifier \\\" ];  \\\"Who1\\\" -> \\\"What_How1\\\" [ label=\\\" content \\\" ];  \\\"What_How1\\\" -> \\\"What_How1\\\" [ label=\\\" modifier \\\" ];  \\\"What_How1\\\" -> \\\"Execution\\\" [ label=\\\" timing \\\" ];  \\\"What_How\\\" -> \\\"Who\\\" [ label=\\\" identifier \\\" ];  \\\"Execution\\\" -> \\\"Who\\\" [ label=\\\" identifier \\\" ];  \\\"Who\\\" -> \\\"Who\\\" [ label=\\\" identifier \\\" ];  \\\"What_How\\\" -> \\\"Who\\\" [ label=\\\" group \\\" ];  \\\"Execution\\\" -> \\\"What_How\\\" [ label=\\\" content \\\" ];  \\\"Who\\\" -> \\\"What_How\\\" [ label=\\\" content \\\" ];  \\\"Who\\\" -> \\\"What_How\\\" [ label=\\\" modifier \\\" ];  \\\"Execution\\\" -> \\\"What_How\\\" [ label=\\\" modifier \\\" ];  \\\"What_How\\\" -> \\\"What_How\\\" [ label=\\\" modifier \\\" ];  \\\"Execution\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"Who\\\" -> \\\"Execution\\\" [ label=\\\" off \\\" ];  \\\"What_How\\\" -> \\\"Execution\\\" [ label=\\\" timing \\\" ];}\""
 								}
 
 							}
@@ -806,6 +818,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"options" : [ "--inspect" ],
 						"watch" : 0
 					}
@@ -879,6 +893,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-335", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -979,8 +1000,8 @@
 				"name" : "orjan style",
 				"default" : 				{
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
