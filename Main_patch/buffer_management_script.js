@@ -63,8 +63,7 @@ const handlers = {
 	
 	"model": (name) => {
 		
-		update_buffers_and_tracks();
-		// change_model(name);
+		change_model(name);
 	},
 	
 	"read_append": (abs_path) => {
@@ -250,9 +249,7 @@ async function change_model(name) {
 	// o(["to_mubu_play", "mubuname", model]); // Mubu has bug and needs to get the name to the mubu.play before the imubu. As a workaround, it is not the nodejs script that manage the names changes, but directly max so that we can know the order precisely
 	
 	// get model infos from routing dict
-	
 	const dict = await maxApi.getDict(routing_dict);
-	// dict contains the dict's contents
 	  
 	try {
 		let track_name = dict[name]["input_name"];
@@ -260,10 +257,9 @@ async function change_model(name) {
 		p("Model " + model + " with tracks " + track_name + " of size " + track_size); 
 		set_active_track_names([track_name]);
 		set_active_track_sizes([track_size]);
+		
 	} catch (err) {
-		
 		p("Error in routing dict : " + err);
-		
 	}
 }
 
@@ -469,7 +465,8 @@ async function save() {
 
 async function update_buffers_and_tracks() {
 	
-	if(state == "updated") {
+	if(state == "updated") { // here we check that we are not already inside an update loop, which would probably mess up with the state updates and create infinite loops
+	
 		p("Updating buffers and tracks");
 		state = "updating_buffers";
 		o(["to_imubu", "getbuffers"]);
@@ -503,7 +500,6 @@ function setup() { // first function that is triggered at loading time
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
 	// o(["to_imubu" , "getname"]); // not useful and could perhaps cause issues
-	
 	o(["to_mubu_play" , "speed", speed]);
 	
 }
