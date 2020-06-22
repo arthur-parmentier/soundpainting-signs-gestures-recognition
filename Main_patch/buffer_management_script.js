@@ -18,7 +18,7 @@ var mubu_numtracks = 0;
 
 // helpers
 var playing = false;
-var state = "";
+var state = "updated";
 
 // data folder location
 var data_folder = "./data/";
@@ -43,7 +43,7 @@ function o(msg) {
 
 function not_empty(e) {
 	
-	return (e!="empty"||e!=[]||e!="");
+	return (e!="empty" && e!=[] && e!="");
 }
 
 // main part of the code starts here
@@ -63,7 +63,8 @@ const handlers = {
 	
 	"model": (name) => {
 		
-		change_model(name);
+		update_buffers_and_tracks();
+		// change_model(name);
 	},
 	
 	"read_append": (abs_path) => {
@@ -187,19 +188,9 @@ const handlers = {
 	
 	"hastrack": (bool, name) => {
 		
-		if(active_tracks.includes(name) && state == "creating_tracks") { // when calling for track creation from input manager
-		
-			let size = active_tracks_sizes[active_tracks.indexOf(name)];
-		
-			let funct = "modifytrack";
-			
-			if(bool == 0) {
-
-				funct = "addtrack";
-			}
-			
-			o(["to_imubu", funct, name, "@maxsize", "5s", "@matrixcols", size, "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
-		}
+		p(["Active tracks : ", active_tracks]);
+		p("Includes names : " + active_tracks.includes(name));
+		p("State : " + state);
 	},
 	
 
@@ -274,36 +265,32 @@ async function change_model(name) {
 		p("Error in routing dict : " + err);
 		
 	}
-
-	
 }
 
-function set_active_track_names(...names) { // this should get called before track sizes
+function set_active_track_names(names) { // this should get called before track sizes
 	
+	p(["Names : ", names]);
 	if(not_empty(names)) {
 		p("New track names " + names);
-		cleartracks(); // here we assume that track names are received prior to track sizes. TODO: improve this
+		// cleartracks(); // here we assume that track names are received prior to track sizes. TODO: improve this
 		active_tracks = names.filter(not_empty);
 	} else { p("Received empty track names list"); }
 }
 
-function set_active_track_sizes(...sizes) {// this should get called after track names
+async function set_active_track_sizes(sizes) {// this should get called after track names
+// here we do not only set the track sizes but also try to update mubu tracks in case it is necessary
 	
 	if(not_empty(sizes)) {
-		p("New track sizes " + sizes);
+		p(["New track sizes ", sizes]);
 		active_tracks_sizes = sizes.filter(not_empty);
 	
 		if(active_tracks.length > 0) {
 			o(["to_mubu_play", "trackid", ...active_tracks]);
+			o(["to_mubu_record_active_tracks", ...active_tracks]);
 			
 			if(active_tracks.length == active_tracks_sizes.length) { // if they have the same length, then we can add the tracks to the buffer if the buffer does not already have the track
 				
-				state = "creating_tracks";
-				
-				for(var i = 0; i<active_tracks.length; i++) {
-					p("Creating track " + active_tracks[i]);
-					o(["to_imubu", "hastrack", active_tracks[i]]); // this will check whether the tracks are already inside Imubu and if not, create them. Otherwise, it will only try to modify them to the right size
-				}
+				await update_mubu_tracks();
 			}
 			else {
 				
@@ -311,6 +298,29 @@ function set_active_track_sizes(...sizes) {// this should get called after track
 			}
 		}
 	} else { p("Received empty track sizes list"); }
+}
+
+async function update_mubu_tracks() { // takes active tracks, see if mubu has them with right size and modify them if not
+	
+	await update_buffers_and_tracks();
+	
+	for(var i = 0; i<active_tracks.length; i++) {
+		p("Checking track " + active_tracks[i]);
+		
+		if(mubu_tracks.includes(active_tracks[i])) { // there is the track, let's check its size
+			if(mubu_tracks_sizes[mubu_tracks.indexOf(active_tracks[i])] != active_tracks_sizes[i]) { // if the size do not match
+				
+				p("Track " + active_tracks[i] + " found in mubu at different size "+ mubu_tracks_sizes[mubu_tracks.indexOf(active_tracks[i])] + " vs " + active_tracks_sizes[i] + ", changing it");
+				
+				o(["to_imubu", "modifytrack", active_tracks[i], "@maxsize", "5s", "@matrixcols", active_tracks_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
+			} else { p("Track " + active_tracks[i] + " found in mubu at same size");}		
+		} else { // if there is not the track we add it
+			
+			p("Track " + active_tracks[i] + " not found in mubu : " + mubu_tracks + " vs " + active_tracks + " , adding it");
+			o(["to_imubu", "addtrack", active_tracks[i], "@maxsize", "5s", "@matrixcols", active_tracks_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
+		}
+	}
+	
 }
 
 async function add_clear_buffers(buffers) { // it is async because we need to wait for the "clear" part before we can add the buffers
@@ -459,24 +469,27 @@ async function save() {
 
 async function update_buffers_and_tracks() {
 	
-	p("Updating buffers and tracks");
-	state = "updating_buffers";
-	o(["to_imubu", "getbuffers"]);
-	await buffers_updated();
-	state = "updating_numtracks";
-	o(["to_imubu", "getnumtracks"]);
-	await numtracks_updated();
-	
-	if(mubu_numtracks>0) {
-		state = "updating_tracks";
-		o(["to_imubu", "gettracks"]);
-	} else {
-		mubu_tracks = [];
-		mubu_tracks_sizes = [];
-		state = "tracks_updated";
-	}
-	await tracks_updated();
-	p("Update completed");
+	if(state == "updated") {
+		p("Updating buffers and tracks");
+		state = "updating_buffers";
+		o(["to_imubu", "getbuffers"]);
+		await buffers_updated();
+		state = "updating_numtracks";
+		o(["to_imubu", "getnumtracks"]);
+		await numtracks_updated();
+		
+		if(mubu_numtracks>0) {
+			state = "updating_tracks";
+			o(["to_imubu", "gettracks"]);
+		} else {
+			mubu_tracks = [];
+			mubu_tracks_sizes = [];
+			state = "tracks_updated";
+		}
+		await tracks_updated();
+		state = "updated";
+		p(["Update completed with tracks ", mubu_tracks, " and sizes ", mubu_tracks_sizes, " buffers ", mubu_buffers]);
+	} else { setTimeout(update_buffers_and_tracks, 50) }
 }
 
 function update_labels_set() {
@@ -489,7 +502,7 @@ function setup() { // first function that is triggered at loading time
 	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
-	o(["to_imubu" , "getname"]); // we will update the model name here in case it is not setup correctly
+	// o(["to_imubu" , "getname"]); // not useful and could perhaps cause issues
 	
 	o(["to_mubu_play" , "speed", speed]);
 	
@@ -571,7 +584,7 @@ function tracks_updated() {
 		(function check_update(){
 			if (state == "tracks_updated") return resolve();
 			setTimeout(check_update, 10);
-			p("Waiting for track update");
+			p("Waiting for track update with state " + state);
 		})();
 	});
 }
@@ -582,7 +595,7 @@ function buffers_updated() {
 		(function check_update(){
 			if (state == "buffers_updated") return resolve();
 			setTimeout(check_update, 10);
-			p("Waiting for buffer update");
+			p("Waiting for buffer update with state " + state);
 		})();
 	});
 }
@@ -593,7 +606,7 @@ function numtracks_updated() {
 		(function check_update(){
 			if (state == "numtracks_updated") return resolve();
 			setTimeout(check_update, 10);
-			p("Waiting for numtracks update");
+			p("Waiting for numtracks update with state " + state);
 		})();
 	});
 }

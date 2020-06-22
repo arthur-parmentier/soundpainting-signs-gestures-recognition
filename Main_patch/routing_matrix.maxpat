@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 285.0, -1003.0, 1852.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -59,7 +59,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 827.0, 561.0, 225.0, 62.0 ],
-					"text" : "This little js scripts builds the \"routing\" dict (unused) and sends the different commands to the receive objects of each model with the foward object"
+					"text" : "This little js scripts builds the \"routing\" dict and sends the different commands to the receive objects of each model with the foward object"
 				}
 
 			}
@@ -240,6 +240,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-6",
@@ -449,7 +450,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 810.5, 625.0, 450.0, 36.0 ],
+									"patching_rect" : [ 810.5, 625.0, 453.0, 36.0 ],
 									"text" : "script newobject newobj @text \"send hands_adaboost\" @patching_position 0. 565. @varname s_hands_adaboost"
 								}
 
@@ -3587,33 +3588,7 @@
 					}
 ,
 					"text" : "pattr @bindto model_input_routing::presentation_rect",
-					"varname" : "u767038597"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-35",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 0.0, 365.0, 173.0, 22.0 ],
-					"text" : "receive posenet_raw_selection",
-					"varname" : "r_posenet_raw_selection"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-37",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 0.0, 365.0, 207.0, 22.0 ],
-					"text" : "receive posenet_translated_selection",
-					"varname" : "r_posenet_translated_selection"
+					"varname" : "u049002917"
 				}
 
 			}
@@ -3646,32 +3621,6 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 16.0, 11.0, 165.0, 150.0 ],
 					"varname" : "posenet_normalized_selection"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-90",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 0.0, 365.0, 169.0, 22.0 ],
-					"text" : "receive handpose_normalized",
-					"varname" : "r_handpose_normalized"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-91",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 0.0, 365.0, 213.0, 22.0 ],
-					"text" : "receive posenet_normalized_selection",
-					"varname" : "r_posenet_normalized_selection"
 				}
 
 			}
@@ -3999,8 +3948,11 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -4010,10 +3962,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",

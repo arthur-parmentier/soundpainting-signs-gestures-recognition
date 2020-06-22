@@ -111,15 +111,16 @@
 			}
 , 			{
 				"box" : 				{
+					"comment" : "",
 					"id" : "obj-1",
-					"maxclass" : "newobj",
+					"index" : 0,
+					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 15.0, 103.0, 22.0 ],
+					"patching_rect" : [ 15.0, 0.0, 30.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 120.0, -120.0, 89.0, 22.0 ],
-					"text" : "receive models"
+					"presentation_rect" : [ 120.0, -120.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -322,7 +323,10 @@
 , 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -333,10 +337,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",
