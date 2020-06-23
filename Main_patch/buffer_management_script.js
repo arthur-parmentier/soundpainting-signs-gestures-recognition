@@ -123,9 +123,7 @@ const handlers = {
 				}
 			}
 			
-			o(["buffers_names", ...mubu_buffers]);
 			update_labels_set();
-			o(["labels_set", ...mubu_labels_set]);
 			
 			state = "buffers_updated";
 			
@@ -486,6 +484,12 @@ async function update_buffers_and_tracks() {
 		await tracks_updated();
 		state = "updated";
 		p(["Update completed with tracks ", mubu_tracks, " and sizes ", mubu_tracks_sizes, " buffers ", mubu_buffers]);
+		
+		// send the useful stuff
+		o(["buffers_names", ...mubu_buffers]);
+		o(["labels_set", ...mubu_labels_set]);
+		
+		// var buffer_dict = maxApi.updateDict("buffers", model + "." .... // To continue if useful to link to Max dict
 	} else { setTimeout(update_buffers_and_tracks, 50) }
 }
 
@@ -543,7 +547,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 			o(["model_commands", "/wekinator/control/startDtwRecording", index]);
 		} else {
 			
-			o(["model_commands", "/wekinator/control/outputs", index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
+			o(["model_commands", "/wekinator/control/outputs", index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
 			o(["model_commands", "/wekinator/control/startRecording"]);
 		}
 		
