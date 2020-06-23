@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 96.0, 85.0, 1427.0, 953.0 ],
+		"rect" : [ -1646.0, -986.0, 1612.0, 899.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -301,20 +301,19 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 9.055605055586057, -60.0, 200.944394944413943, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 9.055605055586057, -60.0, 190.0, 22.0 ],
-					"text" : "pak 3.2. name wekinator-classifier"
+					"presentation_rect" : [ 9.055605055586057, -60.0, 200.944394944413943, 22.0 ],
+					"text" : "pak 3.1. name wekinator-classifier"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-4",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 9.055605055586057, -90.0, 29.5, 36.0 ],
+					"patching_rect" : [ 9.055605055586057, -90.0, 95.944394944413943, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 9.055605055586057, -90.0, 29.5, 36.0 ],
@@ -494,7 +493,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",

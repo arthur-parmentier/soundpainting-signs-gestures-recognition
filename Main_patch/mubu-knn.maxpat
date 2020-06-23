@@ -208,7 +208,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1840.0, 60.0, 318.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 2065.0, 84.0, 318.0, 20.0 ],
+					"presentation_rect" : [ 1840.0, 60.0, 318.0, 20.0 ],
 					"text" : "by default we use track 1. Make sure it is still relevant"
 				}
 
@@ -222,7 +222,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1765.0, 60.0, 70.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1990.0, 84.0, 70.0, 22.0 ],
+					"presentation_rect" : [ 1765.0, 60.0, 70.0, 22.0 ],
 					"text" : "loadmess 1"
 				}
 
@@ -236,7 +236,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1765.0, 90.0, 91.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1990.0, 114.0, 91.0, 22.0 ],
+					"presentation_rect" : [ 1765.0, 90.0, 91.0, 22.0 ],
 					"text" : "prepend trackid"
 				}
 
@@ -251,7 +251,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 930.0, -90.0, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1766.0, -36.0, 24.0, 24.0 ]
+					"presentation_rect" : [ 930.0, -90.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -394,7 +394,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1665.0, 60.0, 51.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1890.0, 84.0, 51.0, 22.0 ],
+					"presentation_rect" : [ 1665.0, 60.0, 51.0, 22.0 ],
 					"text" : "minmax"
 				}
 
@@ -408,7 +408,7 @@
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1665.0, 0.0, 58.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1890.0, 24.0, 58.0, 22.0 ],
+					"presentation_rect" : [ 1665.0, 0.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -422,7 +422,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1720.5, 60.0, 29.5, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1945.5, 84.0, 29.5, 22.0 ],
+					"presentation_rect" : [ 1720.5, 60.0, 29.5, 22.0 ],
 					"text" : "off"
 				}
 
@@ -436,7 +436,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1665.0, 30.0, 74.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1890.0, 54.0, 74.0, 22.0 ],
+					"presentation_rect" : [ 1665.0, 30.0, 74.0, 22.0 ],
 					"text" : "meanstddev"
 				}
 
@@ -450,7 +450,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1665.0, 90.0, 93.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1890.0, 114.0, 93.0, 22.0 ],
+					"presentation_rect" : [ 1665.0, 90.0, 93.0, 22.0 ],
 					"text" : "prepend scaling"
 				}
 
@@ -464,7 +464,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1035.0, -60.0, 70.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1815.0, 54.0, 70.0, 22.0 ],
+					"presentation_rect" : [ 1035.0, -60.0, 70.0, 22.0 ],
 					"text" : "loadmess 4"
 				}
 
@@ -493,7 +493,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 930.0, -60.0, 80.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1710.0, 54.0, 80.0, 22.0 ],
+					"presentation_rect" : [ 930.0, -60.0, 80.0, 22.0 ],
 					"text" : "loadmess 1.5"
 				}
 
@@ -507,7 +507,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1545.0, 120.0, 62.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1815.0, 114.0, 62.0, 22.0 ],
+					"presentation_rect" : [ 1545.0, 120.0, 62.0, 22.0 ],
 					"text" : "prepend k"
 				}
 
@@ -537,7 +537,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1440.0, 120.0, 89.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1710.0, 114.0, 89.0, 22.0 ],
+					"presentation_rect" : [ 1440.0, 120.0, 89.0, 22.0 ],
 					"text" : "prepend radius"
 				}
 

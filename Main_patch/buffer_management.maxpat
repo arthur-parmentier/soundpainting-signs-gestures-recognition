@@ -46,24 +46,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 23.0, 98.0, 22.0 ],
+					"patching_rect" : [ 763.5, -30.0, 98.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 495.0, 23.0, 98.0, 22.0 ],
+					"presentation_rect" : [ 763.5, -30.0, 98.0, 22.0 ],
 					"text" : "script npm install"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-35",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 915.0, -75.0, 70.0, 22.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 915.0, -75.0, 70.0, 22.0 ],
-					"text" : "loadmess 1"
 				}
 
 			}
@@ -1848,9 +1834,9 @@
 					"outputvalues" : 0,
 					"outputviewname" : 0,
 					"parameter_enable" : 0,
-					"patching_rect" : [ 179.930171459913254, 90.0, 660.069828540086746, 315.0 ],
+					"patching_rect" : [ 179.930171459913254, 90.0, 675.069828540086746, 315.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 179.930171459913254, 90.0, 660.069828540086746, 315.0 ],
+					"presentation_rect" : [ 179.930171459913254, 90.0, 675.069828540086746, 315.0 ],
 					"rangeruler_grid" : 0,
 					"rangeruler_size" : 30,
 					"rangeruler_visible" : 1,
@@ -3550,9 +3536,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 14.930171459913254, 15.0, 825.069828540086746, 64.0 ],
+					"patching_rect" : [ 14.930171459913254, 15.0, 840.069828540086746, 64.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 14.930171459913254, 15.0, 825.069828540086746, 64.0 ],
+					"presentation_rect" : [ 14.930171459913254, 15.0, 840.069828540086746, 64.0 ],
 					"text" : "2.2. #1 buffer management"
 				}
 
@@ -3566,9 +3552,9 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 0.0, 0.0, 855.0, 420.0 ],
+					"patching_rect" : [ 0.0, 0.0, 870.0, 420.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 0.0, 855.0, 420.0 ],
+					"presentation_rect" : [ 0.0, 0.0, 870.0, 420.0 ],
 					"proportion" : 0.5
 				}
 
@@ -3765,8 +3751,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -4145,13 +4129,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"source" : [ "obj-34", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-28", 0 ],
-					"source" : [ "obj-35", 0 ]
 				}
 
 			}
@@ -4540,8 +4517,8 @@
 				"name" : "orjan style",
 				"default" : 				{
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],

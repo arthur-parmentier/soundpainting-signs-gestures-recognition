@@ -72,18 +72,12 @@ function models() {
 		
 		dict[models_list[i]] = {"input_name": "", "input_size": 0};
 	}
-	
-	o(0, "clear");
-	
 }
 
 function inputs() {
 	
 	p('Input routing: received inputs');
 	input_list = arguments;
-	
-	o(0, "clear");
-	
 }
 
 function input_sizes() {
