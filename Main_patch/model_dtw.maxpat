@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -1638.0, -978.0, 1257.0, 899.0 ],
+		"rect" : [ 105.0, 85.0, 1257.0, 899.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,20 @@
 		"showontab" : 1,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-30",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1200.0, 0.0, 615.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1200.0, 0.0, 615.0, 22.0 ],
+					"text" : "/wek/outputs 496.854706 495.758331 480.698669 495.244049 499.609253 509.291473 inf inf inf inf"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bubbleside" : 2,
 					"fontname" : "Bebas Neue",
@@ -567,8 +581,8 @@
 					"id" : "obj-109",
 					"maxclass" : "newobj",
 					"numinlets" : 4,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -580,7 +594,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 847.0, 497.0, 640.0, 480.0 ],
+						"rect" : [ 1050.0, 452.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -609,6 +623,18 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-1",
+									"index" : 4,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 284.501466960064931, 370.219482210937485, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontsize" : 12.0,
 									"id" : "obj-363",
@@ -689,7 +715,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 201.510579597460492, 50.0, 22.0 ],
-									"text" : "0"
+									"text" : "2"
 								}
 
 							}
@@ -790,7 +816,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.000001960064878, 370.219482210937485, 30.0, 30.0 ]
+									"patching_rect" : [ 50.0, 370.219482210937485, 30.0, 30.0 ]
 								}
 
 							}
@@ -874,7 +900,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"order" : 0,
+									"source" : [ "obj-53", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-233", 0 ],
+									"order" : 1,
 									"source" : [ "obj-53", 0 ]
 								}
 
@@ -1007,8 +1042,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 983.5, -45.0, 73.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 983.5, -45.0, 73.0, 22.0 ],
-					"text" : "loadmess 5."
+					"presentation_rect" : [ 983.5, -45.0, 70.0, 22.0 ],
+					"text" : "loadmess 7"
 				}
 
 			}
@@ -1070,7 +1105,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 180.0, 635.944394944413943, 180.0 ],
 					"setminmax" : [ 0.0, 100.0 ],
-					"size" : 30
+					"size" : 10
 				}
 
 			}
@@ -1138,6 +1173,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"source" : [ "obj-109", 3 ]
 				}
 
 			}
@@ -1365,6 +1407,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-109", 0 ],
+					"order" : 1,
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 1 ],
+					"order" : 0,
 					"source" : [ "obj-38", 0 ]
 				}
 
@@ -1490,9 +1541,6 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1503,8 +1551,11 @@
 						"autogradient" : 0
 					}
 ,
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -307,7 +307,6 @@ async function update_mubu_tracks() { // takes active tracks, see if mubu has th
 		} else { // if the track is not there, we clear previous tracks and add it
 		
 			cleartracks();
-			
 			p("Track " + active_tracks[i] + " not found in mubu : " + mubu_tracks + " vs " + active_tracks + " , adding it");
 			o(["to_imubu", "addtrack", active_tracks[i], "@maxsize", "5s", "@matrixcols", active_tracks_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
 		}
@@ -409,7 +408,7 @@ async function save() {
 	- tracks are saved in the same file so it is not garantueed that the data is homogeneous (one buffer in the dataset can have empty data for one active track if not reloaded properly.
 	*/
 	
-	// TODO: first we want to check that we are saving the right track configuration. Maybe someone has loaded files externally, updating the tracks in mubu, so the configuratino text may not be right
+	// TODO: first we want to check that we are saving the right track configuration. Maybe someone has loaded files externally, updating the tracks in mubu, so the configuration text may not be right
 	
 	let tracks_string = "configuration";
 			
@@ -501,7 +500,7 @@ function update_labels_set() {
 
 function setup() { // first function that is triggered at loading time
 	
-	let speed = 1;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
+	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
 	o(["to_mubu_play" , "speed", speed]);
@@ -543,7 +542,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 		// Set the right buffer index
 		o(["to_mubu_play", "bufferindex", i]);
 		
-		if(model.includes("DTW")) { // TODO: handle this in a better way
+		if(model.includes("full_body")) { // TODO: handle this in a better way
 			// Then the OSC commands to wekinator
 			o(["model_commands", "/wekinator/control/startDtwRecording", index]);
 		} else {
@@ -559,7 +558,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 		
 		await waitforplaytostop(); // we wait for the "end" message to arrive with async code
 		
-		if(model.includes("DTW")) {
+		if(model.includes("full_body")) {
 			// stop wekinator recording
 			o(["model_commands", "/wekinator/control/stopDtwRecording"]);
 		} else {
