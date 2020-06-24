@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 26.0, -995.0, 1852.0, 929.0 ],
+		"rect" : [ 26.0, -995.0, 1500.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -47,6 +47,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 750.0, -60.0, 98.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 750.0, -60.0, 98.0, 22.0 ],
 					"text" : "script npm install"
 				}
 
@@ -129,7 +131,7 @@
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 1290.0, 120.0, 400.0, 220.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1290.0, 120.0, 405.0, 480.0 ],
+					"presentation_rect" : [ 1290.0, 120.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -192,7 +194,7 @@
 					"patching_rect" : [ 15.0, 15.0, 1185.0, 64.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 15.0, 1185.0, 64.0 ],
-					"text" : "4.2. Soundpainting automaton"
+					"text" : "4.1. Soundpainting automaton"
 				}
 
 			}
@@ -769,9 +771,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 180.0, 1184.975257873535156, 403.271681040525436 ],
+					"patching_rect" : [ 17.012371063232422, 180.0, 1182.962886810302734, 270.271681040525436 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 180.0, 1184.975257873535156, 282.271681040525436 ],
+					"presentation_rect" : [ 17.012371063232422, 180.0, 1182.962886810302734, 270.271681040525436 ],
 					"rendermode" : 0,
 					"url" : "file://automata_graph.html"
 				}
@@ -837,9 +839,9 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 0.0, 0.0, 1215.0, 600.0 ],
+					"patching_rect" : [ -0.006185531616211, 0.0, 1215.006185531616211, 465.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 0.0, 1215.0, 465.0 ],
+					"presentation_rect" : [ -0.006185531616211, 0.0, 1215.006185531616211, 465.0 ],
 					"proportion" : 0.5
 				}
 
@@ -999,9 +1001,6 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1012,8 +1011,11 @@
 						"autogradient" : 0
 					}
 ,
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

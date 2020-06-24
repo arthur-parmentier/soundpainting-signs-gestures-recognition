@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 105.0, 85.0, 1437.0, 969.0 ],
+		"rect" : [ 105.0, 85.0, 1437.0, 953.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -176,7 +176,7 @@
 					"patching_rect" : [ 1002.5, 115.341350569134192, 50.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1002.5, 115.341350569134192, 50.0, 22.0 ],
-					"text" : "0"
+					"text" : "5"
 				}
 
 			}
@@ -1547,9 +1547,9 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 300.0, 285.0, 50.0, 22.0 ],
+					"patching_rect" : [ 310.0, 285.0, 50.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 300.0, 285.0, 50.0, 22.0 ]
+					"presentation_rect" : [ 310.0, 285.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -2430,8 +2430,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -2837,8 +2835,6 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
-										"node_bin_path" : "",
-										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -2957,9 +2953,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 11.605508415596034, 330.0, 64.0 ],
+					"patching_rect" : [ 15.0, 11.605508415596034, 345.0, 64.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 11.605508415596034, 330.0, 64.0 ],
+					"presentation_rect" : [ 15.0, 11.605508415596034, 345.0, 64.0 ],
 					"text" : "1.3. Handpose"
 				}
 
@@ -4999,9 +4995,9 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 90.0, 330.0, 180.0 ],
+					"patching_rect" : [ 15.0, 90.0, 345.0, 180.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 90.0, 330.0, 180.0 ],
+					"presentation_rect" : [ 15.0, 90.0, 345.0, 180.0 ],
 					"proportion" : 0.5
 				}
 
@@ -5015,9 +5011,9 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 0.0, 0.0, 360.0, 975.0 ],
+					"patching_rect" : [ 0.0, 0.0, 375.0, 975.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.0, 0.0, 360.0, 975.0 ],
+					"presentation_rect" : [ 0.0, 0.0, 375.0, 975.0 ],
 					"proportion" : 0.5
 				}
 

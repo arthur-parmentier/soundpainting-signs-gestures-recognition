@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 105.0, 85.0, 1437.0, 969.0 ],
+		"rect" : [ -1646.0, -986.0, 1612.0, 899.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,53 @@
 		"showontab" : 2,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1665.0, -45.0, 180.0, 20.0 ],
+					"text" : "TODO: test different scalings"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 1508.666666666666515, 360.5, 34.0, 22.0 ],
+					"text" : "sel 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-245",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1508.666666666666515, 330.328055202960968, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-246",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1508.666666666666515, 300.0, 67.0, 22.0 ],
+					"text" : "zl.compare"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Bebas Neue",
 					"fontsize" : 16.0,
@@ -203,13 +250,15 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-16",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1840.0, 60.0, 318.0, 20.0 ],
+					"patching_rect" : [ 1845.0, 54.0, 318.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1840.0, 60.0, 318.0, 20.0 ],
-					"text" : "by default we use track 1. Make sure it is still relevant"
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 1840.0, 60.0, 318.0, 34.0 ],
+					"text" : "Warning: by default we use track 1. TODO: improve genericity with multiple tracks in mubu"
 				}
 
 			}
@@ -292,7 +341,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1508.666666666666515, 300.0, 150.0, 22.0 ],
+					"patching_rect" : [ 1508.666666666666515, 390.0, 150.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1508.666666666666515, 300.0, 150.0, 22.0 ],
 					"text" : "modifier:volume"
@@ -406,7 +455,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1736.0, -15.0, 58.0, 22.0 ],
+					"patching_rect" : [ 1720.5, 0.0, 58.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1665.0, 0.0, 58.0, 22.0 ],
 					"text" : "loadbang"
@@ -843,7 +892,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-116", 0 ],
+					"destination" : [ "obj-246", 0 ],
 					"order" : 1,
 					"source" : [ "obj-114", 0 ]
 				}
@@ -852,7 +901,23 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-128", 1 ],
+					"order" : 0,
 					"source" : [ "obj-116", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-128", 0 ],
+					"order" : 1,
+					"source" : [ "obj-116", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-116", 0 ],
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -872,7 +937,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-246", 1 ],
+					"order" : 0,
+					"source" : [ "obj-128", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
+					"order" : 1,
 					"source" : [ "obj-128", 0 ]
 				}
 
@@ -919,6 +993,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
 					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-245", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-245", 0 ],
+					"source" : [ "obj-246", 0 ]
 				}
 
 			}
