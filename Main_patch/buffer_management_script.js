@@ -16,7 +16,7 @@ var mubu_labels_set = [];
 var mubu_buffers = [];
 var mubu_numtracks = 0;
 
-// helpers
+// helpers for async functions
 var playing = false;
 var state = "updated";
 
@@ -29,16 +29,12 @@ const routing_dict = "routing";
 
 // handy functions
 function p(msg) {
-	
 	if(debug) {
 		maxApi.post(msg);
 	}
 }
-
 function o(msg) {
-	
 	maxApi.outlet(msg);
-	//maxApi.post(msg);
 }
 
 function not_empty(e) {
@@ -46,9 +42,9 @@ function not_empty(e) {
 	return (e!="empty" && e!=[] && e!="");
 }
 
-// main part of the code starts here
+// message handlers
 const handlers = {
-	"name": (name) => { // answer from mubu getname during setup
+	"name": (name) => { // answer from mubu getname
 		
 		if(name != "" || name != null) {
 			model = name;
@@ -66,7 +62,7 @@ const handlers = {
 		change_model(name);
 	},
 	
-	"read_append": (abs_path) => {
+	"read_append": (abs_path) => { // Unused
 		
 		let buffer_name = path.basename(abs_path).split("_")[0];
 		p("Buffer name : " + buffer_name);
@@ -99,7 +95,7 @@ const handlers = {
 	
 	"buffers": (...arg_list) => { // can be called after getbuffers...
 		
-		if(state == "updating_buffers") { // update_buffers_and_tracks function with getbuffers
+		if(state == "updating_buffers") { // get_mubu_data function with getbuffers
 			
 			mubu_buffers = [];
 			mubu_labels = [];
@@ -296,7 +292,7 @@ async function set_active_track_sizes(sizes) {// this should get called after tr
 
 async function update_mubu_tracks() { // takes active tracks, see if mubu has them with right size and modify them if not
 	
-	await update_buffers_and_tracks();
+	await get_mubu_data();
 	
 	for(var i = 0; i<active_tracks.length; i++) {
 		p("Checking track " + active_tracks[i]);
@@ -308,7 +304,9 @@ async function update_mubu_tracks() { // takes active tracks, see if mubu has th
 				
 				o(["to_imubu", "modifytrack", active_tracks[i], "@maxsize", "5s", "@matrixcols", active_tracks_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
 			} else { p("Track " + active_tracks[i] + " found in mubu at same size");}		
-		} else { // if there is not the track we add it
+		} else { // if the track is not there, we clear previous tracks and add it
+		
+			cleartracks();
 			
 			p("Track " + active_tracks[i] + " not found in mubu : " + mubu_tracks + " vs " + active_tracks + " , adding it");
 			o(["to_imubu", "addtrack", active_tracks[i], "@maxsize", "5s", "@matrixcols", active_tracks_sizes[i], "@timetagged", "yes", "@info", "gui", "autobounds minmax, shape envelopebpf, interface multibpf, opacity 1, colormode rainbow, hidenotforemost 1"]);
@@ -344,7 +342,7 @@ function addbuffers(buffers) {
 
 async function clearbuffers() {
 	
-	await update_buffers_and_tracks();
+	await get_mubu_data();
 	
 	p("Clearing buffers");
 	
@@ -373,7 +371,7 @@ function cleartracks() {
 
 async function save() {
 	
-	await update_buffers_and_tracks();
+	await get_mubu_data();
 		
 	p("Saving buffers : " + mubu_buffers);
 	p("Saving tracks : " + mubu_tracks);
@@ -461,9 +459,12 @@ async function save() {
 	// TODO later: check that buffer tracks are == to the active tracks. 
 }
 
-async function update_buffers_and_tracks() {
+async function get_mubu_data() {
 	
 	if(state == "updated") { // here we check that we are not already inside an update loop, which would probably mess up with the state updates and create infinite loops
+		
+		p('Updating model name');
+		o(["to_imubu" , "getname"]);
 	
 		p("Updating buffers and tracks");
 		state = "updating_buffers";
@@ -490,7 +491,7 @@ async function update_buffers_and_tracks() {
 		o(["labels_set", ...mubu_labels_set]);
 		
 		// var buffer_dict = maxApi.updateDict("buffers", model + "." .... // To continue if useful to link to Max dict
-	} else { setTimeout(update_buffers_and_tracks, 50) }
+	} else { setTimeout(get_mubu_data, 50) }
 }
 
 function update_labels_set() {
@@ -500,16 +501,17 @@ function update_labels_set() {
 
 function setup() { // first function that is triggered at loading time
 	
-	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
+	let speed = 1;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
-	// o(["to_imubu" , "getname"]); // not useful and could perhaps cause issues
 	o(["to_mubu_play" , "speed", speed]);
 	
 }
 
 async function train() { // this is the async function that triggers the mubu.play object by iterating other each buffer
 
+	await get_mubu_data();
+	
 	if(model == "" || model == null) { // here we are checking that we did say which model we are using, so we can send the right commands
 		
 		p("Model not defined, cannot train");
@@ -517,8 +519,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 	}
 
 	p("Start training " + model);
-	await update_buffers_and_tracks();
-	
+
 	// Warning (todo): check if buffer 1 is here and remove it
 	p(["Labels set : ", ...mubu_labels_set]);
 	
