@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, -1003.0, 1500.0, 929.0 ],
+		"rect" : [ 97.0, 77.0, 1789.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -65,7 +65,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 900.0, 1740.0, 317.0, 425.0 ],
+					"patching_rect" : [ 900.0, 1740.0, 321.0, 425.0 ],
 					"text" : "Here is where the motion tracking data is stored. The input name appears as a track in the mubu object (a tab), while each recording of a sign is stored in a single buffer.\n\nThere should normally be only one track in the mubu object. The buffer management script is designed in a way that things could also work with several tracks, historically because I made other design choices originally, but on the side the kNN, I assumed that it only should use track 1. Later, I might revisit the multitrack possibilities.\n\nUse can use the buttons on the left to control the mubu object and save the recordings to the data folder.\n\nTo load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification."
 				}
 
@@ -1883,6 +1883,94 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-70",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-71",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-72",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-73",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-74",
 									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -5001,14 +5089,16 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-241",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1195.0, 3768.119996175169945, 155.0, 22.0 ],
+					"patching_rect" : [ 1195.0, 3768.119996175169945, 155.0, 36.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 25.0, 3498.119996175169945, 155.0, 22.0 ],
-					"text" : "/numerics2/pointilism/Off 0"
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 25.0, 3498.119996175169945, 155.0, 36.0 ],
+					"text" : "/wholegroupe/longtone/Continue 0"
 				}
 
 			}
@@ -5351,14 +5441,16 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
+					"linecount" : 7,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1210.0, 3675.0, 124.0, 22.0 ],
+					"patching_rect" : [ 1210.0, 3675.0, 124.0, 105.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 40.0, 3405.0, 124.0, 22.0 ],
-					"text" : "/longtone/Start 0"
+					"presentation_linecount" : 7,
+					"presentation_rect" : [ 40.0, 3405.0, 124.0, 105.0 ],
+					"text" : "/longtone/Off 0 /longtone/Start 0 /longtone/tempo/value 120 /longtone/volume/value 0.8 /longtone/Continue 0"
 				}
 
 			}
@@ -5635,11 +5727,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 22.0 ]
+					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 50.0 ],
+					"text" : "\"Transition content from state What_How not allowed.\""
 				}
 
 			}
@@ -6872,6 +6966,10 @@
 				"type" : "mx64"
 			}
 , 			{
+				"name" : "mubu.mxe64",
+				"type" : "mx64"
+			}
+, 			{
 				"name" : "mubu.knn.mxe64",
 				"type" : "mx64"
 			}
@@ -6890,6 +6988,11 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -6899,12 +7002,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",

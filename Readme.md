@@ -1,17 +1,15 @@
 # Soundpainting recognition tool
 
+* Do you want to control your live artistic digital setup with gestures ?
 * Are you a soundpainter?
-* Or do you want to control your live artistic digital setup with your own signs and gestures?
 
 This tool is made for you!
 
 As part of my master thesis at EPFL (Switzerland) at the EM+ lab, I am building an app with Max/MSP that allows the user to control a virtual orchestra with soundpainting or user-created signs.
 
-## [Features] I don't know Soundpainting, so what can I do with this?
+## Features
 
-[![Check the videos on my youtube channel](./Images/YT_demo.png)](https://www.youtube.com/playlist?list=PLqINK1QtSzoG-oqaT623-OB2Z7BTE3Z93)
-
-Soundpainting is a sign language designed and used by composers to compose in real-time with multi-disciplinary performers (musicians, actors, visual artists, dancers...). Although it was first used and created by Walter Thompson, many other soundpainters have created their own signs for specific performances, just like you can do with this tool! Here is actually the list of features of my tool:
+Even if you are not familiar with Soundpainting, the following features may interest you:
 
 - **Create and train your own signs.**
 For instance, you could create a sign for "launch my program.exe". The program has been built to recognize common Soundpainting signs but you can just build the ones you need!
@@ -21,22 +19,17 @@ For instance, you could create a sign for "launch my program.exe". The program h
 - Create **complex requests with the grammar of Soundpainting**, which is optimized for real-time performance; but also creating your own regular grammar: **your own sign language**.
 - Play with the **built-in virtual orchestra or Ableton OSC controller** and create your own set of sounds, triggers. With signs and gestures, you don't have to use hardware anymore to control you favorite DAW or software: your body can communicate with them.
 
-The project has started with the following references in mind :
-* MiMu Gloves https://mimugloves.com/ (extending music instruments with gestual controls)
-* GeKiPe http://philippespiesser.com/projet/gekipe-geste-kinect-percussion/ (creating/extending music instruments with mechanical, percussion-like movements)
-* Soundpainting as a standard, world-wide language for artistic performance, communication and composition http://www.soundpainting.com/
+[![Check the demos on my youtube channel](./Images/YT_demo.png)](https://www.youtube.com/playlist?list=PLqINK1QtSzoG-oqaT623-OB2Z7BTE3Z93)
 
-Each of these is an example of the performativity and potential of gestures and signs for music creativity, composition and instrument expansion.
-
-### What is the link with Soundpainting?
+## What is Soundpainting?
 
 Soundpainting is a sign language that is used commonly between human perfomers, to communicate between each other or with a composer during the performance. For instance, using Soundpainting, you can form a request such as: "Guitar 1, improvise, with, jazz, feel, slowly enter" or "Dancer 2, make a loop, in relation with, guitar 1, now".
 
-Now we all know how cool can computer-assisted music or tools can be and the potential they offer. My experience with Soundpainting is that synthesizers, mixing devices, effects... can be painful to manipulate in real-time performance. With this tool, you can manipulate them directly from Soundpainting signs (or your own!): you can program them to respond to commands that you will be able to send with your body... and this recognition tool.
+We all know how cool can computer-assisted music or tools can be and the potential they offer. My experience with Soundpainting is that synthesizers, mixing devices, effects... can be painful to manipulate in real-time performance. With this tool, you can manipulate them directly from Soundpainting signs (or your own!): you can program them to respond to commands that you will be able to send with your body... and this recognition tool.
 
 As for now, only basic parts of the Soundpainting grammar are implemented in this tool. There are plenty of modes in Soundpainting that could be added later in the future, that will allow to create different request structures. But if you are a beginner in Soundpainting and want to explore what you can so with some basic signs and your own sounds, this is the right tool for you. Then if you want to code your own regular language and get deeper in the interfacing possibilities, that's also the right place to start.
 
-## General project structure
+# General project structure
 
 ![Big picture](./Images/bigpicture.png)
 
@@ -44,10 +37,11 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 ## Required and recommended hardware
 
-* Required: webcam OR low-latency external camera OR kinect input
-* Required: 64 bits computer (Tested on Windows 10)
-* Recommended with webcam input: Dedicated GPU (Tested on Nvidia 1060 GTX)
-* Recommended: 16+ Go RAM, i7 or i9 CPU (Tested on i7-8750H)
+* A webcam is required for HandPose and PoseNet, the two main built-in motion tracking models. An integrated one is ideal but you can also use your phone as a webcam for your computer through USB (https://www.youtube.com/watch?v=JHhZbDXT6sw) or wireless local network (IP webcam).
+* A kinect may also be used with lower performances and more painful installation process _(Todo: describe installation process)_
+* A 64 bits computer (developped on Windows 10) with Max/MSP (tested with Max 8) is required, although a standalone version should be released in the summer for all OS.
+* Recommended with webcam input: dedicated GPU (Tested on Nvidia 1060 GTX). Users without dedicated GPUs may find PoseNet and HandPose either running slow or inaccurate and may have trouble recognizing gestures at a convenient distance from the computer.
+* Recommended: 16+ Go RAM, i7 or i9 CPU (Tested on i7-8750H). Make sure that your computer has sufficient ventilation and power to hold the stress of running several models simultaneously. Consider undervolting GPU and power throttling CPU in case you do, like me, reach critical temperature while running the program during a long time.
 
 ## Standalone app
 
@@ -91,4 +85,12 @@ This project is based on the following tools:
 * The bach project (bachproject.net)
 * and many Max/MSP packages...
 
+The project was also inspired by :
+* MiMu Gloves https://mimugloves.com/ (extending music instruments with gestual controls)
+* GeKiPe http://philippespiesser.com/projet/gekipe-geste-kinect-percussion/ (creating/extending music instruments with mechanical, percussion-like movements)
+* Soundpainting as a standard, world-wide language for artistic performance, communication and composition http://www.soundpainting.com/
+
+Each of these is an example of the performativity and potential of gestures and signs for music creativity, composition and instrument expansion.
+
 The project is licensed under GPLv3, as required by the Bach Project.
+
