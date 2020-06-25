@@ -45,11 +45,9 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 ## Standalone app
 
-_Standalone apps will be released during the summer. Before that, you need to check the setup procedure (very simple) in order to access the source patcher and try it._
+_Standalone apps will be released during the summer. The tool can only be used with Max/MSP installed yet._
 
 ## Using the project in Max/MSP
-
-_For now, this is the only valid procedure. It has some additional requirements, including Max/MSP that is not free, but with which I am building this app._
 
 1. Install Max/MSP (latest version) https://cycling74.com/
 2. _For use with Kinect input_ Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder.
