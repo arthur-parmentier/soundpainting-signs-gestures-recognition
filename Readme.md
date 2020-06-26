@@ -45,21 +45,23 @@ _Standalone apps will be released during the summer. The tool can only be used w
 
 ## In Max/MSP
 
-1. Install Max/MSP (latest version)
+1. Install Max/MSP (latest version).
+2. Check that you have a Java distribution (for the mxj objects) and install one if necessary.
+3. Download the pre-release or clone this repository and in the "Main_patch" folder, open the last date-stamped patcher (for example "24062020_better_UI.maxpat").
+4. Check the console for errors. You may have missing packages, hence objects not found. If it is the case, install the missing packages in Max:
+	* MuBu for Max
+	* jasch
+	* CNMAT-Externals and CNMAT-odot
+	* Bach Project libraries
+5.
 
 ### For use with Kinect
 
 1. Install the Kinect (with appropriate drivers on Windows) and plug it in the computer.
 2. Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder (source: SimpleKinect https://github.com/jpbellona/simpleKinect).
-3. Get the motion tracking data in Max via OSC. I will soon implement it directly into the patcher.
+3. Get the motion tracking data in Max via OSC. I will soon implement it directly into the patcher. 
 
-
-
-
-
-
-3. Download/clone this repository
-4. Go to the "Main_patch" folder and load the lastest version of the patcher into Max/MSP (.maxpat)
+	
 5. _For use with the built-in HandPose & PoseNet - webcam - inputs (recommended)_ Install the dependencies by clicking on the dedicated button in the patcher. Then, make sure that the Maxhelper process (Max Helper.exe on windows) as well as the electron processes run on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings (if you have a Nvidia GPU, check its control panel).
 6. Install the required Max/MSP packages: MuBu, Bach project (and whatever Max/MSP is telling you that you are missing, because I used several handy packages for Max)
 7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
