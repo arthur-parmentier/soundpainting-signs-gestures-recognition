@@ -1,3 +1,5 @@
+// TODO: see if it's not better in the future to abandon node.js for that script (why did I even chose node.js instead of js?) and re-work it a little so that there aren't any async events anymore. I think it would simplify the code a lot and lower the cpu usage
+
 const maxApi = require("max-api");
 var fs = require('fs');
 var path = require("path");

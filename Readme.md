@@ -29,10 +29,6 @@ We all know how cool can computer-assisted music or tools can be and the potenti
 
 As for now, only basic parts of the Soundpainting grammar are implemented in this tool. There are plenty of modes in Soundpainting that could be added later in the future, that will allow to create different request structures. But if you are a beginner in Soundpainting and want to explore what you can so with some basic signs and your own sounds, this is the right tool for you. Then if you want to code your own regular language and get deeper in the interfacing possibilities, that's also the right place to start.
 
-# General project structure
-
-![Big picture](./Images/bigpicture.png)
-
 # Setup
 
 ## Required and recommended hardware
@@ -47,10 +43,21 @@ As for now, only basic parts of the Soundpainting grammar are implemented in thi
 
 _Standalone apps will be released during the summer. The tool can only be used with Max/MSP installed yet._
 
-## Using the project in Max/MSP
+## In Max/MSP
 
-1. Install Max/MSP (latest version) https://cycling74.com/
-2. _For use with Kinect input_ Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder.
+1. Install Max/MSP (latest version)
+
+### For use with Kinect
+
+1. Install the Kinect (with appropriate drivers on Windows) and plug it in the computer.
+2. Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder (source: SimpleKinect https://github.com/jpbellona/simpleKinect).
+3. Get the motion tracking data in Max via OSC. I will soon implement it directly into the patcher.
+
+
+
+
+
+
 3. Download/clone this repository
 4. Go to the "Main_patch" folder and load the lastest version of the patcher into Max/MSP (.maxpat)
 5. _For use with the built-in HandPose & PoseNet - webcam - inputs (recommended)_ Install the dependencies by clicking on the dedicated button in the patcher. Then, make sure that the Maxhelper process (Max Helper.exe on windows) as well as the electron processes run on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings (if you have a Nvidia GPU, check its control panel).
