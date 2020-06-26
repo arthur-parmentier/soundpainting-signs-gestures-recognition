@@ -53,7 +53,19 @@ _Standalone apps will be released during the summer. The tool can only be used w
 	* jasch
 	* CNMAT-Externals and CNMAT-odot
 	* Bach Project libraries
-5.
+5. Inside the patcher, install the NPM modules by hitting the dedicated buttons (one for PoseNet, one for HandPose, one for both buffer management script and automaton).
+6. If you wish to use the DTW classifier, install Wekinator (wekinator.org).
+7. Run PoseNet and HandPose once each. Then, go to your GPU settings and force the each electron process to run on the dedicated GPU rather than the integrated one. Check that you then achieve higher FPS.
+8. You are now ready to use the patcher! Follow the instructions inside the patcher. Here is a summary:
+	* In layer 1, launch PoseNet and HandPose
+	* Route them to the right model (full body and hands) - you can also add your own inputs and models
+	* Set the PoseNet and HandPose parameters to run both at around 10 FPS
+	* In layer 2, define the signs you want to record for each model
+	* Launch the recording of signs
+	* Save your recordings to files
+	* Launch Wekinator, create a DTW classifier and set its internal parameters
+	* Hit the "train model" button for each model
+	* In layer 3, check that both DTW and kNN classifiers are running and classifing your signs
 
 ### For use with Kinect
 
@@ -61,11 +73,6 @@ _Standalone apps will be released during the summer. The tool can only be used w
 2. Install Processing https://processing.org/ and launch the "simpleKinect" scripts in the "Utilities" folder (source: SimpleKinect https://github.com/jpbellona/simpleKinect).
 3. Get the motion tracking data in Max via OSC. I will soon implement it directly into the patcher. 
 
-	
-5. _For use with the built-in HandPose & PoseNet - webcam - inputs (recommended)_ Install the dependencies by clicking on the dedicated button in the patcher. Then, make sure that the Maxhelper process (Max Helper.exe on windows) as well as the electron processes run on the dedicated GPU and not integrated GPU, by checking your OS or GPU settings (if you have a Nvidia GPU, check its control panel).
-6. Install the required Max/MSP packages: MuBu, Bach project (and whatever Max/MSP is telling you that you are missing, because I used several handy packages for Max)
-7. _For use with Kinect input_ Download the drivers for your kinect and launch the processing scripts located in the "Utilities" folder (check out https://github.com/jpbellona/simpleKinect).
-8. Download Wekinator (wekinator.org) and launch as many models as you use in the patcher?
 9. You can now use the tool! For instance, try to launch the PoseNet model with the Wekinator DTW model and train your first signs!
 10. To build your own standalone, check out the procedure for Max/MSP (and Processing if you use the kinect scripts).
 
