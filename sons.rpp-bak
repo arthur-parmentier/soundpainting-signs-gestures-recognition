@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.08/x64" 1593160883
+<REAPER_PROJECT 0.1 "6.08/x64" 1593292130
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
   AUTOXFADE 1
@@ -14,9 +14,9 @@
   TIMEMODE 8 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 78.68152006172839
-  ZOOM 207.36 16277 0
-  VZOOMEX 20 0
+  CURSOR 104.91717301196138
+  ZOOM 104.66351393921069 10449 0
+  VZOOMEX 28 0
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -27,7 +27,7 @@
   >
   <APPLYFX_CFG
   >
-  RENDER_FILE "C:\Users\dell\Desktop\Sons pour composition Ableton Live\20.wav"
+  RENDER_FILE "C:\Users\dell\Desktop\Sons pour composition Ableton Live\marimba2.wav"
   RENDER_FMT 0 2 44100
   RENDER_1X 0
   RENDER_RANGE 2 0 0 18 1000
@@ -55,8 +55,8 @@
   GLOBAL_AUTO -1
   TEMPO 120 4 4
   PLAYRATE 1 0 0.25 4
-  SELECTION 78.78086419753086 83.14525462962962
-  SELECTION2 78.78086419753086 83.14525462962962
+  SELECTION 103.3884645444344 106.11147650221685
+  SELECTION2 103.3884645444344 106.11147650221685
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -108,113 +108,157 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 1
+      POSITION 0.63100324643996
       SNAPOFFS 0
-      LENGTH 3
+      LENGTH 2.49833262107914
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0
       FADEOUT 1 0.01 0 1 0 0
       MUTE 0
       SEL 0
-      IGUID {38DCEBE5-492D-42FE-8507-F8C9725EA8E5}
-      IID 1
-      NAME devinette.mp4
+      IGUID {CF89226D-94C7-47BD-AAD5-9959DAC1C057}
+      IID 11
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
       VOLPAN 1 0 1 -1
-      SOFFS 2
+      SOFFS 2.49099537402751
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {1749A9FA-91D4-4170-9590-DD35E0AD33A3}
-      <SOURCE VIDEO
-        FILE "C:\Users\dell\Desktop\devinette.mp4"
+      GUID {796BD961-8EAB-41CD-9DB4-005A5612EE09}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
       >
     >
     <ITEM
-      POSITION 4.5
+      POSITION 6.87501354180484
       SNAPOFFS 0
-      LENGTH 2.25
+      LENGTH 3.79900365885583
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0
       FADEOUT 1 0.01 0 1 0 0
       MUTE 0
       SEL 0
-      IGUID {78647667-7D90-48A5-AF9D-29332634B809}
-      IID 2
-      NAME devinette.mp4
+      IGUID {9B08FC10-66A7-491E-9907-A8859DD5116B}
+      IID 13
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
       VOLPAN 1 0 1 -1
-      SOFFS 5
+      SOFFS 8.17640233843711
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {9ADBA2FC-CFA4-4112-88DF-5DC9B535E510}
-      <SOURCE VIDEO
-        FILE "C:\Users\dell\Desktop\devinette.mp4"
+      GUID {96EBE387-E245-4AAC-ADD1-48C9102B5554}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
       >
     >
     <ITEM
-      POSITION 8
+      POSITION 11.97540599729294
       SNAPOFFS 0
-      LENGTH 1.5
+      LENGTH 54.33074755136276
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0
       FADEOUT 1 0.01 0 1 0 0
       MUTE 0
       SEL 0
-      IGUID {47606EEC-4EE0-440E-AFA9-EAF474962428}
-      IID 4
-      NAME devinette.mp4
+      IGUID {57C8A470-0550-4FBF-9EB5-400F35349368}
+      IID 14
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
       VOLPAN 1 0 1 -1
-      SOFFS 8.25
+      SOFFS 11.97540599729294
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {E74FADD1-C5F2-421E-8D90-9C71237FD486}
-      <SOURCE VIDEO
-        FILE "C:\Users\dell\Desktop\devinette.mp4"
+      GUID {3E810A17-047C-4003-8ABC-890961707CE8}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
       >
     >
     <ITEM
-      POSITION 10
+      POSITION 66.3061535486557
       SNAPOFFS 0
-      LENGTH 1
+      LENGTH 11.81579000411894
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0
       FADEOUT 1 0.01 0 1 0 0
       MUTE 0
       SEL 0
-      IGUID {24A1D0DB-DA27-40E8-BB05-5420BFEB75F2}
-      IID 5
-      NAME devinette.mp4
+      IGUID {DBCE9216-BEC9-486E-97C3-C270E92DB684}
+      IID 15
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
       VOLPAN 1 0 1 -1
-      SOFFS 9.75
+      SOFFS 66.3061535486557
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {271E001B-AF50-482E-B7E5-4E492DE6BAAE}
-      <SOURCE VIDEO
-        FILE "C:\Users\dell\Desktop\devinette.mp4"
+      GUID {94363B69-17E3-444E-BBF9-678202E46511}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
       >
     >
     <ITEM
-      POSITION 11
+      POSITION 78.12194355277464
       SNAPOFFS 0
-      LENGTH 73.499
+      LENGTH 25.2760754195818
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0
       FADEOUT 1 0.01 0 1 0 0
       MUTE 0
       SEL 0
-      IGUID {2F8B894C-8B52-4673-8167-8E9F22FB4BA4}
-      IID 6
-      NAME devinette.mp4
+      IGUID {09F96B93-AC83-47A2-98EE-37FFF758CB55}
+      IID 16
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
       VOLPAN 1 0 1 -1
-      SOFFS 10.75
+      SOFFS 78.12194355277464
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {090F5968-D833-42DC-979B-8CF8966F030E}
-      <SOURCE VIDEO
-        FILE "C:\Users\dell\Desktop\devinette.mp4"
+      GUID {2ADA8F5B-53F4-4A5C-B02B-5E01E9F3047B}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 103.39801897235644
+      SNAPOFFS 0
+      LENGTH 2.70772487310717
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0
+      FADEOUT 1 0.01 0 1 0 0
+      MUTE 0
+      SEL 1
+      IGUID {C3A997FD-FE09-4B57-9C4B-8A3374B63A31}
+      IID 17
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
+      VOLPAN 1 0 1 -1
+      SOFFS 103.39801897235644
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6193CCF0-04D4-45BB-B8F8-5B3B7F91DBF6}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 106.10574384546361
+      SNAPOFFS 0
+      LENGTH 133.2056103212031
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0
+      FADEOUT 1 0.01 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {9A48373D-2CB1-47BF-B71D-5E2F615A626E}
+      IID 18
+      NAME "Christos Hatzis - 01 - Fertility Rites I.mp3"
+      VOLPAN 1 0 1 -1
+      SOFFS 106.10574384546361
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EDA40B5C-136A-4B71-8BC2-489707BEA348}
+      <SOURCE MP3
+        FILE "D:\Musique\Spotify\Christos Hatzis - 01 - Fertility Rites I.mp3" 1
       >
     >
   >

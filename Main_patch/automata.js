@@ -38,6 +38,7 @@ let fsm = new StateMachine({
 	
 	// First request. TODO: complete it
     	{ name: 'identifier', from: ['Start', 'Who1', 'What_How1'], to: 'Who1' },
+		{ name: 'number', from: ['Who1'], to: 'Who1' },
     	{ name: 'content', from: ['Who1'], to: 'What_How1' },
 		// { name: 'continue', from: 'Who1', to: 'What_How1' },
     	{ name: 'modifier', from: ['What_How1'], to: 'What_How1' },
@@ -48,7 +49,8 @@ let fsm = new StateMachine({
 	
 		// To "identifier" state
 		{ name: 'identifier', from: ['What_How', 'Execution', 'Who'], to: 'Who' },
-		{ name: 'group', from: 'What_How', to: 'Who' }, // TODO: implement transition verification
+		{ name: 'group', from: 'What_How', to: 'Who' }, // TODO
+		{ name: 'number', from: 'Who', to: 'Who' },
 		
 		// To "What_How" state
 		{ name: 'content', from: ['Execution', 'Who'], to: 'What_How' },
@@ -80,12 +82,12 @@ let fsm = new StateMachine({
 		
 		// TODO: generate the object from external dict
 		groups: { 
-			"numerics": ["numerics1", "numerics2"],
-			"actors": ["actors1"],
-			"dancers": [],
+			"numerics": ["numerics1", "numerics2", "numerics3","numerics4", "numerics5"],
 			"percussions": ["percussions1", "percussions2", "percussions3"], // of course we could also name one "drums" but then we loose the identification with group+number
-			"group1": ["percussions", "numerics1"], // SP allows for custom groups, that are usually defined at performance time. warning: this will be difficult to parse, so we need some kind of recursivity to parse this.
+			"group1": ["percussions", "numerics1","numerics2"], // SP allows for custom groups, that are usually defined at performance time. warning: this will be difficult to parse, so we need some kind of recursivity to parse this.
 			// identifierlegroup is added here after initialization 
+			"singers": ["singers1", "singers2", "singers3"],
+			"strings": ["strings1", "strings2", "strings3"]
 		},
 		
 		defaults: {
@@ -129,6 +131,7 @@ let fsm = new StateMachine({
 				return false; // we cancel the transition and stay at the actual state
 			} else {
 				
+				// TODO: check for duplicates instead of pushing
 				this.identifier_array.push(...identifiers);
 			}
 			
@@ -143,6 +146,20 @@ let fsm = new StateMachine({
 			fill_request_identifier(); // fills the request array with the identifier array
 			
 			update_outlet();
+		},
+		
+		onAfterNumber: function(args, sign) {
+			
+			// TODO
+		},
+		
+		onLeaveWho1: function() {
+			
+			this.onLeaveWho();
+		},
+		onLeaveWho: function() { // to deal with numbers, we only fill the request on leaving the who state
+			
+			// fill_request_identifier(); // fills the request array with the identifier array
 		},
 		
 		onAfterContent: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
@@ -260,7 +277,7 @@ let fsm = new StateMachine({
 				fill_request_identifier();
 			}
 			
-			stop_old_content(); // it's enough to stop everything
+			stop_old_content(); // it's enough to stop everything. WARNING: identifier array may not be updated if we are using beforeOff..
 			
 			if(this.state == "Execution") {
 				

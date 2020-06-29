@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 105.0, 85.0, 1437.0, 953.0 ],
+		"rect" : [ 96.0, 77.0, 1438.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,43 @@
 		"showontab" : 2,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"comment" : "palmbase",
+					"id" : "obj-12",
+					"index" : 0,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1170.5, 420.0, 30.0, 30.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1125.0, 435.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1233.0, 115.341350569134192, 150.0, 20.0 ],
+					"text" : "Palmbase"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1170.0, 115.341350569134192, 61.0, 22.0 ],
+					"text" : "zl.group 3"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "live.line",
@@ -226,7 +263,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-11",
@@ -2430,6 +2466,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -2835,6 +2873,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -2978,7 +3018,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, -995.0, 1467.0, 929.0 ],
+						"rect" : [ 104.0, 85.0, 1467.0, 929.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5573,7 +5613,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-472", 2 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-434", 62 ]
 				}
 
@@ -5581,7 +5621,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-472", 1 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-434", 61 ]
 				}
 
@@ -5589,7 +5629,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-472", 0 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-434", 60 ]
 				}
 
@@ -5684,7 +5724,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-69", 5 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-434", 62 ]
 				}
 
@@ -5692,7 +5732,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-69", 4 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-434", 61 ]
 				}
 
@@ -5700,7 +5740,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-69", 3 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-434", 60 ]
 				}
 
@@ -5726,6 +5766,30 @@
 					"destination" : [ "obj-69", 6 ],
 					"order" : 0,
 					"source" : [ "obj-434", 48 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"order" : 0,
+					"source" : [ "obj-434", 62 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"order" : 0,
+					"source" : [ "obj-434", 61 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"order" : 0,
+					"source" : [ "obj-434", 60 ]
 				}
 
 			}
@@ -6150,6 +6214,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-73", 0 ],
 					"source" : [ "obj-80", 0 ]
 				}
@@ -6218,6 +6289,9 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -6228,11 +6302,8 @@
 						"autogradient" : 0
 					}
 ,
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

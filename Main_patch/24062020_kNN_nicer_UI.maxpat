@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 97.0, 77.0, 1789.0, 969.0 ],
+		"rect" : [ -862.0, -1363.0, 2493.0, 1290.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,145 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-63",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1185.0, 2790.0, 101.0, 22.0 ],
+					"text" : "s automata_input"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-61",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1185.0, 2760.0, 123.0, 22.0 ],
+					"text" : "prepend fader_height"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubbleside" : 2,
+					"fontface" : 1,
+					"fontname" : "Bebas Neue",
+					"fontsize" : 18.0,
+					"id" : "obj-49",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1185.0, 2665.0, 180.0, 28.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 945.0, 21.0, 180.0, 28.0 ],
+					"text" : "Normalized Fader height",
+					"textjustification" : 1,
+					"underline" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 24.0,
+					"format" : 6,
+					"id" : "obj-42",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1200.0, 2700.0, 150.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1185.0, 2625.0, 185.0, 22.0 ],
+					"text" : "r posenet_right_wrist_normalized"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1113.0, 972.0, 187.0, 22.0 ],
+					"text" : "s posenet_right_wrist_normalized"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-27",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 615.0, 3360.0, 153.0, 22.0 ],
+					"text" : "sign identifier:percussions1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 480.0, 3360.0, 117.0, 22.0 ],
+					"text" : "sign identifier:voice1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 330.0, 3360.0, 138.0, 22.0 ],
+					"text" : "sign identifier:numerics3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-21",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 182.213107828050852, 3360.0, 138.0, 22.0 ],
+					"text" : "sign identifier:numerics2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 31.713107828050852, 3360.0, 138.0, 22.0 ],
+					"text" : "sign identifier:numerics1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bubbleside" : 2,
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
@@ -65,8 +204,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 900.0, 1740.0, 321.0, 425.0 ],
-					"text" : "Here is where the motion tracking data is stored. The input name appears as a track in the mubu object (a tab), while each recording of a sign is stored in a single buffer.\n\nThere should normally be only one track in the mubu object. The buffer management script is designed in a way that things could also work with several tracks, historically because I made other design choices originally, but on the side the kNN, I assumed that it only should use track 1. Later, I might revisit the multitrack possibilities.\n\nUse can use the buttons on the left to control the mubu object and save the recordings to the data folder.\n\nTo load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification."
+					"patching_rect" : [ 900.0, 1740.0, 345.0, 425.0 ],
+					"text" : "Here is where the motion tracking data is stored. The input name appears as a track in the mubu object (a tab), while each recording of a sign is stored in a single buffer.\n\nThere should normally be only one track in the mubu object. The buffer management script is designed in a way that things could also work with several tracks, historically because I made other design choices originally, but on the side the kNN, I assumed that it only should use track 1. Later, I might revisit the multitrack possibilities.\n\nUse can use the buttons on the left to control the mubu object and save the recordings to the data folder.\n\nTo load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification.\n\nWarning 2: internally, the training function depends on the name of the model: full_body or hands. TODO: model ontololy and properties instead"
 				}
 
 			}
@@ -117,7 +256,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1508.666666666666742, 1121.0, 184.0, 22.0 ],
+					"patching_rect" : [ 1483.5, 1125.0, 184.0, 22.0 ],
 					"text" : "s handpose_translated_selection"
 				}
 
@@ -139,7 +278,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1770.0, 1073.0, 242.5, 22.0 ],
+					"patching_rect" : [ 1770.0, 1080.0, 242.5, 22.0 ],
 					"text" : "s handpose_normalized_selection_size"
 				}
 
@@ -1990,6 +2129,182 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"id" : "obj-75",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-76",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-77",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-78",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-79",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-80",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-81",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-82",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -2260,9 +2575,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "handpose_input.maxpat",
 					"numinlets" : 0,
-					"numoutlets" : 4,
+					"numoutlets" : 5,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "", "", "" ],
+					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 1395.0, 120.0, 373.0, 975.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 900.0, 120.0, 375.0, 975.0 ],
@@ -2333,7 +2648,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1092.0, 1020.0, 202.0, 22.0 ],
+					"patching_rect" : [ 1017.0, 1020.0, 202.0, 22.0 ],
 					"text" : "s posenet_translated_selection_size"
 				}
 
@@ -2344,7 +2659,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1092.0, 996.0, 169.0, 22.0 ],
+					"patching_rect" : [ 1017.0, 996.0, 169.0, 22.0 ],
 					"text" : "s posenet_raw_selection_size"
 				}
 
@@ -2355,7 +2670,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1092.0, 1044.0, 214.0, 22.0 ],
+					"patching_rect" : [ 1017.0, 1044.0, 214.0, 22.0 ],
 					"text" : "s posenet_normalized_selection_size"
 				}
 
@@ -2417,9 +2732,9 @@
 					"maxclass" : "bpatcher",
 					"name" : "posenet_input.maxpat",
 					"numinlets" : 0,
-					"numoutlets" : 4,
+					"numoutlets" : 5,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "", "", "", "" ],
+					"outlettype" : [ "", "", "", "", "float" ],
 					"patching_rect" : [ 796.0, 120.0, 315.0, 870.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 570.0, 120.0, 315.0, 874.0 ],
@@ -2505,7 +2820,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1195.0, 3798.119996175169945, 138.0, 22.0 ],
+					"patching_rect" : [ 1195.0, 3855.0, 138.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 25.0, 3528.119996175169945, 138.0, 22.0 ],
 					"text" : "udpsend 127.0.0.1 5001"
@@ -3781,7 +4096,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -1627.0, -999.0, 1790.0, 969.0 ],
+						"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5089,16 +5404,14 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-241",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1195.0, 3768.119996175169945, 155.0, 36.0 ],
+					"patching_rect" : [ 1195.0, 3825.0, 155.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 25.0, 3498.119996175169945, 155.0, 36.0 ],
-					"text" : "/wholegroupe/longtone/Continue 0"
+					"presentation_rect" : [ 25.0, 3498.119996175169945, 155.0, 22.0 ],
+					"text" : "/numerics3/longtone/Off 0"
 				}
 
 			}
@@ -5431,7 +5744,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1195.0, 3738.119996175169945, 101.0, 22.0 ],
+					"patching_rect" : [ 1195.0, 3795.0, 101.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 25.0, 3468.119996175169945, 101.0, 22.0 ],
 					"text" : "route /commands"
@@ -5441,16 +5754,14 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
-					"linecount" : 7,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1210.0, 3675.0, 124.0, 105.0 ],
+					"patching_rect" : [ 1210.0, 3675.0, 124.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 7,
-					"presentation_rect" : [ 40.0, 3405.0, 124.0, 105.0 ],
-					"text" : "/longtone/Off 0 /longtone/Start 0 /longtone/tempo/value 120 /longtone/volume/value 0.8 /longtone/Continue 0"
+					"presentation_rect" : [ 40.0, 3405.0, 124.0, 22.0 ],
+					"text" : "/longtone/Off 0"
 				}
 
 			}
@@ -5727,13 +6038,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
-					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 50.0 ],
-					"text" : "\"Transition content from state What_How not allowed.\""
+					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 22.0 ]
 				}
 
 			}
@@ -5884,6 +6193,22 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.933333333333333, 0.192156862745098, 0.564705882352941, 0.28 ],
+					"id" : "obj-51",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1185.0, 2656.775023912226061, 180.0, 88.224976087773939 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 930.0, 15.0, 210.0, 135.0 ],
+					"proportion" : 0.5
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -5957,6 +6282,13 @@
 					"destination" : [ "obj-134", 0 ],
 					"order" : 1,
 					"source" : [ "obj-111", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-31", 0 ],
+					"source" : [ "obj-111", 4 ]
 				}
 
 			}
@@ -6110,6 +6442,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-189", 0 ],
 					"source" : [ "obj-190", 0 ]
 				}
@@ -6133,6 +6472,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 1 ],
 					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-20", 0 ]
 				}
 
 			}
@@ -6175,6 +6521,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-211", 0 ],
 					"source" : [ "obj-210", 1 ]
 				}
@@ -6198,6 +6551,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-212", 0 ],
 					"source" : [ "obj-213", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
@@ -6354,6 +6714,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-200", 0 ],
 					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-202", 0 ],
+					"source" : [ "obj-27", 0 ]
 				}
 
 			}
@@ -6529,6 +6896,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-42", 0 ],
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-202", 0 ],
 					"source" : [ "obj-361", 0 ]
 				}
@@ -6617,6 +6991,13 @@
 					"destination" : [ "obj-9", 0 ],
 					"order" : 4,
 					"source" : [ "obj-411", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-61", 0 ],
+					"source" : [ "obj-42", 0 ]
 				}
 
 			}
@@ -6718,6 +7099,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-202", 0 ],
 					"source" : [ "obj-60", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-63", 0 ],
+					"source" : [ "obj-61", 0 ]
 				}
 
 			}
@@ -6966,10 +7354,6 @@
 				"type" : "mx64"
 			}
 , 			{
-				"name" : "mubu.mxe64",
-				"type" : "mx64"
-			}
-, 			{
 				"name" : "mubu.knn.mxe64",
 				"type" : "mx64"
 			}
@@ -6988,11 +7372,9 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -7002,7 +7384,9 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
