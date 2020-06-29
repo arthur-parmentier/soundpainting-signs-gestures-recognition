@@ -33,6 +33,9 @@ function o(msg) { // convenience function for outlet
 let fsm = new StateMachine({
     init: 'Start',
     transitions: [
+	// goto
+		{ name: 'goto', from: '*', to: function(s) { return s } },
+	
 	// neutral
 		{ name: 'neutral', from: '*', to: this.state },
 	
@@ -54,7 +57,25 @@ let fsm = new StateMachine({
 		
 		// To "What_How" state
 		{ name: 'content', from: ['Execution', 'Who'], to: 'What_How' },
-		{ name: 'modifier', from: ['Who', 'Execution',  'What_How'], to:  'What_How' },
+		{ name: 'modifier', from: ['Who', 'Execution',  'What_How'], to:  
+			function() { 
+				// if(this.content_array.length == 0) {
+					// return "Execution"; // that's when we are using modifiers in real time
+				// } else {
+					// return "What_How";
+				// }
+				
+				// p(this.history[this.history.length-1]);
+				if(this.history[this.history.length - 1] == "What_How"){
+					
+					p("Returning what_how");
+					return "What_How";
+				} else {
+					p("Returning exe");
+					return "Execution";
+				}
+			}
+		},
 		// { name: 'continue', from: 'Who', to: 'What_How' },
 		
 		// To empty request
@@ -97,10 +118,12 @@ let fsm = new StateMachine({
 			"Continue": 0, // the zero here is probably meaningless
 			
 			// we have other defaults that are not "flags": they don't 
-			"volume": 0.8,
-			"tempo": 120,
+			"volume": 0.5,
+			"tempo": 0.5,
 			
 		},
+		
+		parameters: {},
 		
 		content_history: [],
 		identifier_history: [],
@@ -199,71 +222,60 @@ let fsm = new StateMachine({
 			this.identifier_array = [];
 		},
 		
-		onAfterModifier: function(args, sign) { // When we receive a HOW sign
+		onBeforeModifier: function(args, sign) { // When we receive a HOW sign // CHECK Before vs after
+		
+			let real_time_flag = 0;
 			
 			// if identifier_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
 			if(this.identifier_array.length == 0) {
 				
 				this.identifier_array = this.previous_identifier_array;
 				fill_request_identifier();
+			}
 				
-				// then we check if a content has been specified yet
-				if(this.content_array.length == 0) {
-					
-					// if not, then the modifier only relates to last requested contents
-					this.content_array = this.previous_content_array;
-					fill_request_content("Continue"); // is there any case where the "Continue" flag is not the right one?
-				}
+			// then we check if a content has been specified yet
+			if(this.content_array.length == 0) {
 				
-			} else { // we know an identifier was used but not if a content was specified
+				real_time_flag = 1; // (this means that we will execute the request at the end)
 				
-				// then we check if a content has been specified yet
-				if(this.content_array.length == 0) {
+				// if not, then the modifier only relates to last requested contents
+				// p(["previous", this.previous_content_array]);
+				// this.content_array = this.previous_content_array; // FAULTY line
+				
+				for(var i = 0; i<this.identifier_array.length; i++) {
 					
-					// if not, then the modifier relates to everything that the designated performers are doing
-					
-					// Find everything that the designated performers are doing and add it to content_array
-					for(var i = 0; i<this.identifier_array.length; i++) {
-						
-						// we push to the content_array everything that is played by all the designated performers.
+					if(this.content_distribution[this.identifier_array[i]] != null) {
 						if(Object.keys(this.content_distribution[this.identifier_array[i]]) != null) {
 							
-							this.content_array.push(Object.keys(this.content_distribution[this.identifier_array[i]]));
+							fill_request_content("Continue",[this.identifier_array[i]], Object.keys(this.content_distribution[this.identifier_array[i]])); // is there any case where the "Continue" flag is not the right one?
 						}
 					}
-					
-					fill_request_content("Continue"); // is there any case where the "Continue" flag is not the right one?
+					else { p(["/error", "designated device/performer is not playing anything"]); }
 				}
 			}
 			
 			// Store the sign to the stack
-			this.how_array.push(sign);
+			// this.how_array.push(sign);
 			
 			let parameter_values = capture_parameter(sign); // We leave this for the future, when we will want to capture parameters such as volume or tempo values with space mappings
 			
-			// this is content would be the fill_request_how() function, except it has no use elsewhere (yet).
-			for (var i = 0; i<this.identifier_array.length; i++) { // in case multiple identifier identifiers were use, we want to make sure that the Contents parameters are applied to all of them
-				
-				for(var j = 0; j<this.content_array.length; j++) {
-				
-					let content = this.content_array[j];
-					this.requests[this.requests_counter][this.identifier_array[i]][content][sign] = parameter_values; // we create an entry for the parameter under the Contents entry or the request array
-					
-					// update the distribution array
-					if(this.reverse_content_distribution[content][this.identifier_array[i]] == null) {
-						this.reverse_content_distribution[content][this.identifier_array[i]] = [];
-					}
-					
-					this.reverse_content_distribution[content][this.identifier_array[i]][sign] = parameter_values;
-				}
-			}
-			
+			fill_request_modifier(sign, parameter_values);
+							
 			update_outlet();
+			
+			if(real_time_flag) { // if there was no content, then we modify in real time
+			
+				p("Real time flagged");
+				this.onEnterExecution(); // CHECK!!!
+				// this["goto"]("Execution");
+			}
 		},
 		
 		onBeforeTiming: function(args, sign) { // in order to execute this prior to onEnterExecution
 		
 			// Update Start values TODO
+			
+			// To check: lifecycle events
 			
 			update_outlet();
 		},
@@ -281,27 +293,33 @@ let fsm = new StateMachine({
 			
 			if(this.state == "Execution") {
 				
-				this.onEnterExecution(); // even if we do not enter again the execution state we need to execute the request as if we do
+				this.onEnterExecution(); // even if we do not enter again the execution state we need to execute the request as if we do. TODO: check if this happens at all??
 			}
 		},
 		
 		onEnterExecution: function() {
 			
-			execute_request(this.requests_counter);
+			p("Into Execution");
 			
+			execute_request(this.requests_counter);
+	
 			// we increase the #requests counter and add a new entry in the requests object
 			this.requests_counter++;
 			this.requests[this.requests_counter] = {};
 			
 			// we store the last requested content
 			this.previous_content_array = this.content_array;
+			p(["Content array saved :", this.previous_content_array]);
 			
 			// we reset each request stack
 			this.identifier_array = [];
 			this.content_array = [];
-			this.how_array = [];
+			//this.how_array = [];
+			this.parameters = {};
 			
 			update_outlet();
+			
+			p("Execution finished");
 		},
 	},	
 	
@@ -323,13 +341,13 @@ function fill_request_identifier() {
 	}
 }
 
-function fill_request_content(flag) {
+function fill_request_content(flag, identifier_array = fsm.identifier_array, content_array = fsm.content_array) {
 	
-	for(var j = 0; j<fsm.content_array.length; j++) {
+	for(var j = 0; j<content_array.length; j++) {
 		
-		let sign = fsm.content_array[j];
+		let sign = content_array[j];
 	
-		for (var i = 0; i<fsm.identifier_array.length; i++) { // in case multiple identifier identifiers were use, we want to make sure that the Contents is applied to all of them
+		for (var i = 0; i<identifier_array.length; i++) { // in case multiple identifier identifiers were use, we want to make sure that the Contents is applied to all of them
 				
 			// Store the sign into the request
 			if(fsm.defaults[flag] == null) {
@@ -337,33 +355,50 @@ function fill_request_content(flag) {
 				fsm.defaults[flag] = 0; // we create the flag with 0 as default value
 			}
 			
-			if(fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign] != null) { // we check if the content was already in the request // something is probably wrong, so we can send a warning in the console
+			if(fsm.requests[fsm.requests_counter][identifier_array[i]][sign] != null) { // we check if the content was already in the request // something is probably wrong, so we can send a warning in the console
 			
 				maxApi.post(sign + " already included in the request for the same performer.");
 			} else {
 				
-				fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign] = {};
+				fsm.requests[fsm.requests_counter][identifier_array[i]][sign] = {};
 			}
-			fsm.requests[fsm.requests_counter][fsm.identifier_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
+			fsm.requests[fsm.requests_counter][identifier_array[i]][sign][flag] = fsm.defaults[flag]; // in fsm case, we create a new entry for the Contents (empty to store parameters if requested) in the request
 				
-			
-			
-			if(flag != "continue") { // in the case of "continue" the content arrays do not change
+			if(flag != "continue") { // in the case of "continue", the contents of the distrib arrays do not change
 				
 				// Update reverse content distribution array
 				if(fsm.reverse_content_distribution[sign] == null) {
 					fsm.reverse_content_distribution[sign] = {};
 				}
-				fsm.reverse_content_distribution[sign][fsm.identifier_array[i]] = {};
+				fsm.reverse_content_distribution[sign][identifier_array[i]] = {};
 				
 				// Update content distribution array
-				if(fsm.content_distribution[fsm.identifier_array[i]] == null) {
-					fsm.content_distribution[fsm.identifier_array[i]] = {};
+				if(fsm.content_distribution[identifier_array[i]] == null) {
+					fsm.content_distribution[identifier_array[i]] = {};
 				}
-				fsm.content_distribution[fsm.identifier_array[i]][sign] = {};
+				fsm.content_distribution[identifier_array[i]][sign] = {};
 			}
 		}
 	}
+}
+
+function fill_request_modifier(sign, parameter_values, identifier_array = fsm.identifier_array) { 
+	// we know the identifier array but not the content one, so we have to find it
+	
+	for (var i = 0; i<identifier_array.length; i++) {
+		
+		let contents = Object.keys(fsm.requests[fsm.requests_counter][identifier_array[i]]);
+		
+		if(contents != null) { // there should be a content
+			for (var j = 0; j<contents.length; j++) {
+				
+				fsm.requests[fsm.requests_counter][identifier_array[i]][contents[j]][sign] = parameter_values;
+				
+			}
+		}
+	}
+	
+	// TODO: update the distribution arrays
 	
 }
 
@@ -536,6 +571,8 @@ function update_outlet() { // this function is used every time we want to see th
 	maxApi.outlet(["/reverse_distrib", fsm.reverse_content_distribution]);
 	maxApi.outlet(["/state", fsm.history[fsm.history.length - 1]]);
 	maxApi.outlet(["/groups", fsm.groups]);
+	maxApi.outlet(["/parameters", fsm.parameters]);
+	
 }
 
 function sign_regexp(msg) {
@@ -547,11 +584,20 @@ function sign_regexp(msg) {
 
 function capture_parameter(param_name) {
 	
-	// TODO: implement parameter capture. For now, let's use defaults
-	let values = {value: fsm.defaults[param_name]};
+	// if parameter exists, we pick it, otherwise we use a default
+	
+	let values = null;
+	
+	if(fsm.parameters[param_name] != null) {
+		values = fsm.parameters[param_name];
+	} else {
+		values = fsm.defaults[param_name];
+	}
 	
 	return values; 
 }
+
+// --------------------------------------------------------------------------------------------------------
 
 const handlers = { // this is where we define content input messages we can catch, and content it does
 	
@@ -568,9 +614,22 @@ const handlers = { // this is where we define content input messages we can catc
 			
 			o(["/error", "Transition " + cat + " does not exist"]);
 		}
-		
-		
 	},
+	
+	[maxApi.MESSAGE_TYPES.ALL]: (handled, ...args) => { 
+		
+		if(handled == 0) {
+		
+			let param = args[0];
+			// args.shift(); // this would be the generic case. TODO
+			
+			// here we will first assume a single value for tempo and volume
+			fsm.parameters[param] = args[1];
+				
+			o(["/parameters", fsm.parameters]);
+		
+		}
+	}
 };
 
 function initialize() { // this function is triggered only once at script Startup 
@@ -601,6 +660,7 @@ function initialize() { // this function is triggered only once at script Startu
 	
 	maxApi.outlet(["/groups", fsm.groups]);
 	maxApi.outlet(["/error", ""]);
+	o(["/parameters", fsm.parameters]); // the parameters obj does not get cleared with update_outlet
 	
 }
 
@@ -614,7 +674,6 @@ function execute_request(index) { // this function is triggered at each Executio
 	...
 	
 	*/
-	
 	let request = fsm.requests[index];
 	
 	for(var i = 0; i<Object.keys(request).length; i++) {
