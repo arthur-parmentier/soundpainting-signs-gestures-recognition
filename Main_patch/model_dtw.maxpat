@@ -42,14 +42,16 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-30",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1200.0, 0.0, 615.0, 22.0 ],
+					"patching_rect" : [ 1200.0, 0.0, 615.0, 36.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1200.0, 0.0, 615.0, 22.0 ],
-					"text" : "/wek/outputs 496.854706 495.758331 480.698669 495.244049 499.609253 509.291473 inf inf inf inf"
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 1200.0, 0.0, 615.0, 36.0 ],
+					"text" : "/wek/outputs 33.2 25.177032 29.954 36.187939 23.916344 28.520275 23.365589 25.614799 24.04 24.966726 41.326931 22.908918 inf inf inf inf inf inf inf inf inf inf inf inf inf"
 				}
 
 			}
@@ -715,7 +717,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 201.510579597460492, 50.0, 22.0 ],
-									"text" : "2"
+									"text" : "6"
 								}
 
 							}
@@ -1040,10 +1042,11 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 983.5, -45.0, 73.0, 22.0 ],
+					"patching_rect" : [ 983.5, -45.0, 77.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 983.5, -45.0, 70.0, 22.0 ],
-					"text" : "loadmess 7"
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 983.5, -45.0, 70.0, 36.0 ],
+					"text" : "loadmess 12"
 				}
 
 			}
@@ -1105,7 +1108,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 15.0, 180.0, 635.944394944413943, 180.0 ],
 					"setminmax" : [ 0.0, 100.0 ],
-					"size" : 10
+					"size" : 25
 				}
 
 			}
@@ -1541,6 +1544,11 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1550,12 +1558,7 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-,
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
+
 				}
 ,
 				"parentstyle" : "",

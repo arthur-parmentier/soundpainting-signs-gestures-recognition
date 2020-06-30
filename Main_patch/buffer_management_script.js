@@ -66,7 +66,7 @@ const handlers = {
 	
 	"read_append": (abs_path) => { // Unused
 		
-		o(["to_imubu", "readappend", abs_path]); // , "@buffername", "test"
+		o(["to_imubu", "readappend", abs_path]);
 		
 	},
 	
@@ -473,7 +473,7 @@ async function get_mubu_data() {
 
 function update_labels_set() {
 	
-	mubu_labels_set = Array.from(new Set(mubu_labels)).sort();
+	mubu_labels_set = Array.from(new Set(mubu_labels)); // used to be .sort but we cannot sort anymore if user is loading files
 }
 
 function setup() { // first function that is triggered at loading time
