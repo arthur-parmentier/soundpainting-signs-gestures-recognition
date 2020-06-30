@@ -66,7 +66,7 @@ const handlers = {
 	
 	"read_append": (abs_path) => { // Unused
 		
-		o(["to_imubu", "readappend", abs_path]);
+		o(["to_imubu", "readappend", abs_path]); // , "@buffername", "test"
 		
 	},
 	
@@ -375,8 +375,9 @@ async function save() {
 			
 			let filename = data_folder + mubu_tracks[i-1] + "/" + mubu_labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
 			
-			o(["to_imubu", "writetrack", i, filename + ".mubu"]); // Then write the buffer to corresponding location
+			o(["to_imubu", "writetrack", i, filename + ".json"]); // Then write the buffer to corresponding location
 			o(["to_imubu", "writetrack", i, filename + ".txt"]); // we save the .txt file for conveniency
+			o(["to_imubu", "writetrack", i, filename + ".mubu"]);
 		}
 	}	
 	
@@ -406,8 +407,8 @@ async function save() {
 		
 		let filename = data_folder + tracks_string + "/" + mubu_labels[j-1].replace(":","-") + "#" + j + "_" + uuidv1();
 						
-		o(["to_imubu", "writeall", filename + ".mubu", "@buffer", j]); // Then write the buffer to corresponding location
-		// o(["to_imubu", "writeall", filename + ".txt", "@buffer", j]); // not working
+		o(["to_imubu", "writeall", filename + ".json", "@buffer", j]); // Then write the buffer to corresponding location
+		o(["to_imubu", "writeall", filename + ".mubu", "@buffer", j]); // not working
 		
 		// warning: as of v1.9.13, buffer name and labels are incorrects
 	}
@@ -428,10 +429,10 @@ async function save() {
 	let minutes = date_ob.getMinutes();
 	let seconds = date_ob.getSeconds();
 	
-	let filename = dir3 + year + "-" + month + "-" + date + "_" + hours + "-" + minutes + "-" + seconds + "_" + uuidv1() + ".mubu";
+	let filename = dir3 + year + "-" + month + "-" + date + "_" + hours + "-" + minutes + "-" + seconds + "_" + uuidv1();
 	
-	o(["to_imubu", "writeall", filename]);
-	
+	o(["to_imubu", "writeall", filename + ".json"]);
+	o(["to_imubu", "writeall", filename + ".mubu"]);
 	// TODO later: check that buffer tracks are == to the active tracks. 
 }
 
