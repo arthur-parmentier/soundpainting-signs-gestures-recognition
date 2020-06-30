@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -862.0, -1356.0, 1457.0, 1290.0 ],
+		"rect" : [ 96.0, 77.0, 1790.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -109,7 +109,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1185.0, 2665.0, 180.0, 28.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 945.0, 21.0, 180.0, 28.0 ],
+					"presentation_rect" : [ 1185.0, 2395.0, 180.0, 28.0 ],
 					"text" : "Normalized Fader height",
 					"textjustification" : 1,
 					"underline" : 1
@@ -126,7 +126,9 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1200.0, 2700.0, 150.0, 36.0 ]
+					"patching_rect" : [ 1200.0, 2700.0, 150.0, 36.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1200.0, 2430.0, 150.0, 36.0 ]
 				}
 
 			}
@@ -238,7 +240,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 900.0, 1740.0, 345.0, 425.0 ],
+					"patching_rect" : [ 900.0, 1740.0, 349.0, 425.0 ],
 					"text" : "Here is where the motion tracking data is stored. The input name appears as a track in the mubu object (a tab), while each recording of a sign is stored in a single buffer.\n\nThere should normally be only one track in the mubu object. The buffer management script is designed in a way that things could also work with several tracks, historically because I made other design choices originally, but on the side the kNN, I assumed that it only should use track 1. Later, I might revisit the multitrack possibilities.\n\nUse can use the buttons on the left to control the mubu object and save the recordings to the data folder.\n\nTo load previously trained sign, you can drop your .mubu files in the next box. All the signs that are recovered from these files should show up.\n\nWarning: to avoid biases in the training dataset, each training example must be loaded only once; in other words, if you save a training example into two separate files and load them, it will appear twice more than other training examples for the same sign and therefore skew/bias the training set that is used for classification.\n\nWarning 2: internally, the training function depends on the name of the model: full_body or hands. TODO: model ontololy and properties instead"
 				}
 
@@ -2320,6 +2322,50 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-82",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name hands"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-83",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"saved_object_attributes" : 									{
+										"embed" : 0,
+										"externalfiles" : 1,
+										"parameter_enable" : 0,
+										"parameter_mappable" : 0,
+										"resamplefiles" : 0,
+										"savegui" : 0,
+										"snaprate" : 1000.0
+									}
+,
+									"text" : "mubu @embed 0 @name full_body"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-84",
 									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -5447,7 +5493,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 25.0, 3498.119996175169945, 155.0, 36.0 ],
-					"text" : "/strings3/longtone/volume dictionary u396021034"
+					"text" : "/strings3/longtone/volume 0.18994"
 				}
 
 			}
@@ -5790,16 +5836,16 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-272",
-					"linecount" : 4,
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1540.0, 3675.0, 124.0, 64.0 ],
+					"patching_rect" : [ 1540.0, 3675.0, 124.0, 50.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 4,
-					"presentation_rect" : [ 40.0, 3405.0, 124.0, 64.0 ],
-					"text" : "/longtone/Continue 0 /longtone/volume dictionary u213021019"
+					"presentation_linecount" : 3,
+					"presentation_rect" : [ 40.0, 3405.0, 124.0, 50.0 ],
+					"text" : "/longtone/Continue 0 /longtone/volume 0.18994"
 				}
 
 			}
@@ -6076,11 +6122,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-256",
+					"linecount" : 3,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 22.0 ]
+					"patching_rect" : [ 990.0, 3537.765957355499268, 159.196886449031808, 50.0 ],
+					"text" : "\"Rest of the group can not be used with other identifiers\""
 				}
 
 			}
@@ -6242,7 +6290,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1185.0, 2656.775023912226061, 180.0, 88.224976087773939 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 930.0, 15.0, 210.0, 135.0 ],
+					"presentation_rect" : [ 1185.0, 2386.775023912226061, 180.0, 88.224976087773939 ],
 					"proportion" : 0.5
 				}
 
@@ -7423,6 +7471,10 @@
 				"type" : "mx64"
 			}
 , 			{
+				"name" : "mubu.mxe64",
+				"type" : "mx64"
+			}
+, 			{
 				"name" : "mubu.knn.mxe64",
 				"type" : "mx64"
 			}
@@ -7440,7 +7492,6 @@
 				"default" : 				{
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -7452,6 +7503,7 @@
 					}
 ,
 					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ]
 				}
 ,

@@ -66,33 +66,8 @@ const handlers = {
 	
 	"read_append": (abs_path) => { // Unused
 		
-		let buffer_name = path.basename(abs_path).split("_")[0];
-		p("Buffer name : " + buffer_name);
+		o(["to_imubu", "readappend", abs_path]);
 		
-		let label_name = buffer_name.split("#")[0].replace("-",":");
-		
-		let extension = path.extname(abs_path);
-		p("extension : " + extension);
-		
-		let track_name = path.basename(path.dirname(abs_path))
-		p("track : " + track_name);
-		
-		if(extension == ".txt") {
-		}
-		
-		if(extension == ".mubu") {
-			// TODO: revisit later. So far, we can only read from the configuration folder
-			
-			if(track_name == "whole_buffer") {
-				
-				o(["to_imubu", "readappend", abs_path]);
-
-			} else {
-
-				o(["to_imubu", "readappend", abs_path, "@buffername", buffer_name]);
-				// todo: fix buffer
-			}
-		}
 	},
 	
 	"buffers": (...arg_list) => { // can be called after getbuffers...

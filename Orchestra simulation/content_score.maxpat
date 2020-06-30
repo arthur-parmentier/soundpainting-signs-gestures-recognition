@@ -41,6 +41,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 225.0, 540.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bwcompatibility" : 80100,
 					"defaultnoteslots" : [ "null" ],
 					"fontface" : 0,
@@ -596,6 +608,18 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-14",
+									"linecount" : 3,
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"text" : "setclock numerics1/longtone2 mul 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
 									"linecount" : 3,
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -1951,6 +1975,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"order" : 0,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-76", 0 ],
+					"order" : 1,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-11", 0 ]
 				}
@@ -2228,6 +2268,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"order" : 1,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"order" : 0,
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -2454,8 +2503,8 @@
 				"name" : "orjan style",
 				"default" : 				{
 					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
