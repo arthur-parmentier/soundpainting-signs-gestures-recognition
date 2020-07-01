@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 104.0, 85.0, 1438.0, 969.0 ],
+		"rect" : [ 1957.0, 80.0, 1207.0, 1284.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -66,7 +66,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -770,6 +770,30 @@
 												}
 
 											}
+, 											{
+												"box" : 												{
+													"id" : "obj-23",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-24",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/minimalism1 mul 1"
+												}
+
+											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
@@ -2514,11 +2538,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -2528,7 +2547,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2569,7 +2593,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -3261,6 +3285,30 @@
 												}
 
 											}
+, 											{
+												"box" : 												{
+													"id" : "obj-22",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-23",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/minimalism1 mul 1"
+												}
+
+											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
@@ -5005,11 +5053,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -5019,7 +5062,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -5072,7 +5120,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -5832,6 +5880,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-31",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions2/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-32",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions2/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-33",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -7608,11 +7680,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -7622,7 +7689,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -7663,7 +7735,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -8411,6 +8483,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-30",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions2/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-31",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions2/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-32",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -10187,11 +10283,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -10201,7 +10292,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -10242,7 +10338,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -10990,6 +11086,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-30",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-31",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-32",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -12766,11 +12886,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -12780,7 +12895,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -12821,7 +12941,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -13557,6 +13677,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-29",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-30",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-31",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -15333,11 +15477,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -15347,7 +15486,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -15388,7 +15532,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -16124,6 +16268,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-29",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/minimalism2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-30",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/minimalism2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-31",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -17900,11 +18068,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -17914,7 +18077,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -17955,7 +18123,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -18058,7 +18226,7 @@
 									"patching_rect" : [ 165.0, 30.0, 105.0, 22.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 227.0, 47.0, 90.0, 22.0 ],
-									"text" : "voice1"
+									"text" : "singers"
 								}
 
 							}
@@ -18685,6 +18853,30 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"text" : "setclock voice1/minimalism2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-30",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock singers/minimalism2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-29",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock singers/minimalism2 mul 1"
 												}
 
 											}
@@ -20455,11 +20647,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -20469,7 +20656,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -20522,7 +20714,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -21246,6 +21438,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-28",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-29",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock percussions1/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-30",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -23022,11 +23238,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -23036,7 +23247,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -23089,7 +23305,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -23138,7 +23354,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 615.0, 600.0, 50.0, 22.0 ],
-									"text" : "63"
+									"text" : "1"
 								}
 
 							}
@@ -23192,7 +23408,7 @@
 									"patching_rect" : [ 165.0, 30.0, 105.0, 22.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 227.0, 47.0, 90.0, 22.0 ],
-									"text" : "voice1"
+									"text" : "singers"
 								}
 
 							}
@@ -23807,6 +24023,30 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"text" : "setclock voice1/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-29",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock singers/minimalism1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-28",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock singers/minimalism1 mul 1"
 												}
 
 											}
@@ -25577,11 +25817,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -25591,7 +25826,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -25656,7 +25896,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -26368,6 +26608,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-27",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics3/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-28",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics3/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-29",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -28144,11 +28408,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -28158,7 +28417,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -28199,7 +28463,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -28899,6 +29163,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-26",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics3/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-27",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics3/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-28",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -30675,11 +30963,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -30689,7 +30972,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -30730,7 +31018,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -31430,6 +31718,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-26",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics2/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-27",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics2/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-28",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -33206,11 +33518,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -33220,7 +33527,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -33261,7 +33573,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -33310,7 +33622,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 615.0, 600.0, 50.0, 22.0 ],
-									"text" : "63"
+									"text" : "1"
 								}
 
 							}
@@ -33949,6 +34261,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-25",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics2/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-26",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics2/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-27",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -35725,11 +36061,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -35739,7 +36070,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -35780,7 +36116,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -36420,6 +36756,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-20",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-21",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/longtone2 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-22",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -38206,11 +38566,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -38220,7 +38575,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -38261,7 +38621,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -38901,6 +39261,30 @@
 , 											{
 												"box" : 												{
 													"id" : "obj-20",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-21",
+													"linecount" : 3,
+													"maxclass" : "newobj",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"text" : "setclock numerics1/longtone1 mul 1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-22",
 													"linecount" : 3,
 													"maxclass" : "newobj",
 													"numinlets" : 2,
@@ -40686,11 +41070,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -40700,7 +41079,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -40788,7 +41172,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1438.0, 943.0 ],
+						"rect" : [ 0.0, 26.0, 1207.0, 1258.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -42832,11 +43216,6 @@
 						"styles" : [ 							{
 								"name" : "orjan style",
 								"default" : 								{
-									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -42846,7 +43225,12 @@
 										"proportion" : 0.39,
 										"autogradient" : 0
 									}
-
+,
+									"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+									"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+									"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+									"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+									"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -44968,11 +45352,6 @@
 		"styles" : [ 			{
 				"name" : "orjan style",
 				"default" : 				{
-					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
-					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
-					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
-					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -44982,7 +45361,12 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"bgcolor" : [ 0.97911, 0.963068, 0.9712, 1.0 ],
+					"accentcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
+					"elementcolor" : [ 0.898251, 0.915112, 0.965693, 1.0 ],
+					"color" : [ 0.037449, 0.035848, 0.03644, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
