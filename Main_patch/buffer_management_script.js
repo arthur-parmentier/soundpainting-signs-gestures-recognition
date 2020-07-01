@@ -508,28 +508,36 @@ async function train() { // this is the async function that triggers the mubu.pl
 	
 	for(var i = 1; i<mubu_buffers.length+1; i++) {
 		
-		let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
+		p("Training buffer " + i);
 		
-		if(index == 0) {
+		try {
 			
-			p("Error with index for buffer " + mubu_buffers[i-1] + " with label " + mubu_labels[i-1] + " (label not found in label set?)");
-		}
+			let index = mubu_labels_set.indexOf(mubu_labels[i-1]) + 1;
 		
-		p("Training buffer " + i + " label set index : " + index);
-		
-		// Set the right buffer index
-		o(["to_mubu_play", "bufferindex", i]);
-		
-		if(model.includes("full_body")) { // TODO: handle this in a better way
-			// Then the OSC commands to wekinator
-			o(["model_commands", "/wekinator/control/startDtwRecording", index]);
-		} else {
+			if(index == 0) {
+				
+				p("Error with index for buffer " + mubu_buffers[i-1] + " with label " + mubu_labels[i-1] + " (label not found in label set?)");
+			}
 			
-			o(["model_commands", "/wekinator/control/outputs", index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
-			o(["model_commands", "/wekinator/control/startRecording"]);
-		}
+			p("Training buffer " + i + " label set index : " + index);
+			
+			// Set the right buffer index
+			o(["to_mubu_play", "bufferindex", i]);
+			
+			if(model.includes("full_body")) { // TODO: handle this in a better way
+				// Then the OSC commands to wekinator
+				o(["model_commands", "/wekinator/control/startDtwRecording", index]);
+			} else {
+				
+				o(["model_commands", "/wekinator/control/outputs", index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
+				o(["model_commands", "/wekinator/control/startRecording"]);
+			}
+			
+		} catch (e) { p(e); }
 		
 		// play
+		
+		// await sleep(500);
 		o(["to_mubu_play", "play", 1]);
 		
 		playing = true;
@@ -588,3 +596,9 @@ function numtracks_updated() {
 		})();
 	});
 }
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}   

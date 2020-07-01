@@ -117,7 +117,7 @@ let fsm = new StateMachine({
 			"Off": 0,
 			"Continue": 0, // the zero here is probably meaningless
 			
-			// we have other defaults that are not "flags": they don't 
+			// default parameters
 			"volume": 0.5,
 			"tempo": 0.5,
 			
@@ -266,8 +266,10 @@ let fsm = new StateMachine({
 			if(real_time_flag) { // if there was no content, then we modify in real time
 			
 				p("Real time flagged");
-				this.onEnterExecution(); // CHECK!!!
-				// this["goto"]("Execution");
+				
+				if(this.state == "Execution") {
+					this.onEnterExecution();
+				}
 			}
 		},
 		
