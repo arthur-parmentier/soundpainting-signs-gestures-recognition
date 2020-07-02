@@ -185,7 +185,9 @@ let fsm = new StateMachine({
 			// fill_request_identifier(); // fills the request array with the identifier array
 		},
 		
-		onAfterContent: function(args, sign) { // When we receive a WHAT sign. WARNING: may be necessary to change it to onBefore (for logic)
+		onAfterContent: function(args, sign) { // When we receive a WHAT sign.
+		
+			this.parameters = {}; // we delete the parameters of previous contents 
 			
 			let [contents, flag] = parse_content(sign); // we also use a parsing here to handle specific cases like "continue", "this"...
 			
@@ -283,6 +285,8 @@ let fsm = new StateMachine({
 		},
 		
 		onBeforeOff: function() { // we need a before here as for when, in order to execute this prior to onEnterExecution
+			
+			this.parameters = {};
 			
 			// if identifier_array is empty, then we fill it with the identifiers of the last request and update the request array accordingly
 			if(this.identifier_array.length == 0) {

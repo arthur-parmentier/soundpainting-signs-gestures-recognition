@@ -537,7 +537,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 		
 		// play
 		
-		// await sleep(500);
+		await sleep(10)// 77 just for securitw
 		o(["to_mubu_play", "play", 1]);
 		
 		playing = true;
