@@ -478,7 +478,7 @@ function update_labels_set() {
 
 function setup() { // first function that is triggered at loading time
 	
-	let speed = 50;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
+	let speed = 10;  // you can change the playing speed here. it should be sufficiently large, so that the training process does not take too long. 
 	// For several inputs to work at the same time, the record should be timetagged, because of the different rates between each input
 	
 	o(["to_mubu_play" , "speed", speed]);
@@ -489,10 +489,12 @@ async function train() { // this is the async function that triggers the mubu.pl
 
 	await get_mubu_data();
 	
+	await sleep(300);// 77 just for securitw
+	
 	if(model == "" || model == null) { // here we are checking that we did say which model we are using, so we can send the right commands
 		
 		p("Model not defined, cannot train");
-		return 0;
+		// return 0;
 	}
 
 	p("Start training " + model);
@@ -527,6 +529,8 @@ async function train() { // this is the async function that triggers the mubu.pl
 			if(model.includes("full_body")) { // TODO: handle this in a better way
 				// Then the OSC commands to wekinator
 				o(["model_commands", "/wekinator/control/startDtwRecording", index]);
+				//o(["model_commands", "/wekinator/control/startDtwRecording", index]);
+				p(["model_commands", "/wekinator/control/startDtwRecording", index]);
 			} else {
 				
 				o(["model_commands", "/wekinator/control/outputs", index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001, index+0.00000000001]); // there is a problem with JS having only floats and Max ints and floats... so in order for weki to understand it as a float, we must do this little trick
@@ -537,7 +541,7 @@ async function train() { // this is the async function that triggers the mubu.pl
 		
 		// play
 		
-		await sleep(10)// 77 just for securitw
+		
 		o(["to_mubu_play", "play", 1]);
 		
 		playing = true;
@@ -550,6 +554,8 @@ async function train() { // this is the async function that triggers the mubu.pl
 		} else {
 			o(["model_commands", "/wekinator/control/stopRecording"]);
 		}
+		
+		await sleep(300);// 77 just for securitw
 	}
 	o(["training_state", 0]);
 }
@@ -559,6 +565,7 @@ function waitforplaytostop() {
 	return new Promise(function (resolve, reject) {
 		(function check_playing(){
 			if (playing == false) return resolve();
+			p("wainting for end message");
 			setTimeout(check_playing, 10);
 		})();
 	});

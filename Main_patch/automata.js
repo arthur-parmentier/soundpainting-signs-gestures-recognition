@@ -92,6 +92,7 @@ let fsm = new StateMachine({
 		// some utility arrays for the dynamic of the parsing, that are used as stacks
 		content_array: [],
 		identifier_array: [],
+		// modifier_who_array: [], TODO
 		// modifiers_array: [], // unused
 		previous_identifier_array: [],
 		
@@ -103,12 +104,11 @@ let fsm = new StateMachine({
 		
 		// TODO: generate the object from external dict
 		groups: { 
-			"numerics": ["numerics1", "numerics2", "numerics3","numerics4", "numerics5"],
+			"numerics": ["numerics1", "numerics2", "numerics3"],
 			"percussions": ["percussions1", "percussions2", "percussions3"], // of course we could also name one "drums" but then we loose the identification with group+number
 			"group1": ["percussions", "numerics1","numerics2"], // SP allows for custom groups, that are usually defined at performance time. warning: this will be difficult to parse, so we need some kind of recursivity to parse this.
 			// identifierlegroup is added here after initialization 
-			"singers": ["singers1", "singers2", "singers3"],
-			"strings": ["strings1", "strings2", "strings3"]
+			
 		},
 		
 		defaults: {
@@ -189,6 +189,8 @@ let fsm = new StateMachine({
 		
 			this.parameters = {}; // we delete the parameters of previous contents 
 			
+			// reset parameters of identifiers
+			
 			let [contents, flag] = parse_content(sign); // we also use a parsing here to handle specific cases like "continue", "this"...
 			
 			// Store the sign(s) to the stack
@@ -239,10 +241,6 @@ let fsm = new StateMachine({
 			if(this.content_array.length == 0) {
 				
 				real_time_flag = 1; // (this means that we will execute the request at the end)
-				
-				// if not, then the modifier only relates to last requested contents
-				// p(["previous", this.previous_content_array]);
-				// this.content_array = this.previous_content_array; // FAULTY line
 				
 				for(var i = 0; i<this.identifier_array.length; i++) {
 					
