@@ -11,7 +11,7 @@
     "javascript-state-machine": "^3.1.0",
     "line-reader": "^0.4.0",
     "parcel-bundler": "^1.12.4",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "socket.io-client": "^2.3.0",
     "viz.js": "^2.1.2",
     "express": "^4.16.2"
