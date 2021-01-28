@@ -6,7 +6,7 @@
   "dependencies": {
     "crfsuite": "^1.0.1",
     "csv-parse": "^4.8.8",
-    "electron": "^3.1.13",
+    "electron": "^9.4.0",
     "fs": "^0.0.1-security",
     "javascript-state-machine": "^3.1.0",
     "line-reader": "^0.4.0",
